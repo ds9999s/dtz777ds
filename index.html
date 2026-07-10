@@ -94,15 +94,17 @@
             hoerenHTML: `
                 <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 8px; margin-bottom: 20px;">
                     <p style="font-size: 18px; margin-bottom: 10px;">🎵 <b>Hören — Modeltest 1</b></p>
-                    <p style="color:#6c757d; font-size:13px;">[Вставте аудіо або використовуйте зовнішній трек]</p>
+                    <!-- Аудіоплеєр із твоїм файлом з Google Диску -->
+                    <audio controls src="https://docs.google.com/uc?export=download&id=1cDKI09QcGMqaD20xrjr3-rGgftrIc8_v" style="width: 100%; max-width: 400px;"></audio>
                 </div>
                 <div class="task-card">
-                    <h3>Aufgabe 1: Nachricht auf dem Anrufbeantworter</h3>
-                    <p>Frau Müller ruft an. Warum kommt sie später?</p>
+                    <h3>Aufgabe 1: Durchsage / Nachricht</h3>
+                    <p><b>Was soll Nina tun?</b></p>
                     <div class="options">
-                        <div class="option" onclick="setAnswer(this, true)">a) Ihr Auto ist kaputt. (Richtig)</div>
-                        <div class="option" onclick="setAnswer(this, false)">b) Der Bus hat Verspätung.</div>
-                        <div class="option" onclick="setAnswer(this, false)">c) Sie hat den Schlüssel vergessen.</div>
+                        <!-- Правильна відповідь містить true, інші — false. Якщо правильний інший варіант, просто перенеси true туди -->
+                        <div class="option" onclick="setAnswer(this, false)">a) Die Eltern besuchen</div>
+                        <div class="option" onclick="setAnswer(this, false)">b) Ein Taxi rufen</div>
+                        <div class="option" onclick="setAnswer(this, true)">c) Mit den Koffern helfen</div>
                     </div>
                 </div>
             `,
