@@ -3,180 +3,311 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DTZ B1 - Моделювання Іспиту</title>
+    <title>DTZ B1 - Екзаменаційний Тренажер</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
-        body { background-color: #f4f6f9; color: #333; padding: 20px; display: flex; justify-content: center; }
-        .container { background: white; width: 100%; max-width: 800px; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        h1 { color: #0056b3; margin-bottom: 20px; text-align: center; font-size: 24px; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+        body { background-color: #f0f2f5; color: #333; display: flex; justify-content: center; padding: 20px; }
         .hidden { display: none !important; }
         
-        /* Етап 1: Вибір дати */
-        .step-box { text-align: center; padding: 40px 20px; }
-        input[type="date"] { padding: 10px; font-size: 16px; border: 2px solid #0056b3; border-radius: 6px; margin-bottom: 20px; }
+        .container { background: white; width: 100%; max-width: 1100px; padding: 25px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        h1 { color: #0056b3; margin-bottom: 15px; text-align: center; }
         
-        /* Кнопки */
-        .btn { background-color: #0056b3; color: white; border: none; padding: 12px 25px; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; transition: 0.2s; }
-        .btn:hover { background-color: #004085; }
-        .btn-check { background-color: #28a745; margin-top: 10px; }
-        .btn-check:hover { background-color: #218838; }
-
-        /* Навігація іспиту */
-        .exam-header { display: flex; justify-content: space-between; border-bottom: 2px solid #e9ecef; padding-bottom: 10px; margin-bottom: 20px; font-weight: bold; color: #495057; }
+        /* Етап 1: Головне меню з кнопками тестіів */
+        .menu-box { text-align: center; padding: 40px 20px; }
+        .grid-tests { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 30px; }
+        .btn-test-select { background: #ffffff; border: 2px solid #0056b3; color: #0056b3; padding: 20px; font-size: 18px; font-weight: bold; border-radius: 10px; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        .btn-test-select:hover { background: #0056b3; color: white; transform: translateY(-3px); box-shadow: 0 6px 12px rgba(0,86,179,0.2); }
         
-        /* Тести (Hören / Lesen) */
-        .question-block { margin-bottom: 25px; background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #0056b3; }
-        .audio-placeholder { background: #e9ecef; padding: 15px; text-align: center; border-radius: 6px; margin-bottom: 15px; font-style: italic; }
-        .options { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
-        .option { padding: 10px; border: 1px solid #ced4da; border-radius: 6px; cursor: pointer; background: white; }
-        .option:hover { background: #e9ecef; }
-        .option.selected { border-color: #0056b3; background: #e1ecf4; }
+        /* Шапка іспиту */
+        .exam-header { display: flex; justify-content: space-between; background: #0056b3; color: white; padding: 12px 20px; border-radius: 8px; font-weight: bold; margin-bottom: 20px; }
+        
+        /* Роздвоєний екран (Двоколонковий макет) */
+        .split-screen { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 25px; }
+        .left-panel { background: #fdfdfd; border: 1px solid #dee2e6; padding: 20px; border-radius: 8px; max-height: 650px; overflow-y: auto; }
+        .right-panel { display: flex; flex-direction: column; gap: 20px; max-height: 650px; overflow-y: auto; padding-right: 5px; }
+        
+        /* Стилі для завдань */
+        .task-card { background: #f8f9fa; border-left: 4px solid #0056b3; padding: 15px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.02); margin-bottom: 15px; }
+        .task-card h3 { font-size: 15px; margin-bottom: 10px; color: #495057; }
+        
+        /* Кнопки вибору відповіді */
+        .options { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .option { padding: 10px 14px; border: 1px solid #ced4da; border-radius: 6px; cursor: pointer; background: white; font-size: 14px; transition: 0.2s; }
+        .option:hover { background: #f1f3f5; border-color: #0056b3; }
+        .option.selected { background: #e1ecf4; border-color: #0056b3; font-weight: bold; }
         .option.correct { background-color: #d4edda !important; border-color: #28a745 !important; color: #155724; }
         .option.wrong { background-color: #f8d7da !important; border-color: #dc3545 !important; color: #721c24; }
+        
+        /* Таблиці */
+        .info-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 13px; }
+        .info-table th, .info-table td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        .info-table th { background-color: #e9ecef; }
 
-        /* Блок Schreiben */
-        textarea { width: 100%; height: 200px; padding: 15px; border: 2px solid #ced4da; border-radius: 8px; font-size: 16px; resize: vertical; margin-top: 15px; }
-        .ai-result { margin-top: 20px; padding: 15px; border-radius: 8px; background-color: #e2f0d9; border-left: 4px solid #385723; display: none; white-space: pre-line; }
+        /* Кнопки керування */
+        .btn { background-color: #0056b3; color: white; border: none; padding: 12px 24px; font-size: 15px; font-weight: bold; border-radius: 6px; cursor: pointer; transition: 0.2s; }
+        .btn:hover { background-color: #004085; }
+        .btn-success { background-color: #28a745; }
+        .btn-success:hover { background-color: #218838; }
+        .nav-footer { display: flex; justify-content: space-between; border-top: 2px solid #e9ecef; padding-top: 15px; }
+
+        /* Поле для листа */
+        textarea { width: 100%; height: 250px; padding: 15px; border: 2px solid #ced4da; border-radius: 8px; font-size: 15px; resize: vertical; margin-top: 10px; }
+        .ai-box { margin-top: 15px; padding: 15px; border-radius: 6px; display: none; white-space: pre-line; border-left: 5px solid; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <!-- ЕТАП 1: ВИБІР ДАТІ ЕКЗАМЕНУ -->
-    <div id="step-date" class="step-box">
-        <h1>Wähle dein Prüfungsdatum</h1>
-        <p style="margin-bottom: 15px; color: #6c757d;">Оберіть дату, щоб активувати симуляцію DTZ B1:</p>
-        <input type="date" id="exam-date"><br>
-        <button class="btn" onclick="startExam()">Іспит Стартує</button>
-    </div>
-
-    <!-- ЕТАП 2: HÖREN (АУДІЮВАННЯ) -->
-    <div id="step-hoeren" class="hidden">
-        <div class="exam-header"><span>HÖREN (Аудіювання)</span><span class="date-display"></span></div>
-        <div class="question-block">
-            <div class="audio-placeholder">🎵 [Тут буде плеєр з аудіо файлом або лінк на аудіо трек]</div>
-            <p><b>Aufgabe 1:</b> Дружина телефонує чоловікові. Чому вона запізниться?</p>
-            <div class="options">
-                <div class="option" onclick="selectOpt(this, 'h1', true)">a) Ihr Auto ist kaputt. (Правильно)</div>
-                <div class="option" onclick="selectOpt(this, 'h1', false)">b) Der Bus hat Verspätung.</div>
-                <div class="option" onclick="selectOpt(this, 'h1', false)">c) Sie muss länger arbeiten.</div>
+    
+    <div id="step-menu" class="menu-box">
+        <h1>DTZ B1 Modellprüfungen</h1>
+        <p style="color: #6c757d;">Оберіть модельний тест для тренування. Кожен тест містить блоки Hören, Lesen та Schreiben.</p>
+        
+        <div class="grid-tests">
+            <button class="btn-test-select" onclick="initExam('modeltest1')">📝 Modeltest 1</button>
+            <button class="btn-test-select" onclick="initExam('modeltest2')">📝 Modeltest 2</button>
             </div>
-        </div>
-        <button class="btn" onclick="checkAnswers('step-hoeren');">Перевірити Hören</button>
-        <button class="btn" onclick="nextStep('step-hoeren', 'step-lesen')" style="float: right;">Далі до Lesen ➔</button>
     </div>
 
-    <!-- ЕТАП 3: LESEN (ЧИТАННЯ) -->
-    <div id="step-lesen" class="hidden">
-        <div class="exam-header"><span>LESEN (Читання)</span><span class="date-display"></span></div>
-        <div class="question-block">
-            <p style="background: #fff; padding: 10px; border-radius: 4px; margin-bottom: 10px; border: 1px solid #ddd;">
-                <b>Text:</b> Lieber Mieter, am kommenden Freitag bleibt der Aufzug wegen Wartungsarbeiten von 8:00 bis 12:00 Uhr außer Betrieb. Vielen Dank für Ihr Verständnis.
-            </p>
-            <p><b>Aufgabe 21:</b> Der Aufzug funktioniert am Freitagmorgen nicht.</p>
-            <div class="options">
-                <div class="option" onclick="selectOpt(this, 'l1', true)">richtig</div>
-                <div class="option" onclick="selectOpt(this, 'l1', false)">falsch</div>
-            </div>
+    <div id="exam-block" class="hidden">
+        <div class="exam-header">
+            <span id="current-section-title">HÖREN & LESEN</span>
+            <span id="display-test-name"></span>
         </div>
-        <button class="btn" onclick="checkAnswers('step-lesen');">Перевірити Lesen</button>
-        <button class="btn" onclick="nextStep('step-lesen', 'step-schreiben')" style="float: right;">Далі до Schreiben ➔</button>
-    </div>
 
-    <!-- ЕТАП 4: SCHREIBEN (ЛИСТ З АВТОПЕРЕВІРКОЮ) -->
-    <div id="step-schreiben" class="hidden">
-        <div class="exam-header"><span>SCHREIBEN (Лист)</span><span class="date-display"></span></div>
-        <div class="question-block">
-            <p><b>Aufgabe:</b> Ваша дитина захворіла, і вона не може піти до школи. Напишіть записку вчителю (Entschuldigung за відсутність). Напишіть щонайменше 3-4 речення.</p>
-            <textarea id="user-letter" placeholder="Schreiben Sie Ihren Text hier..."></textarea>
-            <button class="btn btn-check" onclick="checkLetterAI()">🤖 Перевірити граматику (AI)</button>
-            <div id="ai-output" class="ai-result"></div>
+        <div id="section-hoeren" class="hidden"></div>
+        <div id="section-lesen" class="hidden"></div>
+        <div id="section-schreiben" class="hidden"></div>
+
+        <div class="nav-footer">
+            <button class="btn" id="btn-check-answers" onclick="revealAnswers()">Überprüfen (Перевірити)</button>
+            <button class="btn" id="btn-next-step" onclick="switchSection()">Далі ➔</button>
         </div>
-        <button class="btn" onclick="location.reload();">Скинути та почати заново</button>
     </div>
 </div>
 
 <script>
-    let savedDate = "";
-
-    function startExam() {
-        const dateInput = document.getElementById('exam-date').value;
-        if (!dateInput) {
-            alert("Будь ласка, оберіть дату!");
-            return;
+    // БАЗА ДАНИХ ТЕСТІВ (Легко додавати нові блоки!)
+    const examDatabase = {
+        "modeltest1": {
+            name: "Modeltest 1",
+            hoerenHTML: `
+                <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 8px; margin-bottom: 20px;">
+                    <p style="font-size: 18px; margin-bottom: 10px;">🎵 <b>Hören — Modeltest 1</b></p>
+                    <p style="color:#6c757d; font-size:13px;">[Вставте аудіо або використовуйте зовнішній трек]</p>
+                </div>
+                <div class="task-card">
+                    <h3>Aufgabe 1: Nachricht auf dem Anrufbeantworter</h3>
+                    <p>Frau Müller ruft an. Warum kommt sie später?</p>
+                    <div class="options">
+                        <div class="option" onclick="setAnswer(this, true)">a) Ihr Auto ist kaputt. (Richtig)</div>
+                        <div class="option" onclick="setAnswer(this, false)">b) Der Bus hat Verspätung.</div>
+                        <div class="option" onclick="setAnswer(this, false)">c) Sie hat den Schlüssel vergessen.</div>
+                    </div>
+                </div>
+            `,
+            lesenHTML: `
+                <div class="split-screen">
+                    <div class="left-panel">
+                        <h3 style="color:#0056b3; margin-bottom:10px;">Infotafel Städtischer Bürgerservice</h3>
+                        <table class="info-table">
+                            <tr><th>Stockwerk</th><th>Ämter und Dienststellen</th></tr>
+                            <tr><td><b>5. OG</b></td><td>Stadtentwicklung - Planungsamt - Baurecht</td></tr>
+                            <tr><td><b>2. OG</b></td><td>Fahrzeugstelle (An-, Um- und Abmeldung von Kfz)</td></tr>
+                            <tr><td><b>1. OG</b></td><td>Meldestelle (Personen) - Ausweisstelle (Pässe)</td></tr>
+                            <tr><td><b>EG</b></td><td>Information/Wegweiser - Fundsachen - WC</td></tr>
+                        </table>
+                    </div>
+                    <div class="right-panel">
+                        <div class="task-card">
+                            <h3>Aufgabe 21: Sie möchten Ihr Auto abmelden.</h3>
+                            <div class="options">
+                                <div class="option" onclick="setAnswer(this, false)">a) EG</div>
+                                <div class="option" onclick="setAnswer(this, false)">b) 1. OG</div>
+                                <div class="option" onclick="setAnswer(this, true)">c) anderes Stockwerk (Richtig: 2. OG)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `,
+            schreibenHTML: `
+                <div class="task-card">
+                    <p><b>Aufgabe Schreiben:</b> Ваш син захворів. Напишіть коротку записку вчительці Frau Berg.</p>
+                </div>
+                <textarea id="text-schreiben" placeholder="Schreiben Sie Ihren Brief hier..."></textarea>
+                <button class="btn btn-success" style="margin-top: 10px;" onclick="validateLetterAI()">🤖 Перевірити граматику через AI</button>
+                <div id="ai-response-box" class="ai-box"></div>
+            `
+        },
+        "modeltest2": {
+            name: "Modeltest 2",
+            hoerenHTML: `
+                <div style="text-align: center; padding: 20px; background: #e8f4fd; border-radius: 8px; margin-bottom: 20px;">
+                    <p style="font-size: 18px; margin-bottom: 10px;">🎵 <b>Hören — Modeltest 2</b></p>
+                </div>
+                <div class="task-card">
+                    <h3>Aufgabe 1: Durchsage am Bahnhof</h3>
+                    <p>Auf welchem Gleis kommt der Zug aus München an?</p>
+                    <div class="options">
+                        <div class="option" onclick="setAnswer(this, false)">a) Gleis 3</div>
+                        <div class="option" onclick="setAnswer(this, true)">b) Gleis 7 (Richtig)</div>
+                        <div class="option" onclick="setAnswer(this, false)">c) Gleis 11</div>
+                    </div>
+                </div>
+            `,
+            lesenHTML: `
+                <div class="split-screen">
+                    <div class="left-panel">
+                        <h3 style="color:#28a745; margin-bottom:10px;">Hausordnung & Sicherheit</h3>
+                        <p style="font-size: 14px; line-height: 1.6;">Ab 22:00 Uhr gilt im gesamten Gebäude die Nachtruhe. Die Haustür muss ab diesem Zeitpunkt stets verschlossen sein.</p>
+                    </div>
+                    <div class="right-panel">
+                        <div class="task-card">
+                            <h3>Aufgabe 21: Nach 22 Uhr muss die Haustür abgesperrt werden.</h3>
+                            <div class="options">
+                                <div class="option" onclick="setAnswer(this, true)">richtig (Richtig)</div>
+                                <div class="option" onclick="setAnswer(this, false)">falsch</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `,
+            schreibenHTML: `
+                <div class="task-card">
+                    <p><b>Aufgabe Schreiben:</b> Напишіть листа орендодавцю Herr Meyer з проханням відремонтувати опалення.</p>
+                </div>
+                <textarea id="text-schreiben" placeholder="Sehr geehrter Herr Meyer..."></textarea>
+                <button class="btn btn-success" style="margin-top: 10px;" onclick="validateLetterAI()">🤖 Перевірити граматику через AI</button>
+                <div id="ai-response-box" class="ai-box"></div>
+            `
         }
-        savedDate = new Date(dateInput).toLocaleDateString('de-DE');
-        document.querySelectorAll('.date-display').forEach(el => el.innerText = `Datum: ${savedDate}`);
+        // НАСТУПНИЙ ТЕСТ ПРОСТО ДОДАВАТИ СЮДИ КОПІЮВАННЯМ ШАБЛОНУ!
+    };
+
+    let currentStep = 'hoeren';
+    let activeTestData = null;
+
+    function initExam(testKey) {
+        activeTestData = examDatabase[testKey];
         
-        document.getElementById('step-date').classList.add('hidden');
-        document.getElementById('step-hoeren').classList.remove('hidden');
+        // Завантажуємо відповідний контент у блоки
+        document.getElementById('section-hoeren').innerHTML = activeTestData.hoerenHTML;
+        document.getElementById('section-lesen').innerHTML = activeTestData.lesenHTML;
+        document.getElementById('section-schreiben').innerHTML = activeTestData.schreibenHTML;
+
+        document.getElementById('display-test-name').innerText = activeTestData.name;
+        
+        document.getElementById('step-menu').classList.add('hidden');
+        document.getElementById('exam-block').classList.remove('hidden');
+        setupStep();
     }
 
-    function selectOpt(element, qId, isCorrect) {
-        const parent = element.parentElement;
-        parent.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+    function setupStep() {
+        document.getElementById('section-hoeren').classList.add('hidden');
+        document.getElementById('section-lesen').classList.add('hidden');
+        document.getElementById('section-schreiben').classList.add('hidden');
+        document.getElementById('btn-check-answers').classList.remove('hidden');
+
+        if (currentStep === 'hoeren') {
+            document.getElementById('current-section-title').innerText = "1. БЛОК: HÖREN";
+            document.getElementById('section-hoeren').classList.remove('hidden');
+            document.getElementById('btn-next-step').innerText = "До блоку Lesen ➔";
+        } else if (currentStep === 'lesen') {
+            document.getElementById('current-section-title').innerText = "2. БЛОК: LESEN";
+            document.getElementById('section-lesen').classList.remove('hidden');
+            document.getElementById('btn-next-step').innerText = "До блоку Schreiben ➔";
+        } else if (currentStep === 'schreiben') {
+            document.getElementById('current-section-title').innerText = "3. БЛОК: SCHREIBEN";
+            document.getElementById('section-schreiben').classList.remove('hidden');
+            document.getElementById('btn-check-answers').classList.add('hidden');
+            document.getElementById('btn-next-step').innerText = "Повернутись в меню 🔄";
+        }
+    }
+
+    function setAnswer(element, isCorrect) {
+        const cardOptions = element.parentElement.querySelectorAll('.option');
+        cardOptions.forEach(opt => opt.classList.remove('selected'));
+        
         element.classList.add('selected');
-        element.dataset.correct = isCorrect;
+        element.dataset.status = isCorrect ? "correct" : "wrong";
     }
 
-    function checkAnswers(stepId) {
-        const step = document.getElementById(stepId);
-        step.querySelectorAll('.option.selected').forEach(opt => {
-            if (opt.dataset.correct === "true") {
+    function revealAnswers() {
+        const activeSectionId = currentStep === 'hoeren' ? 'section-hoeren' : 'section-lesen';
+        const activeSection = document.getElementById(activeSectionId);
+        
+        activeSection.querySelectorAll('.option.selected').forEach(opt => {
+            if (opt.dataset.status === "correct") {
                 opt.classList.add('correct');
             } else {
                 opt.classList.add('wrong');
             }
         });
-    }
-
-    function nextStep(currentId, nextId) {
-        document.getElementById(currentId).classList.add('hidden');
-        document.getElementById(nextId).classList.remove('hidden');
-    }
-
-    // Розумна перевірка листа безкоштовним ШІ
-    async function checkLetterAI() {
-        const text = document.getElementById('user-letter').value;
-        const outputDiv = document.getElementById('ai-output');
         
-        if (!text.trim()) {
-            alert("Будь ласка, напишіть спочатку якийсь текст!");
-            return;
-        }
+        activeSection.querySelectorAll('.option').forEach(opt => {
+            if (opt.getAttribute('onclick').includes('true')) {
+                opt.classList.add('correct');
+            }
+        });
+    }
 
-        outputDiv.style.display = "block";
-        outputDiv.innerText = "🤖 Робот ШІ аналізує твій лист, зачекай кілька секунд...";
-        outputDiv.style.backgroundColor = "#fff3cd";
+    function switchSection() {
+        if (currentStep === 'hoeren') {
+            currentStep = 'lesen';
+            setupStep();
+        } else if (currentStep === 'lesen') {
+            currentStep = 'schreiben';
+            setupStep();
+        } else {
+            // Повернення на головну сторінку вибору тесту
+            currentStep = 'hoeren';
+            document.getElementById('exam-block').classList.add('hidden');
+            document.getElementById('step-menu').classList.remove('hidden');
+        }
+    }
+
+    async function validateLetterAI() {
+        const textValue = document.getElementById('text-schreiben').value;
+        const box = document.getElementById('ai-response-box');
+        
+        if (!textValue.trim()) { alert("Будь ласка, введіть ваш текст листа."); return; }
+        
+        box.style.display = "block";
+        box.style.borderColor = "#ffc107";
+        box.style.backgroundColor = "#fff3cd";
+        box.innerText = "🤖 ШІ аналізує структуру речень та граматику вашого листа...";
 
         try {
-            // Використовуємо безкоштовний відкритий API для перевірки німецької граматики
-            const response = await fetch("https://api.languagetoolplus.com/v2/check", {
+            const res = await fetch("https://api.languagetoolplus.com/v2/check", {
                 method: "POST",
                 headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: `text=${encodeURIComponent(text)}&language=de-DE`
+                body: `text=${encodeURIComponent(textValue)}&language=de-DE`
             });
-            const data = await response.json();
+            const resultData = await res.json();
 
-            if (data.matches.length === 0) {
-                outputDiv.innerText = " wunderbar! ШІ не знайшов очевидних граматичних помилок. Твій лист виглядає чудово!";
-                outputDiv.style.backgroundColor = "#e2f0d9";
+            if (resultData.matches.length === 0) {
+                box.style.borderColor = "#28a745";
+                box.style.backgroundColor = "#d4edda";
+                box.innerHTML = "🎉 <b>Вказаний текст чудовий!</b> ШІ не виявив грубих помилок у вашому листі.";
             } else {
-                let feedback = `<b>Знайдено помилки (${data.matches.length}):</b>\n\n`;
-                data.matches.forEach((match, index) => {
-                    feedback += `${index + 1}. Помилка: "${text.substring(match.offset, match.offset + match.length)}"\n`;
-                    feedback += `   Підказка: ${match.message}\n`;
-                    if(match.replacements.length > 0) {
-                        feedback += `   Можливий варіант заміни: "${match.replacements[0].value}"\n`;
+                box.style.borderColor = "#dc3545";
+                box.style.backgroundColor = "#f8d7da";
+                let report = `⚠️ <b>Знайдено помилок у тексті: ${resultData.matches.length}</b>\n\n`;
+                
+                resultData.matches.forEach((item, index) => {
+                    const errorWord = textValue.substring(item.offset, item.offset + item.length);
+                    report += `${index + 1}. Помилка у слові/фразі: <u><b>"${errorWord}"</b></u>\n`;
+                    report += `   💡 Рекомендація ШІ: ${item.message}\n`;
+                    if (item.replacements && item.replacements.length > 0) {
+                        report += `   ✅ Правильно написати: "${item.replacements[0].value}"\n`;
                     }
-                    feedback += `\n`;
+                    report += `\n`;
                 });
-                outputDiv.innerHTML = feedback;
-                outputDiv.style.backgroundColor = "#f8d7da";
+                box.innerHTML = report;
             }
-        } catch (error) {
-            outputDiv.innerText = "Сталася помилка з'єднання з ШІ сервером. Перевір інтернет-зв'язок.";
-            outputDiv.style.backgroundColor = "#f8d7da";
+        } catch (e) {
+            box.style.borderColor = "#6c757d";
+            box.innerText = "Помилка зв'язку з сервером перевірки граматики.";
         }
     }
 </script>
