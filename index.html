@@ -1,1 +1,185 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DTZ B1 - Моделювання Іспиту</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #f4f6f9; color: #333; padding: 20px; display: flex; justify-content: center; }
+        .container { background: white; width: 100%; max-width: 800px; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        h1 { color: #0056b3; margin-bottom: 20px; text-align: center; font-size: 24px; }
+        .hidden { display: none !important; }
+        
+        /* Етап 1: Вибір дати */
+        .step-box { text-align: center; padding: 40px 20px; }
+        input[type="date"] { padding: 10px; font-size: 16px; border: 2px solid #0056b3; border-radius: 6px; margin-bottom: 20px; }
+        
+        /* Кнопки */
+        .btn { background-color: #0056b3; color: white; border: none; padding: 12px 25px; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; transition: 0.2s; }
+        .btn:hover { background-color: #004085; }
+        .btn-check { background-color: #28a745; margin-top: 10px; }
+        .btn-check:hover { background-color: #218838; }
 
+        /* Навігація іспиту */
+        .exam-header { display: flex; justify-content: space-between; border-bottom: 2px solid #e9ecef; padding-bottom: 10px; margin-bottom: 20px; font-weight: bold; color: #495057; }
+        
+        /* Тести (Hören / Lesen) */
+        .question-block { margin-bottom: 25px; background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #0056b3; }
+        .audio-placeholder { background: #e9ecef; padding: 15px; text-align: center; border-radius: 6px; margin-bottom: 15px; font-style: italic; }
+        .options { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
+        .option { padding: 10px; border: 1px solid #ced4da; border-radius: 6px; cursor: pointer; background: white; }
+        .option:hover { background: #e9ecef; }
+        .option.selected { border-color: #0056b3; background: #e1ecf4; }
+        .option.correct { background-color: #d4edda !important; border-color: #28a745 !important; color: #155724; }
+        .option.wrong { background-color: #f8d7da !important; border-color: #dc3545 !important; color: #721c24; }
+
+        /* Блок Schreiben */
+        textarea { width: 100%; height: 200px; padding: 15px; border: 2px solid #ced4da; border-radius: 8px; font-size: 16px; resize: vertical; margin-top: 15px; }
+        .ai-result { margin-top: 20px; padding: 15px; border-radius: 8px; background-color: #e2f0d9; border-left: 4px solid #385723; display: none; white-space: pre-line; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- ЕТАП 1: ВИБІР ДАТІ ЕКЗАМЕНУ -->
+    <div id="step-date" class="step-box">
+        <h1>Wähle dein Prüfungsdatum</h1>
+        <p style="margin-bottom: 15px; color: #6c757d;">Оберіть дату, щоб активувати симуляцію DTZ B1:</p>
+        <input type="date" id="exam-date"><br>
+        <button class="btn" onclick="startExam()">Іспит Стартує</button>
+    </div>
+
+    <!-- ЕТАП 2: HÖREN (АУДІЮВАННЯ) -->
+    <div id="step-hoeren" class="hidden">
+        <div class="exam-header"><span>HÖREN (Аудіювання)</span><span class="date-display"></span></div>
+        <div class="question-block">
+            <div class="audio-placeholder">🎵 [Тут буде плеєр з аудіо файлом або лінк на аудіо трек]</div>
+            <p><b>Aufgabe 1:</b> Дружина телефонує чоловікові. Чому вона запізниться?</p>
+            <div class="options">
+                <div class="option" onclick="selectOpt(this, 'h1', true)">a) Ihr Auto ist kaputt. (Правильно)</div>
+                <div class="option" onclick="selectOpt(this, 'h1', false)">b) Der Bus hat Verspätung.</div>
+                <div class="option" onclick="selectOpt(this, 'h1', false)">c) Sie muss länger arbeiten.</div>
+            </div>
+        </div>
+        <button class="btn" onclick="checkAnswers('step-hoeren');">Перевірити Hören</button>
+        <button class="btn" onclick="nextStep('step-hoeren', 'step-lesen')" style="float: right;">Далі до Lesen ➔</button>
+    </div>
+
+    <!-- ЕТАП 3: LESEN (ЧИТАННЯ) -->
+    <div id="step-lesen" class="hidden">
+        <div class="exam-header"><span>LESEN (Читання)</span><span class="date-display"></span></div>
+        <div class="question-block">
+            <p style="background: #fff; padding: 10px; border-radius: 4px; margin-bottom: 10px; border: 1px solid #ddd;">
+                <b>Text:</b> Lieber Mieter, am kommenden Freitag bleibt der Aufzug wegen Wartungsarbeiten von 8:00 bis 12:00 Uhr außer Betrieb. Vielen Dank für Ihr Verständnis.
+            </p>
+            <p><b>Aufgabe 21:</b> Der Aufzug funktioniert am Freitagmorgen nicht.</p>
+            <div class="options">
+                <div class="option" onclick="selectOpt(this, 'l1', true)">richtig</div>
+                <div class="option" onclick="selectOpt(this, 'l1', false)">falsch</div>
+            </div>
+        </div>
+        <button class="btn" onclick="checkAnswers('step-lesen');">Перевірити Lesen</button>
+        <button class="btn" onclick="nextStep('step-lesen', 'step-schreiben')" style="float: right;">Далі до Schreiben ➔</button>
+    </div>
+
+    <!-- ЕТАП 4: SCHREIBEN (ЛИСТ З АВТОПЕРЕВІРКОЮ) -->
+    <div id="step-schreiben" class="hidden">
+        <div class="exam-header"><span>SCHREIBEN (Лист)</span><span class="date-display"></span></div>
+        <div class="question-block">
+            <p><b>Aufgabe:</b> Ваша дитина захворіла, і вона не може піти до школи. Напишіть записку вчителю (Entschuldigung за відсутність). Напишіть щонайменше 3-4 речення.</p>
+            <textarea id="user-letter" placeholder="Schreiben Sie Ihren Text hier..."></textarea>
+            <button class="btn btn-check" onclick="checkLetterAI()">🤖 Перевірити граматику (AI)</button>
+            <div id="ai-output" class="ai-result"></div>
+        </div>
+        <button class="btn" onclick="location.reload();">Скинути та почати заново</button>
+    </div>
+</div>
+
+<script>
+    let savedDate = "";
+
+    function startExam() {
+        const dateInput = document.getElementById('exam-date').value;
+        if (!dateInput) {
+            alert("Будь ласка, оберіть дату!");
+            return;
+        }
+        savedDate = new Date(dateInput).toLocaleDateString('de-DE');
+        document.querySelectorAll('.date-display').forEach(el => el.innerText = `Datum: ${savedDate}`);
+        
+        document.getElementById('step-date').classList.add('hidden');
+        document.getElementById('step-hoeren').classList.remove('hidden');
+    }
+
+    function selectOpt(element, qId, isCorrect) {
+        const parent = element.parentElement;
+        parent.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+        element.classList.add('selected');
+        element.dataset.correct = isCorrect;
+    }
+
+    function checkAnswers(stepId) {
+        const step = document.getElementById(stepId);
+        step.querySelectorAll('.option.selected').forEach(opt => {
+            if (opt.dataset.correct === "true") {
+                opt.classList.add('correct');
+            } else {
+                opt.classList.add('wrong');
+            }
+        });
+    }
+
+    function nextStep(currentId, nextId) {
+        document.getElementById(currentId).classList.add('hidden');
+        document.getElementById(nextId).classList.remove('hidden');
+    }
+
+    // Розумна перевірка листа безкоштовним ШІ
+    async function checkLetterAI() {
+        const text = document.getElementById('user-letter').value;
+        const outputDiv = document.getElementById('ai-output');
+        
+        if (!text.trim()) {
+            alert("Будь ласка, напишіть спочатку якийсь текст!");
+            return;
+        }
+
+        outputDiv.style.display = "block";
+        outputDiv.innerText = "🤖 Робот ШІ аналізує твій лист, зачекай кілька секунд...";
+        outputDiv.style.backgroundColor = "#fff3cd";
+
+        try {
+            // Використовуємо безкоштовний відкритий API для перевірки німецької граматики
+            const response = await fetch("https://api.languagetoolplus.com/v2/check", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: `text=${encodeURIComponent(text)}&language=de-DE`
+            });
+            const data = await response.json();
+
+            if (data.matches.length === 0) {
+                outputDiv.innerText = " wunderbar! ШІ не знайшов очевидних граматичних помилок. Твій лист виглядає чудово!";
+                outputDiv.style.backgroundColor = "#e2f0d9";
+            } else {
+                let feedback = `<b>Знайдено помилки (${data.matches.length}):</b>\n\n`;
+                data.matches.forEach((match, index) => {
+                    feedback += `${index + 1}. Помилка: "${text.substring(match.offset, match.offset + match.length)}"\n`;
+                    feedback += `   Підказка: ${match.message}\n`;
+                    if(match.replacements.length > 0) {
+                        feedback += `   Можливий варіант заміни: "${match.replacements[0].value}"\n`;
+                    }
+                    feedback += `\n`;
+                });
+                outputDiv.innerHTML = feedback;
+                outputDiv.style.backgroundColor = "#f8d7da";
+            }
+        } catch (error) {
+            outputDiv.innerText = "Сталася помилка з'єднання з ШІ сервером. Перевір інтернет-зв'язок.";
+            outputDiv.style.backgroundColor = "#f8d7da";
+        }
+    }
+</script>
+
+</body>
+</html>
