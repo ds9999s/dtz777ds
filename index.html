@@ -53,6 +53,13 @@
         /* Поле для листа */
         textarea { width: 100%; height: 250px; padding: 15px; border: 2px solid #ced4da; border-radius: 8px; font-size: 15px; resize: vertical; margin-top: 10px; }
         .ai-box { margin-top: 15px; padding: 15px; border-radius: 6px; display: none; white-space: pre-line; border-left: 5px solid; }
+
+        /* Фінальний екран результатів */
+        .result-box { text-align: center; padding: 40px 20px; }
+        .badge { display: inline-block; padding: 15px 30px; font-size: 28px; font-weight: bold; border-radius: 50px; margin: 20px 0; color: white; }
+        .badge.b1 { background: #28a745; box-shadow: 0 4px 15px rgba(40,167,69,0.3); }
+        .badge.a2 { background: #ffc107; color: #333; box-shadow: 0 4px 15px rgba(255,193,7,0.3); }
+        .badge.fail { background: #dc3545; box-shadow: 0 4px 15px rgba(220,53,69,0.3); }
     </style>
 </head>
 <body>
@@ -66,7 +73,7 @@
         <div class="grid-tests">
             <button class="btn-test-select" onclick="initExam('modeltest1')">📝 Modeltest 1</button>
             <button class="btn-test-select" onclick="initExam('modeltest2')">📝 Modeltest 2</button>
-            </div>
+        </div>
     </div>
 
     <div id="exam-block" class="hidden">
@@ -84,51 +91,61 @@
             <button class="btn" id="btn-next-step" onclick="switchSection()">Далі ➔</button>
         </div>
     </div>
+
+    <div id="step-results" class="hidden result-box">
+        <h2>Prüfungsergebnis (Результат іспиту)</h2>
+        <p style="color: #6c757d; margin-top: 10px;">Блоки Hören & Lesen успішно перевірено.</p>
+        
+        <div style="font-size: 22px; margin-top: 20px;">
+            Ваш бал: <b id="score-text" style="color: #0056b3;">0</b> із <span id="total-questions-text">0</span> правильних відповідей
+        </div>
+
+        <div id="result-badge" class="badge">B1</div>
+
+        <p id="result-desc" style="font-size: 16px; max-width: 600px; margin: 0 auto 30px auto; line-height: 1.5; color: #495057;"></p>
+        
+        <button class="btn" onclick="goToMenu()">➔ В головне меню</button>
+    </div>
 </div>
 
 <script>
-    // БАЗА ДАНИХ ТЕСТІВ (Легко додавати нові блоки!)
+    // БАЗА ДАНИХ ТЕСТІВ
     const examDatabase = {
         "modeltest1": {
             name: "Modeltest 1",
-           hoerenHTML: `
+            hoerenHTML: `
                 <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 8px; margin-bottom: 20px;">
                     <p style="font-size: 18px; margin-bottom: 15px;">🎵 <b>Hören — Modeltest 1</b></p>
                     
-                    <!-- Надійне вбудоване вікно плеєра Google Диску -->
                     <iframe src="https://drive.google.com/file/d/1cDKI09QcGMqaD20xrjr3-rGgftrIc8_v/preview" width="100%" height="80" allow="autoplay" style="border: none; border-radius: 8px;"></iframe>
                 </div>
                 
                 <div class="task-card">
                     <h3>Aufgabe 1: Was soll Nina tun?</h3>
                     <div class="options">
-                        <!-- Правильна відповідь містить true, інші — false. Якщо правильний інший варіант, просто перенеси true туди -->
                         <div class="option" onclick="setAnswer(this, true)">a) Die Eltern besuchen</div>
                         <div class="option" onclick="setAnswer(this, false)">b) Ein Taxi rufen</div>
                         <div class="option" onclick="setAnswer(this, false)">c) Mit den Koffern helfen</div>
                     </div>
                 </div>
 
-                <!-- ЗАВДАННЯ 2 (Просто дописуємо нижче) -->
                 <div class="task-card">
                     <h3>Aufgabe 2: Wie kommen die Fahrgäste schneller nach Mainz?</h3>
                     <div class="options">
-                        <!-- Вкажи true для правильного варіанту, для інших — false -->
                         <div class="option" onclick="setAnswer(this, false)">a) Aussteigen und einen anderen Zug nehmen</div>
                         <div class="option" onclick="setAnswer(this, true)">b) Am Flughafen umsteigen</div>
-                        <div class="option" onclick="setAnswer(this, false)">c)In Köln umsteigen </div>
+                        <div class="option" onclick="setAnswer(this, false)">c) In Köln umsteigen </div>
                     </div>
                 </div>
 
                 <div class="task-card">
-                    <h3>Aufgabe 2: Wohin soll Herr Flemming kommen?</h3>
+                    <h3>Aufgabe 3: Wohin soll Herr Flemming kommen?</h3>
                     <div class="options">
                         <div class="option" onclick="setAnswer(this, false)">a) In die Schule.</div>
                         <div class="option" onclick="setAnswer(this, true)">b) Ins Café Milano. </div>
-                        <div class="option" onclick="setAnswer(this, false)">c)Ins Landhaus Flora. </div>
+                        <div class="option" onclick="setAnswer(this, false)">c) Ins Landhaus Flora. </div>
                     </div>
                 </div>
-                
             `,
             lesenHTML: `
                 <div class="split-screen">
@@ -183,11 +200,11 @@
                 <div class="split-screen">
                     <div class="left-panel">
                         <h3 style="color:#28a745; margin-bottom:10px;">Hausordnung & Sicherheit</h3>
-                        <p style="font-size: 14px; line-height: 1.6;">Ab 22:00 Uhr gilt im gesamten Gebäude die Nachtruhe. Die Haustür muss ab diesem Zeitpunkt stets verschlossen sein.</p>
+                        <p style="font-size: 14px; line-height: 1.6;">Ab 22:00 Uhr gilt im gesamten Gebäude die Nachtруе. Die Haustür muss ab diesem Zeitpunkt stets verschlossen sein.</p>
                     </div>
                     <div class="right-panel">
                         <div class="task-card">
-                            <h3>Aufgabe 21: Nach 22 Uhr muss die Haustür abgesperrt werden.</h3>
+                            <h3>Aufgabe 21: Nach 22 Uhr muss die Haustür abgesперрт werden.</h3>
                             <div class="options">
                                 <div class="option" onclick="setAnswer(this, true)">richtig (Richtig)</div>
                                 <div class="option" onclick="setAnswer(this, false)">falsch</div>
@@ -205,7 +222,6 @@
                 <div id="ai-response-box" class="ai-box"></div>
             `
         }
-        // НАСТУПНИЙ ТЕСТ ПРОСТО ДОДАВАТИ СЮДИ КОПІЮВАННЯМ ШАБЛОНУ!
     };
 
     let currentStep = 'hoeren';
@@ -213,8 +229,8 @@
 
     function initExam(testKey) {
         activeTestData = examDatabase[testKey];
+        currentStep = 'hoeren';
         
-        // Завантажуємо відповідний контент у блоки
         document.getElementById('section-hoeren').innerHTML = activeTestData.hoerenHTML;
         document.getElementById('section-lesen').innerHTML = activeTestData.lesenHTML;
         document.getElementById('section-schreiben').innerHTML = activeTestData.schreibenHTML;
@@ -222,6 +238,7 @@
         document.getElementById('display-test-name').innerText = activeTestData.name;
         
         document.getElementById('step-menu').classList.add('hidden');
+        document.getElementById('step-results').classList.add('hidden');
         document.getElementById('exam-block').classList.remove('hidden');
         setupStep();
     }
@@ -244,7 +261,7 @@
             document.getElementById('current-section-title').innerText = "3. БЛОК: SCHREIBEN";
             document.getElementById('section-schreiben').classList.remove('hidden');
             document.getElementById('btn-check-answers').classList.add('hidden');
-            document.getElementById('btn-next-step').innerText = "Повернутись в меню 🔄";
+            document.getElementById('btn-next-step').innerText = "Завершити тест та підрахувати бали 🔄";
         }
     }
 
@@ -283,11 +300,46 @@
             currentStep = 'schreiben';
             setupStep();
         } else {
-            // Повернення на головну сторінку вибору тесту
-            currentStep = 'hoeren';
-            document.getElementById('exam-block').classList.add('hidden');
-            document.getElementById('step-menu').classList.remove('hidden');
+            calculateTotalScore();
         }
+    }
+
+    // НОВА ФУНКЦІЯ ПІДРАХУНКУ БАЛІВ
+    function calculateTotalScore() {
+        const totalQuestions = document.querySelectorAll('#section-hoeren .task-card, #section-lesen .task-card').length;
+        const correctAnswers = document.querySelectorAll('.option.selected[data-status="correct"]').length;
+
+        document.getElementById('score-text').innerText = correctAnswers;
+        document.getElementById('total-questions-text').innerText = totalQuestions;
+
+        const badge = document.getElementById('result-badge');
+        const desc = document.getElementById('result-desc');
+
+        // Оцінювання на основі відсотка правильних відповідей (підходить для будь-якої кількості питань)
+        const successRate = totalQuestions > 0 ? (correctAnswers / totalQuestions) : 0;
+
+        // В оригінальному DTZ 45 питань: B1 це 33+ бали (33/45 = ~73%), A2 це 20 балів (20/45 = ~44%)
+        if (successRate >= 0.73 || correctAnswers >= 33) { 
+            badge.innerText = "Сертифікат: B1";
+            badge.className = "badge b1";
+            desc.innerHTML = "🎉 <b>Вітаємо!</b> Ви показали чудовий результат у частинах Hören & Lesen. Цей рівень балів відповідає оцінці <b>B1</b>. Якщо ваш лист у блоці Schreiben також написаний без критичних помилок, ви гарантовано успішно складаєте іспит!";
+        } else if (successRate >= 0.44 || correctAnswers >= 20) {
+            badge.innerText = "Сертифікат: A2";
+            badge.className = "badge a2";
+            desc.innerHTML = "👍 <b>Добре!</b> Ви набрали достатньо балів для отримання рівня <b>A2</b>. Щоб підняти результат до омріяного B1, зверніть увагу на завдання, в яких припустилися помилок, та спробуйте пройти тест ще раз.";
+        } else {
+            badge.innerText = "Nicht bestanden";
+            badge.className = "badge fail";
+            desc.innerHTML = "⚠️ <b>Недостатньо балів.</b> На жаль, набраних балів не вистачає для підтвердження мовного рівня. Не засмучуйтесь! Тренуйтеся більше з іншими модельними тестами, розбирайте тексти та спробуйте знову.";
+        }
+
+        document.getElementById('exam-block').classList.add('hidden');
+        document.getElementById('step-results').classList.remove('hidden');
+    }
+
+    function goToMenu() {
+        document.getElementById('step-results').classList.add('hidden');
+        document.getElementById('step-menu').classList.remove('hidden');
     }
 
     async function validateLetterAI() {
@@ -321,9 +373,9 @@
                 resultData.matches.forEach((item, index) => {
                     const errorWord = textValue.substring(item.offset, item.offset + item.length);
                     report += `${index + 1}. Помилка у слові/фразі: <u><b>"${errorWord}"</b></u>\n`;
-                    report += `   💡 Рекомендація ШІ: ${item.message}\n`;
+                    report += `    💡 Рекомендація ШІ: ${item.message}\n`;
                     if (item.replacements && item.replacements.length > 0) {
-                        report += `   ✅ Правильно написати: "${item.replacements[0].value}"\n`;
+                        report += `    ✅ Правильно написати: "${item.replacements[0].value}"\n`;
                     }
                     report += `\n`;
                 });
