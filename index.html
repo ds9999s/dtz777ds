@@ -100,8 +100,7 @@
                 </div>
                 
                 <div class="task-card">
-                    <h3>Aufgabe 1: Durchsage / Nachricht</h3>
-                    <p><b>Was soll Nina tun?</b></p>
+                    <h3>Aufgabe 1: Was soll Nina tun?</h3>
                     <div class="options">
                         <!-- Правильна відповідь містить true, інші — false. Якщо правильний інший варіант, просто перенеси true туди -->
                         <div class="option" onclick="setAnswer(this, true)">a) Die Eltern besuchen</div>
@@ -109,6 +108,27 @@
                         <div class="option" onclick="setAnswer(this, false)">c) Mit den Koffern helfen</div>
                     </div>
                 </div>
+
+                <!-- ЗАВДАННЯ 2 (Просто дописуємо нижче) -->
+                <div class="task-card">
+                    <h3>Aufgabe 2: Wie kommen die Fahrgäste schneller nach Mainz?</h3>
+                    <div class="options">
+                        <!-- Вкажи true для правильного варіанту, для інших — false -->
+                        <div class="option" onclick="setAnswer(this, false)">a) Aussteigen und einen anderen Zug nehmen</div>
+                        <div class="option" onclick="setAnswer(this, true)">b) Am Flughafen umsteigen</div>
+                        <div class="option" onclick="setAnswer(this, false)">c)In Köln umsteigen </div>
+                    </div>
+                </div>
+
+                <div class="task-card">
+                    <h3>Aufgabe 2: Wohin soll Herr Flemming kommen?</h3>
+                    <div class="options">
+                        <div class="option" onclick="setAnswer(this, false)">a) In die Schule.</div>
+                        <div class="option" onclick="setAnswer(this, true)">b) Ins Café Milano. </div>
+                        <div class="option" onclick="setAnswer(this, false)">c)Ins Landhaus Flora. </div>
+                    </div>
+                </div>
+                
             `,
             lesenHTML: `
                 <div class="split-screen">
