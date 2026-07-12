@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DTZ B1 - Екзаменаційний Тренажер</title>
-    <!-- Підключаємо офіційний модуль перевірки від LanguageTool -->
-    <script src="https://www.languagetool.org/js/online-check/iframe_api/v1/languagetool.js"></script>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
         body { background-color: #f0f2f5; color: #333; display: flex; justify-content: center; padding: 20px; }
@@ -48,6 +46,9 @@
         /* Поле для листа */
         textarea { width: 100%; height: 250px; padding: 15px; border: 2px solid #ced4da; border-radius: 8px; font-size: 15px; resize: vertical; margin-top: 10px; }
         
+        /* Підказки для листа */
+        .b1-hints { background-color: #e8f4fd; border: 1px solid #b8daff; color: #004085; padding: 15px; border-radius: 8px; margin-top: 15px; font-size: 14px; line-height: 1.5; }
+
         /* Фінальний екран результатів */
         .result-box { text-align: center; padding: 40px 20px; }
         .badge { display: inline-block; padding: 15px 30px; font-size: 28px; font-weight: bold; border-radius: 50px; margin: 20px 0; color: white; }
@@ -113,8 +114,16 @@
                 <p><b>Aufgabe Schreiben:</b> ${taskText}</p>
             </div>
             <textarea id="text-schreiben" name="text-schreiben" placeholder="Schreiben Sie Ihren Brief hier..."></textarea>
-            <div style="margin-top: 12px; font-size: 14px; color: #555;">
-                💡 <i>Помилки підкреслюються автоматично. Клацніть на підкреслене слово, щоб побачити підказку німецькою мовою.</i>
+            
+            <div class="b1-hints">
+                <b>💡 Чек-лист для листа B1 (DTZ):</b>
+                <ul style="margin-left: 20px; margin-top: 5px;">
+                    <li><b>Anrede (Привітання):</b> Lieber Herr... / Sehr geehrte Frau...</li>
+                    <li><b>Einleitung (Вступ):</b> Ich schreibe Ihnen, weil...</li>
+                    <li><b>Релевантність:</b> Обов'язково опишіть усі 4 пункти (Leitpunkte) з реального завдання.</li>
+                    <li><b>Konnektoren (Сполучники B1):</b> Використовуй <i>weil, deshalb, obwohl, dass, wenn</i>.</li>
+                    <li><b>Grußformel (Прощання):</b> Mit freundlichen Grüßen / Viele Grüße.</li>
+                </ul>
             </div>
         `;
     }
@@ -203,8 +212,6 @@
             `,
             lesenHTML: `
                 <div style="display: flex; flex-direction: column; gap: 40px; font-family: sans-serif;">
-                    
-                    <!-- ================= TEIL 1 ================= -->
                     <div>
                         <h2 style="color: #0056b3; margin-bottom: 10px; border-bottom: 2px solid #0056b3; padding-bottom: 5px;">Lesen Teil 1</h2>
                         <div class="split-screen">
@@ -318,7 +325,7 @@
                                     <strong>f) Küchen aus Polen.</strong> Unschlagbar im Preis, 1A-Qualität. Wichtig: Lieferzeit beträgt bis zu 3 Monaten. Tel: 033444-405.
                                 </div>
                                 <div style="border: 1px solid #999; padding: 10px; background: #fff; font-size: 12px;">
-                                    <strong>g) Online-Mietspiegel aktuell.</strong> Vergleichen Sie Ihre Mietpreise kostenlos online. Ein Service вашей Stadtverwaltung. www.mietspiegel.de.
+                                    <strong>g) Online-Mietspiegel aktuell.</strong> Vergleichen Sie Ihre Mietpreise kostenlos online. Ein Service deiner Stadtverwaltung. www.mietspiegel.de.
                                 </div>
                                 <div style="border: 1px solid #999; padding: 10px; background: #fff; font-size: 12px;">
                                     <strong>h) www.wohnen-heute.de.</strong> Finden Sie Ihre Traumwohnung online rund um die Uhr. Schnell, praktisch und völlig kostenlos anmelden!
@@ -379,12 +386,10 @@
                     <!-- ================= TEIL 3 ================= -->
                     <div>
                         <h2 style="color: #0056b3; margin-bottom: 10px; border-bottom: 2px solid #0056b3; padding-bottom: 5px;">Lesen Teil 3</h2>
-                        
-                        <!-- Text 1 -->
                         <div class="split-screen" style="margin-bottom: 25px;">
                             <div class="left-panel" style="background: #fff; padding: 15px; border: 1px solid #ccc; font-size: 13px;">
                                 <h4>Neue Fahrpläne in München</h4>
-                                Ab 1. Dezember ändern sich die Pläne для Busse. Straßenbahnen und U-Bahnen bleiben gleich! Bus 19 fährt nun viermal pro Stunde zum Leopoldplatz. Bus 91 fährt jetzt zweimal statt einmal pro Stunde zur Messe. Pläne hängen an allen Stationen.
+                                Ab 1. Dezember ändern sich die Pläne für Busse. Straßenbahnen und U-Bahnen bleiben gleich! Bus 19 fährt nun viermal pro Stunde zum Leopoldplatz. Bus 91 fährt jetzt zweimal statt einmal pro Stunde zur Messe. Pläne hängen an allen Stationen.
                             </div>
                             <div class="right-panel">
                                 <div class="task-card">
@@ -404,11 +409,10 @@
                             </div>
                         </div>
 
-                        <!-- Text 2 -->
                         <div class="split-screen" style="margin-bottom: 25px;">
                             <div class="left-panel" style="background: #fff; padding: 15px; border: 1px solid #ccc; font-size: 13px;">
                                 <h4>Mitgliederversammlung</h4>
-                                Wie jedes Jahr treffen wir uns am 15.10. Спілкуватимемося про фінанси, оберемо керівництво. Також обговоримо покращення безпеки та захист від злодіїв після нещодавнього зламу двері.
+                                Wie jedes Jahr treffen wir uns am 15.10. Wir sprechen über Finanzen und wählen den Vorstand. Auch die Erhöhung der Sicherheit nach dem letzten Einbruch wird ein wichtiges Thema sein.
                             </div>
                             <div class="right-panel">
                                 <div class="task-card">
@@ -427,11 +431,10 @@
                             </div>
                         </div>
 
-                        <!-- Text 3 -->
                         <div class="split-screen">
                             <div class="left-panel" style="background: #fff; padding: 15px; border: 1px solid #ccc; font-size: 13px;">
                                 <h4>Brief von der Schule</h4>
-                                Sehr geehrte Familie Erdmann, schade, dass Sie beim Elternabend am Dienstag fehlten. Es ging um die Klassenfahrt після Berlin. Bitte rufen Sie mich an, щоб узгодити термін та дізнатися деталі.
+                                Sehr geehrte Familie Erdmann, schade, dass Sie beim Elternabend am Dienstag fehlten. Es ging um die Klassenfahrt nach Berlin. Bitte rufen Sie mich an, um Details zu besprechen.
                             </div>
                             <div class="right-panel">
                                 <div class="task-card">
@@ -459,9 +462,21 @@
                         <div class="split-screen">
                             <div class="left-panel" style="background: #fff; padding: 15px; border: 1px solid #ccc; font-size: 13px;">
                                 <h4>AGB „Kino zuhause 24“</h4>
-                                1. Anmeldung unter 18 Jahren verboten. Alter muss per Ausweiskopie bewiesen werden.<br>
-                                2. Wenn DVDs verloren gehen, muss der Kunde innerhalb von 7 Werktagen Bescheid geben.<br>
-                                3. Modelle: 2 DVDs für 5.90 € або 4 DVDs für 8.90 € pro Monat.
+                                Lesen Teil 4
+Allgemeine Geschäftsbedingungen
+Bei „Kino zuhause 24“ können Sie im Internet DVDs aushalten. Sie bekommen die DVDs dann per Post zugeschickt.
+
+1 Vertragsschluss
+Kunden können sich Online auf unserer Internetseite www.kinozuhause24.de anmelden und erhalten eine Bestätigung per E-Mail. Der Kunde ist für die Bestätigung per seiner Angaben allein verantwortlich. Eine Anmeldung von Personen, die das achtzehnte Lebensjahr noch nicht vollendet haben, ist verboten. Auf Anfrage von „Kino zuhause 24“ muss der Kunde sein Alter durch Vorlage einer beglaubigten Kopie seines gültigen Personalausweis oder Reisepass nachweisen. Die vom Kunden ausgewählten DVDs werden dem Kunden so schnell wie möglich zugeschickt.
+
+2 Transportrisiko
+„Kino zuhause 24“ bestätigt den Versand aller DVDs per E-Mail. Es besteht die Möglichkeit, dass DVDs im Postversand verloren gehen. In diesem Fall muss der Kunde innerhalb von sieben Wertagen „Kino zuhause 24“ Bescheid geben, dass DVDs nicht angekommen sind. Gibt der Kunde nicht innerhalb von sieben Werktagen Bescheid, kann „Kino zuhause 24“ eine Pauschale von 25.00 Euro für jede in der Post verloren gegangen DVD verlangen. „Kino zuhause 24“ stellt dem Kunden für den Transport Briefumschläge zur Verfügung. Der Kunde muss diese Umschläge für die Rücksendung der DVDs verwenden. Falls der Kunde den Umschlag verliert, muss er die Portokosten zahlen.
+
+3 Bezahlung
+Die Firma „Kino zuhause 24“ bietet für den DVD-Verleih verschiedene Modelle an: Der Kunde kann pro Monat 2 DVDs für 5.90 Euro ausleihen oder 4 DVDs für 8.90 Euro. Alle Preise sind inklusive der Versandkosten.
+
+4 Unterbrechung des Abonnements
+Der Kunde kann das Abonnement für einen Monat pro Jahr unterbrechen (z.B. wegen Urlaubs). Während dieser Zeit kann der Kunde keine DVDs ausleihen und muss auch die Gebühr nicht zahlen.
                             </div>
                             <div class="right-panel">
                                 <div class="task-card">
@@ -497,7 +512,7 @@
                         <div class="split-screen">
                             <div class="left-panel" style="background: #fff; padding: 15px; border: 1px solid #ccc; font-size: 14px;">
                                 Frau Bräuning,<br>
-                                ich ziehe <strong>(40) ______</strong> Woche ein. Далі буде гучно, бо планую <strong>(41) ______</strong> та збирати меблі. <strong>(42) ______</strong> свердлитиму стіни. Обмежуся часом <strong>(43) ______</strong> 14-18 годин. Якщо ви проти, <strong>(44) ______</strong> дзвоніть. <strong>(45) ______</strong> заїду — відсвяткуємо.
+                                ich ziehe <strong>(40) ______</strong> Woche ein. Es wird etwas laut, da ich <strong>(41) ______</strong> und Möbel aufbauen muss. <strong>(42) ______</strong> werde ich Löcher bohren. Ich arbeite nur <strong>(43) ______</strong> 14 und 18 Uhr. Wenn Sie Probleme haben, <strong>(44) ______</strong> Sie mich an. <strong>(45) ______</strong> alles fertig ist, lade ich Sie ein.
                             </div>
                             <div class="right-panel">
                                 <div class="task-card">
@@ -529,7 +544,7 @@
                                 <div class="task-card">
                                     <h3>Lücke 44</h3>
                                     <div class="options">
-                                        <div class="option" onclick="setAnswer(this, true)">c) Sonst</div>
+                                        <div class="option" onclick="setAnswer(this, true)">c) rufen</div>
                                     </div>
                                 </div>
                                 <div class="task-card">
@@ -545,10 +560,10 @@
             `,
             schreibenHTML: getSchreibenTemplate("Antworten Sie auf die offizielle Einladung zur Nachbarschaftsfeier von Lara Weipert.")
         },
-        "modeltest4": { name: "Modeltest 4", hoerenHTML: `<div class="task-card"><h3>Hören Teil 1 (Modell 4)</h3></div>`, lesenHTML: `<p>Inhalt Lesen Modell 4</p>`, schreibenHTML: getSchreibenTemplate("Schreiben Aufgabe für Modell 4") },
-        "modeltest5": { name: "Modeltest 5", hoerenHTML: `<div class="task-card"><h3>Hören Teil 1 (Modell 5)</h3></div>`, lesenHTML: `<p>Inhalt Lesen Modell 5</p>`, schreibenHTML: getSchreibenTemplate("Schreiben Aufgabe für Modell 5") },
-        "modeltest6": { name: "Modeltest 6", hoerenHTML: `<div class="task-card"><h3>Hören Teil 1 (Modell 6)</h3></div>`, lesenHTML: `<p>Inhalt Lesen Modell 6</p>`, schreibenHTML: getSchreibenTemplate("Schreiben Aufgabe für Modell 6") },
-        "modeltest7": { name: "Modeltest 7", hoerenHTML: `<div class="task-card"><h3>Hören Teil 1 (Modell 7)</h3></div>`, lesenHTML: `<p>Inhalt Lesen Modell 7</p>`, schreibenHTML: getSchreibenTemplate("Schreiben Aufgabe für Modell 7") }
+        "modeltest4": { name: "Modeltest 4", hoerenHTML: `<div class="task-card"><h3>Hören Teil 1 (Modell 4)</h3></div>`, lesenHTML: `<p style="padding:20px;">Inhalt Lesen Modell 4</p>`, schreibenHTML: getSchreibenTemplate("Schreiben Aufgabe für Modell 4") },
+        "modeltest5": { name: "Modeltest 5", hoerenHTML: `<div class="task-card"><h3>Hören Teil 1 (Modell 5)</h3></div>`, lesenHTML: `<p style="padding:20px;">Inhalt Lesen Modell 5</p>`, schreibenHTML: getSchreibenTemplate("Schreiben Aufgabe für Modell 5") },
+        "modeltest6": { name: "Modeltest 6", hoerenHTML: `<div class="task-card"><h3>Hören Teil 1 (Modell 6)</h3></div>`, lesenHTML: `<p style="padding:20px;">Inhalt Lesen Modell 6</p>`, schreibenHTML: getSchreibenTemplate("Schreiben Aufgabe für Modell 6") },
+        "modeltest7": { name: "Modeltest 7", hoerenHTML: `<div class="task-card"><h3>Hören Teil 1 (Modell 7)</h3></div>`, lesenHTML: `<p style="padding:20px;">Inhalt Lesen Modell 7</p>`, schreibenHTML: getSchreibenTemplate("Schreiben Aufgabe für Modell 7") }
     };
 
     let currentStep = 'hoeren';
@@ -591,21 +606,6 @@
             document.getElementById('section-schreiben').classList.remove('hidden');
             document.getElementById('btn-check-answers').classList.add('hidden');
             document.getElementById('btn-next-step').innerText = "Завершити тест та підрахувати бали 🔄";
-            
-            setTimeout(() => {
-                try {
-                    if (window.LanguageTool) {
-                        LanguageTool.Images.init("https://www.languagetool.org/js/online-check/iframe_api/v1/images/");
-                        LanguageTool.Configuration.setLanguage("de-DE");
-                        const inputArea = document.getElementById('text-schreiben');
-                        if (inputArea) {
-                            LanguageTool.checkOnCheckboxes([inputArea]);
-                        }
-                    }
-                } catch (e) {
-                    console.log("LanguageTool не ініціалізувався:", e);
-                }
-            }, 300);
         }
     }
 
@@ -663,11 +663,11 @@
         if (successRate >= 0.73 || correctAnswers >= 33) { 
             badge.innerText = "Сертифікат: B1";
             badge.className = "badge b1";
-            desc.innerHTML = "🎉 <b>Вітаємо!</b> Результат відповідає оцінці <b>B1</b>.";
+            desc.innerHTML = "🎉 <b>Вітаємо!</b> Результат відповідає оцінці <b>B1</b> за блоки Hören/Lesen.";
         } else if (successRate >= 0.44 || correctAnswers >= 20) {
             badge.innerText = "Сертифікат: A2";
             badge.className = "badge a2";
-            desc.innerHTML = "👍 <b>Добре!</b> Результат відповідає рівню <b>A2</b>.";
+            desc.innerHTML = "👍 <b>Добре!</b> Результат відповідає рівню <b>A2</b> за блоки Hören/Lesen.";
         } else {
             badge.innerText = "Nicht bestanden";
             badge.className = "badge fail";
