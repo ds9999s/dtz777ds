@@ -137,14 +137,19 @@
     function getSchreibenTemplate(taskText) {
         return `
             <div class="schreiben-container">
+                <!-- Блок завдання -->
                 <div class="task-card">
                     <p><b>Aufgabe Schreiben:</b></p>
+                    <p style="font-weight: bold; color: #d9381e; margin-bottom: 8px;">
+                        📌 Обрати можна самостійно серед наданих у групі списку листів
+                    </p>
                     <p>${taskText}</p>
                     <p style="margin-top: 10px; font-size: 13px; color: #6c757d; font-style: italic;">
                         * Нагадування: Офіційне завдання DTZ завжди містить 4 обов'язкові пункти (Leitpunkte), які необхідно розкрити.
                     </p>
                 </div>
 
+                <!-- Рекламно-інформаційний блок Gemini -->
                 <div class="gemini-promo-box">
                     <div class="gemini-icon">✨</div>
                     <div class="gemini-text">
@@ -153,6 +158,7 @@
                     </div>
                 </div>
                 
+                <!-- Інтерактивні граматичні нотатки -->
                 <div class="b1-hints">
                     <div class="hint-tabs">
                         <button class="hint-tab-btn active" onclick="switchHintTab(this, 'tab-structure')">📋 Структура листа</button>
@@ -160,6 +166,7 @@
                         <button class="hint-tab-btn" onclick="switchHintTab(this, 'tab-phrases')">🗣️ Шаблони фраз</button>
                     </div>
                     
+                    <!-- Вкладка: Структура -->
                     <div id="tab-structure" class="hint-content active">
                         <ul style="margin-left: 20px;">
                             <li><b>Ort, Datum:</b> У правому верхньому кутку (напр., <i>Berlin, 12.07.2026</i>).</li>
@@ -177,10 +184,11 @@
                         </ul>
                     </div>
                     
+                    <!-- Вкладка: Граматика -->
                     <div id="tab-grammar" class="hint-content">
                         <div class="grammar-note">
                             <b>Підрядні речення (Дієслово в кінець):</b> Сполучники <code>weil</code> (тому що), <code>dass</code> (що), <code>obwohl</code> (хоча), <code>wenn</code> (якщо) відправляють відмінюване дієслово на останнє місце.<br>
-                            <i>Приклад: Ich kann am Montag nicht kommen, <u>weil</u> ich einen Termin <b>habe</b>.</i>
+                            <i>Приклад: Ich kann am Montag nicht kommen, <u>weil</u> ich einen Termin <b>habе</b>.</i>
                         </div>
                         <div class="grammar-note">
                             <b>Зворотний порядок слів (Позиція 1):</b> Сполучники <code>deshalb</code> / <code>darum</code> (тому), <code>trotzdem</code> (попри це) займають перше місце. Дієслово за правилом стоїть одразу на 2-му місці, а підмет — на 3-му.<br>
@@ -192,6 +200,7 @@
                         </div>
                     </div>
                     
+                    <!-- Вкладка: Фрази -->
                     <div id="tab-phrases" class="hint-content">
                         <b>Як почати лист (Вступ):</b>
                         <ul style="margin-left: 20px; margin-bottom: 10px;">
