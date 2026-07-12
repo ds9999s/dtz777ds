@@ -4,792 +4,355 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DTZ B1 - Екзаменаційний Тренажер</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
-        body { background-color: #f0f2f5; color: #333; display: flex; justify-content: center; padding: 20px; }
-        .hidden { display: none !important; }
-        
-        .container { background: white; width: 100%; max-width: 1100px; padding: 25px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-        h1 { color: #0056b3; margin-bottom: 15px; text-align: center; }
-        
-        /* Головне меню */
-        .menu-box { text-align: center; padding: 40px 20px; }
-        .grid-tests { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 30px; }
-        .btn-test-select { background: #ffffff; border: 2px solid #0056b3; color: #0056b3; padding: 20px; font-size: 18px; font-weight: bold; border-radius: 10px; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
-        .btn-test-select:hover { background: #0056b3; color: white; transform: translateY(-3px); box-shadow: 0 6px 12px rgba(0,86,179,0.2); }
-        
-        /* Шапка іспиту */
-        .exam-header { display: flex; justify-content: space-between; background: #0056b3; color: white; padding: 12px 20px; border-radius: 8px; font-weight: bold; margin-bottom: 20px; }
-        
-        /* Роздвоєний екран */
-        .split-screen { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 25px; }
-        .left-panel { background: #fdfdfd; border: 1px solid #dee2e6; padding: 20px; border-radius: 8px; max-height: 650px; overflow-y: auto; }
-        .right-panel { display: flex; flex-direction: column; gap: 20px; max-height: 650px; overflow-y: auto; padding-right: 5px; }
-        
-        /* Стилі для завдань */
-        .task-card { background: #f8f9fa; border-left: 5px solid #0056b3; padding: 15px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.02); margin-bottom: 15px; }
-        .task-card h3 { font-size: 15px; margin-bottom: 10px; color: #495057; }
-        .task-card p { margin-bottom: 8px; }
-        .task-card ul { margin-left: 20px; margin-top: 5px; }
-        
-        /* Кнопки вибору відповіді */
-        .options { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
-        .option { padding: 10px 14px; border: 1px solid #ced4da; border-radius: 6px; cursor: pointer; background: white; font-size: 14px; transition: 0.2s; }
-        .option:hover { background: #f1f3f5; border-color: #0056b3; }
-        .option.selected { background: #e1ecf4; border-color: #0056b3; font-weight: bold; }
-        .option.correct { background-color: #d4edda !important; border-color: #28a745 !important; color: #155724; }
-        .option.wrong { background-color: #f8d7da !important; border-color: #dc3545 !important; color: #721c24; }
-        
-        /* Кнопки керування */
-        .btn { background-color: #0056b3; color: white; border: none; padding: 12px 24px; font-size: 15px; font-weight: bold; border-radius: 6px; cursor: pointer; transition: 0.2s; }
-        .btn:hover { background-color: #004085; }
-        .nav-footer { display: flex; justify-content: space-between; border-top: 2px solid #e9ecef; padding-top: 15px; }
-
-        /* Нова структура для розділу Schreiben */
-        .schreiben-container { display: flex; flex-direction: column; gap: 15px; margin-top: 10px; }
-
-        /* Блок реклами Gemini */
-        .gemini-promo-box {
-            background: linear-gradient(135px, #e8f0fe 0%, #e3f2fd 100%);
-            border: 1px solid #adcbf7;
-            border-radius: 8px;
-            padding: 15px;
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 5px;
-        }
-        .gemini-icon { font-size: 24px; line-height: 1; }
-        .gemini-text h4 { margin: 0 0 5px 0; color: #1a73e8; font-size: 15px; }
-        .gemini-text p { margin: 0; font-size: 13px; color: #3c4043; line-height: 1.4; }
-
-        /* Граматичний блок та таби */
-        .b1-hints { background-color: #ffffff; border: 1px solid #ced4da; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-        .hint-tabs { display: flex; background: #f1f3f5; border-bottom: 1px solid #ced4da; }
-        .hint-tab-btn { flex: 1; padding: 12px 10px; background: none; border: none; font-size: 13px; font-weight: bold; color: #495057; cursor: pointer; transition: 0.2s; text-align: center; }
-        .hint-tab-btn:hover { background: #e9ecef; color: #0056b3; }
-        .hint-tab-btn.active { background: #ffffff; color: #0056b3; border-bottom: 3px solid #0056b3; }
-        .hint-content { padding: 15px; font-size: 14px; line-height: 1.5; display: none; }
-        .hint-content.active { display: block; }
-        
-        .grammar-note { background: #f8f9fa; border-left: 3px solid #ffc107; padding: 10px 12px; margin-bottom: 12px; border-radius: 4px; font-size: 13px; }
-        .grammar-note code { background: #e9ecef; padding: 2px 4px; border-radius: 3px; font-family: monospace; font-weight: bold; }
-
-        /* Фінальний екран результатів */
-        .result-box { text-align: center; padding: 40px 20px; }
-        .badge { display: inline-block; padding: 15px 30px; font-size: 28px; font-weight: bold; border-radius: 50px; margin: 20px 0; color: white; }
-        .badge.b1 { background: #28a745; box-shadow: 0 4px 15px rgba(40,167,69,0.3); }
-        .badge.a2 { background: #ffc107; color: #333; box-shadow: 0 4px 15px rgba(255,193,7,0.3); }
-        .badge.fail { background: #dc3545; box-shadow: 0 4px 15px rgba(220,53,69,0.3); }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
     </style>
 </head>
-<body>
+<body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col antialiased">
 
-<div class="container">
-    
-    <div id="step-menu" class="menu-box">
-        <h1>DTZ B1 Modellprüfungen</h1>
-        <p style="color: #6c757d;">Оберіть модельний тест для тренування. Кожен тест містить повні інтерактивні блоки Hören, Lesen та Schreiben.</p>
+    <header class="bg-blue-600 text-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto max-w-6xl px-4 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold tracking-wide">DTZ B1 Prüfungstrainer</h1>
+            <button id="backToMenuBtn" class="hidden bg-blue-700 hover:bg-blue-800 text-sm font-semibold px-4 py-2 rounded-lg transition" onclick="showMainMenu()">
+                ⬅ В головне меню
+            </button>
+        </div>
+    </header>
+
+    <main class="flex-grow container mx-auto max-w-6xl p-4 md:p-6 flex flex-col justify-center">
         
-        <div class="grid-tests">
-            <button class="btn-test-select" onclick="initExam('modeltest1')">📝 Modeltest 1</button>
-            <button class="btn-test-select" onclick="initExam('modeltest2')">📝 Modeltest 2</button>
-            <button class="btn-test-select" onclick="initExam('modeltest3')">📝 Modeltest 3</button>
-            <button class="btn-test-select" onclick="initExam('modeltest4')">📝 Modeltest 4</button>
-            <button class="btn-test-select" onclick="initExam('modeltest5')">📝 Modeltest 5</button>
-            <button class="btn-test-select" onclick="initExam('modeltest6')">📝 Modeltest 6</button>
-            <button class="btn-test-select" onclick="initExam('modeltest7')">📝 Modeltest 7</button>
-        </div>
-    </div>
-
-    <div id="exam-block" class="hidden">
-        <div class="exam-header">
-            <span id="current-section-title">HÖREN & LESEN</span>
-            <span id="display-test-name"></span>
-        </div>
-
-        <div id="section-hoeren" class="hidden"></div>
-        <div id="section-lesen" class="hidden"></div>
-        <div id="section-schreiben" class="hidden"></div>
-
-        <div class="nav-footer">
-            <button class="btn" id="btn-check-answers" onclick="revealAnswers()">Überprüfen (Перевірити)</button>
-            <button class="btn" id="btn-next-step" onclick="switchSection()">Далі ➔</button>
-        </div>
-    </div>
-
-    <div id="step-results" class="hidden result-box">
-        <h2>Prüfungsergebnis (Результат іспиту)</h2>
-        <p style="color: #6c757d; margin-top: 10px;">Блоки Hören & Lesen успішно перевірено.</p>
-        
-        <div style="font-size: 22px; margin-top: 20px;">
-            Ваш бал: <b id="score-text" style="color: #0056b3;">0</b> із <span id="total-questions-text">0</span> правильних відповідей
-        </div>
-
-        <div id="result-badge" class="badge">B1</div>
-        <p id="result-desc" style="font-size: 16px; max-width: 600px; margin: 0 auto 30px auto; line-height: 1.5; color: #495057;"></p>
-        
-        <button class="btn" onclick="goToMenu()">➔ В головне меню</button>
-    </div>
-</div>
-
-<script>
-    function getSchreibenTemplate(taskText) {
-        return `
-            <div class="schreiben-container">
-                <!-- Блок завдання -->
-                <div class="task-card">
-                    <p><b>Aufgabe Schreiben:</b></p>
-                    <p style="font-weight: bold; color: #d9381e; margin-bottom: 8px;">
-                        📌 Обрати можна самостійно серед наданих у групі списку листів
-                    </p>
-                    <p>${taskText}</p>
-                    <p style="margin-top: 10px; font-size: 13px; color: #6c757d; font-style: italic;">
-                        * Нагадування: Офіційне завдання DTZ завжди містить 4 обов'язкові пункти (Leitpunkte), які необхідно розкрити.
-                    </p>
-                </div>
-
-                <!-- Рекламно-інформаційний блок Gemini -->
-                <div class="gemini-promo-box">
-                    <div class="gemini-icon">✨</div>
-                    <div class="gemini-text">
-                        <h4>Перевірте свій лист у Gemini!</h4>
-                        <p>Напишіть лист на аркуші паперу (як на справжньому іспиті DTZ), <b>зробіть фото</b> та завантажте його в чат до <b>Gemini</b>. Надішліть запит: <i>"Перевір мій лист на помилки, оціни структуру та граматику за критеріями B1"</i> — і ви отримаєте миттєвий детальний розбір!</p>
-                    </div>
-                </div>
-                
-                <!-- Інтерактивні граматичні нотатки -->
-                <div class="b1-hints">
-                    <div class="hint-tabs">
-                        <button class="hint-tab-btn active" onclick="switchHintTab(this, 'tab-structure')">📋 Структура листа</button>
-                        <button class="hint-tab-btn" onclick="switchHintTab(this, 'tab-grammar')">⚡ Граматика B1</button>
-                        <button class="hint-tab-btn" onclick="switchHintTab(this, 'tab-phrases')">🗣️ Шаблони фраз</button>
-                    </div>
-                    
-                    <!-- Вкладка: Структура -->
-                    <div id="tab-structure" class="hint-content active">
-                        <ul style="margin-left: 20px;">
-                            <li><b>Ort, Datum:</b> У правому верхньому кутку (напр., <i>Berlin, 12.07.2026</i>).</li>
-                            <li><b>Anrede (Привітання):</b> 
-                                <br>• Офіційно: <i>Sehr geehrte Damen und Herren,</i> або <i>Sehr geehrte Frau Müller, / Sehr geehrter Herr Müller,</i>
-                                <br>• Дружньо: <i>Liebe Lisa, / Lieber Ben,</i>
-                            </li>
-                            <li><b>Важливо:</b> Після привітання ставимо <b>кому</b>, а перше слово самого листа починаємо з <b>маленької літери</b>!</li>
-                            <li><b>Leitpunkte:</b> Обов'язково розкрийте всі 4 пункти із завдання. На кожен пункт пишіть щонайменше 2 речення.</li>
-                            <li><b>Grußformel (Прощання):</b> 
-                                <br>• Офіційно: <i>Mit freundlichen Grüßen</i> (без коми в кінці!)
-                                <br>• Дружньо: <i>Viele Grüße / Liebe Grüße</i>
-                            </li>
-                            <li><b>Unterschrift:</b> Ваше ім'я та прізвище на наступному рядку.</li>
-                        </ul>
-                    </div>
-                    
-                    <!-- Вкладка: Граматика -->
-                    <div id="tab-grammar" class="hint-content">
-                        <div class="grammar-note">
-                            <b>Підрядні речення (Дієслово в кінець):</b> Сполучники <code>weil</code> (тому що), <code>dass</code> (що), <code>obwohl</code> (хоча), <code>wenn</code> (якщо) відправляють відмінюване дієслово на останнє місце.<br>
-                            <i>Приклад: Ich kann am Montag nicht kommen, <u>weil</u> ich einen Termin <b>habе</b>.</i>
-                        </div>
-                        <div class="grammar-note">
-                            <b>Зворотний порядок слів (Позиція 1):</b> Сполучники <code>deshalb</code> / <code>darum</code> (тому), <code>trotzdem</code> (попри це) займають перше місце. Дієслово за правилом стоїть одразу на 2-му місці, а підмет — на 3-му.<br>
-                            <i>Приклад: Ich bin krank, <u>deshalb</u> <b>bleibe</b> ich zu Hause.</i>
-                        </div>
-                        <div class="grammar-note">
-                            <b>Прямий порядок слів (ADUSO):</b> Сполучники <code>aber</code>, <code>denn</code>, <code>und</code>, <code>sondern</code>, <code>oder</code> займають "нульову" позицію і не змінюють порядок слів (далі йде підмет, потім дієслово).<br>
-                            <i>Приклад: Ich kann nicht kommen, <u>denn</u> ich <b>bin</b> krank.</i>
-                        </div>
-                    </div>
-                    
-                    <!-- Вкладка: Фрази -->
-                    <div id="tab-phrases" class="hint-content">
-                        <b>Як почати лист (Вступ):</b>
-                        <ul style="margin-left: 20px; margin-bottom: 10px;">
-                            <li><i>Ich schreibe Ihnen, weil я маю проблему / хочу повідомити...</i></li>
-                            <li><i>Hiermit möchte ich Sie informieren, dass... (Повідомляю вам, що...)</i></li>
-                            <li><i>Vielen Dank für Ihre Einladung / Ihren Brief.</i></li>
-                        </ul>
-                        <b>Прохання та вибачення:</b>
-                        <ul style="margin-left: 20px; margin-bottom: 10px;">
-                            <li><i>Es tut mir leid, aber ich kann am Termin nicht teilnehmen.</i></li>
-                            <li><i>Könnten Sie mir bitte helfen? (Ввічлива форма Konjunktiv II)</i></li>
-                            <li><i>Ich möchte Sie bitten, den Termin zu verschieben.</i></li>
-                        </ul>
-                        <b>Очікування відповіді (Фінал):</b>
-                        <ul style="margin-left: 20px;">
-                            <li><i>Ich warte auf Ihre Antwort.</i></li>
-                            <li><i>Über eine baldige Antwort würde ich mich sehr freuen.</i></li>
-                            <li><i>Sagen Sie mir bitte Bescheid, ob це можливо.</i></li>
-                        </ul>
-                    </div>
-                </div>
+        <div id="mainMenu" class="space-y-6 max-w-4xl mx-auto w-full animate-fade-in">
+            <div class="text-center py-4">
+                <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900">Оберіть розділ іспиту</h2>
+                <p class="text-gray-500 mt-2">Ефективна підготовка та симуляція реальних умов тестування DTZ</p>
             </div>
-        `;
-    }
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <button onclick="openSection('Hören')" class="p-6 bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md hover:border-blue-500 text-left transition duration-300 group cursor-pointer">
+                    <div class="text-3xl mb-3">🎧</div>
+                    <div class="text-xl font-bold text-gray-900 group-hover:text-blue-600">Hören</div>
+                    <div class="text-sm text-gray-500 mt-1">Аудіювання. Один спільний трек на весь блок завдань моделі.</div>
+                </button>
+                <button onclick="openSection('Lesen')" class="p-6 bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md hover:border-blue-500 text-left transition duration-300 group cursor-pointer">
+                    <div class="text-3xl mb-3">📖</div>
+                    <div class="text-xl font-bold text-gray-900 group-hover:text-blue-600">Lesen</div>
+                    <div class="text-sm text-gray-500 mt-1">Читання. Тексти, оголошення, таблиці та завдання до них.</div>
+                </button>
+                <button onclick="openSection('Schreiben')" class="p-6 bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md hover:border-blue-500 text-left transition duration-300 group cursor-pointer">
+                    <div class="text-3xl mb-3">✍️</div>
+                    <div class="text-xl font-bold text-gray-900 group-hover:text-blue-600">Schreiben</div>
+                    <div class="text-sm text-gray-500 mt-1">Письмо. Шаблони листів, граматичні підказки та завдання.</div>
+                </button>
+                <button onclick="openSection('Mündlich')" class="p-6 bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md hover:border-blue-500 text-left transition duration-300 group cursor-pointer">
+                    <div class="text-3xl mb-3">🗣️</div>
+                    <div class="text-xl font-bold text-gray-900 group-hover:text-blue-600">Mündlich</div>
+                    <div class="text-sm text-gray-500 mt-1">Усна частина. Картки для діалогів, опису фото та презентацій.</div>
+                </button>
+            </div>
+        </div>
 
-    const examDatabase = {
-        "modeltest1": {
-            name: "Modeltest 1",
-            hoerenHTML: `
-                <div style="display: flex; flex-direction: column; gap: 20px;">
-                    <h2>Hören Teil 1</h2>
-                    <div class="task-card">
-                        <h3>Aufgabe 1: Was soll Nina tun?</h3>
-                        <div class="options">
-                            <div class="option" onclick="setAnswer(this, true)">a) Die Eltern besuchen</div>
-                            <div class="option" onclick="setAnswer(this, false)">b) Ein Taxi rufen</div>
-                            <div class="option" onclick="setAnswer(this, false)">c) Mit den Koffern helfen</div>
-                        </div>
-                    </div>
+        <div id="modelSelection" class="hidden space-y-6 max-w-3xl mx-auto w-full">
+            <div class="text-center py-4">
+                <h2 id="sectionTitle" class="text-3xl font-extrabold text-blue-600 uppercase tracking-wider">Розділ</h2>
+                <p class="text-gray-500 mt-1">Оберіть варіант (Modellsatz) для тренування</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="modelsGrid">
                 </div>
-            `,
-            lesenHTML: `
-                <div class="split-screen">
-                    <div class="left-panel"><h3>Infotafel Bürgerservice</h3><p>1. OG: Meldestelle</p></div>
-                    <div class="right-panel">
-                        <div class="task-card">
-                            <h3>Aufgabe 21: Sie möchten sich anmelden.</h3>
-                            <div class="options">
-                                <div class="option" onclick="setAnswer(this, true)">a) 1. OG</div>
-                                <div class="option" onclick="setAnswer(this, false)">b) 2. OG</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `,
-            schreibenHTML: getSchreibenTemplate("Ihr Sohn ist krank. Schreiben Sie eine Entschuldigung für die Lehrerin Frau Berg.")
-        },
-        "modeltest2": {
-            name: "Modeltest 2",
-            hoerenHTML: `<div class="task-card"><h3>Aufgabe 1: Durchsage am Bahnhof</h3><div class="options"><div class="option" onclick="setAnswer(this, true)">Gleis 7</div></div></div>`,
-            lesenHTML: `<div class="split-screen"><div class="left-panel"><p>Hausordnung...</p></div><div class="right-panel"><div class="task-card"><h3>Aufgabe 21</h3><div class="options"><div class="option" onclick="setAnswer(this, true)">richtig</div></div></div></div></div>`,
-            schreibenHTML: getSchreibenTemplate("Schreiben Sie einen Brief an den Vermieter wegen der Heizung.")
-        },
-        "modeltest3": {
-            name: "Modeltest 3",
-            hoerenHTML: `
-                <div style="display: flex; flex-direction: column; gap: 25px;">
-                    <h2 style="color: #0056b3; border-bottom: 2px solid #0056b3; padding-bottom: 5px;">Hören Teil 1 (Aufgaben 1-4)</h2>
-                    <p style="font-size: 14px; color: #555; font-style: italic;">Wählen Sie bei jeder Aufgabe die richtige Lösung a, b oder c.</p>
+        </div>
+
+        <div id="exerciseScreen" class="hidden space-y-5 w-full flex flex-col">
+            <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-4 flex justify-between items-center">
+                <span id="exerciseMeta" class="text-sm font-semibold bg-blue-50 text-blue-700 px-3 py-1 rounded-full">Hören > Model 3</span>
+                <span id="blockStatus" class="text-sm font-medium text-gray-500 hidden md:inline">Усі завдання завантажені на одній сторінці</span>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+                
+                <div class="bg-white border border-gray-200 rounded-xl shadow-md p-5 lg:sticky lg:top-20 space-y-4 max-h-[calc(100vh-180px)] overflow-y-auto custom-scrollbar">
+                    <h3 class="text-lg font-bold text-gray-900 border-b pb-2 flex items-center gap-2">
+                        <span>📋</span> Матеріали до іспиту
+                    </h3>
                     
-                    <div class="task-card">
-                        <h3>1. Wann werden die Möbel geliefert?</h3>
-                        <div class="options">
-                            <div class="option" onclick="setAnswer(this, true)">a) Morgen Nachmittag.</div>
-                            <div class="option" onclick="setAnswer(this, false)">b) Morgen um 9 Uhr.</div>
-                            <div class="option" onclick="setAnswer(this, false)">c) Nächste Woche am Donnerstag.</div>
+                    <div id="audioBlock" class="hidden bg-blue-50 border border-blue-200 p-4 rounded-xl space-y-2">
+                        <div class="flex items-center gap-2 text-blue-700 font-bold text-sm">
+                            <span>🔊</span> <span>Суцільний аудіотрек (Завдання 1-20):</span>
                         </div>
+                        <audio id="mainAudioPlayer" controls class="w-full mt-2">
+                            <source src="" type="audio/mpeg">
+                            Ваш браузер не підтримує аудіо.
+                        </audio>
+                        <p class="text-[11px] text-blue-600 mt-1 italic">Увімкніть плеєр та спокійно гортайте питання праворуч.</p>
                     </div>
 
-                    <div class="task-card">
-                        <h3>2. Warum ruft Herr Wagner an?</h3>
-                        <div class="options">
-                            <div class="option" onclick="setAnswer(this, false)">a) Er kann nicht zum Deutschkurs kommen.</div>
-                            <div class="option" onclick="setAnswer(this, true)">b) Er verspätet sich heute ein bisschen.</div>
-                            <div class="option" onclick="setAnswer(this, false)">c) Er möchte den Termin absagen.</div>
+                    <div id="leftPanelContent" class="text-sm text-gray-700 space-y-3">
                         </div>
-                    </div>
-
-                    <div class="task-card">
-                        <h3>3. Was soll Frau Müller zum Termin mitbringen?</h3>
-                        <div class="options">
-                            <div class="option" onclick="setAnswer(this, false)">a) Nur ihren Personalausweis.</div>
-                            <div class="option" onclick="setAnswer(this, false)">b) Den alten Arbeitsvertrag.</div>
-                            <div class="option" onclick="setAnswer(this, true)">c) Die aktuellen Lohnabrechnungen.</div>
-                        </div>
-                    </div>
-
-                    <div class="task-card">
-                        <h3>4. Welche Durchsage hören Sie am Gleis?</h3>
-                        <div class="options">
-                            <div class="option" onclick="setAnswer(this, true)">a) Der Zug nach Berlin hat heute 20 Minuten Verspätung.</div>
-                            <div class="option" onclick="setAnswer(this, false)">b) Der Zug fällt komplett aus.</div>
-                            <div class="option" onclick="setAnswer(this, false)">c) Fahrgäste sollen auf Gleis 4 umsteigen.</div>
-                        </div>
-                    </div>
                 </div>
-            `,
-            lesenHTML: `
-                <div style="display: flex; flex-direction: column; gap: 40px; font-family: sans-serif;">
-                    <div>
-                        <h2 style="color: #0056b3; margin-bottom: 10px; border-bottom: 2px solid #0056b3; padding-bottom: 5px;">Lesen Teil 1</h2>
-                        <div class="split-screen">
-                            <div class="left-panel" style="background: #f9f9f9; padding: 15px; border: 1px solid #ddd; border-radius: 6px;">
-                                <h3 style="text-align: center; margin-top: 0;">RATHAUS NEUBERG</h3>
-                                <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
-                                    <thead>
-                                        <tr style="background: #f2f2f2;">
-                                            <th style="border: 1px solid #aaa; padding: 8px;">Stockwerk</th>
-                                            <th style="border: 1px solid #aaa; padding: 8px;">Ämter/Angelegenheiten</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td style="border: 1px solid #aaa; padding: 8px; font-weight: bold;">4. Obergeschoss</td>
-                                            <td style="border: 1px solid #aaa; padding: 8px;">• Stadtkasse (Strafzettel)<br>• Schulamt (Beratung, Anmeldung)<br>• Rentenberatung</td>
-                                        </tr>
-                                        <tr>
-                                            <td style="border: 1px solid #aaa; padding: 8px; font-weight: bold;">3. Obergeschoss</td>
-                                            <td style="border: 1px solid #aaa; padding: 8px;">• Wohnungsamt (Wohngeld)<br>• Familienkasse (Kindergeld)<br>• Fundbüro</td>
-                                        </tr>
-                                        <tr>
-                                            <td style="border: 1px solid #aaa; padding: 8px; font-weight: bold;">2. Obergeschoss</td>
-                                            <td style="border: 1px solid #aaa; padding: 8px;">• Einwohnermeldeamt<br>• Standesamt (Hochzeiten)<br>• Ausweisstelle (nur Anträge)</td>
-                                        </tr>
-                                        <tr>
-                                            <td style="border: 1px solid #aaa; padding: 8px; font-weight: bold;">1. Obergeschoss</td>
-                                            <td style="border: 1px solid #aaa; padding: 8px;">• Steuerberatung (Hilfe bei Erklärungen)<br>• Abholung von Pässen<br>• Besuchercafé</td>
-                                        </tr>
-                                        <tr>
-                                            <td style="border: 1px solid #aaa; padding: 8px; font-weight: bold;">Erdgeschoss</td>
-                                            <td style="border: 1px solid #aaa; padding: 8px;">• Information & Wegweiser<br>• Touristeninformation (Hotels, Pläne)</td>
-                                        </tr>
-                                        <tr>
-                                            <td style="border: 1px solid #aaa; padding: 8px; font-weight: bold;">Untergeschoss</td>
-                                            <td style="border: 1px solid #aaa; padding: 8px;">• Tiefgarage<br>• Straßenverkehrsamt (Kfz-Anmeldung)</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="right-panel">
-                                <p style="font-size: 14px; color: #555; font-style: italic; margin-bottom: 15px;">Укажіть поверх відповідно до вашої мети (завдання 21–25).</p>
-                                
-                                <div class="task-card">
-                                    <h3>21. Sie brauchen ein Formular für die Steuererklärung.</h3>
-                                    <div class="options">
-                                        <div class="option" onclick="setAnswer(this, false)">a) 4. Obergeschoss</div>
-                                        <div class="option" onclick="setAnswer(this, true)">b) Obergeschoss (1. OG)</div>
-                                        <div class="option" onclick="setAnswer(this, false)">c) anderes Stockwerk</div>
-                                    </div>
-                                </div>
-                                <div class="task-card">
-                                    <h3>22. Sie haben Fragen zum Kindergeld.</h3>
-                                    <div class="options">
-                                        <div class="option" onclick="setAnswer(this, true)">a) 3. Obergeschoss</div>
-                                        <div class="option" onclick="setAnswer(this, false)">b) Erdgeschoss</div>
-                                        <div class="option" onclick="setAnswer(this, false)">c) anderes Stockwerk</div>
-                                    </div>
-                                </div>
-                                <div class="task-card">
-                                    <h3>23. Sie haben falsch geparkt und wollen die Strafe bar bezahlen.</h3>
-                                    <div class="options">
-                                        <div class="option" onclick="setAnswer(this, false)">a) 3. Obergeschoss</div>
-                                        <div class="option" onclick="setAnswer(this, false)">b) Untergeschoss</div>
-                                        <div class="option" onclick="setAnswer(this, true)">c) anderes Stockwerk (4. OG)</div>
-                                    </div>
-                                </div>
-                                <div class="task-card">
-                                    <h3>24. Ihr neuer Reisepass ist fertig und Sie möchten ihn abholen.</h3>
-                                    <div class="options">
-                                        <div class="option" onclick="setAnswer(this, false)">a) 3. Obergeschoss</div>
-                                        <div class="option" onclick="setAnswer(this, false)">b) 2. Obergeschoss</div>
-                                        <div class="option" onclick="setAnswer(this, true)">c) anderes Stockwerk (1. OG)</div>
-                                    </div>
-                                </div>
-                                <div class="task-card">
-                                    <h3>25. Sie bekommen Besuch und brauchen Informationen über Hotels.</h3>
-                                    <div class="options">
-                                        <div class="option" onclick="setAnswer(this, false)">a) Obergeschoss</div>
-                                        <div class="option" onclick="setAnswer(this, true)">b) Erdgeschoss</div>
-                                        <div class="option" onclick="setAnswer(this, false)">c) anderes Stockwerk</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
+                <div class="space-y-4 max-h-[calc(100vh-180px)] lg:overflow-y-auto lg:pr-2 custom-scrollbar" id="rightTasksContainer">
                     </div>
 
-                    <hr style="border: 0; border-top: 1px dashed #ccc;">
+            </div>
 
-                    <div>
-                        <h2 style="color: #0056b3; margin-bottom: 10px; border-bottom: 2px solid #0056b3; padding-bottom: 5px;">Lesen Teil 2</h2>
-                        <div class="split-screen">
-                            <div class="left-panel" style="display: flex; flex-direction: column; gap: 15px;">
-                                <div style="border: 1px solid #999; padding: 10px; background: #fff; font-size: 12px;">
-                                    <strong>a) Kinderfreundliche Umgebung.</strong> Reihenhäuser ab 850,- € Miete (warm). Super für Familien, many Kindergärten in der Nähe. Tel: 030 / 67 98 89.
-                                </div>
-                                <div style="border: 1px solid #999; padding: 10px; background: #fff; font-size: 12px;">
-                                    <strong>b) Gebäudereinigung.</strong> Wir machen gründlich sauber! Schimmelbeseitigung, Teppichreinigung. Keine Anfahrtskosten. Tel: 06074-278690.
-                                </div>
-                                <div style="border: 1px solid #999; padding: 10px; background: #fff; font-size: 12px;">
-                                    <strong>c) Einbauküchen zu Top-Preisen!</strong> Sparen Sie bis zu 70%! Lieferung und fachgerechte Montage innerhalb einer Woche. Wilhelmstr. 76.
-                                </div>
-                                <div style="border: 1px solid #999; padding: 10px; background: #fff; font-size: 12px;">
-                                    <strong>d) Kartonfritze.</strong> Umzugskartons in allen Größen (S, M, L, XL) ab 0,50 Euro. Lieferung frei Haus möglich. Tel: 531 5906.
-                                </div>
-                                <div style="border: 1px solid #999; padding: 10px; background: #fff; font-size: 12px;">
-                                    <strong>e) Top-Wohnung in Universitätsnähe.</strong> 1-4 Zimmer-Wohnungen ab 580 € warm. Hochwertige Böden, Loggia. www.wbg-lieg.de.
-                                </div>
-                                <div style="border: 1px solid #999; padding: 10px; background: #fff; font-size: 12px;">
-                                    <strong>f) Küchen aus Polen.</strong> Unschlagbar im Preis, 1A-Qualität. Wichtig: Lieferzeit beträgt bis zu 3 Monaten. Tel: 033444-405.
-                                </div>
-                                <div style="border: 1px solid #999; padding: 10px; background: #fff; font-size: 12px;">
-                                    <strong>g) Online-Mietspiegel aktuell.</strong> Vergleichen Sie Ihre Mietpreise kostenlos online. Ein Service deiner Stadtverwaltung. www.mietspiegel.de.
-                                </div>
-                                <div style="border: 1px solid #999; padding: 10px; background: #fff; font-size: 12px;">
-                                    <strong>h) www.wohnen-heute.de.</strong> Finden Sie Ihre Traumwohnung online rund um die Uhr. Schnell, praktisch und völlig kostenlos anmelden!
+            <div id="actionFooter" class="bg-white border border-gray-200 rounded-xl shadow-md p-4 flex justify-end gap-3">
+                <button id="checkAnswersBtn" onclick="revealAllAnswers()" class="px-6 py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition shadow-md cursor-pointer">
+                    Überprüfen (Перевірити відповіді)
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        // Повна база даних із наповненням твоєї Model 3 та прямим лінком Dropbox (raw=1)
+        const examDatabase = {
+            "Hören": {
+                "Model 3": {
+                    audioUrl: "https://www.dropbox.com/scl/fi/llyi06d7iavf9ceye2do1/mix_16m44s-audio-joiner.com-1.mp3?rlkey=rd8tyhsqj7gjc0jyyf303h7oj&st=jkdmq5l4&raw=1",
+                    leftHTML: `
+                        <div class="space-y-3">
+                            <p class="font-bold text-blue-700 text-base">Hören Teil 1 (Aufgaben 1-9)</p>
+                            <p class="text-xs text-gray-500 italic">Sie hören die Durchsagen einmal. Послухайте оголошення та оберіть правильний варіант відповіді.</p>
+                        </div>
+                    `,
+                    tasks: [
+                        { id: 1, q: "1. Wann werden die Möbel geliefert?", opts: ["a) Morgen Nachmittag.", "b) Morgen um 9 Uhr.", "c) Nächste Woche am Donnerstag."], correct: 0 },
+                        { id: 2, q: "2. Warum ruft Herr Wagner an?", opts: ["a) Er kann nicht zum Deutschkurs kommen.", "b) Er verspätet sich heute ein bisschen.", "c) Er möchte den Termin absagen."], correct: 1 },
+                        { id: 3, q: "3. Was soll Frau Müller zum Termin mitbringen?", opts: ["a) Nur ihren Personalausweis.", "b) Den alten Arbeitsvertrag.", "c) Die aktuellen Lohnabrechnungen."], correct: 2 },
+                        { id: 4, q: "4. Welche Durchsage hören Sie am Gleis?", opts: ["a) Der Zug nach Berlin hat heute 20 Minuten Verspätung.", "b) Der Zug fällt komplett aus.", "c) Fahrgäste sollen auf Gleis 4 umsteigen."], correct: 0 },
+                        { id: 5, q: "5. Was müssen Sie beim Parken am Haupteingang beachten?", opts: ["a) Man darf nur 40 Minuten parken.", "b) Der Haupteingang ist geschlossen.", "c) Man muss 40 Minuten auf einen Parkplatz warten."], correct: 2 },
+                        { id: 6, q: "6. Was kann man nach den Nachrichten hören?", opts: ["a) Moderne Musik.", "b) Eine Kultursendung.", "c) Klaviermusik."], correct: 1 },
+                        { id: 7, q: "7. Wie macht man bei dem Gewinnspiel mit?", opts: ["a) Man muss beim Sender anrufen.", "b) Man muss sich auf der Internetseite anmelden.", "c) Man schreibt eine Postkarte."], correct: 0 },
+                        { id: 8, q: "8. Was kann man gewinnen?", opts: ["a) Ein Wochenende in Amsterdam.", "b) Billige Flugtickets.", "c) Eine Reise nach Paris."], correct: 2 },
+                        { id: 9, q: "9. Wie wird das Wetter in Westdeutschland?", opts: ["a) Es gibt Regen.", "b) Es gibt Schnee.", "c) Es wird sonnig."], correct: 2 }
+                    ]
+                },
+                "Model 1": { leftHTML: "<p>Контент Hören Model 1 у розробці...</p>", tasks: [] }
+            },
+            "Lesen": {
+                "Model 3": {
+                    audioUrl: "", 
+                    leftHTML: `
+                        <div class="space-y-4">
+                            <div class="border-2 border-blue-600 rounded-xl bg-blue-50/20 overflow-hidden">
+                                <div class="bg-blue-600 text-white text-center font-bold py-2 text-sm uppercase tracking-wider">RATHAUS NEUBERG</div>
+                                <div class="divide-y divide-gray-200 text-xs text-gray-800">
+                                    <div class="p-3"><b>4. Obergeschoss:</b> Stadtkasse (Strafzettel, Ordnungswidrigkeiten), Schulamt (Informationen, Anmeldung), Rentenberatung.</div>
+                                    <div class="p-3 bg-gray-50/50"><b>3. Obergeschoss:</b> Wohnungsamt (Wohngeld, Vermittlung), Familienkasse (Kindergeld), Fundbüro.</div>
+                                    <div class="p-3"><b>2. Obergeschoss:</b> Einwohnermeldeamt (An-/Ummeldung), Standesamt, Ausweisstelle.</div>
+                                    <div class="p-3 bg-gray-50/50"><b>1. Obergeschoss:</b> Steuerberatung (Hilfe), Abholung von Pässen, Besuchercafé.</div>
+                                    <div class="p-3"><b>Erdgeschoss:</b> Information & Wegweiser, Touristeninformation (Hotels).</div>
+                                    <div class="p-3 bg-gray-50/50"><b>Untergeschoss:</b> Tiefgarage, Straßenverkehrsamt (Kfz-Anmeldung).</div>
                                 </div>
                             </div>
-                            <div class="right-panel">
-                                <p style="font-size: 14px; color: #555; font-style: italic; margin-bottom: 15px;">Підберіть оголошення (a-h) під кожну ситуацію (26-30). Якщо варіанту немає, оберіть X.</p>
-                                <div class="task-card">
-                                    <h3>26. Nach einem Wasserschaden brauchen Sie schnell eine neue Küche.</h3>
-                                    <div class="options">
-                                        <div class="option" onclick="setAnswer(this, false)">Anzeige b</div>
-                                        <div class="option" onclick="setAnswer(this, true)">Anzeige c</div>
-                                        <div class="option" onclick="setAnswer(this, false)">Anzeige f</div>
-                                        <div class="option" onclick="setAnswer(this, false)">X</div>
-                                    </div>
-                                </div>
-                                <div class="task-card">
-                                    <h3>27. Sie suchen im Internet nach einer neuen Wohnung.</h3>
-                                    <div class="options">
-                                        <div class="option" onclick="setAnswer(this, false)">Anzeige a</div>
-                                        <div class="option" onclick="setAnswer(this, false)">Anzeige e</div>
-                                        <div class="option" onclick="setAnswer(this, true)">Anzeige h</div>
-                                        <div class="option" onclick="setAnswer(this, false)">X</div>
-                                    </div>
-                                </div>
-                                <div class="task-card">
-                                    <h3>28. Sie möchten wissen, wie hoch die Mietpreise in Ihrer Stadt normalerweise sind.</h3>
-                                    <div class="options">
-                                        <div class="option" onclick="setAnswer(this, false)">Anzeige e</div>
-                                        <div class="option" onclick="setAnswer(this, true)">Anzeige g</div>
-                                        <div class="option" onclick="setAnswer(this, false)">Anzeige h</div>
-                                        <div class="option" onclick="setAnswer(this, false)">X</div>
-                                    </div>
-                                </div>
-                                <div class="task-card">
-                                    <h3>29. Sie wollen umziehen und suchen eine Firma, die Möbel transportiert.</h3>
-                                    <div class="options">
-                                        <div class="option" onclick="setAnswer(this, false)">Anzeige b</div>
-                                        <div class="option" onclick="setAnswer(this, false)">Anzeige d</div>
-                                        <div class="option" onclick="setAnswer(this, true)">X</div>
-                                    </div>
-                                </div>
-                                <div class="task-card">
-                                    <h3>30. Ihre Nachbarn suchen ein Haus zur Miete. Geben Sie einen Tipp.</h3>
-                                    <div class="options">
-                                        <div class="option" onclick="setAnswer(this, true)">Anzeige a</div>
-                                        <div class="option" onclick="setAnswer(this, false)">Anzeige e</div>
-                                        <div class="option" onclick="setAnswer(this, false)">Anzeige g</div>
-                                        <div class="option" onclick="setAnswer(this, false)">X</div>
-                                    </div>
-                                </div>
+                            
+                            <div class="border border-gray-200 rounded-xl p-3 bg-gray-100 text-xs space-y-2 mt-4">
+                                <span class="font-bold block text-gray-900">Матеріали до Частини 2 (Оголошення a-h):</span>
+                                <p><b>a)</b> Kinderfreundliche Umgebung. Reihenhäuser ab 850€.<br><b>b)</b> Gebäudereinigung. Мы чистим ковры и плесень.<br><b>c)</b> Einbauküchen зі знижкою до 70%! Швидка доставка.<br><b>d)</b> Kartonfritze. Коробки для переїзду від 0.50€.<br><b>e)</b> Квартири біля університету від 580€.<br><b>f)</b> Кухні з Польщі. Низька ціна, але доставка 3 місяці.<br><b>g)</b> Онлайн-реєстр цін на оренду міста.<br><b>h)</b> wohnen-heute.de - безкоштовний пошук житла.</p>
                             </div>
                         </div>
-                    </div>
-
-                    <hr style="border: 0; border-top: 1px dashed #ccc;">
-
-                    <div>
-                        <h2 style="color: #0056b3; margin-bottom: 10px; border-bottom: 2px solid #0056b3; padding-bottom: 5px;">Lesen Teil 3</h2>
-                        <div class="split-screen" style="margin-bottom: 25px;">
-                            <div class="left-panel" style="background: #fff; padding: 15px; border: 1px solid #ccc; font-size: 13px;">
-                                <h4>Neue Fahrpläne in München</h4>
-                                Ab 1. Dezember ändern sich die Pläne für Busse. Straßenbahnen und U-Bahnen bleiben gleich! Bus 19 fährt nun viermal pro Stunde zum Leopoldplatz. Bus 91 fährt jetzt zweimal statt einmal pro Stunde zur Messe. Pläne hängen an allen Stationen.
-                            </div>
-                            <div class="right-panel">
-                                <div class="task-card">
-                                    <h3>31. Neue Fahrpläne gibt es nur für Busse.</h3>
-                                    <div class="options">
-                                        <div class="option" onclick="setAnswer(this, true)">richtig</div>
-                                        <div class="option" onclick="setAnswer(this, false)">falsch</div>
-                                    </div>
-                                </div>
-                                <div class="task-card">
-                                    <h3>32. Vom Bahnhof zur Messe fährt ab Dezember...</h3>
-                                    <div class="options">
-                                        <div class="option" onclick="setAnswer(this, false)">a) Buslinie 19 viermal.</div>
-                                        <div class="option" onclick="setAnswer(this, true)">c) Buslinie 91 zweimal pro Stunde.</div>
-                                    </div>
-                                </div>
+                    `,
+                    tasks: [
+                        { id: 21, q: "21. Sie brauchen ein Formular für die Steuererklärung.", opts: ["a) 4. Obergeschoss", "b) Obergeschoss (1. OG)", "c) anderes Stockwerk"], correct: 1 },
+                        { id: 22, q: "22. Sie haben Fragen zum Kindergeld.", opts: ["a) 3. Obergeschoss", "b) Erdgeschoss", "c) anderes Stockwerk"], correct: 0 },
+                        { id: 23, q: "23. Sie haben falsch geparkt und wollen die Strafe bar bezahlen.", opts: ["a) 3. Obergeschoss", "b) Untergeschoss", "c) anderes Stockwerk (4. OG)"], correct: 2 },
+                        { id: 24, q: "24. Ihr neuer Reisepass ist fertig und Sie möchten ihn abholen.", opts: ["a) 3. Obergeschoss", "b) 2. Obergeschoss", "c) anderes Stockwerk (1. OG)"], correct: 2 },
+                        { id: 25, q: "25. Sie bekommen Besuch und brauchen Informationen über Hotels.", opts: ["a) Obergeschoss", "b) Erdgeschoss", "c) anderes Stockwerk"], correct: 1 },
+                        { id: 26, q: "26. Nach einem Wasserschaden brauchen Sie schnell eine neue Küche.", opts: ["Anzeige b", "Anzeige c", "Anzeige f", "X"], correct: 1 },
+                        { id: 27, q: "27. Sie suchen im Internet nach einer neuen Wohnung.", opts: ["Anzeige a", "Anzeige e", "Anzeige h", "X"], correct: 2 },
+                        { id: 28, q: "28. Sie möchten wissen, wie hoch die Mietpreise in Ihrer Stadt normalerweise sind.", opts: ["Anzeige e", "Anzeige g", "Anzeige h", "X"], correct: 1 },
+                        { id: 29, q: "29. Sie wollen umziehen und suchen eine Firma, die Möbel transportiert.", opts: ["Anzeige b", "Anzeige d", "X"], correct: 2 },
+                        { id: 30, q: "30. Ihre Nachbarn suchen ein Haus zur Miete.", opts: ["Anzeige a", "Anzeige e", "Anzeige g", "X"], correct: 0 }
+                    ]
+                }
+            },
+            "Schreiben": {
+                "Model 3": {
+                    audioUrl: "",
+                    leftHTML: `
+                        <div class="space-y-4">
+                            <div class="p-4 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-800">
+                                <b>✨ Порада від Gemini:</b> Напишіть цей лист від руки на папері, сфотографуйте та надішліть у чат штучного інтелекту із запитом: <i>"Оціни мій лист за критеріями DTZ B1"</i> для миттєвої перевірки граматики!
                             </div>
                         </div>
+                    `,
+                    tasks: [
+                        { id: 99, q: "<b>Aufgabe:</b> Antworten Sie auf die offizielle Einladung zur Nachbarschaftsfeier von Lara Weipert. Розкрийте всі 4 обов'язкові пункти (Leitpunkte).", type: "textarea" }
+                    ]
+                }
+            },
+            "Mündlich": {
+                "Model 3": {
+                    audioUrl: "",
+                    leftHTML: `<p class="text-sm font-semibold">Усна частина складається з 3-х етапів: Знайомство, Опис фотокартки та Спільне планування.</p>`,
+                    tasks: [
+                        { id: 101, q: "<b>Teil 2 - Bildbeschreibung:</b> Опишіть фотографію на тему 'Транспортні засоби та мобільність'. Говоріть близько 2-х хвилин.", type: "textarea" }
+                    ]
+                }
+            }
+        };
 
-                        <div class="split-screen" style="margin-bottom: 25px;">
-                            <div class="left-panel" style="background: #fff; padding: 15px; border: 1px solid #ccc; font-size: 13px;">
-                                <h4>Mitgliederversammlung</h4>
-                                Wie jedes Jahr treffen wir uns am 15.10. Wir sprechen über Finanzen und wählen den Vorstand. Auch die Erhöhung der Sicherheit nach dem letzten Einbruch wird ein wichtiges Thema sein.
-                            </div>
-                            <div class="right-panel">
-                                <div class="task-card">
-                                    <h3>33. Der Verein hat ein regelmäßiges Treffen pro Jahr.</h3>
-                                    <div class="options">
-                                        <div class="option" onclick="setAnswer(this, true)">richtig</div>
-                                        <div class="option" onclick="setAnswer(this, false)">falsch</div>
-                                    </div>
-                                </div>
-                                <div class="task-card">
-                                    <h3>34. Die Mitglieder sprechen über...</h3>
-                                    <div class="options">
-                                        <div class="option" onclick="setAnswer(this, true)">c) mehr Schutz vor Dieben und Einbrechern.</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        let activeSection = "";
+        let activeModel = "";
+        let userAnswers = {};
+        let isSubmitted = false;
 
-                        <div class="split-screen">
-                            <div class="left-panel" style="background: #fff; padding: 15px; border: 1px solid #ccc; font-size: 13px;">
-                                <h4>Brief von der Schule</h4>
-                                Sehr geehrte Familie Erdmann, schade, dass Sie beim Elternabend am Dienstag fehlten. Es ging um die Klassenfahrt nach Berlin. Bitte rufen Sie mich an, um Details zu besprechen.
-                            </div>
-                            <div class="right-panel">
-                                <div class="task-card">
-                                    <h3>35. Familie Erdmann hat am letzten Elternabend teilgenommen.</h3>
-                                    <div class="options">
-                                        <div class="option" onclick="setAnswer(this, false)">richtig</div>
-                                        <div class="option" onclick="setAnswer(this, true)">falsch</div>
-                                    </div>
-                                </div>
-                                <div class="task-card">
-                                    <h3>36. Familie Erdmann...</h3>
-                                    <div class="options">
-                                        <div class="option" onclick="setAnswer(this, true)">c) soll sich über die Klassenfahrt informieren.</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <hr style="border: 0; border-top: 1px dashed #ccc;">
-
-                    <div>
-                        <h2 style="color: #0056b3; margin-bottom: 10px; border-bottom: 2px solid #0056b3; padding-bottom: 5px;">Lesen Teil 4</h2>
-                        <div class="split-screen">
-                            <div class="left-panel" style="background: #fff; padding: 15px; border: 1px solid #ccc; font-size: 13px;">
-                                <h4>AGB „Kino zuhause 24“</h4>
-                                <h2>Allgemeine Geschäftsbedingungen</h2>
-                                Bei „Kino zuhause 24“ können Sie im Internet DVDs ausleihen. Sie bekommen die DVDs dann per Post zugeschickt.
-
-                                <h3>1 Vertragsschluss</h3>
-                                Kunden können sich Online auf unserer Internetseite www.kinozuhause24.de anmelden und erhalten eine Bestätigung per E-Mail. Der Kunde ist für die Richtigkeit seiner Angaben allein verantwortlich. Eine Anmeldung von Personen, die das achtzehnte Lebensjahr noch nicht vollendet haben, ist verboten. Auf Anfrage von „Kino zuhause 24“ muss der Kunde sein Alter durch Vorlage einer beglaubigten Kopie seines gültigen Personalausweis oder Reisepass nachweisen. Die vom Kunden ausgewählten DVDs werden dem Kunden so schnell wie möglich zugeschickt.
-
-                                <h3>2 Transportrisiko</h3>
-                                „Kino zuhause 24“ bestätigt den Versand aller DVDs per E-Mail. Es besteht die Möglichkeit, dass DVDs im Postversand verloren gehen. In diesem Fall muss der Kunde innerhalb von sieben Werktagen „Kino zuhause 24“ Bescheid geben, dass DVDs nicht angekommen sind. Gibt der Kunde nicht innerhalb von sieben Werktagen Bescheid, kann „Kino zuhause 24“ eine Pauschale von 25.00 Euro für jede in der Post verloren gegangene DVD verlangen. „Kino zuhause 24“ stellt dem Kunden für den Transport Briefumschläge zur Verfügung. Der Kunde must diese Umschläge für die Rücksendung der DVDs verwenden. Falls der Kunde den Umschlag verliert, muss er die Portokosten zahlen.
-
-                                <h3>3 Bezahlung</h3>
-                                Die Firma „Kino zuhause 24“ bietet für den DVD-Verleih verschiedene Modelle an: Der Kunde kann pro Monat 2 DVDs für 5.90 Euro ausleihen oder 4 DVDs für 8.90 Euro. Alle Preise sind inklusive der Versandkosten.
-
-                                <h3>4 Unterbrechung des Abonnements</h3>
-                                Der Kunde kann das Abonnement für einen Monat pro Jahr unterbrechen (z.B. wegen Urlaubs). Während dieser Zeit kann der Kunde keine DVDs ausleihen und muss auch die Gebühr nicht zahlen.
-                            </div>
-                            <div class="right-panel">
-                                <div class="task-card">
-                                    <h3>37. Kinder dürfen sich bei „Kino zuhause 24“ anmelden.</h3>
-                                    <div class="options">
-                                        <div class="option" onclick="setAnswer(this, false)">richtig</div>
-                                        <div class="option" onclick="setAnswer(this, true)">falsch</div>
-                                    </div>
-                                </div>
-                                <div class="task-card">
-                                    <h3>38. Wenn eine DVD nicht ankommt, müssen Sie spätestens nach drei Tagen Bescheid sagen.</h3>
-                                    <div class="options">
-                                        <div class="option" onclick="setAnswer(this, false)">richtig</div>
-                                        <div class="option" onclick="setAnswer(this, true)">falsch</div>
-                                    </div>
-                                </div>
-                                <div class="task-card">
-                                    <h3>39. Jeder Film kostet 5.90 Euro.</h3>
-                                    <div class="options">
-                                        <div class="option" onclick="setAnswer(this, false)">richtig</div>
-                                        <div class="option" onclick="setAnswer(this, true)">falsch</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <hr style="border: 0; border-top: 1px dashed #ccc;">
-
-                    <div>
-                        <h2 style="color: #0056b3; margin-bottom: 10px; border-bottom: 2px solid #0056b3; padding-bottom: 5px;">Lesen Teil 5</h2>
-                        <div class="split-screen">
-                            <div class="left-panel" style="background: #fff; padding: 15px; border: 1px solid #ccc; font-size: 14px;">
-                                Frau Bräuning,<br>
-                                ich ziehe <strong>(40) ______</strong> Woche ein. Es wird etwas laut, da ich <strong>(41) ______</strong> und Möbel aufbauen muss. <strong>(42) ______</strong> werde ich Löcher bohren. Ich arbeite nur <strong>(43) ______</strong> 14 und 18 Uhr. Wenn Sie Probleme haben, <strong>(44) ______</strong> Sie mich an. <strong>(45) ______</strong> alles fertig ist, lade ich Sie ein.
-                            </div>
-                            <div class="right-panel">
-                                <div class="task-card">
-                                    <h3>Lücke 40</h3>
-                                    <div class="options">
-                                        <div class="option" onclick="setAnswer(this, true)">a) nächste</div>
-                                        <div class="option" onclick="setAnswer(this, false)">b) letzte</div>
-                                    </div>
-                                </div>
-                                <div class="task-card">
-                                    <h3>Lücke 41</h3>
-                                    <div class="options">
-                                        <div class="option" onclick="setAnswer(this, false)">a) ausziehen</div>
-                                        <div class="option" onclick="setAnswer(this, true)">c) renovieren</div>
-                                    </div>
-                                </div>
-                                <div class="task-card">
-                                    <h3>Lücke 42</h3>
-                                    <div class="options">
-                                        <div class="option" onclick="setAnswer(this, true)">b) Außerdem</div>
-                                    </div>
-                                </div>
-                                <div class="task-card">
-                                    <h3>Lücke 43</h3>
-                                    <div class="options">
-                                        <div class="option" onclick="setAnswer(this, true)">c) zwischen</div>
-                                    </div>
-                                </div>
-                                <div class="task-card">
-                                    <h3>Lücke 44</h3>
-                                    <div class="options">
-                                        <div class="option" onclick="setAnswer(this, true)">c) rufen</div>
-                                    </div>
-                                </div>
-                                <div class="task-card">
-                                    <h3>Lücke 44</h3>
-                                    <div class="options">
-                                        <div class="option" onclick="setAnswer(this, true)">a) Wenn</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `,
-            schreibenHTML: getSchreibenTemplate("Antworten Sie auf die offizielle Einladung zur Nachbarschaftsfeier von Lara Weipert.")
-        },
-        "modeltest4": { name: "Modeltest 4", hoerenHTML: `<div class="task-card"><h3>Hören Teil 1 (Modell 4)</h3></div>`, lesenHTML: `<p style="padding:20px;">Inhalt Lesen Modell 4</p>`, schreibenHTML: getSchreibenTemplate("Schreiben Aufgabe für Modell 4") },
-        "modeltest5": { name: "Modeltest 5", hoerenHTML: `<div class="task-card"><h3>Hören Teil 1 (Modell 5)</h3></div>`, lesenHTML: `<p style="padding:20px;">Inhalt Lesen Modell 5</p>`, schreibenHTML: getSchreibenTemplate("Schreiben Aufgabe für Modell 5") },
-        "modeltest6": { name: "Modeltest 6", hoerenHTML: `<div class="task-card"><h3>Hören Teil 1 (Modell 6)</h3></div>`, lesenHTML: `<p style="padding:20px;">Inhalt Lesen Modell 6</p>`, schreibenHTML: getSchreibenTemplate("Schreiben Aufgabe für Modell 6") },
-        "modeltest7": { name: "Modeltest 7", hoerenHTML: `<div class="task-card"><h3>Hören Teil 1 (Modell 7)</h3></div>`, lesenHTML: `<p style="padding:20px;">Inhalt Lesen Modell 7</p>`, schreibenHTML: getSchreibenTemplate("Schreiben Aufgabe für Modell 7") }
-    };
-
-    let currentStep = 'hoeren';
-    let activeTestData = null;
-
-    function initExam(testKey) {
-        activeTestData = examDatabase[testKey];
-        if (!activeTestData) return;
-
-        currentStep = 'hoeren';
-        
-        document.getElementById('section-hoeren').innerHTML = activeTestData.hoerenHTML || '';
-        document.getElementById('section-lesen').innerHTML = activeTestData.lesenHTML || '';
-        document.getElementById('section-schreiben').innerHTML = activeTestData.schreibenHTML || '';
-
-        document.getElementById('display-test-name').innerText = activeTestData.name;
-        
-        document.getElementById('step-menu').classList.add('hidden');
-        document.getElementById('step-results').classList.add('hidden');
-        document.getElementById('exam-block').classList.remove('hidden');
-        setupStep();
-    }
-
-    function setupStep() {
-        document.getElementById('section-hoeren').classList.add('hidden');
-        document.getElementById('section-lesen').classList.add('hidden');
-        document.getElementById('section-schreiben').classList.add('hidden');
-        document.getElementById('btn-check-answers').classList.remove('hidden');
-
-        if (currentStep === 'hoeren') {
-            document.getElementById('current-section-title').innerText = "1. БЛОК: HÖREN";
-            document.getElementById('section-hoeren').classList.remove('hidden');
-            document.getElementById('btn-next-step').innerText = "До блоку Lesen ➔";
-        } else if (currentStep === 'lesen') {
-            document.getElementById('current-section-title').innerText = "2. БЛОК: LESEN";
-            document.getElementById('section-lesen').classList.remove('hidden');
-            document.getElementById('btn-next-step').innerText = "До блоку Schreiben ➔";
-        } else if (currentStep === 'schreiben') {
-            document.getElementById('current-section-title').innerText = "3. БЛОК: SCHREIBEN";
-            document.getElementById('section-schreiben').classList.remove('hidden');
-            document.getElementById('btn-check-answers').classList.add('hidden');
-            document.getElementById('btn-next-step').innerText = "Завершити тест та підрахувати бали 🔄";
+        function showMainMenu() {
+            document.getElementById('mainMenu').classList.remove('hidden');
+            document.getElementById('modelSelection').classList.add('hidden');
+            document.getElementById('exerciseScreen').classList.add('hidden');
+            document.getElementById('backToMenuBtn').classList.add('hidden');
+            
+            // Зупиняємо аудіо при поверненні в корінь
+            const audioPlayer = document.getElementById('mainAudioPlayer');
+            audioPlayer.pause();
         }
-    }
 
-    function setAnswer(element, isCorrect) {
-        const cardOptions = element.parentElement.querySelectorAll('.option');
-        cardOptions.forEach(opt => opt.classList.remove('selected'));
-        
-        element.classList.add('selected');
-        element.dataset.status = isCorrect ? "correct" : "wrong";
-    }
+        function openSection(sectionName) {
+            activeSection = sectionName;
+            document.getElementById('mainMenu').classList.add('hidden');
+            document.getElementById('modelSelection').classList.remove('hidden');
+            document.getElementById('backToMenuBtn').classList.remove('hidden');
+            
+            document.getElementById('sectionTitle').innerText = sectionName;
 
-    function revealAnswers() {
-        const activeSectionId = currentStep === 'hoeren' ? 'section-hoeren' : 'section-lesen';
-        const activeSection = document.getElementById(activeSectionId);
-        if (!activeSection) return;
-        
-        activeSection.querySelectorAll('.option.selected').forEach(opt => {
-            if (opt.dataset.status === "correct") {
-                opt.classList.add('correct');
+            const grid = document.getElementById('modelsGrid');
+            grid.innerHTML = "";
+
+            const models = Object.keys(examDatabase[sectionName] || {});
+
+            models.forEach(model => {
+                const tasksCount = examDatabase[sectionName][model].tasks.length;
+                grid.innerHTML += `
+                    <button onclick="loadModel('${model}')" class="p-5 bg-white border border-gray-200 rounded-xl shadow-sm hover:border-blue-500 hover:bg-blue-50/40 text-center font-bold text-gray-800 transition duration-200 cursor-pointer">
+                        📝 ${model} (${tasksCount} завд.)
+                    </button>
+                `;
+            });
+        }
+
+        function loadModel(modelName) {
+            activeModel = modelName;
+            userAnswers = {};
+            isSubmitted = false;
+
+            document.getElementById('modelSelection').classList.add('hidden');
+            document.getElementById('exerciseScreen').classList.remove('hidden');
+            document.getElementById('exerciseMeta').innerText = `${activeSection} ➔ ${activeModel}`;
+
+            const data = examDatabase[activeSection][activeModel];
+
+            // Налаштування аудіоплеєра
+            const audioBlock = document.getElementById('audioBlock');
+            const audioPlayer = document.getElementById('mainAudioPlayer');
+            if (data.audioUrl) {
+                audioBlock.classList.remove('hidden');
+                audioPlayer.src = data.audioUrl;
+                audioPlayer.load();
             } else {
-                opt.classList.add('wrong');
+                audioBlock.classList.add('hidden');
+                audioPlayer.src = "";
             }
-        });
-        
-        activeSection.querySelectorAll('.option').forEach(opt => {
-            if (opt.getAttribute('onclick') && opt.getAttribute('onclick').includes('true')) {
-                opt.classList.add('correct');
+
+            // Рендер лівої інформаційної панелі
+            document.getElementById('leftPanelContent').innerHTML = data.leftHTML;
+
+            // Кнопка перевірки активна тільки для Hören/Lesen тестів
+            const footer = document.getElementById('actionFooter');
+            if (activeSection === 'Schreiben' || activeSection === 'Mündlich') {
+                footer.classList.add('hidden');
+            } else {
+                footer.classList.remove('hidden');
             }
-        });
-    }
 
-    function switchSection() {
-        if (currentStep === 'hoeren') {
-            currentStep = 'lesen';
-            setupStep();
-        } else if (currentStep === 'lesen') {
-            currentStep = 'schreiben';
-            setupStep();
-        } else {
-            calculateTotalScore();
-        }
-    }
-
-    // Функція перемикання табів всередині граматичного блоку
-    function switchHintTab(buttonElement, tabId) {
-        const parent = buttonElement.closest('.b1-hints');
-        
-        // Деактивувати всі кнопки в цьому блоці
-        parent.querySelectorAll('.hint-tab-btn').forEach(btn => btn.classList.remove('active'));
-        // Сховати весь контент
-        parent.querySelectorAll('.hint-content').forEach(content => content.classList.remove('active'));
-        
-        // Активувати поточну кнопку та таб
-        buttonElement.classList.add('active');
-        parent.querySelector('#' + tabId).classList.add('active');
-    }
-
-    function calculateTotalScore() {
-        const totalQuestions = document.querySelectorAll('#section-hoeren .task-card, #section-lesen .task-card').length;
-        const correctAnswers = document.querySelectorAll('.option.selected[data-status="correct"]').length;
-
-        document.getElementById('score-text').innerText = correctAnswers;
-        document.getElementById('total-questions-text').innerText = totalQuestions;
-
-        const badge = document.getElementById('result-badge');
-        const desc = document.getElementById('result-desc');
-        const successRate = totalQuestions > 0 ? (correctAnswers / totalQuestions) : 0;
-
-        if (successRate >= 0.73 || correctAnswers >= 33) { 
-            badge.innerText = "Сертифікат: B1";
-            badge.className = "badge b1";
-            desc.innerHTML = "🎉 <b>Вітаємо!</b> Результат відповідає оцінці <b>B1</b> за блоки Hören/Lesen.";
-        } else if (successRate >= 0.44 || correctAnswers >= 20) {
-            badge.innerText = "Сертифікат: A2";
-            badge.className = "badge a2";
-            desc.innerHTML = "👍 <b>Добре!</b> Результат відповідає рівню <b>A2</b> за блоки Hören/Lesen.";
-        } else {
-            badge.innerText = "Nicht bestanden";
-            badge.className = "badge fail";
-            desc.innerHTML = "⚠️ <b>Недостатньо балів.</b> Спробуйте ще раз.";
+            renderTasksList(data.tasks);
         }
 
-        document.getElementById('exam-block').classList.add('hidden');
-        document.getElementById('step-results').classList.remove('hidden');
-    }
+        function renderTasksList(tasks) {
+            const container = document.getElementById('rightTasksContainer');
+            container.innerHTML = "";
 
-    function goToMenu() {
-        document.getElementById('step-results').classList.add('hidden');
-        document.getElementById('step-menu').classList.remove('hidden');
-    }
-</script>
+            if (tasks.length === 0) {
+                container.innerHTML = `<p class="text-gray-400 text-center py-6">Контент для цієї моделі додається...</p>`;
+                return;
+            }
+
+            tasks.forEach((task, taskIdx) => {
+                const card = document.createElement('div');
+                card.className = "bg-white border border-gray-200 rounded-xl shadow-sm p-4 space-y-3";
+
+                card.innerHTML += `<div class="font-semibold text-gray-800 text-sm md:text-base">${task.q}</div>`;
+
+                if (task.type === "textarea") {
+                    card.innerHTML += `
+                        <textarea class="w-full h-36 p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none text-sm bg-gray-50/50" placeholder="Введіть текст вашої відповіді тут для самоперевірки..."></textarea>
+                    `;
+                } else {
+                    const optionsDiv = document.createElement('div');
+                    optionsDiv.className = "flex flex-col gap-2";
+
+                    task.opts.forEach((opt, optIdx) => {
+                        const isSelected = userAnswers[taskIdx] === optIdx;
+                        let borderStyle = "border-gray-200 bg-white hover:bg-gray-50";
+
+                        if (isSubmitted) {
+                            if (optIdx === task.correct) {
+                                borderStyle = "border-green-500 bg-green-50 text-green-900 font-semibold";
+                            } else if (isSelected && isSelected !== task.correct) {
+                                borderStyle = "border-red-500 bg-red-50 text-red-900";
+                            }
+                        } else if (isSelected) {
+                            borderStyle = "border-blue-500 bg-blue-50/60 font-semibold text-blue-900";
+                        }
+
+                        const label = document.createElement('label');
+                        label.className = `flex items-center p-3 border ${borderStyle} rounded-xl cursor-pointer transition text-xs md:text-sm`;
+
+                        const input = document.createElement('input');
+                        input.type = "radio";
+                        input.name = `task_radio_${taskIdx}`;
+                        input.className = "h-4 w-4 text-blue-600 focus:ring-blue-400";
+                        input.checked = isSelected;
+                        input.disabled = isSubmitted;
+
+                        input.onclick = () => {
+                            if (!isSubmitted) {
+                                userAnswers[taskIdx] = optIdx;
+                                renderTasksList(tasks);
+                            }
+                        };
+
+                        const textSpan = document.createElement('span');
+                        textSpan.className = "ml-3 text-gray-700";
+                        textSpan.innerText = opt;
+
+                        label.appendChild(input);
+                        label.appendChild(textSpan);
+                        optionsDiv.appendChild(label);
+                    });
+
+                    card.appendChild(optionsDiv);
+                }
+
+                container.appendChild(card);
+            });
+        }
+
+        function revealAllAnswers() {
+            const data = examDatabase[activeSection][activeModel];
+            isSubmitted = true;
+            
+            renderTasksList(data.tasks);
+
+            let score = 0;
+            data.tasks.forEach((task, idx) => {
+                if (userAnswers[idx] === task.correct) score++;
+            });
+
+            alert(`Перевірка завершена!\nПравильних відповідей: ${score} із ${data.tasks.length}.`);
+        }
+    </script>
 
 </body>
 </html>
