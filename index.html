@@ -74,10 +74,10 @@
             <button class="btn-test-select" onclick="initExam('modeltest1')">📝 Modeltest 1</button>
             <button class="btn-test-select" onclick="initExam('modeltest2')">📝 Modeltest 2</button>
             <button class="btn-test-select" onclick="initExam('modeltest3')">📝 Modeltest 3</button>
-            <button class="btn-test-select" onclick="initExam('modeltest2')">📝 Modeltest 4</button>
-            <button class="btn-test-select" onclick="initExam('modeltest2')">📝 Modeltest 5</button>
-            <button class="btn-test-select" onclick="initExam('modeltest2')">📝 Modeltest 6</button>
-            <button class="btn-test-select" onclick="initExam('modeltest2')">📝 Modeltest 7</button>
+            <button class="btn-test-select" onclick="initExam('modeltest4')">📝 Modeltest 4</button>
+            <button class="btn-test-select" onclick="initExam('modeltest5')">📝 Modeltest 5</button>
+            <button class="btn-test-select" onclick="initExam('modeltest6')">📝 Modeltest 6</button>
+            <button class="btn-test-select" onclick="initExam('modeltest7')">📝 Modeltest 7</button>
         </div>
     </div>
 
@@ -121,7 +121,6 @@
             hoerenHTML: `
                 <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 8px; margin-bottom: 20px;">
                     <p style="font-size: 18px; margin-bottom: 15px;">🎵 <b>Hören — Modeltest 1</b></p>
-                    
                     <iframe src="https://drive.google.com/file/d/1cDKI09QcGMqaD20xrjr3-rGgftrIc8_v/preview" width="100%" height="80" allow="autoplay" style="border: none; border-radius: 8px;"></iframe>
                 </div>
                 
@@ -205,11 +204,11 @@
                 <div class="split-screen">
                     <div class="left-panel">
                         <h3 style="color:#28a745; margin-bottom:10px;">Hausordnung & Sicherheit</h3>
-                        <p style="font-size: 14px; line-height: 1.6;">Ab 22:00 Uhr gilt im gesamten Gebäude die Nachtруе. Die Haustür muss ab diesem Zeitpunkt stets verschlossen sein.</p>
+                        <p style="font-size: 14px; line-height: 1.6;">Ab 22:00 Uhr gilt im gesamten Gebäude die Nachtruhe. Die Haustür muss ab diesem Zeitpunkt stets verschlossen sein.</p>
                     </div>
                     <div class="right-panel">
                         <div class="task-card">
-                            <h3>Aufgabe 21: Nach 22 Uhr muss die Haustür abgesперрт werden.</h3>
+                            <h3>Aufgabe 21: Nach 22 Uhr muss die Haustür abgesperrt werden.</h3>
                             <div class="options">
                                 <div class="option" onclick="setAnswer(this, true)">richtig (Richtig)</div>
                                 <div class="option" onclick="setAnswer(this, false)">falsch</div>
@@ -226,16 +225,15 @@
                 <button class="btn btn-success" style="margin-top: 10px;" onclick="validateLetterAI()">🤖 Перевірити граматику через AI</button>
                 <div id="ai-response-box" class="ai-box"></div>
             `
-        }
-    };
-    "modeltest3": {
+        },
+        "modeltest3": {
             name: "Modeltest 3",
             hoerenHTML: `
                 <div style="text-align: center; padding: 20px; background: #e8f4fd; border-radius: 8px; margin-bottom: 20px;">
                     <p style="font-size: 18px; margin-bottom: 10px;">🎵 <b>Hören — Modeltest 3</b></p>
                 </div>
                 <div class="task-card">
-                    <p>1-Wann werden die Möbel geliefert? </p>
+                    <h3>1-Wann werden die Möbel geliefert?</h3>
                     <div class="options">
                         <div class="option" onclick="setAnswer(this, true)">a) Morgen Nachmittag.</div>
                         <div class="option" onclick="setAnswer(this, false)">b) Morgen um 9 Uhr.</div>
@@ -244,225 +242,3 @@
                 </div>
 
                 <div class="task-card">
-                    <p> 2-Wohin soll Frau Böhmer kommen?  </p>
-                    <div class="options">
-                        <div class="option" onclick="setAnswer(this, false)">a) In den Kindergarten.</div>
-                        <div class="option" onclick="setAnswer(this, true)">b) Zur Agentur für Arbeit.</div>
-                        <div class="option" onclick="setAnswer(this, false)">c) Um 14 Uhr.</div>
-                    </div>
-                </div>
-
-                <div class="task-card">
-                    <p> 3-Was ist heute besonders günstig?   </p>
-                    <div class="options">
-                        <div class="option" onclick="setAnswer(this, false)">a) Das Essen im Restaurant. </div>
-                        <div class="option" onclick="setAnswer(this, false)">b) Damenmode. </div>
-                        <div class="option" onclick="setAnswer(this, true)">c) Geschirr. </div>
-                    </div>
-                </div>
-                   <div class="task-card">
-                    <p> 4-Wo soll Herr Lee sein Auto abholen?  </p>
-                    <div class="options">
-                        <div class="option" onclick="setAnswer(this, false)">a)  Bei der Polizei.  </div>
-                        <div class="option" onclick="setAnswer(this, false)">b) Bei einem Autohändler. </div>
-                        <div class="option" onclick="setAnswer(this, true)">c) In der Werkstatt. </div>
-                    </div>
-                </div>
-            `,
-            lesenHTML: `
-                <div class="split-screen">
-                    <div class="left-panel">
-                        <h3 style="color:#28a745; margin-bottom:10px;">Hausordnung & Sicherheit</h3>
-                        <p style="font-size: 14px; line-height: 1.6;">Ab 22:00 Uhr gilt im gesamten Gebäude die Nachtруе. Die Haustür muss ab diesem Zeitpunkt stets verschlossen sein.</p>
-                    </div>
-                    <div class="right-panel">
-                        <div class="task-card">
-                            <h3>Aufgabe 21: Nach 22 Uhr muss die Haustür abgesперрт werden.</h3>
-                            <div class="options">
-                                <div class="option" onclick="setAnswer(this, true)">richtig (Richtig)</div>
-                                <div class="option" onclick="setAnswer(this, false)">falsch</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `,
-            schreibenHTML: `
-                <div class="task-card">
-                    <p><b>Aufgabe Schreiben:</b> Напишіть листа орендодавцю Herr Meyer з проханням відремонтувати опалення.</p>
-                </div>
-                <textarea id="text-schreiben" placeholder="Sehr geehrter Herr Meyer..."></textarea>
-                <button class="btn btn-success" style="margin-top: 10px;" onclick="validateLetterAI()">🤖 Перевірити граматику через AI</button>
-                <div id="ai-response-box" class="ai-box"></div>
-            `
-        }
-    };
-
-
-
-    
-    let currentStep = 'hoeren';
-    let activeTestData = null;
-
-    function initExam(testKey) {
-        activeTestData = examDatabase[testKey];
-        currentStep = 'hoeren';
-        
-        document.getElementById('section-hoeren').innerHTML = activeTestData.hoerenHTML;
-        document.getElementById('section-lesen').innerHTML = activeTestData.lesenHTML;
-        document.getElementById('section-schreiben').innerHTML = activeTestData.schreibenHTML;
-
-        document.getElementById('display-test-name').innerText = activeTestData.name;
-        
-        document.getElementById('step-menu').classList.add('hidden');
-        document.getElementById('step-results').classList.add('hidden');
-        document.getElementById('exam-block').classList.remove('hidden');
-        setupStep();
-    }
-
-    function setupStep() {
-        document.getElementById('section-hoeren').classList.add('hidden');
-        document.getElementById('section-lesen').classList.add('hidden');
-        document.getElementById('section-schreiben').classList.add('hidden');
-        document.getElementById('btn-check-answers').classList.remove('hidden');
-
-        if (currentStep === 'hoeren') {
-            document.getElementById('current-section-title').innerText = "1. БЛОК: HÖREN";
-            document.getElementById('section-hoeren').classList.remove('hidden');
-            document.getElementById('btn-next-step').innerText = "До блоку Lesen ➔";
-        } else if (currentStep === 'lesen') {
-            document.getElementById('current-section-title').innerText = "2. БЛОК: LESEN";
-            document.getElementById('section-lesen').classList.remove('hidden');
-            document.getElementById('btn-next-step').innerText = "До блоку Schreiben ➔";
-        } else if (currentStep === 'schreiben') {
-            document.getElementById('current-section-title').innerText = "3. БЛОК: SCHREIBEN";
-            document.getElementById('section-schreiben').classList.remove('hidden');
-            document.getElementById('btn-check-answers').classList.add('hidden');
-            document.getElementById('btn-next-step').innerText = "Завершити тест та підрахувати бали 🔄";
-        }
-    }
-
-    function setAnswer(element, isCorrect) {
-        const cardOptions = element.parentElement.querySelectorAll('.option');
-        cardOptions.forEach(opt => opt.classList.remove('selected'));
-        
-        element.classList.add('selected');
-        element.dataset.status = isCorrect ? "correct" : "wrong";
-    }
-
-    function revealAnswers() {
-        const activeSectionId = currentStep === 'hoeren' ? 'section-hoeren' : 'section-lesen';
-        const activeSection = document.getElementById(activeSectionId);
-        
-        activeSection.querySelectorAll('.option.selected').forEach(opt => {
-            if (opt.dataset.status === "correct") {
-                opt.classList.add('correct');
-            } else {
-                opt.classList.add('wrong');
-            }
-        });
-        
-        activeSection.querySelectorAll('.option').forEach(opt => {
-            if (opt.getAttribute('onclick').includes('true')) {
-                opt.classList.add('correct');
-            }
-        });
-    }
-
-    function switchSection() {
-        if (currentStep === 'hoeren') {
-            currentStep = 'lesen';
-            setupStep();
-        } else if (currentStep === 'lesen') {
-            currentStep = 'schreiben';
-            setupStep();
-        } else {
-            calculateTotalScore();
-        }
-    }
-
-    // НОВА ФУНКЦІЯ ПІДРАХУНКУ БАЛІВ
-    function calculateTotalScore() {
-        const totalQuestions = document.querySelectorAll('#section-hoeren .task-card, #section-lesen .task-card').length;
-        const correctAnswers = document.querySelectorAll('.option.selected[data-status="correct"]').length;
-
-        document.getElementById('score-text').innerText = correctAnswers;
-        document.getElementById('total-questions-text').innerText = totalQuestions;
-
-        const badge = document.getElementById('result-badge');
-        const desc = document.getElementById('result-desc');
-
-        // Оцінювання на основі відсотка правильних відповідей (підходить для будь-якої кількості питань)
-        const successRate = totalQuestions > 0 ? (correctAnswers / totalQuestions) : 0;
-
-        // В оригінальному DTZ 45 питань: B1 це 33+ бали (33/45 = ~73%), A2 це 20 балів (20/45 = ~44%)
-        if (successRate >= 0.73 || correctAnswers >= 33) { 
-            badge.innerText = "Сертифікат: B1";
-            badge.className = "badge b1";
-            desc.innerHTML = "🎉 <b>Вітаємо!</b> Ви показали чудовий результат у частинах Hören & Lesen. Цей рівень балів відповідає оцінці <b>B1</b>. Якщо ваш лист у блоці Schreiben також написаний без критичних помилок, ви гарантовано успішно складаєте іспит!";
-        } else if (successRate >= 0.44 || correctAnswers >= 20) {
-            badge.innerText = "Сертифікат: A2";
-            badge.className = "badge a2";
-            desc.innerHTML = "👍 <b>Добре!</b> Ви набрали достатньо балів для отримання рівня <b>A2</b>. Щоб підняти результат до омріяного B1, зверніть увагу на завдання, в яких припустилися помилок, та спробуйте пройти тест ще раз.";
-        } else {
-            badge.innerText = "Nicht bestanden";
-            badge.className = "badge fail";
-            desc.innerHTML = "⚠️ <b>Недостатньо балів.</b> На жаль, набраних балів не вистачає для підтвердження мовного рівня. Не засмучуйтесь! Тренуйтеся більше з іншими модельними тестами, розбирайте тексти та спробуйте знову.";
-        }
-
-        document.getElementById('exam-block').classList.add('hidden');
-        document.getElementById('step-results').classList.remove('hidden');
-    }
-
-    function goToMenu() {
-        document.getElementById('step-results').classList.add('hidden');
-        document.getElementById('step-menu').classList.remove('hidden');
-    }
-
-    async function validateLetterAI() {
-        const textValue = document.getElementById('text-schreiben').value;
-        const box = document.getElementById('ai-response-box');
-        
-        if (!textValue.trim()) { alert("Будь ласка, введіть ваш текст листа."); return; }
-        
-        box.style.display = "block";
-        box.style.borderColor = "#ffc107";
-        box.style.backgroundColor = "#fff3cd";
-        box.innerText = "🤖 ШІ аналізує структуру речень та граматику вашого листа...";
-
-        try {
-            const res = await fetch("https://api.languagetoolplus.com/v2/check", {
-                method: "POST",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: `text=${encodeURIComponent(textValue)}&language=de-DE`
-            });
-            const resultData = await res.json();
-
-            if (resultData.matches.length === 0) {
-                box.style.borderColor = "#28a745";
-                box.style.backgroundColor = "#d4edda";
-                box.innerHTML = "🎉 <b>Вказаний текст чудовий!</b> ШІ не виявив грубих помилок у вашому листі.";
-            } else {
-                box.style.borderColor = "#dc3545";
-                box.style.backgroundColor = "#f8d7da";
-                let report = `⚠️ <b>Знайдено помилок у тексті: ${resultData.matches.length}</b>\n\n`;
-                
-                resultData.matches.forEach((item, index) => {
-                    const errorWord = textValue.substring(item.offset, item.offset + item.length);
-                    report += `${index + 1}. Помилка у слові/фразі: <u><b>"${errorWord}"</b></u>\n`;
-                    report += `    💡 Рекомендація ШІ: ${item.message}\n`;
-                    if (item.replacements && item.replacements.length > 0) {
-                        report += `    ✅ Правильно написати: "${item.replacements[0].value}"\n`;
-                    }
-                    report += `\n`;
-                });
-                box.innerHTML = report;
-            }
-        } catch (e) {
-            box.style.borderColor = "#6c757d";
-            box.innerText = "Помилка зв'язку з сервером перевірки граматики.";
-        }
-    }
-</script>
-
-</body>
-</html>
