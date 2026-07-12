@@ -228,7 +228,78 @@
             `
         }
     };
+    "modeltest3": {
+            name: "Modeltest 3",
+            hoerenHTML: `
+                <div style="text-align: center; padding: 20px; background: #e8f4fd; border-radius: 8px; margin-bottom: 20px;">
+                    <p style="font-size: 18px; margin-bottom: 10px;">🎵 <b>Hören — Modeltest 3</b></p>
+                </div>
+                <div class="task-card">
+                    <p>1-Wann werden die Möbel geliefert? </p>
+                    <div class="options">
+                        <div class="option" onclick="setAnswer(this, true)">a) Morgen Nachmittag.</div>
+                        <div class="option" onclick="setAnswer(this, false)">b) Morgen um 9 Uhr.</div>
+                        <div class="option" onclick="setAnswer(this, false)">c) Um 14 Uhr.</div>
+                    </div>
+                </div>
 
+                <div class="task-card">
+                    <p> 2-Wohin soll Frau Böhmer kommen?  </p>
+                    <div class="options">
+                        <div class="option" onclick="setAnswer(this, false)">a) In den Kindergarten.</div>
+                        <div class="option" onclick="setAnswer(this, true)">b) Zur Agentur für Arbeit.</div>
+                        <div class="option" onclick="setAnswer(this, false)">c) Um 14 Uhr.</div>
+                    </div>
+                </div>
+
+                <div class="task-card">
+                    <p> 3-Was ist heute besonders günstig?   </p>
+                    <div class="options">
+                        <div class="option" onclick="setAnswer(this, false)">a) Das Essen im Restaurant. </div>
+                        <div class="option" onclick="setAnswer(this, false)">b) Damenmode. </div>
+                        <div class="option" onclick="setAnswer(this, true)">c) Geschirr. </div>
+                    </div>
+                </div>
+                   <div class="task-card">
+                    <p> 4-Wo soll Herr Lee sein Auto abholen?  </p>
+                    <div class="options">
+                        <div class="option" onclick="setAnswer(this, false)">a)  Bei der Polizei.  </div>
+                        <div class="option" onclick="setAnswer(this, false)">b) Bei einem Autohändler. </div>
+                        <div class="option" onclick="setAnswer(this, true)">c) In der Werkstatt. </div>
+                    </div>
+                </div>
+            `,
+            lesenHTML: `
+                <div class="split-screen">
+                    <div class="left-panel">
+                        <h3 style="color:#28a745; margin-bottom:10px;">Hausordnung & Sicherheit</h3>
+                        <p style="font-size: 14px; line-height: 1.6;">Ab 22:00 Uhr gilt im gesamten Gebäude die Nachtруе. Die Haustür muss ab diesem Zeitpunkt stets verschlossen sein.</p>
+                    </div>
+                    <div class="right-panel">
+                        <div class="task-card">
+                            <h3>Aufgabe 21: Nach 22 Uhr muss die Haustür abgesперрт werden.</h3>
+                            <div class="options">
+                                <div class="option" onclick="setAnswer(this, true)">richtig (Richtig)</div>
+                                <div class="option" onclick="setAnswer(this, false)">falsch</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `,
+            schreibenHTML: `
+                <div class="task-card">
+                    <p><b>Aufgabe Schreiben:</b> Напишіть листа орендодавцю Herr Meyer з проханням відремонтувати опалення.</p>
+                </div>
+                <textarea id="text-schreiben" placeholder="Sehr geehrter Herr Meyer..."></textarea>
+                <button class="btn btn-success" style="margin-top: 10px;" onclick="validateLetterAI()">🤖 Перевірити граматику через AI</button>
+                <div id="ai-response-box" class="ai-box"></div>
+            `
+        }
+    };
+
+
+
+    
     let currentStep = 'hoeren';
     let activeTestData = null;
 
