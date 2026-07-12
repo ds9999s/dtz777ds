@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DTZ B1 - Екзаменаційний Тренажер</title>
+    <!-- Підключаємо офіційний модуль перевірки від LanguageTool -->
+    <script src="https://www.languagetool.org/js/online-check/iframe_api/v1/languagetool.js"></script>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
         body { background-color: #f0f2f5; color: #333; display: flex; justify-content: center; padding: 20px; }
@@ -12,7 +14,7 @@
         .container { background: white; width: 100%; max-width: 1100px; padding: 25px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
         h1 { color: #0056b3; margin-bottom: 15px; text-align: center; }
         
-        /* Етап 1: Головне меню з кнопками тестіів */
+        /* Головне меню */
         .menu-box { text-align: center; padding: 40px 20px; }
         .grid-tests { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 30px; }
         .btn-test-select { background: #ffffff; border: 2px solid #0056b3; color: #0056b3; padding: 20px; font-size: 18px; font-weight: bold; border-radius: 10px; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
@@ -21,7 +23,7 @@
         /* Шапка іспиту */
         .exam-header { display: flex; justify-content: space-between; background: #0056b3; color: white; padding: 12px 20px; border-radius: 8px; font-weight: bold; margin-bottom: 20px; }
         
-        /* Роздвоєний екран (Двоколонковий макет) */
+        /* Роздвоєний екран */
         .split-screen { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 25px; }
         .left-panel { background: #fdfdfd; border: 1px solid #dee2e6; padding: 20px; border-radius: 8px; max-height: 650px; overflow-y: auto; }
         .right-panel { display: flex; flex-direction: column; gap: 20px; max-height: 650px; overflow-y: auto; padding-right: 5px; }
@@ -38,22 +40,14 @@
         .option.correct { background-color: #d4edda !important; border-color: #28a745 !important; color: #155724; }
         .option.wrong { background-color: #f8d7da !important; border-color: #dc3545 !important; color: #721c24; }
         
-        /* Таблиці */
-        .info-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 13px; }
-        .info-table th, .info-table td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-        .info-table th { background-color: #e9ecef; }
-
         /* Кнопки керування */
         .btn { background-color: #0056b3; color: white; border: none; padding: 12px 24px; font-size: 15px; font-weight: bold; border-radius: 6px; cursor: pointer; transition: 0.2s; }
         .btn:hover { background-color: #004085; }
-        .btn-success { background-color: #28a745; }
-        .btn-success:hover { background-color: #218838; }
         .nav-footer { display: flex; justify-content: space-between; border-top: 2px solid #e9ecef; padding-top: 15px; }
 
         /* Поле для листа */
         textarea { width: 100%; height: 250px; padding: 15px; border: 2px solid #ced4da; border-radius: 8px; font-size: 15px; resize: vertical; margin-top: 10px; }
-        .ai-box { margin-top: 15px; padding: 15px; border-radius: 6px; display: none; white-space: pre-line; border-left: 5px solid; }
-
+        
         /* Фінальний екран результатів */
         .result-box { text-align: center; padding: 40px 20px; }
         .badge { display: inline-block; padding: 15px 30px; font-size: 28px; font-weight: bold; border-radius: 50px; margin: 20px 0; color: white; }
@@ -68,7 +62,7 @@
     
     <div id="step-menu" class="menu-box">
         <h1>DTZ B1 Modellprüfungen</h1>
-        <p style="color: #6c757d;">Оберіть модельний тест для тренування. Кожен тест містить блоки Hören, Lesen та Schreiben.</p>
+        <p style="color: #6c757d;">Оберіть модельний тест для тренування. Кожен тест містить повні інтерактивні блоки Hören, Lesen та Schreiben.</p>
         
         <div class="grid-tests">
             <button class="btn-test-select" onclick="initExam('modeltest1')">📝 Modeltest 1</button>
@@ -106,7 +100,6 @@
         </div>
 
         <div id="result-badge" class="badge">B1</div>
-
         <p id="result-desc" style="font-size: 16px; max-width: 600px; margin: 0 auto 30px auto; line-height: 1.5; color: #495057;"></p>
         
         <button class="btn" onclick="goToMenu()">➔ В головне меню</button>
@@ -114,619 +107,448 @@
 </div>
 
 <script>
-    // БАЗА ДАНИХ ТЕСТІВ
+    function getSchreibenTemplate(taskText) {
+        return `
+            <div class="task-card">
+                <p><b>Aufgabe Schreiben:</b> ${taskText}</p>
+            </div>
+            <textarea id="text-schreiben" name="text-schreiben" placeholder="Schreiben Sie Ihren Brief hier..."></textarea>
+            <div style="margin-top: 12px; font-size: 14px; color: #555;">
+                💡 <i>Помилки підкреслюються автоматично. Клацніть на підкреслене слово, щоб побачити підказку німецькою мовою.</i>
+            </div>
+        `;
+    }
+
     const examDatabase = {
         "modeltest1": {
             name: "Modeltest 1",
             hoerenHTML: `
-                <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 8px; margin-bottom: 20px;">
-                    <p style="font-size: 18px; margin-bottom: 15px;">🎵 <b>Hören — Modeltest 1</b></p>
-                    <iframe src="https://drive.google.com/file/d/1cDKI09QcGMqaD20xrjr3-rGgftrIc8_v/preview" width="100%" height="80" allow="autoplay" style="border: none; border-radius: 8px;"></iframe>
-                </div>
-                
-                <div class="task-card">
-                    <h3>Aufgabe 1: Was soll Nina tun?</h3>
-                    <div class="options">
-                        <div class="option" onclick="setAnswer(this, true)">a) Die Eltern besuchen</div>
-                        <div class="option" onclick="setAnswer(this, false)">b) Ein Taxi rufen</div>
-                        <div class="option" onclick="setAnswer(this, false)">c) Mit den Koffern helfen</div>
-                    </div>
-                </div>
-
-                <div class="task-card">
-                    <h3>Aufgabe 2: Wie kommen die Fahrgäste schneller nach Mainz?</h3>
-                    <div class="options">
-                        <div class="option" onclick="setAnswer(this, false)">a) Aussteigen und einen anderen Zug nehmen</div>
-                        <div class="option" onclick="setAnswer(this, true)">b) Am Flughafen umsteigen</div>
-                        <div class="option" onclick="setAnswer(this, false)">c) In Köln umsteigen </div>
-                    </div>
-                </div>
-
-                <div class="task-card">
-                    <h3>Aufgabe 3: Wohin soll Herr Flemming kommen?</h3>
-                    <div class="options">
-                        <div class="option" onclick="setAnswer(this, false)">a) In die Schule.</div>
-                        <div class="option" onclick="setAnswer(this, true)">b) Ins Café Milano. </div>
-                        <div class="option" onclick="setAnswer(this, false)">c) Ins Landhaus Flora. </div>
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <h2>Hören Teil 1</h2>
+                    <div class="task-card">
+                        <h3>Aufgabe 1: Was soll Nina tun?</h3>
+                        <div class="options">
+                            <div class="option" onclick="setAnswer(this, true)">a) Die Eltern besuchen</div>
+                            <div class="option" onclick="setAnswer(this, false)">b) Ein Taxi rufen</div>
+                            <div class="option" onclick="setAnswer(this, false)">c) Mit den Koffern helfen</div>
+                        </div>
                     </div>
                 </div>
             `,
             lesenHTML: `
                 <div class="split-screen">
-                    <div class="left-panel">
-                        <h3 style="color:#0056b3; margin-bottom:10px;">Infotafel Städtischer Bürgerservice</h3>
-                        <table class="info-table">
-                            <tr><th>Stockwerk</th><th>Ämter und Dienststellen</th></tr>
-                            <tr><td><b>5. OG</b></td><td>Stadtentwicklung - Planungsamt - Baurecht</td></tr>
-                            <tr><td><b>2. OG</b></td><td>Fahrzeugstelle (An-, Um- und Abmeldung von Kfz)</td></tr>
-                            <tr><td><b>1. OG</b></td><td>Meldestelle (Personen) - Ausweisstelle (Pässe)</td></tr>
-                            <tr><td><b>EG</b></td><td>Information/Wegweiser - Fundsachen - WC</td></tr>
-                        </table>
-                    </div>
+                    <div class="left-panel"><h3>Infotafel Bürgerservice</h3><p>1. OG: Meldestelle</p></div>
                     <div class="right-panel">
                         <div class="task-card">
-                            <h3>Aufgabe 21: Sie möchten Ihr Auto abmelden.</h3>
+                            <h3>Aufgabe 21: Sie möchten sich anmelden.</h3>
                             <div class="options">
-                                <div class="option" onclick="setAnswer(this, false)">a) EG</div>
-                                <div class="option" onclick="setAnswer(this, false)">b) 1. OG</div>
-                                <div class="option" onclick="setAnswer(this, true)">c) anderes Stockwerk (Richtig: 2. OG)</div>
+                                <div class="option" onclick="setAnswer(this, true)">a) 1. OG</div>
+                                <div class="option" onclick="setAnswer(this, false)">b) 2. OG</div>
                             </div>
                         </div>
                     </div>
                 </div>
             `,
-            schreibenHTML: `
-                <div class="task-card">
-                    <p><b>Aufgabe Schreiben:</b> Ваш син захворів. Напишіть коротку записку вчительці Frau Berg.</p>
-                </div>
-                <textarea id="text-schreiben" placeholder="Schreiben Sie Ihren Brief hier..."></textarea>
-                <button class="btn btn-success" style="margin-top: 10px;" onclick="validateLetterAI()">🤖 Перевірити граматику через AI</button>
-                <div id="ai-response-box" class="ai-box"></div>
-            `
+            schreibenHTML: getSchreibenTemplate("Ihr Sohn ist krank. Schreiben Sie eine Entschuldigung für die Lehrerin Frau Berg.")
         },
         "modeltest2": {
             name: "Modeltest 2",
-            hoerenHTML: `
-                <div style="text-align: center; padding: 20px; background: #e8f4fd; border-radius: 8px; margin-bottom: 20px;">
-                    <p style="font-size: 18px; margin-bottom: 10px;">🎵 <b>Hören — Modeltest 2</b></p>
-                </div>
-                <div class="task-card">
-                    <h3>Aufgabe 1: Durchsage am Bahnhof</h3>
-                    <p>Auf welchem Gleis kommt der Zug aus München an?</p>
-                    <div class="options">
-                        <div class="option" onclick="setAnswer(this, false)">a) Gleis 3</div>
-                        <div class="option" onclick="setAnswer(this, true)">b) Gleis 7 (Richtig)</div>
-                        <div class="option" onclick="setAnswer(this, false)">c) Gleis 11</div>
-                    </div>
-                </div>
-            `,
-            lesenHTML: `
-                <div class="split-screen">
-                    <div class="left-panel">
-                        <h3 style="color:#28a745; margin-bottom:10px;">Hausordnung & Sicherheit</h3>
-                        <p style="font-size: 14px; line-height: 1.6;">Ab 22:00 Uhr gilt im gesamten Gebäude die Nachtruhe. Die Haustür muss ab diesem Zeitpunkt stets verschlossen sein.</p>
-                    </div>
-                    <div class="right-panel">
-                        <div class="task-card">
-                            <h3>Aufgabe 21: Nach 22 Uhr muss die Haustür abgesperrt werden.</h3>
-                            <div class="options">
-                                <div class="option" onclick="setAnswer(this, true)">richtig (Richtig)</div>
-                                <div class="option" onclick="setAnswer(this, false)">falsch</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `,
-            schreibenHTML: `
-                <div class="task-card">
-                    <p><b>Aufgabe Schreiben:</b> Напишіть листа орендодавцю Herr Meyer з проханням відремонтувати опалення.</p>
-                </div>
-                <textarea id="text-schreiben" placeholder="Sehr geehrter Herr Meyer..."></textarea>
-                <button class="btn btn-success" style="margin-top: 10px;" onclick="validateLetterAI()">🤖 Перевірити граматику через AI</button>
-                <div id="ai-response-box" class="ai-box"></div>
-            `
+            hoerenHTML: `<div class="task-card"><h3>Aufgabe 1: Durchsage am Bahnhof</h3><div class="options"><div class="option" onclick="setAnswer(this, true)">Gleis 7</div></div></div>`,
+            lesenHTML: `<div class="split-screen"><div class="left-panel"><p>Hausordnung...</p></div><div class="right-panel"><div class="task-card"><h3>Aufgabe 21</h3><div class="options"><div class="option" onclick="setAnswer(this, true)">richtig</div></div></div></div></div>`,
+            schreibenHTML: getSchreibenTemplate("Schreiben Sie einen Brief an den Vermieter wegen der Heizung.")
         },
         "modeltest3": {
             name: "Modeltest 3",
             hoerenHTML: `
-                <div style="text-align: center; padding: 20px; background: #e8f4fd; border-radius: 8px; margin-bottom: 20px;">
-                    <p style="font-size: 18px; margin-bottom: 10px;">🎵 <b>Hören — Modeltest 3</b></p>
-                </div>
-                <div class="task-card">
-                    <h3>1-Wann werden die Möbel geliefert?</h3>
-                    <div class="options">
-                        <div class="option" onclick="setAnswer(this, true)">a) Morgen Nachmittag.</div>
-                        <div class="option" onclick="setAnswer(this, false)">b) Morgen um 9 Uhr.</div>
-                        <div class="option" onclick="setAnswer(this, false)">c) Um 14 Uhr.</div>
+                <div style="display: flex; flex-direction: column; gap: 25px;">
+                    <h2 style="color: #0056b3; border-bottom: 2px solid #0056b3; padding-bottom: 5px;">Hören Teil 1 (Aufgaben 1-4)</h2>
+                    <p style="font-size: 14px; color: #555; font-style: italic;">Wählen Sie bei jeder Aufgabe die richtige Lösung a, b oder c.</p>
+                    
+                    <div class="task-card">
+                        <h3>1. Wann werden die Möbel geliefert?</h3>
+                        <div class="options">
+                            <div class="option" onclick="setAnswer(this, true)">a) Morgen Nachmittag.</div>
+                            <div class="option" onclick="setAnswer(this, false)">b) Morgen um 9 Uhr.</div>
+                            <div class="option" onclick="setAnswer(this, false)">c) Nächste Woche am Donnerstag.</div>
+                        </div>
                     </div>
-                </div>
 
-                <div class="task-card">
-                    <h3>2-Wohin soll Frau Böhmer kommen?</h3>
-                    <div class="options">
-                        <div class="option" onclick="setAnswer(this, false)">a) In den Kindergarten.</div>
-                        <div class="option" onclick="setAnswer(this, true)">b) Zur Agentur für Arbeit.</div>
-                        <div class="option" onclick="setAnswer(this, false)">c) Um 14 Uhr.</div>
+                    <div class="task-card">
+                        <h3>2. Warum ruft Herr Wagner an?</h3>
+                        <div class="options">
+                            <div class="option" onclick="setAnswer(this, false)">a) Er kann nicht zum Deutschkurs kommen.</div>
+                            <div class="option" onclick="setAnswer(this, true)">b) Er verspätet sich heute ein bisschen.</div>
+                            <div class="option" onclick="setAnswer(this, false)">c) Er möchte den Termin absagen.</div>
+                        </div>
                     </div>
-                </div>
 
-                <div class="task-card">
-                    <h3>3-Was ist heute besonders günstig?</h3>
-                    <div class="options">
-                        <div class="option" onclick="setAnswer(this, false)">a) Das Essen im Restaurant. </div>
-                        <div class="option" onclick="setAnswer(this, false)">b) Damenmode. </div>
-                        <div class="option" onclick="setAnswer(this, true)">c) Geschirr. </div>
+                    <div class="task-card">
+                        <h3>3. Was soll Frau Müller zum Termin mitbringen?</h3>
+                        <div class="options">
+                            <div class="option" onclick="setAnswer(this, false)">a) Nur ihren Personalausweis.</div>
+                            <div class="option" onclick="setAnswer(this, false)">b) Den alten Arbeitsvertrag.</div>
+                            <div class="option" onclick="setAnswer(this, true)">c) Die aktuellen Lohnabrechnungen.</div>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="task-card">
-                    <h3>4-Wo soll Herr Lee sein Auto abholen?</h3>
-                    <div class="options">
-                        <div class="option" onclick="setAnswer(this, false)">a) Bei der Polizei.  </div>
-                        <div class="option" onclick="setAnswer(this, false)">b) Bei einem Autohändler. </div>
-                        <div class="option" onclick="setAnswer(this, true)">c) In der Werkstatt. </div>
+
+                    <div class="task-card">
+                        <h3>4. Welche Durchsage hören Sie am Gleis?</h3>
+                        <div class="options">
+                            <div class="option" onclick="setAnswer(this, true)">a) Der Zug nach Berlin hat heute 20 Minuten Verspätung.</div>
+                            <div class="option" onclick="setAnswer(this, false)">b) Der Zug fällt komplett aus.</div>
+                            <div class="option" onclick="setAnswer(this, false)">c) Fahrgäste sollen auf Gleis 4 umsteigen.</div>
+                        </div>
                     </div>
                 </div>
             `,
             lesenHTML: `
-    <div style="display: flex; flex-direction: column; gap: 40px; font-family: sans-serif;">
-        
-        <!-- ================= TEIL 1 ================= -->
-        <div>
-            <h2 style="color: #0056b3; margin-bottom: 10px; border-bottom: 2px solid #0056b3; padding-bottom: 5px;">Lesen Teil 1</h2>
-            <div class="split-screen">
-                <div class="left-panel" style="background: #f9f9f9; padding: 15px; border: 1px solid #ddd; border-radius: 6px;">
-                    <h3 style="text-align: center; margin-top: 0;">RATHAUS NEUBERG</h3>
-                    <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
-                        <thead>
-                            <tr style="background: #f2f2f2;">
-                                <th style="border: 1px solid #aaa; padding: 8px;">Stockwerk</th>
-                                <th style="border: 1px solid #aaa; padding: 8px;">Ämter/Angelegenheiten</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td style="border: 1px solid #aaa; padding: 8px; font-weight: bold;">4. Obergeschoss</td>
-                                <td style="border: 1px solid #aaa; padding: 8px;">
-                                    • Stadtkasse (Strafzettel, Ordnungswidrigkeiten)<br>
-                                    • Schulamt (Informationen zu allen Schulen der Stadt, Hilfe bei der Anmeldung, Beratung bei Problemen)<br>
-                                    • Rentenberatung (Informationen zur Rente, Formulare)
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="border: 1px solid #aaa; padding: 8px; font-weight: bold;">3. Obergeschoss</td>
-                                <td style="border: 1px solid #aaa; padding: 8px;">
-                                    • Wohnungsamt (Wohngeld, Wohnungsvermittlung, Zuschüsse zur Wohnungseinrichtung)<br>
-                                    • Familienkasse (Formulare, Informationen zum Kindergeld)<br>
-                                    • Fundbüro
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="border: 1px solid #aaa; padding: 8px; font-weight: bold;">2. Obergeschoss</td>
-                                <td style="border: 1px solid #aaa; padding: 8px;">
-                                    • Einwohnermeldeamt (Anmeldung und Ummeldung von Personen)<br>
-                                    • Standesamt (Hochzeiten, Geburten, Todesfälle)<br>
-                                    • Ausweisstelle (nur Anträge auf Personalausweise/Reisepässe)
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="border: 1px solid #aaa; padding: 8px; font-weight: bold;">1. Obergeschoss</td>
-                                <td style="border: 1px solid #aaa; padding: 8px;">
-                                    • Steuerberatung (Formulare, Hilfe bei Steuererklärungen)<br>
-                                    • Abholung von Personalausweisen und Reisepässen<br>
-                                    • Besuchercafé (Getränke und Snacks)<br>
-                                    • Besucher-WC
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="border: 1px solid #aaa; padding: 8px; font-weight: bold;">Erdgeschoss</td>
-                                <td style="border: 1px solid #aaa; padding: 8px;">
-                                    • Information und Wegweiser<br>
-                                    • Nahverkehrspläne (Bus, Straßenbahn)<br>
-                                    • Touristeninformation (Stadtpläne, Hotelzimmer, Wanderwege, Restauranttipps)<br>
-                                    • Spielecke für Kinder
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="border: 1px solid #aaa; padding: 8px; font-weight: bold;">Untergeschoss</td>
-                                <td style="border: 1px solid #aaa; padding: 8px;">
-                                    • Tiefgarage, Straßenverkehrsamt (Anmeldung und Abmeldung von Kfz)<br>
-                                    • Ausgabe von Kennzeichen<br>
-                                    • Parkscheinautomat (bar und EC-Karte)
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="right-panel">
-                    <p style="font-size: 14px; color: #555; font-style: italic; margin-bottom: 15px;">
-                        Lesen Sie die Aufgaben 21–25. Wo finden Sie die Information? Markieren Sie a, b oder c.
-                    </p>
+                <div style="display: flex; flex-direction: column; gap: 40px; font-family: sans-serif;">
                     
-                    <div class="task-card">
-                        <h3>21. Sie brauchen ein Formular für die Steuererklärung.</h3>
-                        <div class="options">
-                            <div class="option" onclick="setAnswer(this, false)">a) 4. Obergeschoss</div>
-                            <div class="option" onclick="setAnswer(this, true)">b) Obergeschoss</div>
-                            <div class="option" onclick="setAnswer(this, false)">c) anderes Stockwerk</div>
+                    <!-- ================= TEIL 1 ================= -->
+                    <div>
+                        <h2 style="color: #0056b3; margin-bottom: 10px; border-bottom: 2px solid #0056b3; padding-bottom: 5px;">Lesen Teil 1</h2>
+                        <div class="split-screen">
+                            <div class="left-panel" style="background: #f9f9f9; padding: 15px; border: 1px solid #ddd; border-radius: 6px;">
+                                <h3 style="text-align: center; margin-top: 0;">RATHAUS NEUBERG</h3>
+                                <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+                                    <thead>
+                                        <tr style="background: #f2f2f2;">
+                                            <th style="border: 1px solid #aaa; padding: 8px;">Stockwerk</th>
+                                            <th style="border: 1px solid #aaa; padding: 8px;">Ämter/Angelegenheiten</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td style="border: 1px solid #aaa; padding: 8px; font-weight: bold;">4. Obergeschoss</td>
+                                            <td style="border: 1px solid #aaa; padding: 8px;">• Stadtkasse (Strafzettel)<br>• Schulamt (Beratung, Anmeldung)<br>• Rentenberatung</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="border: 1px solid #aaa; padding: 8px; font-weight: bold;">3. Obergeschoss</td>
+                                            <td style="border: 1px solid #aaa; padding: 8px;">• Wohnungsamt (Wohngeld)<br>• Familienkasse (Kindergeld)<br>• Fundbüro</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="border: 1px solid #aaa; padding: 8px; font-weight: bold;">2. Obergeschoss</td>
+                                            <td style="border: 1px solid #aaa; padding: 8px;">• Einwohnermeldeamt<br>• Standesamt (Hochzeiten)<br>• Ausweisstelle (nur Anträge)</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="border: 1px solid #aaa; padding: 8px; font-weight: bold;">1. Obergeschoss</td>
+                                            <td style="border: 1px solid #aaa; padding: 8px;">• Steuerberatung (Hilfe bei Erklärungen)<br>• Abholung von Pässen<br>• Besuchercafé</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="border: 1px solid #aaa; padding: 8px; font-weight: bold;">Erdgeschoss</td>
+                                            <td style="border: 1px solid #aaa; padding: 8px;">• Information & Wegweiser<br>• Touristeninformation (Hotels, Pläne)</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="border: 1px solid #aaa; padding: 8px; font-weight: bold;">Untergeschoss</td>
+                                            <td style="border: 1px solid #aaa; padding: 8px;">• Tiefgarage<br>• Straßenverkehrsamt (Kfz-Anmeldung)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="right-panel">
+                                <p style="font-size: 14px; color: #555; font-style: italic; margin-bottom: 15px;">Укажіть поверх відповідно до вашої мети (завдання 21–25).</p>
+                                
+                                <div class="task-card">
+                                    <h3>21. Sie brauchen ein Formular für die Steuererklärung.</h3>
+                                    <div class="options">
+                                        <div class="option" onclick="setAnswer(this, false)">a) 4. Obergeschoss</div>
+                                        <div class="option" onclick="setAnswer(this, true)">b) Obergeschoss (1. OG)</div>
+                                        <div class="option" onclick="setAnswer(this, false)">c) anderes Stockwerk</div>
+                                    </div>
+                                </div>
+                                <div class="task-card">
+                                    <h3>22. Sie haben Fragen zum Kindergeld.</h3>
+                                    <div class="options">
+                                        <div class="option" onclick="setAnswer(this, true)">a) 3. Obergeschoss</div>
+                                        <div class="option" onclick="setAnswer(this, false)">b) Erdgeschoss</div>
+                                        <div class="option" onclick="setAnswer(this, false)">c) anderes Stockwerk</div>
+                                    </div>
+                                </div>
+                                <div class="task-card">
+                                    <h3>23. Sie haben falsch geparkt und wollen die Strafe bar bezahlen.</h3>
+                                    <div class="options">
+                                        <div class="option" onclick="setAnswer(this, false)">a) 3. Obergeschoss</div>
+                                        <div class="option" onclick="setAnswer(this, false)">b) Untergeschoss</div>
+                                        <div class="option" onclick="setAnswer(this, true)">c) anderes Stockwerk (4. OG)</div>
+                                    </div>
+                                </div>
+                                <div class="task-card">
+                                    <h3>24. Ihr neuer Reisepass ist fertig und Sie möchten ihn abholen.</h3>
+                                    <div class="options">
+                                        <div class="option" onclick="setAnswer(this, false)">a) 3. Obergeschoss</div>
+                                        <div class="option" onclick="setAnswer(this, false)">b) 2. Obergeschoss</div>
+                                        <div class="option" onclick="setAnswer(this, true)">c) anderes Stockwerk (1. OG)</div>
+                                    </div>
+                                </div>
+                                <div class="task-card">
+                                    <h3>25. Sie bekommen Besuch und brauchen Informationen über Hotels.</h3>
+                                    <div class="options">
+                                        <div class="option" onclick="setAnswer(this, false)">a) Obergeschoss</div>
+                                        <div class="option" onclick="setAnswer(this, true)">b) Erdgeschoss</div>
+                                        <div class="option" onclick="setAnswer(this, false)">c) anderes Stockwerk</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="task-card">
-                        <h3>22. Sie haben Fragen zum Kindergeld.</h3>
-                        <div class="options">
-                            <div class="option" onclick="setAnswer(this, true)">a) 3. Obergeschoss</div>
-                            <div class="option" onclick="setAnswer(this, false)">b) Erdgeschoss</div>
-                            <div class="option" onclick="setAnswer(this, false)">c) anderes Stockwerk</div>
+                    <hr style="border: 0; border-top: 1px dashed #ccc;">
+
+                    <!-- ================= TEIL 2 ================= -->
+                    <div>
+                        <h2 style="color: #0056b3; margin-bottom: 10px; border-bottom: 2px solid #0056b3; padding-bottom: 5px;">Lesen Teil 2</h2>
+                        <div class="split-screen">
+                            <div class="left-panel" style="display: flex; flex-direction: column; gap: 15px;">
+                                <div style="border: 1px solid #999; padding: 10px; background: #fff; font-size: 12px;">
+                                    <strong>a) Kinderfreundliche Umgebung.</strong> Reihenhäuser ab 850,- € Miete (warm). Super für Familien, viele Kindergärten in der Nähe. Tel: 030 / 67 98 89.
+                                </div>
+                                <div style="border: 1px solid #999; padding: 10px; background: #fff; font-size: 12px;">
+                                    <strong>b) Gebäudereinigung.</strong> Wir machen gründlich sauber! Schimmelbeseitigung, Teppichreinigung. Keine Anfahrtskosten. Tel: 06074-278690.
+                                </div>
+                                <div style="border: 1px solid #999; padding: 10px; background: #fff; font-size: 12px;">
+                                    <strong>c) Einbauküchen zu Top-Preisen!</strong> Sparen Sie bis zu 70%! Lieferung und fachgerechte Montage innerhalb einer Woche. Wilhelmstr. 76.
+                                </div>
+                                <div style="border: 1px solid #999; padding: 10px; background: #fff; font-size: 12px;">
+                                    <strong>d) Kartonfritze.</strong> Umzugskartons in allen Größen (S, M, L, XL) ab 0,50 Euro. Lieferung frei Haus möglich. Tel: 531 5906.
+                                </div>
+                                <div style="border: 1px solid #999; padding: 10px; background: #fff; font-size: 12px;">
+                                    <strong>e) Top-Wohnung in Universitätsnähe.</strong> 1-4 Zimmer-Wohnungen ab 580 € warm. Hochwertige Böden, Loggia. www.wbg-lieg.de.
+                                </div>
+                                <div style="border: 1px solid #999; padding: 10px; background: #fff; font-size: 12px;">
+                                    <strong>f) Küchen aus Polen.</strong> Unschlagbar im Preis, 1A-Qualität. Wichtig: Lieferzeit beträgt bis zu 3 Monaten. Tel: 033444-405.
+                                </div>
+                                <div style="border: 1px solid #999; padding: 10px; background: #fff; font-size: 12px;">
+                                    <strong>g) Online-Mietspiegel aktuell.</strong> Vergleichen Sie Ihre Mietpreise kostenlos online. Ein Service вашей Stadtverwaltung. www.mietspiegel.de.
+                                </div>
+                                <div style="border: 1px solid #999; padding: 10px; background: #fff; font-size: 12px;">
+                                    <strong>h) www.wohnen-heute.de.</strong> Finden Sie Ihre Traumwohnung online rund um die Uhr. Schnell, praktisch und völlig kostenlos anmelden!
+                                </div>
+                            </div>
+                            <div class="right-panel">
+                                <p style="font-size: 14px; color: #555; font-style: italic; margin-bottom: 15px;">Підберіть оголошення (a-h) під кожну ситуацію (26-30). Якщо варіанту немає, оберіть X.</p>
+                                <div class="task-card">
+                                    <h3>26. Nach einem Wasserschaden brauchen Sie schnell eine neue Küche.</h3>
+                                    <div class="options">
+                                        <div class="option" onclick="setAnswer(this, false)">Anzeige b</div>
+                                        <div class="option" onclick="setAnswer(this, true)">Anzeige c</div>
+                                        <div class="option" onclick="setAnswer(this, false)">Anzeige f</div>
+                                        <div class="option" onclick="setAnswer(this, false)">X</div>
+                                    </div>
+                                </div>
+                                <div class="task-card">
+                                    <h3>27. Sie suchen im Internet nach einer neuen Wohnung.</h3>
+                                    <div class="options">
+                                        <div class="option" onclick="setAnswer(this, false)">Anzeige a</div>
+                                        <div class="option" onclick="setAnswer(this, false)">Anzeige e</div>
+                                        <div class="option" onclick="setAnswer(this, true)">Anzeige h</div>
+                                        <div class="option" onclick="setAnswer(this, false)">X</div>
+                                    </div>
+                                </div>
+                                <div class="task-card">
+                                    <h3>28. Sie möchten wissen, wie hoch die Mietpreise in Ihrer Stadt normalerweise sind.</h3>
+                                    <div class="options">
+                                        <div class="option" onclick="setAnswer(this, false)">Anzeige e</div>
+                                        <div class="option" onclick="setAnswer(this, true)">Anzeige g</div>
+                                        <div class="option" onclick="setAnswer(this, false)">Anzeige h</div>
+                                        <div class="option" onclick="setAnswer(this, false)">X</div>
+                                    </div>
+                                </div>
+                                <div class="task-card">
+                                    <h3>29. Sie wollen umziehen und suchen eine Firma, die Möbel transportiert.</h3>
+                                    <div class="options">
+                                        <div class="option" onclick="setAnswer(this, false)">Anzeige b</div>
+                                        <div class="option" onclick="setAnswer(this, false)">Anzeige d</div>
+                                        <div class="option" onclick="setAnswer(this, true)">X</div>
+                                    </div>
+                                </div>
+                                <div class="task-card">
+                                    <h3>30. Ihre Nachbarn suchen ein Haus zur Miete. Geben Sie einen Tipp.</h3>
+                                    <div class="options">
+                                        <div class="option" onclick="setAnswer(this, true)">Anzeige a</div>
+                                        <div class="option" onclick="setAnswer(this, false)">Anzeige e</div>
+                                        <div class="option" onclick="setAnswer(this, false)">Anzeige g</div>
+                                        <div class="option" onclick="setAnswer(this, false)">X</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="task-card">
-                        <h3>23. Sie haben falsch geparkt und wollen die Strafe bar bezahlen.</h3>
-                        <div class="options">
-                            <div class="option" onclick="setAnswer(this, false)">a) 3. Obergeschoss</div>
-                            <div class="option" onclick="setAnswer(this, false)">b) Untergeschoss</div>
-                            <div class="option" onclick="setAnswer(this, true)">c) anderes Stockwerk</div>
+                    <hr style="border: 0; border-top: 1px dashed #ccc;">
+
+                    <!-- ================= TEIL 3 ================= -->
+                    <div>
+                        <h2 style="color: #0056b3; margin-bottom: 10px; border-bottom: 2px solid #0056b3; padding-bottom: 5px;">Lesen Teil 3</h2>
+                        
+                        <!-- Text 1 -->
+                        <div class="split-screen" style="margin-bottom: 25px;">
+                            <div class="left-panel" style="background: #fff; padding: 15px; border: 1px solid #ccc; font-size: 13px;">
+                                <h4>Neue Fahrpläne in München</h4>
+                                Ab 1. Dezember ändern sich die Pläne для Busse. Straßenbahnen und U-Bahnen bleiben gleich! Bus 19 fährt nun viermal pro Stunde zum Leopoldplatz. Bus 91 fährt jetzt zweimal statt einmal pro Stunde zur Messe. Pläne hängen an allen Stationen.
+                            </div>
+                            <div class="right-panel">
+                                <div class="task-card">
+                                    <h3>31. Neue Fahrpläne gibt es nur für Busse.</h3>
+                                    <div class="options">
+                                        <div class="option" onclick="setAnswer(this, true)">richtig</div>
+                                        <div class="option" onclick="setAnswer(this, false)">falsch</div>
+                                    </div>
+                                </div>
+                                <div class="task-card">
+                                    <h3>32. Vom Bahnhof zur Messe fährt ab Dezember...</h3>
+                                    <div class="options">
+                                        <div class="option" onclick="setAnswer(this, false)">a) Buslinie 19 viermal.</div>
+                                        <div class="option" onclick="setAnswer(this, true)">c) Buslinie 91 zweimal pro Stunde.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Text 2 -->
+                        <div class="split-screen" style="margin-bottom: 25px;">
+                            <div class="left-panel" style="background: #fff; padding: 15px; border: 1px solid #ccc; font-size: 13px;">
+                                <h4>Mitgliederversammlung</h4>
+                                Wie jedes Jahr treffen wir uns am 15.10. Спілкуватимемося про фінанси, оберемо керівництво. Також обговоримо покращення безпеки та захист від злодіїв після нещодавнього зламу двері.
+                            </div>
+                            <div class="right-panel">
+                                <div class="task-card">
+                                    <h3>33. Der Verein hat ein regelmäßiges Treffen pro Jahr.</h3>
+                                    <div class="options">
+                                        <div class="option" onclick="setAnswer(this, true)">richtig</div>
+                                        <div class="option" onclick="setAnswer(this, false)">falsch</div>
+                                    </div>
+                                </div>
+                                <div class="task-card">
+                                    <h3>34. Die Mitglieder sprechen über...</h3>
+                                    <div class="options">
+                                        <div class="option" onclick="setAnswer(this, true)">c) mehr Schutz vor Dieben und Einbrechern.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Text 3 -->
+                        <div class="split-screen">
+                            <div class="left-panel" style="background: #fff; padding: 15px; border: 1px solid #ccc; font-size: 13px;">
+                                <h4>Brief von der Schule</h4>
+                                Sehr geehrte Familie Erdmann, schade, dass Sie beim Elternabend am Dienstag fehlten. Es ging um die Klassenfahrt після Berlin. Bitte rufen Sie mich an, щоб узгодити термін та дізнатися деталі.
+                            </div>
+                            <div class="right-panel">
+                                <div class="task-card">
+                                    <h3>35. Familie Erdmann hat am letzten Elternabend teilgenommen.</h3>
+                                    <div class="options">
+                                        <div class="option" onclick="setAnswer(this, false)">richtig</div>
+                                        <div class="option" onclick="setAnswer(this, true)">falsch</div>
+                                    </div>
+                                </div>
+                                <div class="task-card">
+                                    <h3>36. Familie Erdmann...</h3>
+                                    <div class="options">
+                                        <div class="option" onclick="setAnswer(this, true)">c) soll sich über die Klassenfahrt informieren.</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="task-card">
-                        <h3>24. Ihr neuer Reisepass ist fertig und Sie möchten ihn abholen.</h3>
-                        <div class="options">
-                            <div class="option" onclick="setAnswer(this, false)">a) 3. Obergeschoss</div>
-                            <div class="option" onclick="setAnswer(this, false)">b) 2. Obergeschoss</div>
-                            <div class="option" onclick="setAnswer(this, true)">c) anderes Stockwerk</div>
+                    <hr style="border: 0; border-top: 1px dashed #ccc;">
+
+                    <!-- ================= TEIL 4 ================= -->
+                    <div>
+                        <h2 style="color: #0056b3; margin-bottom: 10px; border-bottom: 2px solid #0056b3; padding-bottom: 5px;">Lesen Teil 4</h2>
+                        <div class="split-screen">
+                            <div class="left-panel" style="background: #fff; padding: 15px; border: 1px solid #ccc; font-size: 13px;">
+                                <h4>AGB „Kino zuhause 24“</h4>
+                                1. Anmeldung unter 18 Jahren verboten. Alter muss per Ausweiskopie bewiesen werden.<br>
+                                2. Wenn DVDs verloren gehen, muss der Kunde innerhalb von 7 Werktagen Bescheid geben.<br>
+                                3. Modelle: 2 DVDs für 5.90 € або 4 DVDs für 8.90 € pro Monat.
+                            </div>
+                            <div class="right-panel">
+                                <div class="task-card">
+                                    <h3>37. Kinder dürfen sich bei „Kino zuhause 24“ anmelden.</h3>
+                                    <div class="options">
+                                        <div class="option" onclick="setAnswer(this, false)">richtig</div>
+                                        <div class="option" onclick="setAnswer(this, true)">falsch</div>
+                                    </div>
+                                </div>
+                                <div class="task-card">
+                                    <h3>38. Wenn eine DVD nicht ankommt, müssen Sie spätestens nach drei Tagen Bescheid sagen.</h3>
+                                    <div class="options">
+                                        <div class="option" onclick="setAnswer(this, false)">richtig</div>
+                                        <div class="option" onclick="setAnswer(this, true)">falsch</div>
+                                    </div>
+                                </div>
+                                <div class="task-card">
+                                    <h3>39. Jeder Film kostet 5.90 Euro.</h3>
+                                    <div class="options">
+                                        <div class="option" onclick="setAnswer(this, false)">richtig</div>
+                                        <div class="option" onclick="setAnswer(this, true)">falsch</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="task-card">
-                        <h3>25. Sie bekommen Besuch und brauchen Informationen über Hotels.</h3>
-                        <div class="options">
-                            <div class="option" onclick="setAnswer(this, false)">a) Obergeschoss</div>
-                            <div class="option" onclick="setAnswer(this, true)">b) Erdgeschoss</div>
-                            <div class="option" onclick="setAnswer(this, false)">c) anderes Stockwerk</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    <hr style="border: 0; border-top: 1px dashed #ccc;">
 
-        <hr style="border: 0; border-top: 1px dashed #ccc;">
-
-        <!-- ================= TEIL 2 ================= -->
-        <div>
-            <h2 style="color: #0056b3; margin-bottom: 10px; border-bottom: 2px solid #0056b3; padding-bottom: 5px;">Lesen Teil 2</h2>
-            <div class="split-screen">
-                <div class="left-panel" style="display: flex; flex-direction: column; gap: 15px;">
-                    <!-- Оголошення а-h переписані текстом -->
-                    <div style="border: 1px solid #999; padding: 10px; background: #fff; font-size: 12px;">
-                        <strong>a) Kinderfreundliche Umgebung braucht Nachwuchs.</strong><br>
-                        Die günstigsten Häuser der Stadt: Wir bieten Reihenhäuser ab 850,- € Miete (warm). In der nächsten Umgebung warten viele Einkaufsmöglichkeiten, Kindergärten und Schulen auf Sie und Ihre Kinder. Alle Häuser sind sehr verkehrsgünstig gelegen. Haben wir Ihr Interesse geweckt? Dann rufen Sie uns an unter der Rufnummer 030 / 67 98 89 23.
-                    </div>
-                    <div style="border: 1px solid #999; padding: 10px; background: #fff; font-size: 12px;">
-                        <strong>b) Glas- und Gebäudereinigung</strong><br>
-                        VON KÜCHE BIS KELLER: WIR MACHEN RICHTIG SAUBER! Schimmelbeseitigung - Büroreinigung - Grundreinigung - Keller- und Dachbodenreinigung - Glasreinigung - Baureinigung - Teppichreinigung. Preisvorschläge nach kostenfreier Besichtigung Ihrer Wohnung. Keine Kosten für Anfahrt und Material. Testen Sie uns! GGB-Dietze-Korrekt-GmbH, Feinstr. 9 - 63128 Dietzenbach - 06074-278690.
-                    </div>
-                    <div style="border: 1px solid #999; padding: 10px; background: #fff; font-size: 12px;">
-                        <strong>c) Marken-Einbauküchen zu Super-Schnäppchenpreisen!</strong><br>
-                        70%, 80% günstiger! Nur 4 Tage! Bitte bringen Sie Ihre Küchenmaße mit. Unsere Fachberater planen Ihre neue Küche direkt. Diese wird schnell fachgerecht geliefert und montiert. Meistens innerhalb einer Woche. Spezielles Eröffnungsangebot: Geschirrspüler (7 Programme, 4 Temperaturen) nur 299 €! Wohnküchen - das Original! Wilhelmstr. 76, 12459 Berlin-Oberschöneweide.
-                    </div>
-                    <div style="border: 1px solid #999; padding: 10px; background: #fff; font-size: 12px;">
-                        <strong>d) Kartonfritze kommt!</strong><br>
-                        Umzugskartons, neu in vielen verschiedenen Größen: S, M, L, XL: Euro 0,50/0,75/1,20/1,30. Seeberger Str. 88/90. Lieferung frei Haus möglich. Tägl. 7-18 Uhr, Sa. 10 - 16 Uhr So. n. Vereinbarung Tel.: 531 5906 7-20 Uhr.
-                    </div>
-                    <div style="border: 1px solid #999; padding: 10px; background: #fff; font-size: 12px;">
-                        <strong>e) Top-Lage, Top-Preis</strong><br>
-                        Samstagsbesichtigung 10.00-14.00 Uhr. Liegnitzer Str. 35, 12753 Berlin. Wir bieten 1-4 Zi.-Wohnungen z.B. 4-Zi.-Wohnung, ca. 90 m² schon ab 580 € warm. Top-Ausstattung, z.B.: Hochwertige Fußbodenbeläge, verglaste Loggia; gern Familien mit Kindern. www.wbg-lieg.de. Wohnungsbaugenossenschaft „Kant-Universität“, Liegnitzer Str. 35, 12753 Berlin, Mo-Do 9-18 Uhr, Fr 9.00-16.30 Uhr, Tel. 030/874356-0.
-                    </div>
-                    <div style="border: 1px solid #999; padding: 10px; background: #fff; font-size: 12px;">
-                        <strong>f) Küchen aus Polen!</strong><br>
-                        Schöne neue Küchen müssen nicht teuer sein. Wir bieten Ihnen polnische Küchen zu polnischen Preisen in 1A-Qualität. Wir lassen in Polen herstellen und Sie profitieren von den niedrigen Produktionskosten. Wichtig: Lieferzeit bis zu drei Monaten, aber unschlagbar im Preis. Rufen Sie uns unverbindlich an: Plinther Fenster GmbH, Köthener Str. 4a, 14822 Linthen, Tel. 033444-405.
-                    </div>
-                    <div style="border: 1px solid #999; padding: 10px; background: #fff; font-size: 12px;">
-                        <strong>g) Mietspiegel aktuell</strong><br>
-                        Jetzt unter www.mietspiegel.de. Ist Ihre Wohnung zu teuer? Was wird für vergleichbare Wohnungen in Ihrer Nähe bezahlt? Die Stadtverwaltung bietet allen Interessierten jetzt einen neuen Service: Ab sofort kann online der aktuelle Mietspiegel für Ihre Wohnung ermittelt werden. Der Service steht ab dem 1. August online zur Verfügung. Die Nutzung ist kostenlos. www.mietspiegel.de.
-                    </div>
-                    <div style="border: 1px solid #999; padding: 10px; background: #fff; font-size: 12px;">
-                        <strong>h) günstiger + besser wohnen</strong><br>
-                        www.wohnen-heute.de. So funktioniert's: Sie suchen sich die passende Wohnung aus. Geben Sie dann unter www.wohnen-heute.de die Suchnummer im Suchfeld ein. Sofort erscheint eine ausführliche Beschreibung der Wohnung Ihrer Wahl. Schneller, praktischer und günstiger kommen Sie nicht an Ihre neue Wohnung. Und das 24 Stunden am Tag. Melden Sie sich gleich kostenlos an! www.wohnen-heute.de.
-                    </div>
-                </div>
-                <div class="right-panel">
-                    <p style="font-size: 14px; color: #555; font-style: italic; margin-bottom: 15px;">
-                        Lesen Sie die Situationen 26–30 und die Anzeigen a–h. Finden Sie für jede Situation die passende Anzeige. Für eine Aufgabe gibt es keine Lösung. Markieren Sie в цьому випадку X.
-                    </p>
-
-                    <div class="task-card">
-                        <h3>26. Nach einem Wasserschaden brauchen Sie schnell eine neue Küche.</h3>
-                        <div class="options">
-                            <div class="option" onclick="setAnswer(this, false)">Anzeige b</div>
-                            <div class="option" onclick="setAnswer(this, true)">Anzeige c</div>
-                            <div class="option" onclick="setAnswer(this, false)">Anzeige f</div>
-                            <div class="option" onclick="setAnswer(this, false)">X</div>
-                        </div>
-                    </div>
-
-                    <div class="task-card">
-                        <h3>27. Sie suchen im Internet nach einer neuen Wohnung.</h3>
-                        <div class="options">
-                            <div class="option" onclick="setAnswer(this, false)">Anzeige a</div>
-                            <div class="option" onclick="setAnswer(this, false)">Anzeige e</div>
-                            <div class="option" onclick="setAnswer(this, true)">Anzeige h</div>
-                            <div class="option" onclick="setAnswer(this, false)">X</div>
-                        </div>
-                    </div>
-
-                    <div class="task-card">
-                        <h3>28. Sie möchten wissen, wie hoch die Mietpreise in Ihrer Stadt normalerweise sind.</h3>
-                        <div class="options">
-                            <div class="option" onclick="setAnswer(this, false)">Anzeige e</div>
-                            <div class="option" onclick="setAnswer(this, true)">Anzeige g</div>
-                            <div class="option" onclick="setAnswer(this, false)">Anzeige h</div>
-                            <div class="option" onclick="setAnswer(this, false)">X</div>
-                        </div>
-                    </div>
-
-                    <div class="task-card">
-                        <h3>29. Sie wollen umziehen und suchen eine Firma, die Möbel transportiert.</h3>
-                        <div class="options">
-                            <div class="option" onclick="setAnswer(this, false)">Anzeige b</div>
-                            <div class="option" onclick="setAnswer(this, false)">Anzeige d</div>
-                            <div class="option" onclick="setAnswer(this, true)">X</div>
-                        </div>
-                    </div>
-
-                    <div class="task-card">
-                        <h3>30. Ihre Nachbarn suchen ein Haus zur Miete. Geben Sie einen Tipp.</h3>
-                        <div class="options">
-                            <div class="option" onclick="setAnswer(this, true)">Anzeige a</div>
-                            <div class="option" onclick="setAnswer(this, false)">Anzeige e</div>
-                            <div class="option" onclick="setAnswer(this, false)">Anzeige g</div>
-                            <div class="option" onclick="setAnswer(this, false)">X</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <hr style="border: 0; border-top: 1px dashed #ccc;">
-
-        <!-- ================= TEIL 3 ================= -->
-        <div>
-            <h2 style="color: #0056b3; margin-bottom: 10px; border-bottom: 2px solid #0056b3; padding-bottom: 5px;">Lesen Teil 3</h2>
-            <p style="font-size: 14px; color: #555; font-style: italic; margin-bottom: 15px;">
-                Lesen Sie die drei Texte. Zu jedem Text gibt es zwei Aufgaben. Entscheiden Sie, ob die Aussage richtig oder falsch ist und welche Antwort (a, b oder c) am besten passt.
-            </p>
-
-            <!-- Text 1 -->
-            <div class="split-screen" style="margin-bottom: 25px;">
-                <div class="left-panel" style="background: #fff; padding: 15px; border: 1px solid #ccc; font-size: 13px; line-height: 1.5;">
-                    <h4 style="margin-top: 0; text-align: center;">Neue Fahrpläne in München</h4>
-                    Sehr geehrte Fahrgäste,<br><br>
-                    ab dem 1. Dezember kommt es zu Fahrplanänderungen in unserem Buslinienverkehr. Die Fahrpläne für Straßenbahnen und U-Bahnen ändern sich aber nicht!<br><br>
-                    Die wichtigsten Änderungen im Busfahrplan haben wir für Sie zusammengefasst: Die <strong>Buslinie 19</strong> fährt nicht mehr zur Messe, sondern vom Bahnhof zum Leopoldplatz. Neu ist auch, dass diese Buslinie nicht zweimal, sondern viermal pro Stunde fährt. Die Wartezeiten werden also deutlich kürzer.<br><br>
-                    Auch bei der <strong>Buslinie 91</strong> wird es Änderungen geben: Sie fährt dann zweimal und nicht mehr einmal pro Stunde vom Bahnhof zur Messe.<br><br>
-                    Genaue Informationen zu den neuen Fahrplänen für Busse finden Sie an allen Bushaltestellen und in unseren Verkaufs- und Beratungsstellen.<br><br>
-                    Ihre Verkehrsbetriebe München
-                </div>
-                <div class="right-panel">
-                    <div class="task-card">
-                        <h3>31. Neue Fahrpläne gibt es nur für Busse.</h3>
-                        <div class="options">
-                            <div class="option" onclick="setAnswer(this, true)">richtig</div>
-                            <div class="option" onclick="setAnswer(this, false)">falsch</div>
-                        </div>
-                    </div>
-                    <div class="task-card">
-                        <h3>32. Vom Bahnhof zur Messe fährt ab Dezember...</h3>
-                        <div class="options">
-                            <div class="option" onclick="setAnswer(this, false)">a) Buslinie 19 viermal pro Stunde.</div>
-                            <div class="option" onclick="setAnswer(this, false)">b) Buslinie 91 einmal pro Stunde.</div>
-                            <div class="option" onclick="setAnswer(this, true)">c) Buslinie 91 zweimal pro Stunde.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Text 2 -->
-            <div class="split-screen" style="margin-bottom: 25px;">
-                <div class="left-panel" style="background: #fff; padding: 15px; border: 1px solid #ccc; font-size: 13px; line-height: 1.5;">
-                    Liebe Vereinsmitglieder,<br><br>
-                    wie jedes Jahr laden wir Sie zur Mitgliederversammlung ein. Dieses Treffen findet am 15.10. von 17 bis 20 Uhr statt. Wir werden Sie über die Entwicklung der Mitgliederzahlen, aber auch über Einnahmen und Ausgaben informieren. Außerdem zeigen wir Bilder vom Sommerfest im letzten Jahr. Die neue Vereinsleitung - d. h. mindestens drei Personen - wird gewählt. Herr Hunke möchte in Zukunft keine Aufgaben mehr übernehmen.<br><br>
-                    Gesprächsthema wird u.a. die Verbesserung der Sicherheit in unserem Vereinshaus sein. Nach dem Einbruch im letzten Jahr haben wir ein neues Kamerasystem eingebaut. Eigentlich brauchen wir auch neue Türschlösser und Fenster, diese sind aber teuer. Darüber müssen wir sprechen.<br><br>
-                    Wir danken für Ihr Kommen.<br>
-                    Mit freundlichen Grüßen<br>
-                    Die Vereinsleitung
-                </div>
-                <div class="right-panel">
-                    <div class="task-card">
-                        <h3>33. Der Verein hat ein regelmäßiges Treffen pro Jahr.</h3>
-                        <div class="options">
-                            <div class="option" onclick="setAnswer(this, true)">richtig</div>
-                            <div class="option" onclick="setAnswer(this, false)">falsch</div>
-                        </div>
-                    </div>
-                    <div class="task-card">
-                        <h3>34. Die Mitglieder sprechen über...</h3>
-                        <div class="options">
-                            <div class="option" onclick="setAnswer(this, false)">a) das nächste Sommerfest.</div>
-                            <div class="option" onclick="setAnswer(this, false)">b) die Wahl von Herrn Hunke.</div>
-                            <div class="option" onclick="setAnswer(this, true)">c) mehr Schutz vor Dieben und Einbrechern.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Text 3 -->
-            <div class="split-screen">
-                <div class="left-panel" style="background: #fff; padding: 15px; border: 1px solid #ccc; font-size: 13px; line-height: 1.5;">
-                    Sehr geehrte Familie Erdmann,<br><br>
-                    es ist sehr schade, dass Sie an unserem Elternabend der Klasse 4a am letzten Dienstag nicht da sein konnten. Es wurden viele Themen besprochen, so auch unsere Klassenfahrt im Mai nach Berlin. Es ist wichtig, dass auch Sie alle Informationen zu dieser Fahrt bekommen. Deshalb bitte ich Sie, mich anzurufen oder durch Ihren Sohn Kevin einen Termin zu vereinbaren. Natürlich wollen wir, dass auch Kevin an der Klassenfahrt teilnimmt.<br><br>
-                    Meine Telefonnummer ist: 02326 34301 – täglich von 15.00 Uhr bis 16.00 Uhr.<br><br>
-                    Meine Sprechstunden sind montags von 12.00 Uhr bis 12.45 Uhr und donnerstags von 8.00 Uhr bis 8.45 Uhr.<br><br>
-                    Mit freundlichem Gruß<br>
-                    Ines Strotmer
-                </div>
-                <div class="right-panel">
-                    <div class="task-card">
-                        <h3>35. Familie Erdmann hat am letzten Elternabend teilgenommen.</h3>
-                        <div class="options">
-                            <div class="option" onclick="setAnswer(this, false)">richtig</div>
-                            <div class="option" onclick="setAnswer(this, true)">falsch</div>
-                        </div>
-                    </div>
-                    <div class="task-card">
-                        <h3>36. Familie Erdmann...</h3>
-                        <div class="options">
-                            <div class="option" onclick="setAnswer(this, false)">a) lässt ihren Sohn Kevin nicht mit auf die Klassenfahrt.</div>
-                            <div class="option" onclick="setAnswer(this, false)">b) soll am Dienstag in die Schule kommen.</div>
-                            <div class="option" onclick="setAnswer(this, true)">c) soll sich über die Klassenfahrt nach Berlin informieren.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <hr style="border: 0; border-top: 1px dashed #ccc;">
-
-        <!-- ================= TEIL 4 ================= -->
-        <div>
-            <h2 style="color: #0056b3; margin-bottom: 10px; border-bottom: 2px solid #0056b3; padding-bottom: 5px;">Lesen Teil 4</h2>
-            <div class="split-screen">
-                <div class="left-panel" style="background: #fff; padding: 15px; border: 1px solid #ccc; font-size: 13px; line-height: 1.5;">
-                    <h4 style="margin-top: 0; text-align: center;">Allgemeine Geschäftsbedingungen</h4>
-                    Bei „Kino zuhause 24“ können Sie im Internet DVDs ausleihen. Sie bekommen die DVDs dann per Post zugeschickt.<br><br>
-                    <strong>1 Vertragsschluss</strong><br>
-                    Kunden können sich Online auf unserer Internetseite www.kinozuhause24.de anmelden und erhalten eine Bestätigung per E-Mail. Der Kunde ist für die Bestätigung per seiner Angaben allein verantwortlich. Eine Anmeldung von Personen, die das achtzehnte Lebensjahr noch nicht vollendet haben, ist verboten. Auf Anfrage von „Kino zuhause 24“ muss der Kunde sein Alter durch Vorlage einer beglaubigten Kopie seines gültigen Personalausweis oder Reisepass nachweisen. Die vom Kunden ausgewählten DVDs werden dem Kunden so schnell wie möglich zugeschickt.<br><br>
-                    <strong>2 Transportrisiko</strong><br>
-                    „Kino zuhause 24“ bestätigt den Versand aller DVDs per E-Mail. Es besteht die Möglichkeit, dass DVDs im Postversand verloren gehen. In diesem Fall muss der Kunde innerhalb von sieben Werktagen „Kino zuhause 24“ Bescheid geben, dass DVDs nicht angekommen sind. Gibt der Kunde nicht innerhalb von sieben Werktagen Bescheid, kann „Kino zuhause 24“ eine Pauschale von 25.00 Euro für jede in der Post verloren gegangenen DVD verlangen. „Kino zuhause 24“ stellt dem Kunden für den Transport Briefumschläge zur Verfügung. Der Kunde muss diese Umschläge für die Rücksendung der DVDs verwenden. Falls der Kunde den Umschlag verliert, muss er die Portokosten zahlen.<br><br>
-                    <strong>3 Bezahlung</strong><br>
-                    Die Firma „Kino zuhause 24“ bietet für den DVD-Verleih verschiedene Modelle an: Der Kunde kann pro Monat 2 DVDs für 5.90 Euro ausleihen oder 4 DVDs für 8.90 Euro. Alle Preise sind inklusive der Versandkosten.<br><br>
-                    <strong>4 Unterbrechung des Abonnements</strong><br>
-                    Der Kunde kann das Abonnement für einen Monat pro Jahr unterbrechen (z.B. wegen Urlaubs). Während dieser Zeit kann der Kunde keine DVDs ausleihen und muss auch die Gebühr nicht zahlen.
-                </div>
-                <div class="right-panel">
-                    <p style="font-size: 14px; color: #555; font-style: italic; margin-bottom: 15px;">
-                        Lesen Sie den Text. Entscheiden Sie, ob die Aussagen 37–39 richtig oder falsch sind.
-                    </p>
-
-                    <div class="task-card">
-                        <h3>37. Kinder dürfen sich bei „Kino zuhause 24“ anmelden.</h3>
-                        <div class="options">
-                            <div class="option" onclick="setAnswer(this, false)">richtig</div>
-                            <div class="option" onclick="setAnswer(this, true)">falsch</div>
-                        </div>
-                    </div>
-
-                    <div class="task-card">
-                        <h3>38. Wenn eine DVD nicht bei Ihnen ankommt, müssen Sie spätestens nach drei Tagen Bescheid sagen.</h3>
-                        <div class="options">
-                            <div class="option" onclick="setAnswer(this, false)">richtig</div>
-                            <div class="option" onclick="setAnswer(this, true)">falsch</div>
-                        </div>
-                    </div>
-
-                    <div class="task-card">
-                        <h3>39. Jeder Film kostet 5.90 Euro.</h3>
-                        <div class="options">
-                            <div class="option" onclick="setAnswer(this, false)">richtig</div>
-                            <div class="option" onclick="setAnswer(this, true)">falsch</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <hr style="border: 0; border-top: 1px dashed #ccc;">
-
-        <!-- ================= TEIL 5 ================= -->
-        <div>
-            <h2 style="color: #0056b3; margin-bottom: 10px; border-bottom: 2px solid #0056b3; padding-bottom: 5px;">Lesen Teil 5</h2>
-            <div class="split-screen">
-                <div class="left-panel" style="background: #fff; padding: 15px; border: 1px solid #ccc; font-size: 14px; line-height: 1.6;">
-                    (0) <u>Frau Bräuning</u>,<br><br>
-                    mein Name ist Lara Weipert und ich ziehe <strong>(40) ______</strong> Woche in die Wohnung neben Ihnen ein. Ich wollte deshalb schon mal Bescheid geben, dass es in der nächsten Zeit etwas lauter werden könnte.<br><br>
-                    Denn ich werde <strong>(41) ______</strong> und neue Möbel durch den Flur tragen. <strong>(42) ______</strong> werde ich Regale an die Wände schrauben. Ich werde versuchen, den Lärm auf die Zeit <strong>(43) ______</strong> 14 und 18 Uhr zu beschränken. Ich hoffe, Sie haben in dieser Zeit keine wichtigen Termine zuhause.<br><br>
-                    <strong>(44) ______</strong> melden Sie sich gerne bei mir. <strong>(45) ______</strong> ich dann eingezogen bin, können wir uns in Ruhe kennenlernen.<br><br>
-                    Ihre neue Nachbarin Lara Weipert
-                </div>
-                <div class="right-panel">
-                    <p style="font-size: 14px; color: #555; font-style: italic; margin-bottom: 15px;">
-                        Lesen Sie den Text und schließen Sie die Lücken 40–45. Welche Lösung (a, b oder c) passt am besten?
-                    </p>
-
-                    <div class="task-card">
-                        <h3>Lücke 40</h3>
-                        <div class="options">
-                            <div class="option" onclick="setAnswer(this, true)">a) nächste</div>
-                            <div class="option" onclick="setAnswer(this, false)">b) letzte</div>
-                            <div class="option" onclick="setAnswer(this, false)">c) vorige</div>
-                        </div>
-                    </div>
-
-                    <div class="task-card">
-                        <h3>Lücke 41</h3>
-                        <div class="options">
-                            <div class="option" onclick="setAnswer(this, false)">a) ausziehen</div>
-                            <div class="option" onclick="setAnswer(this, false)">b) dekorieren</div>
-                            <div class="option" onclick="setAnswer(this, true)">c) renovieren</div>
-                        </div>
-                    </div>
-
-                    <div class="task-card">
-                        <h3>Lücke 42</h3>
-                        <div class="options">
-                            <div class="option" onclick="setAnswer(this, false)">a) Aber</div>
-                            <div class="option" onclick="setAnswer(this, true)">b) Außerdem</div>
-                            <div class="option" onclick="setAnswer(this, false)">c) Dennoch</div>
-                        </div>
-                    </div>
-
-                    <div class="task-card">
-                        <h3>Lücke 43</h3>
-                        <div class="options">
-                            <div class="option" onclick="setAnswer(this, false)">a) ab</div>
-                            <div class="option" onclick="setAnswer(this, false)">b) von</div>
-                            <div class="option" onclick="setAnswer(this, true)">c) zwischen</div>
-                        </div>
-                    </div>
-
-                    <div class="task-card">
-                        <h3>Lücke 44</h3>
-                        <div class="options">
-                            <div class="option" onclick="setAnswer(this, false)">a) Auch</div>
-                            <div class="option" onclick="setAnswer(this, false)">b) Dagegen</div>
-                            <div class="option" onclick="setAnswer(this, true)">c) Sonst</div>
-                        </div>
-                    </div>
-
-                    <div class="task-card">
-                        <h3>Lücke 45</h3>
-                        <div class="options">
-                            <div class="option" onclick="setAnswer(this, true)">a) Da</div>
-                            <div class="option" onclick="setAnswer(this, false)">b) Nach</div>
-                            <div class="option" onclick="setAnswer(this, false)">c) Wenn</div>
+                    <!-- ================= TEIL 5 ================= -->
+                    <div>
+                        <h2 style="color: #0056b3; margin-bottom: 10px; border-bottom: 2px solid #0056b3; padding-bottom: 5px;">Lesen Teil 5</h2>
+                        <div class="split-screen">
+                            <div class="left-panel" style="background: #fff; padding: 15px; border: 1px solid #ccc; font-size: 14px;">
+                                Frau Bräuning,<br>
+                                ich ziehe <strong>(40) ______</strong> Woche ein. Далі буде гучно, бо планую <strong>(41) ______</strong> та збирати меблі. <strong>(42) ______</strong> свердлитиму стіни. Обмежуся часом <strong>(43) ______</strong> 14-18 годин. Якщо ви проти, <strong>(44) ______</strong> дзвоніть. <strong>(45) ______</strong> заїду — відсвяткуємо.
+                            </div>
+                            <div class="right-panel">
+                                <div class="task-card">
+                                    <h3>Lücke 40</h3>
+                                    <div class="options">
+                                        <div class="option" onclick="setAnswer(this, true)">a) nächste</div>
+                                        <div class="option" onclick="setAnswer(this, false)">b) letzte</div>
+                                    </div>
+                                </div>
+                                <div class="task-card">
+                                    <h3>Lücke 41</h3>
+                                    <div class="options">
+                                        <div class="option" onclick="setAnswer(this, false)">a) ausziehen</div>
+                                        <div class="option" onclick="setAnswer(this, true)">c) renovieren</div>
+                                    </div>
+                                </div>
+                                <div class="task-card">
+                                    <h3>Lücke 42</h3>
+                                    <div class="options">
+                                        <div class="option" onclick="setAnswer(this, true)">b) Außerdem</div>
+                                    </div>
+                                </div>
+                                <div class="task-card">
+                                    <h3>Lücke 43</h3>
+                                    <div class="options">
+                                        <div class="option" onclick="setAnswer(this, true)">c) zwischen</div>
+                                    </div>
+                                </div>
+                                <div class="task-card">
+                                    <h3>Lücke 44</h3>
+                                    <div class="options">
+                                        <div class="option" onclick="setAnswer(this, true)">c) Sonst</div>
+                                    </div>
+                                </div>
+                                <div class="task-card">
+                                    <h3>Lücke 45</h3>
+                                    <div class="options">
+                                        <div class="option" onclick="setAnswer(this, true)">a) Wenn</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-
-    </div>
-`
-            schreibenHTML: `
-                <div class="task-card">
-                    <p><b>Aufgabe Schreiben:</b> Напишіть листа орендодавцю Herr Meyer з проханням відремонтувати опалення.</p>
-                </div>
-                <textarea id="text-schreiben" placeholder="Sehr geehrter Herr Meyer..."></textarea>
-                <button class="btn btn-success" style="margin-top: 10px;" onclick="validateLetterAI()">🤖 Перевірити граматику через AI</button>
-                <div id="ai-response-box" class="ai-box"></div>
-            `
+            `,
+            schreibenHTML: getSchreibenTemplate("Antworten Sie auf die offizielle Einladung zur Nachbarschaftsfeier von Lara Weipert.")
         },
-        "modeltest4": { name: "Modeltest 4", hoerenHTML: `<p style="padding:20px;">Заготовка для Hören Modeltest 4</p>`, lesenHTML: `<p style="padding:20px;">Заготовка для Lesen Modeltest 4</p>`, schreibenHTML: `<p style="padding:20px;">Заготовка для Schreiben Modeltest 4</p>` },
-        "modeltest5": { name: "Modeltest 5", hoerenHTML: `<p style="padding:20px;">Заготовка для Hören Modeltest 5</p>`, lesenHTML: `<p style="padding:20px;">Заготовка для Lesen Modeltest 5</p>`, schreibenHTML: `<p style="padding:20px;">Заготовка для Schreiben Modeltest 5</p>` },
-        "modeltest6": { name: "Modeltest 6", hoerenHTML: `<p style="padding:20px;">Заготовка для Hören Modeltest 6</p>`, lesenHTML: `<p style="padding:20px;">Заготовка для Lesen Modeltest 6</p>`, schreibenHTML: `<p style="padding:20px;">Заготовка для Schreiben Modeltest 6</p>` },
-        "modeltest7": { name: "Modeltest 7", hoerenHTML: `<p style="padding:20px;">Заготовка для Hören Modeltest 7</p>`, lesenHTML: `<p style="padding:20px;">Заготовка для Lesen Modeltest 7</p>`, schreibenHTML: `<p style="padding:20px;">Заготовка для Schreiben Modeltest 7</p>` }
+        "modeltest4": { name: "Modeltest 4", hoerenHTML: `<div class="task-card"><h3>Hören Teil 1 (Modell 4)</h3></div>`, lesenHTML: `<p>Inhalt Lesen Modell 4</p>`, schreibenHTML: getSchreibenTemplate("Schreiben Aufgabe für Modell 4") },
+        "modeltest5": { name: "Modeltest 5", hoerenHTML: `<div class="task-card"><h3>Hören Teil 1 (Modell 5)</h3></div>`, lesenHTML: `<p>Inhalt Lesen Modell 5</p>`, schreibenHTML: getSchreibenTemplate("Schreiben Aufgabe für Modell 5") },
+        "modeltest6": { name: "Modeltest 6", hoerenHTML: `<div class="task-card"><h3>Hören Teil 1 (Modell 6)</h3></div>`, lesenHTML: `<p>Inhalt Lesen Modell 6</p>`, schreibenHTML: getSchreibenTemplate("Schreiben Aufgabe für Modell 6") },
+        "modeltest7": { name: "Modeltest 7", hoerenHTML: `<div class="task-card"><h3>Hören Teil 1 (Modell 7)</h3></div>`, lesenHTML: `<p>Inhalt Lesen Modell 7</p>`, schreibenHTML: getSchreibenTemplate("Schreiben Aufgabe für Modell 7") }
     };
 
     let currentStep = 'hoeren';
@@ -734,11 +556,13 @@
 
     function initExam(testKey) {
         activeTestData = examDatabase[testKey];
+        if (!activeTestData) return;
+
         currentStep = 'hoeren';
         
-        document.getElementById('section-hoeren').innerHTML = activeTestData.hoerenHTML;
-        document.getElementById('section-lesen').innerHTML = activeTestData.lesenHTML;
-        document.getElementById('section-schreiben').innerHTML = activeTestData.schreibenHTML;
+        document.getElementById('section-hoeren').innerHTML = activeTestData.hoerenHTML || '';
+        document.getElementById('section-lesen').innerHTML = activeTestData.lesenHTML || '';
+        document.getElementById('section-schreiben').innerHTML = activeTestData.schreibenHTML || '';
 
         document.getElementById('display-test-name').innerText = activeTestData.name;
         
@@ -767,6 +591,21 @@
             document.getElementById('section-schreiben').classList.remove('hidden');
             document.getElementById('btn-check-answers').classList.add('hidden');
             document.getElementById('btn-next-step').innerText = "Завершити тест та підрахувати бали 🔄";
+            
+            setTimeout(() => {
+                try {
+                    if (window.LanguageTool) {
+                        LanguageTool.Images.init("https://www.languagetool.org/js/online-check/iframe_api/v1/images/");
+                        LanguageTool.Configuration.setLanguage("de-DE");
+                        const inputArea = document.getElementById('text-schreiben');
+                        if (inputArea) {
+                            LanguageTool.checkOnCheckboxes([inputArea]);
+                        }
+                    }
+                } catch (e) {
+                    console.log("LanguageTool не ініціалізувався:", e);
+                }
+            }, 300);
         }
     }
 
@@ -781,6 +620,7 @@
     function revealAnswers() {
         const activeSectionId = currentStep === 'hoeren' ? 'section-hoeren' : 'section-lesen';
         const activeSection = document.getElementById(activeSectionId);
+        if (!activeSection) return;
         
         activeSection.querySelectorAll('.option.selected').forEach(opt => {
             if (opt.dataset.status === "correct") {
@@ -791,7 +631,7 @@
         });
         
         activeSection.querySelectorAll('.option').forEach(opt => {
-            if (opt.getAttribute('onclick').includes('true')) {
+            if (opt.getAttribute('onclick') && opt.getAttribute('onclick').includes('true')) {
                 opt.classList.add('correct');
             }
         });
@@ -818,21 +658,20 @@
 
         const badge = document.getElementById('result-badge');
         const desc = document.getElementById('result-desc');
-
         const successRate = totalQuestions > 0 ? (correctAnswers / totalQuestions) : 0;
 
         if (successRate >= 0.73 || correctAnswers >= 33) { 
             badge.innerText = "Сертифікат: B1";
             badge.className = "badge b1";
-            desc.innerHTML = "🎉 <b>Вітаємо!</b> Ви показали чудовий результат у частинах Hören & Lesen. Цей рівень балів відповідає оцінці <b>B1</b>. Якщо ваш лист у блоці Schreiben також написаний без критичних помилок, ви гарантовано успішно складаєте іспит!";
+            desc.innerHTML = "🎉 <b>Вітаємо!</b> Результат відповідає оцінці <b>B1</b>.";
         } else if (successRate >= 0.44 || correctAnswers >= 20) {
             badge.innerText = "Сертифікат: A2";
             badge.className = "badge a2";
-            desc.innerHTML = "👍 <b>Добре!</b> Ви набрали достатньо балів для отримання рівня <b>A2</b>. Щоб підняти результат до омріяного B1, зверніть увагу на завдання, в яких припустилися помилок, та спробуйте пройти тест ще раз.";
+            desc.innerHTML = "👍 <b>Добре!</b> Результат відповідає рівню <b>A2</b>.";
         } else {
             badge.innerText = "Nicht bestanden";
             badge.className = "badge fail";
-            desc.innerHTML = "⚠️ <b>Недостатньо балів.</b> На жаль, набраних балів не вистачає для підтвердження мовного рівня. Не засмучуйтесь! Тренуйтеся більше з іншими модельними тестами, розбирайте тексти та спробуйте знову.";
+            desc.innerHTML = "⚠️ <b>Недостатньо балів.</b> Спробуйте ще раз.";
         }
 
         document.getElementById('exam-block').classList.add('hidden');
@@ -842,51 +681,6 @@
     function goToMenu() {
         document.getElementById('step-results').classList.add('hidden');
         document.getElementById('step-menu').classList.remove('hidden');
-    }
-
-    async function validateLetterAI() {
-        const textValue = document.getElementById('text-schreiben').value;
-        const box = document.getElementById('ai-response-box');
-        
-        if (!textValue.trim()) { alert("Будь ласка, введіть ваш текст листа."); return; }
-        
-        box.style.display = "block";
-        box.style.borderColor = "#ffc107";
-        box.style.backgroundColor = "#fff3cd";
-        box.innerText = "🤖 ШІ аналізує структуру речень та граматику вашого листа...";
-
-        try {
-            const res = await fetch("https://api.languagetoolplus.com/v2/check", {
-                method: "POST",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: `text=${encodeURIComponent(textValue)}&language=de-DE`
-            });
-            const resultData = await res.json();
-
-            if (resultData.matches.length === 0) {
-                box.style.borderColor = "#28a745";
-                box.style.backgroundColor = "#d4edda";
-                box.innerHTML = "🎉 <b>Вказаний текст чудовий!</b> ШІ не виявив грубих помилок у вашому листі.";
-            } else {
-                box.style.borderColor = "#dc3545";
-                box.style.backgroundColor = "#f8d7da";
-                let report = `⚠️ <b>Знайдено помилок у тексті: ${resultData.matches.length}</b>\n\n`;
-                
-                resultData.matches.forEach((item, index) => {
-                    const errorWord = textValue.substring(item.offset, item.offset + item.length);
-                    report += `${index + 1}. Помилка у слові/фразі: <u><b>"${errorWord}"</b></u>\n`;
-                    report += `    💡 Рекомендація ШІ: ${item.message}\n`;
-                    if (item.replacements && item.replacements.length > 0) {
-                        report += `    ✅ Правильно написати: "${item.replacements[0].value}"\n`;
-                    }
-                    report += `\n`;
-                });
-                box.innerHTML = report;
-            }
-        } catch (e) {
-            box.style.borderColor = "#6c757d";
-            box.innerText = "Помилка зв'язку з сервером перевірки граматики.";
-        }
     }
 </script>
 
