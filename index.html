@@ -756,6 +756,304 @@ teil5: {
         }
     ]
 }
+                },
+
+                { id: 3,
+                    title: "Lesen - Test 3",
+                    teil1: {
+    title: "Teil 1: Infotafel Städtischer Bürgerservice",
+    infoBox: `
+        <div class="overflow-x-auto my-2 border border-gray-300 rounded-lg shadow-sm">
+            <table class="w-full text-left border-collapse bg-white text-xs text-gray-800">
+                <thead>
+                    <tr class="bg-gray-100 border-b border-gray-300">
+                        <th class="p-2.5 font-bold border-r border-gray-300 w-1/4">Stockwerk</th>
+                        <th class="p-2.5 font-bold">Ämter und Dienststellen</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">5. OG</td>
+                        <td class="p-2.5">Stadtentwicklung – Verkehrsentwicklung – Planungsamt – Baurecht – Gärten und Grünflächen</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">4. OG</td>
+                        <td class="p-2.5">Familienkasse (Kindergeld, Beihilfe) – Wohnungsamt (Wohngeld, Wohnungsvermittlung) – Seniorenhilfe (Informationen, Hilfe bei Anträgen) – Städtische Kinderbetreuung (Krippe, Kindergarten, Hort)</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">3. OG</td>
+                        <td class="p-2.5">Abfallwirtschaft (Mülltonnen, Container, Reinigung öffentlicher Plätze) – Gewerbeangelegenheiten (An-, Um- und Abmeldungen, Informationen für Gewerbetreibende, Verordnungen und Richtlinien)</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">2. OG</td>
+                        <td class="p-2.5">Fahrzeugstelle (An-, Um- und Abmeldung von Kfz und Motorrädern) – Steuerangelegenheiten (Formulare, Informationen und persönliche Beratung) – Parkausweise (Anwohnerparkausweise und Parkausweise für Behinderte)</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">1. OG</td>
+                        <td class="p-2.5">Meldestelle (An-, Um- und Abmeldungen von Personen) – Ausweisstelle (Pässe und Personalausweise) – Amtsärztlicher Dienst (Untersuchungen und Atteste) – Wahlamt (Wahlunterlagen, Briefwahl)</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">EG</td>
+                        <td class="p-2.5">Information/Wegweiser – Ausgabe von Führerscheinen – Beschwerdestelle – Fundsachen – Fotoautomat – Kopierer – Münztelefon – WC</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">UG</td>
+                        <td class="p-2.5">Garderobe – Archiv – Kaffeeautomat – WC mit Wickelraum</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    `,
+    questions: [
+        { num: 21, text: "21. Sie möchten Ihr Auto abmelden.", opts: ["a) EG", "b) 1. OG", "c) anderes Stockwerk"], correct: 2 },
+        { num: 22, text: "22. Sie brauchen eine größere Mülltonne.", opts: ["a) 1. OG", "b) 3. OG", "c) anderes Stockwerk"], correct: 1 },
+        { num: 23, text: "23. Sie haben letzte Woche Ihre Tasche verloren.", opts: ["a) EG", "b) 2. OG", "c) anderes Stockwerk"], correct: 0 },
+        { num: 24, text: "24. Sie brauchen einen Ausweis für Ihre kleine Tochter.", opts: ["a) 1. OG", "b) 4. OG", "c) anderes Stockwerk"], correct: 0 },
+        { num: 25, text: "25. Sie brauchen Hilfe bei der Steuererklärung.", opts: ["a) 2. OG", "b) 3. OG", "c) anderes Stockwerk"], correct: 0 }
+    ]
+},
+
+teil2: {
+    title: "Teil 2: Anzeigen a–h",
+    infoBox: `
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-2 text-xs text-gray-800">
+            <!-- Anzeige a -->
+            <div class="bg-amber-50 border-2 border-amber-300 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-amber-900 border-b border-amber-200 pb-1 mb-2">Anzeige a</div>
+                <div class="font-bold mb-1 text-center">Langeweile? Alleine?<br>Das muss nicht sein.</div>
+                <div>Wir sind ein kleiner Sportverein mit älteren Mitgliedern, die fit und gesund bleiben wollen. Wir laufen, fahren Rad und spielen Tischtennis, wir wandern und im Sommer schwimmen wir in einem See in der Nähe unseres Vereinshauses. Wir sind nett und gesellig und freuen uns über neue Mitglieder!</div>
+                <div class="mt-2 font-bold text-gray-700 text-center">fitundgesund@web.de</div>
+            </div>
+
+            <!-- Anzeige b -->
+            <div class="bg-green-50 border-2 border-green-300 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-green-900 border-b border-green-200 pb-1 mb-2">Anzeige b</div>
+                <div class="font-bold mb-1 text-center">Sport ist Mord? Bei uns nicht!</div>
+                <div>In unserem freundlichen Sporthotel finden Sie:
+                    <ul class="list-disc pl-4 my-1 space-y-0.5">
+                        <li>gepflegte Einzel- und Doppelzimmer</li>
+                        <li>Halle mit vielen Geräten</li>
+                        <li>Sportplatz</li>
+                        <li>Sauna, gemütliches Kaminzimmer, Wintergarten und Terrasse für die Erholung nach dem Sport</li>
+                        <li>ganzjähriges Kursprogramm für viele Sportarten</li>
+                        <li>viele attraktive Sonderangebote</li>
+                    </ul>
+                    Besuchen Sie uns vor Ort und im Internet:
+                </div>
+                <div class="mt-2 font-bold text-gray-700 text-center">www.gttundsport.de</div>
+            </div>
+
+            <!-- Anzeige c -->
+            <div class="bg-cyan-50 border-2 border-cyan-300 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-cyan-900 border-b border-cyan-200 pb-1 mb-2">Anzeige c</div>
+                <div>Wir gründen eine <b>neue Sportgruppe</b> mit den Jugendlichen aus unserem Stadtteil. Wir benutzen den Sportplatz von TGS Vorwärts und dürfen auf dem Grundstück ein kleines Gruppenheim bauen. Eigentlich können wir alles gebrauchen – Sportgeräte, Bälle, Möbel, Kaffeemaschinen, Kühlschränke...<br><br>Wenn Sie etwas abzugeben haben, freuen wir uns über Ihre Nachricht. Tatkräftige Hilfe beim Bauen und Organisieren ist auch willkommen!</div>
+                <div class="mt-2 font-bold text-gray-700 text-center">kontakt@sportimviertel.de</div>
+            </div>
+
+            <!-- Anzeige d -->
+            <div class="bg-yellow-50 border-2 border-yellow-300 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-yellow-900 border-b border-yellow-200 pb-1 mb-2">Anzeige d</div>
+                <div class="font-bold mb-1 text-center">Netzwerk-Sport e.V.</div>
+                <div>ist ein Internet-Portal für Sportvereine und Sportgruppen. Hier finden Sie:
+                    <ul class="list-disc pl-4 my-1 space-y-0.5">
+                        <li>Kontakt zu Vereinen in Ihrer Nähe</li>
+                        <li>Sportpartner*innen für alle Sportarten</li>
+                        <li>Gebrauchte Geräte und Sportbekleidung</li>
+                        <li>Sportnachrichten aus der Region</li>
+                    </ul>
+                    Einfach registrieren und unser Angebot steht Ihnen kostenlos zur Verfügung:
+                </div>
+                <div class="mt-2 font-bold text-gray-700 text-center">www.netzwerk-sport.net</div>
+            </div>
+
+            <!-- Anzeige e -->
+            <div class="bg-gray-50 border-2 border-gray-300 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-gray-900 border-b border-gray-200 pb-1 mb-2">Anzeige e</div>
+                <div class="font-bold mb-1 text-center">Tanzen ist Sport mit Spaß!</div>
+                <div>Sie wollen fit bleiben und neue Freunde finden? Dann ist ein Tanzkurs genau das Richtige für Sie. Wir bieten Kurse für Anfänger und Fortgeschrittene, auch für Turniertänzer. Kurszeiten täglich von 18 bis 22 Uhr und an jedem ersten Samstag im Monat eine Tanzparty zum Trainieren und Spaß haben! Paare und Einzeltänzer willkommen.<br>Buchen Sie eine Schnupper-Stunde für nur 15 Euro! Tanzschuhe können Sie bei uns ausleihen.<br>Wir freuen uns, Sie kennenzulernen!</div>
+                <div class="mt-2 font-bold text-gray-700 text-center">
+                    Tanzschule Sievers, www.Sievers-Tanz.de<br>
+                    tanzbeisievers@gmail.com
+                </div>
+            </div>
+
+            <!-- Anzeige f -->
+            <div class="bg-purple-50 border-2 border-purple-300 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-purple-900 border-b border-purple-200 pb-1 mb-2">Anzeige f</div>
+                <div>Wir, W46 und M39, sind neu hier und suchen ein Paar in unserem Alter als Sportpartner. Wir sind nett und unkompliziert und keine großen Leistungssportler. Wandern in der Natur, leichtes Joggen, Tischtennis spielen und Radfahren würde uns Spaß machen, Kino und Kneipe auch. Habt ihr Lust, euren Bekanntenkreis zu erweitern? Dann:</div>
+                <div class="mt-2 font-bold text-gray-700 text-center">w46m39@gmx.net</div>
+            </div>
+
+            <!-- Anzeige g -->
+            <div class="bg-blue-50 border-2 border-blue-300 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-blue-200 pb-1 mb-2">Anzeige g</div>
+                <div>Wir machen zusammen Sport seit 2004 und wir <b>brauchen Nachwuchs</b><br>
+                <b>Wer?</b> Im Moment 19 männliche Hobby-Fußballer zwischen 24 und 63 Jahren, Männer in jedem Alter willkommen!<br>
+                <b>Wann?</b> Samstags von 11 bis ca. 14 Uhr (außer bei Eis und Schnee)<br>
+                <b>Wo?</b> Im Stadtpark vor dem Eingang zur Schwimmhalle<br>
+                <b>Was?</b> Fußball nur zum Spaß<br>
+                Meldet euch oder kommt einfach:</div>
+                <div class="mt-2 font-bold text-gray-700 text-center">wirsindhelden@web.net</div>
+            </div>
+
+            <!-- Anzeige h -->
+            <div class="bg-yellow-100 border-2 border-yellow-400 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-yellow-900 border-b border-yellow-300 pb-1 mb-2">Anzeige h</div>
+                <div class="font-bold mb-1 text-center">Tanzsportclub Schwarz-Silber sucht neue Räume</div>
+                <div>Wir sind eine Gruppe von 20 Hobby-Tänzer*innen zwischen 30 und 50 Jahren und haben bisher mittwochs in der Stadthalle trainiert. Da die Stadthalle umgebaut wird, haben wir für die nächsten vier Monate keinen Raum mehr. Welcher Verein oder welche Gaststätte hat Platz für uns?<br><br>Bitte melden unter:</div>
+                <div class="mt-2 font-bold text-gray-700 text-center">platzfuertanz@web.de</div>
+            </div>
+        </div>
+    `,
+    questions: [
+        { num: 26, text: "26. Sie reiten gern und suchen einen Verein.", correctLetter: "x" },
+        { num: 27, text: "27. Sie möchten im Urlaub körperlich aktiv sein und schwimmen.", correctLetter: "b" },
+        { num: 28, text: "28. Sie möchten gerne tanzen lernen.", correctLetter: "e" },
+        { num: 29, text: "29. Sie möchten in Ihrer Freizeit bei einem guten Projekt mithelfen.", correctLetter: "c" },
+        { num: 30, text: "30. Ihre Tante ist jetzt in Rente und fühlt sich ein bisschen einsam.", correctLetter: "a" }
+    ]
+},
+teil3: {
+    title: "Teil 3: Texte verstehen",
+    items: [
+        {
+            text: `<b>Essen und gute Schulnoten</b><br><br>Wie gut ein Kind in der Schule ist, hängt einer Studie zufolge auch von seiner Ernährung ab. Besonders günstig wirken sich viel Obst, Gemüse und Vollkornprodukte aus, berichtet die „Ärzte-Zeitung“. Auch eine möglichst große Abwechslung der Lebensmittel spielt eine Rolle.<br><br>Die Forscher hatten rund 4600 Schüler der 5. Klasse über die Qualität ihrer Ernährung befragt und sie anschließend in drei gleich große Gruppen eingeteilt.<br><br>Eine Gruppe ernährte sich ungesund, die zweite Gruppe ernährte sich durchschnittlich und die dritte Gruppe ernährte sich sehr gesund. Untersucht wurde, wie viel Prozent der Schüler bei Prüfungen durchfallen.<br><br>Kinder mit guter Ernährung fallen viel seltener durch als Kinder mit schlechter Ernährung.`,
+            q1: { num: 31, text: "31. Kinder, die gesund essen, bestehen Prüfungen häufiger.", correct: "richtig" },
+            q2: { num: 32, text: "32. Um besser lernen zu können, sollten Kinder...", opts: ["a) essen, was sie wollen.", "b) regelmäßig Tabletten nehmen.", "c) viele unterschiedliche Lebensmittel essen."], correct: 2 }
+        },
+        {
+            text: `<b>Liebe Mieter,</b><br><br>wie Sie wissen, gibt es oft Probleme mit der Sauberkeit im Treppenhaus. Viele Mieter haben keine Zeit zum Putzen, weil sie den ganzen Tag arbeiten müssen. Deshalb möchten wir, dass eine Firma die Treppe einmal pro Woche putzt.<br><br>Wir haben auch ein Angebot: Die Kosten pro Mieter (bzw. pro Wohnung) liegen bei 5 Euro im Monat. Aber dafür hätten Sie ein sauberes Treppenhaus.<br><br>Bitte geben Sie uns bis zum Ende der Woche Bescheid, ob Sie einverstanden sind. Dann geben wir der Reinigungsfirma den Auftrag und ab dem kommenden Monat brauchen Sie sich nicht mehr um das Treppenhaus zu kümmern!<br><br><i>Mit freundlichen Grüßen<br>Ihre Hausverwaltung</i>`,
+            q1: { num: 33, text: "33. Das Treppenhaus ist oft schmutzig.", correct: "richtig" },
+            q2: { num: 34, text: "34. Die Firma...", opts: ["a) beginnt Ende dieser Woche zu putzen.", "b) bekommt im Monat 5 Euro pro Mieter.", "c) soll alle zwei Wochen putzen."], correct: 1 }
+        },
+        {
+            text: `<b>SPAR-BANK</b><br><br>Sehr geehrter Herr Osmanaj,<br><br>wir freuen uns Ihnen mitteilen zu dürfen, dass wir ihren Antrag auf einen Kredit positiv beantworten können.<br><br>Es stehen Ihnen ab sofort EUR 5.000 zur Verfügung zu einem Zinssatz von 5.99 %. Die Laufzeit beträgt wie vereinbart 36 Monate mit einer monatlichen Rate von EUR 152, beginnend mit dem 01. Mai. Sollten Sie die Raten verspätet zahlen, entstehen dadurch zusätzliche Gebühren.<br><br>Die Summe von EUR 5.000 wird in den nächsten Tagen auf das angegebene Konto überwiesen.<br><br>Sollten Sie noch weitere Wünsche oder Fragen haben, so stehen wir ihnen zu unseren Geschäftszeiten zur Verfügung.<br><br><i>Mit freundlichen Grüßen<br>Ihre Spar-Bank</i>`,
+            q1: { num: 35, text: "35. Herr Osmanaj braucht Geld.", correct: "richtig" },
+            q2: { num: 36, text: "36. Er...", opts: ["a) leiht sich 5000 EUR.", "b) muss einen Termin vereinbaren.", "c) soll jetzt Gebühren zahlen."], correct: 0 }
+        }
+    ]
+},
+teil4: {
+    title: "Teil 4: Häufige Fragen zu Ihrer Stadtbücherei",
+    infoBox: `
+        <div class="bg-white border-2 border-gray-700 rounded-lg p-4 my-2 text-xs text-gray-800 space-y-3 shadow-sm">
+            <h3 class="text-sm font-bold text-blue-900 border-b border-gray-300 pb-1 text-center">Häufige Fragen zu Ihrer Stadtbücherei</h3>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">Wie bekomme ich einen Büchereiausweis?</h4>
+                <p>Die Anmeldung ist nur mit amtlichem Ausweis und nur persönlich in der Stadtbücherei möglich. Das Formular dazu gibt es in der Stadtbücherei und auf unserer Webseite. Kinder brauchen zusätzlich eine schriftliche Erlaubnis der Eltern.</p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">Ist mein Büchereiausweis übertragbar?</h4>
+                <p>Nein.</p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">Wie lange kann ich Bücher und andere Medien ausleihen?</h4>
+                <p>Bücher, CDs und Zeitschriften dürfen Sie in der Regel vier Wochen behalten. DVDs eine Woche. Für DVDs gibt es außerdem eine Leihgebühr.</p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">Kann ich Bücher und andere Medien auch länger ausleihen?</h4>
+                <p>Bücher und CDs können Sie selbst mit gültigem Büchereiausweis im Internet unter http://stadtbuecherei.de verlängern. Sie können auch persönlich in die Stadtbücherei kommen. Bitte bringen Sie Ihren Büchereiausweis mit. Sie können auch telefonisch unter der Rufnummer 0800-696867 verlängern.<br><br>Die Leihfrist von DVDs und Zeitschriften kann nicht verlängert werden, bei anderen Medien bis zu zwei Mal, wenn sie nicht vorbestellt sind. Tipp: Rechtzeitig daran denken!</p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">Was muss ich bezahlen?</h4>
+                <p>Erwachsene zahlen 7 Euro im Jahr. Zusätzliche Gebühren pro Buch, Zeitschrift oder CD müssen nur bezahlt werden, wenn Sie die Frist nicht einhalten. Achtung Ausnahme: Die Gebühr für DVDs ist 1 Euro je DVD und Woche.</p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">Wann muss ich meine nächste Jahresgebühr bezahlen?</h4>
+                <p>Auf Ihrem Büchereiausweis finden Sie Ihren jährlichen Zahlungstermin. Bitte zahlen Sie pünktlich. Wenn Sie nicht pünktlich bezahlen, wird Ihr Büchereiausweis ungültig.</p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">Was muss ich machen, wenn ein Buch kaputt oder verloren geht?</h4>
+                <p>Danach muss der Kaufpreis des Buches bezahlt werden. Zusätzlich wird eine Bearbeitungsgebühr von 7,00 Euro fällig. Falls Sie das Buch danach wiederfinden, gehört es Ihnen.</p>
+            </div>
+            
+            <hr class="border-gray-300 my-2">
+            
+            <div>
+                <p class="font-bold">Unsere Öffnungszeiten: Stadtbücherei Neustadt – Am Marktbrunnen 3–5</p>
+                <p>Mo, Di, Do, Fr: 11.00–20.00 Uhr &nbsp;&nbsp;&nbsp;&nbsp; Sa: 11.00–14.00 Uhr</p>
+            </div>
+        </div>
+    `,
+    questions: [
+        { num: 37, text: "37. Man kann sich auch im Internet anmelden.", correct: "falsch" },
+        { num: 38, text: "38. Wenn man ein Buch länger behalten will, kann man in der Bücherei anrufen.", correct: "richtig" },
+        { num: 39, text: "39. Man kann DVDs für vier Wochen ausleihen.", correct: "falsch" }
+    ]
+},
+teil5: {
+    title: "Teil 5: Brief ergänzen",
+    infoBox: `
+        <div class="bg-white border border-gray-300 rounded-lg p-4 my-2 text-xs text-gray-800 shadow-sm leading-relaxed">
+            <div class="mb-4">
+                Alte Hauptstr. 99<br>
+                89142 München
+            </div>
+            <div class="text-right mb-4">16.11.20..</div>
+            <p class="mb-3">Sehr <b>(0) geehrter</b> Herr Weinhold,</p>
+            <p>
+                wir freuen uns, <b>(40) ______</b> Sie seit vier Wochen bei der Telenova GmbH Kunde sind! Telenova bietet Ihnen immer die günstigsten Telefontarife, <b>(41) ______</b> Sie viel Geld sparen können.
+            </p>
+            <p class="mt-2">
+                Haben Sie auch ein Handy? Wir bieten Ihnen auch günstige Handy-Tarife an! Rufen Sie uns einfach an, <b>(42) ______</b> Sie auch mit dem Handy günstig telefonieren wollen.
+            </p>
+            <p class="mt-2">
+                Unsere Handytarife wurden von der Zeitschrift „Telefontest“ mit „sehr gut“ bewertet, <b>(43) ______</b> die Qualität hoch ist und die Preise besonders günstig sind. Die Preise sind niedrig, trotzdem bieten wir <b>(44) ______</b> Kunden einen perfekten Service: Sie können unsere Kundenberater rund um die Uhr telefonisch erreichen, <b>(45) ______</b> schreiben Sie uns einfach eine E-Mail: kundenberatung@telenovagmbh.eu.
+            </p>
+            <p class="mt-4">
+                Mit freundlichen Grüßen<br>
+                Ingo Heinrich<br>
+                Kundenbetreuung Telenova GmbH
+            </p>
+        </div>
+    `,
+    questions: [
+        {
+            num: 40,
+            text: "40.",
+            opts: ["a) dass", "b) obwohl", "c) während"],
+            correct: 0
+        },
+        {
+            num: 41,
+            text: "41.",
+            opts: ["a) bevor", "b) sodass", "c) wenn"],
+            correct: 1
+        },
+        {
+            num: 42,
+            text: "42.",
+            opts: ["a) damit", "b) seit", "c) wenn"],
+            correct: 2
+        },
+        {
+            num: 43,
+            text: "43.",
+            opts: ["a) damit", "b) dass", "c) weil"],
+            correct: 2
+        },
+        {
+            num: 44,
+            text: "44.",
+            opts: ["a) anderen", "b) Ihren", "c) unseren"],
+            correct: 2
+        },
+        {
+            num: 45,
+            text: "45.",
+            opts: ["a) aber", "b) oder", "c) und"],
+            correct: 1
+        }
+    ]
+}
+
                 }
             ],
             Sprechen: [
@@ -979,43 +1277,87 @@ teil5: {
                     title: "Ключова граматика для B1 (Grammatik)",
                     content: `
                         <div class="space-y-4 text-xs sm:text-sm text-gray-800">
-                            
-                            <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-2 shadow-sm">
-                                <h4 class="font-bold text-blue-900 border-b border-gray-200 pb-1">1. Підрядні речення причини (weil / da)</h4>
-                                <p class="text-xs text-gray-600">Сполучники <strong>weil</strong> та <strong>da</strong> відправляють відмінюване дієслово в **найпростіший кінець** речення!</p>
-                                <div class="bg-blue-50 p-2.5 rounded border border-blue-200 text-xs font-mono">
-                                    • Ich kann nicht kommen, <strong>weil</strong> ich krank <strong>bin</strong>.<br>
-                                    • <strong>Da</strong> ich arbeiten <strong>muss</strong>, komme ich etwas später.
-                                </div>
-                            </div>
+    
+    <!-- 1. weil / da -->
+    <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-2 shadow-sm">
+        <h4 class="font-bold text-blue-900 border-b border-gray-200 pb-1">1. Причина: weil проти da (дієслово в КІНЕЦЬ)</h4>
+        <p class="text-xs text-gray-600">
+            Обидва сполучники означають «тому що / оскільки» і переміщують відмінюване дієслово в <strong>самий кінець</strong> підрядного речення.
+            <br>• <strong>weil</strong> — використовується, коли причина є новою або важливою інформацією.
+            <br>• <strong>da</strong> — частіше вживається на початку речення, коли причина вже відома співрозмовнику.
+        </p>
+        <div class="bg-blue-50 p-2.5 rounded border border-blue-200 text-xs font-mono">
+            • Ich kann nicht kommen, <strong>weil</strong> ich krank <strong>bin</strong>.<br>
+            • <strong>Da</strong> ich arbeiten <strong>muss</strong>, komme ich etwas später.
+        </div>
+    </div>
 
-                            <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-2 shadow-sm">
-                                <h4 class="font-bold text-blue-900 border-b border-gray-200 pb-1">2. Вказівка наслідку (deshalb / deswegen)</h4>
-                                <p class="text-xs text-gray-600">Після <strong>deshalb</strong> дієслово стоїть одразу на **другому місці**!</p>
-                                <div class="bg-blue-50 p-2.5 rounded border border-blue-200 text-xs font-mono">
-                                    • Ich bin krank, <strong>deshalb komme</strong> ich nicht.
-                                </div>
-                            </div>
+    <!-- 2. deshalb / deswegen -->
+    <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-2 shadow-sm">
+        <h4 class="font-bold text-blue-900 border-b border-gray-200 pb-1">2. Вказівка наслідку (deshalb / deswegen)</h4>
+        <p class="text-xs text-gray-600">
+            Означають «тому / через це». На відміну від <em>weil</em>, це не сполучники, а сполучникові прислівники. 
+            Вони займають <strong>1-шу позицію</strong> у другій частині речення, тому відмінюване дієслово ставиться одразу після них (на <strong>2-ге місце</strong>).
+        </p>
+        <div class="bg-blue-50 p-2.5 rounded border border-blue-200 text-xs font-mono">
+            • Ich bin krank, <strong>deshalb komme</strong> ich nicht.<br>
+            • Es regnet, <strong>deswegen bleiben</strong> wir zu Hause.
+        </div>
+    </div>
 
-                            <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-2 shadow-sm">
-                                <h4 class="font-bold text-blue-900 border-b border-gray-200 pb-1">3. З'єднувальний сполучник (dass)</h4>
-                                <p class="text-xs text-gray-600">Дієслово також іде в **кінець** речення.</p>
-                                <div class="bg-blue-50 p-2.5 rounded border border-blue-200 text-xs font-mono">
-                                    • Ich hoffe, <strong>dass</strong> wir uns bald <strong>sehen</strong>.<br>
-                                    • Es tut mir leid, <strong>dass</strong> ich verspätet <strong>antworte</strong>.
-                                </div>
-                            </div>
+    <!-- 3. dass -->
+    <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-2 shadow-sm">
+        <h4 class="font-bold text-blue-900 border-b border-gray-200 pb-1">3. Сполучник що / щоб (dass)</h4>
+        <p class="text-xs text-gray-600">
+            З'єднує головне речення з підрядним з’ясувальним (після дієслів думки, мовлення, почуттів: <em>glauben, hoffen, wissen, leid tun</em>). 
+            Дієслово завжди вирушає в <strong>найкрайніший кінець</strong>. Зверніть увагу: перед <em>dass</em> завжди ставиться кома.
+        </p>
+        <div class="bg-blue-50 p-2.5 rounded border border-blue-200 text-xs font-mono">
+            • Ich hoffe, <strong>dass</strong> wir uns bald <strong>sehen</strong>.<br>
+            • Es tut mir leid, <strong>dass</strong> ich verspätet <strong>antworte</strong>.
+        </div>
+    </div>
 
-                            <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-2 shadow-sm">
-                                <h4 class="font-bold text-blue-900 border-b border-gray-200 pb-1">4. Модальні дієслова в минулому часі (Präteritum)</h4>
-                                <p class="text-xs text-gray-600">Для розповідей про минуле у листі використовуйте Präteritum для модальних дієслів:</p>
-                                <div class="bg-blue-50 p-2.5 rounded border border-blue-200 text-xs font-mono">
-                                    • ich musste / konnte / wollte / durfte<br>
-                                    • <i>Приклад:</i> Gestern <strong>konnte</strong> ich nicht anrufen, weil ich arbeiten <strong>musste</strong>.
-                                </div>
-                            </div>
+    <!-- 4. Präteritum модальних дієслів -->
+    <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-2 shadow-sm">
+        <h4 class="font-bold text-blue-900 border-b border-gray-200 pb-1">4. Модальні дієслова в минулому часі (Präteritum)</h4>
+        <p class="text-xs text-gray-600">
+            У розмовній та писемній мові рівня B1 для модальних дієслів у минулому часі майже <strong>ніколи не використовують Perfekt</strong> (це громіздко). 
+            Завжди вживають <strong>Präteritum</strong>. Усі розумляути (умлаути) при цьому зникають (<em>müssen ➔ musste</em>).
+        </p>
+        <div class="bg-blue-50 p-2.5 rounded border border-blue-200 text-xs font-mono">
+            • ich musste / konnte / wollte / durfte / sollte<br>
+            • Gestern <strong>konnte</strong> ich nicht anrufen, weil ich arbeiten <strong>musste</strong>.
+        </div>
+    </div>
 
-                        </div>
+    <!-- 5. Мета: um... zu проти damit -->
+    <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-2 shadow-sm">
+        <h4 class="font-bold text-blue-900 border-b border-gray-200 pb-1">5. Вказівка мети: um... zu vs. damit (щоб)</h4>
+        <p class="text-xs text-gray-600">
+            Для опису мети («для чого?», «з якою метою?») є два шляхи:
+            <br>• <strong>um... zu + Infinitiv</strong>: використовуємо, коли підмет у двох частинах один і той самий.
+            <br>• <strong>damit</strong>: використовуємо, коли підмети різні (дієслово іде в кінець).
+        </p>
+        <div class="bg-blue-50 p-2.5 rounded border border-blue-200 text-xs font-mono">
+            • Ich lerne Deutsch, <strong>um</strong> eine Stelle <strong>zu finden</strong>. <i>(Я вчу, щоб я знайшов)</i><br>
+            • Ich helfe dir, <strong>damit</strong> du fertig <strong>bist</strong>. <i>(Я допомагаю, щоб ти закінчив)</i>
+        </div>
+    </div>
+
+    <!-- 6. Ввічливість через Konjunktiv II -->
+    <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-2 shadow-sm">
+        <h4 class="font-bold text-blue-900 border-b border-gray-200 pb-1">6. Ввічливі прохання та побажання (Konjunktiv II)</h4>
+        <p class="text-xs text-gray-600">
+            На B1 критично важливо писати та говорити ввічливо. Замість прямого наказу використовуйте форми <strong>könnten</strong> (могли б) або <strong>würde + Infinitiv</strong> (я б хотів / зробив).
+        </p>
+        <div class="bg-blue-50 p-2.5 rounded border border-blue-200 text-xs font-mono">
+            • <strong>Könnten</strong> Sie mir bitte die Informationen senden?<br>
+            • Ich <strong>würde</strong> gerne einen Termin vereinbaren.
+        </div>
+    </div>
+
+</div>
                     `
                 }
             ]
