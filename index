@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DTZ B1 Trainer</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 min-h-screen flex flex-col font-sans">
+
+    <header class="bg-blue-600 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-4 py-3 flex justify-between items-center">
+            <h1 class="text-lg font-bold">DTZ B1 Trainer</h1>
+            <button id="backBtn" class="hidden bg-blue-700 hover:bg-blue-800 text-xs font-semibold px-3 py-2 rounded-lg transition cursor-pointer" onclick="goBack()">
+                ⬅ Назад
+            </button>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-4xl w-full mx-auto p-4 flex flex-col justify-center">
+
+        <!-- Головне меню -->
+        <div id="screenMainMenu" class="space-y-6">
+            <div class="text-center">
+                <h2 class="text-2xl font-extrabold text-gray-900">Оберіть розділ іспиту</h2>
+                <p class="text-xs text-gray-500 mt-1">Підготовка до тестування DTZ B1</p>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <button onclick="openCategory('Horen')" class="p-5 bg-white border border-gray-200 rounded-2xl shadow-sm hover:border-blue-500 hover:shadow-md transition text-left cursor-pointer">
+                    <div class="text-3xl mb-2">🎧</div>
+                    <div class="font-bold text-lg text-gray-900">Hören</div>
+                    <div class="text-xs text-gray-500">Аудіювання (25 Min)</div>
+                </button>
+                <button onclick="openCategory('Lesen')" class="p-5 bg-white border border-gray-200 rounded-2xl shadow-sm hover:border-blue-500 hover:shadow-md transition text-left cursor-pointer">
+                    <div class="text-3xl mb-2">📖</div>
+                    <div class="font-bold text-lg text-gray-900">Lesen</div>
+                    <div class="text-xs text-gray-500">Читання (45 Min)</div>
+                </button>
+                <button onclick="openCategory('Sprechen')" class="p-5 bg-white border border-gray-200 rounded-2xl shadow-sm hover:border-blue-500 hover:shadow-md transition text-left cursor-pointer">
+                    <div class="text-3xl mb-2">🗣️</div>
+                    <div class="font-bold text-lg text-gray-900">Sprechen</div>
+                    <div class="text-xs text-gray-500">Усна частина</div>
+                </button>
+                <button onclick="openCategory('Schreiben')" class="p-5 bg-white border border-gray-200 rounded-2xl shadow-sm hover:border-blue-500 hover:shadow-md transition text-left cursor-pointer">
+                    <div class="text-3xl mb-2">✍️</div>
+                    <div class="font-bold text-lg text-gray-900">Schreiben</div>
+                    <div class="text-xs text-gray-500">Поради, фразі та граматика (30 Min)</div>
+                </button>
+            </div>
+        </div>
+
+        <!-- Список тестів -->
+        <div id="screenTestList" class="hidden space-y-6">
+            <div class="text-center">
+                <h2 id="categoryTitle" class="text-2xl font-extrabold text-blue-600 uppercase"></h2>
+                <p class="text-xs text-gray-500 mt-1">Оберіть розділ або тест</p>
+            </div>
+            <div id="testGrid" class="grid grid-cols-2 sm:grid-cols-3 gap-3"></div>
+        </div>
+
+        <!-- Вміст тесту або Шпаргалки -->
+        <div id="screenTestContent" class="hidden space-y-4">
+            
+            <div id="audioPlayerContainer" class="sticky top-14 z-40 bg-blue-50 border border-blue-200 p-3 rounded-xl shadow-sm space-y-2 hidden">
+                <div class="flex items-center justify-between text-blue-800 font-bold text-xs">
+                    <span>🔊 Аудіотрек (Завдання 1-20)</span>
+                </div>
+                <audio id="mainAudio" controls class="w-full h-9">
+                    <source id="audioSource" src="" type="audio/mpeg">
+                </audio>
+            </div>
+
+            <div class="bg-white p-3 rounded-xl border border-gray-200 text-sm font-bold text-gray-700 flex justify-between items-center">
+                <span id="testMeta">Test</span>
+                <span id="taskCountBadge" class="text-xs font-normal bg-gray-100 text-gray-600 px-2 py-1 rounded-md"></span>
+            </div>
+
+            <div id="questionsContainer" class="space-y-6 max-h-[calc(100vh-220px)] overflow-y-auto pr-1 custom-scrollbar"></div>
+
+            <div id="submitContainer" class="pt-2">
+                <button id="checkAnswersBtn" onclick="checkAnswers()" class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition shadow cursor-pointer text-sm">
+                    Überprüfen (Перевірити)
+                </button>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script>
+        /* ==========================================================================
+           БАЗА ДАНИХ ТЕСТІВ ТА МАТЕРІАЛІВ
+           ========================================================================== */
+        const examData = {
+            Horen: [
+                {
+                    id: 1,
+                    title: "Hören - Test 1",
+                    audioUrl: "https://www.dropbox.com/scl/fi/llyi06d7iavf9ceye2do1/mix_16m44s-audio-joiner.com-1.mp3?rlkey=rd8tyhsqj7gjc0jyyf303h7oj&st=jkdmq5l4&raw=1",
+                    teil1: [
+                        { num: 1, question: "Wann werden die Möbel geliefert?", opts: ["a) Morgen Nachmittag.", "b) Morgen um 9 Uhr.", "c) Um 14 Uhr."], correct: 0 },
+                        { num: 2, question: "Wohin soll Frau Böhmer kommen?", opts: ["a) In den Kindergarten.", "b) Zur Agentur für Arbeit.", "c) Zur Schule."], correct: 1 },
+                        { num: 3, question: "Was ist heute besonders günstig?", opts: ["a) Das Essen im Restaurant.", "b) Damenmode.", "c) Geschirr."], correct: 2 },
+                        { num: 4, question: "Wo soll Herr Lee sein Auto abholen?", opts: ["a) Bei der Polizei.", "b) Bei einem Autohändler.", "c) In der Werkstatt."], correct: 2 }
+                    ],
+                    teil2: [
+                        { num: 5, question: "Was müssen Sie beim Parken am Haupteingang beachten?", opts: ["a) Man darf nur 40 Minuten parken.", "b) Der Haupteingang ist geschlossen.", "c) Man muss 40 Minuten auf einen Parkplatz warten."], correct: 2 },
+                        { num: 6, question: "Was kann man nach den Nachrichten hören?", opts: ["a) Moderne Musik.", "b) Eine Kultursendung.", "c) Klaviermusik."], correct: 1 },
+                        { num: 7, question: "Wie macht man bei dem Gewinnspiel mit?", opts: ["a) Man muss beim Sender anrufen.", "b) Man muss sich auf der Internetseite anmelden.", "c) Man schreibt eine Postkarte."], correct: 0 },
+                        { num: 8, question: "Was kann man gewinnen?", opts: ["a) Ein Wochenende in Amsterdam.", "b) Billige Flugtickets.", "c) Eine Reise nach Paris."], correct: 2 },
+                        { num: 9, question: "Wie wird das Wetter in Westdeutschland?", opts: ["a) Es gibt Regen.", "b) Es gibt Schnee.", "c) Es wird sonnig."], correct: 2 }
+                    ],
+                    teil3: [
+                        { pairId: "1", rfNum: 10, statement: "Der Herr befindet sich in einer Firma.", rfCorrect: "falsch", abcNum: 11, question: "Was möchte er wissen?", opts: ["a) Wann er den Ausweis abholen kann.", "b) Wann das Büro öffnet.", "c) Welche Papiere er braucht."], abcCorrect: 2 },
+                        { pairId: "2", rfNum: 12, statement: "Frau Baier und Herr Steiner sind Kollegen.", rfCorrect: "falsch", abcNum: 13, question: "Was macht Frau Baier?", opts: ["a) Sie kauft die Wohnung.", "b) Sie mietet die Wohnung.", "c) Sie will ihrem Mann von der Wohnung erzählen."], abcCorrect: 2 },
+                        { pairId: "3", rfNum: 14, statement: "Frau Melnik telefoniert mit dem Lehrer ihrer Tochter.", rfCorrect: "richtig", abcNum: 15, question: "Was kann Frau Melnik nicht so gut?", opts: ["a) Einladungen schreiben.", "b) Getränke verkaufen.", "c) Kuchen backen."], abcCorrect: 2 },
+                        { pairId: "4", rfNum: 16, statement: "Die Frau möchte eine Wohnung kaufen.", rfCorrect: "falsch", abcNum: 17, question: "Der Herr...", opts: ["a) hat keine Angebote.", "b) hat nur zu kleine Wohnungen.", "c) hat etwas Passendes für sie."], abcCorrect: 2 }
+                    ],
+                    teil4: {
+                        optionsList: [
+                            { letter: "a", text: "Einen Kaffee trinken und sich bewegen ist besser, als mittags zu schlafen." },
+                            { letter: "b", text: "Ein Mittagsschlaf ist etwas für ältere Leute." },
+                            { letter: "c", text: "In der Türkei gehört der Mittagsschlaf zum Leben dazu." },
+                            { letter: "d", text: "Mittags schlafen ist ganz natürlich, jeder Mensch wird mittags müde." },
+                            { letter: "e", text: "Mittags schlafen schadet." },
+                            { letter: "f", text: "Viel schlafen, auch mittags, ist gesund." }
+                        ],
+                        questions: [
+                            { num: 18, correctLetter: "c" },
+                            { num: 19, correctLetter: "e" },
+                            { num: 20, correctLetter: "d" }
+                        ]
+                    }
+                }
+            ],
+            Lesen: [
+                {
+                    id: 1,
+                    title: "Lesen - Test 1",
+                    teil1: {
+                        title: "Teil 1: Rathaus Neuberg",
+                        infoBox: `
+                            <div class="overflow-x-auto my-2 border border-gray-300 rounded-lg shadow-sm">
+                                <table class="w-full text-left border-collapse bg-white text-xs text-gray-800">
+                                    <thead>
+                                        <tr class="bg-gray-100 border-b border-gray-300">
+                                            <th class="p-2.5 font-bold border-r border-gray-300 w-1/3">Stockwerk</th>
+                                            <th class="p-2.5 font-bold">Ämter / Angelegenheiten</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-gray-200">
+                                        <tr>
+                                            <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">4. Obergeschoss</td>
+                                            <td class="p-2.5">
+                                                <ul class="list-disc pl-4 space-y-1">
+                                                    <li><strong>Stadtkasse</strong> (Strafzettel, Ordnungswidrigkeiten)</li>
+                                                    <li><strong>Schulamt</strong> (Informationen zu allen Schulen der Stadt, Hilfe bei der Anmeldung, Beratung bei Problemen)</li>
+                                                    <li><strong>Rentenberatung</strong> (Informationen zur Rente, Formulare)</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">3. Obergeschoss</td>
+                                            <td class="p-2.5">
+                                                <ul class="list-disc pl-4 space-y-1">
+                                                    <li><strong>Wohnungsamt</strong> (Wohngeld, Wohnungsvermittlung, Zuschüsse zur Wohnungseinrichtung)</li>
+                                                    <li><strong>Familienkasse</strong> (Formulare, Informationen zum Kindergeld)</li>
+                                                    <li><strong>Fundbüro</strong></li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">2. Obergeschoss</td>
+                                            <td class="p-2.5">
+                                                <ul class="list-disc pl-4 space-y-1">
+                                                    <li><strong>Einwohnermeldeamt</strong> (Anmeldung und Ummeldung von Personen)</li>
+                                                    <li><strong>Standesamt</strong> (Hochzeiten, Geburten, Todesfälle)</li>
+                                                    <li><strong>Ausweisstelle</strong> (nur Anträge auf Personalausweise/Reisepässe)</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">1. Obergeschoss</td>
+                                            <td class="p-2.5">
+                                                <ul class="list-disc pl-4 space-y-1">
+                                                    <li><strong>Steuerberatung</strong> (Formulare, Hilfe bei Steuererklärungen)</li>
+                                                    <li><strong>Abholung von Personalausweisen und Reisepässen</strong></li>
+                                                    <li><strong>Besuchercafé</strong> (Getränke und Snacks)</li>
+                                                    <li><strong>Besucher-WC</strong></li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Erdgeschoss</td>
+                                            <td class="p-2.5">
+                                                <ul class="list-disc pl-4 space-y-1">
+                                                    <li><strong>Information und Wegweiser</strong></li>
+                                                    <li><strong>Nahverkehrspläne</strong> (Bus, Straßenbahn)</li>
+                                                    <li><strong>Touristeninformation</strong> (Stadtpläne, Hotelzimmer, Wanderwege, Restauranttipps)</li>
+                                                    <li><strong>Spielecke für Kinder</strong></li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Untergeschoss</td>
+                                            <td class="p-2.5">
+                                                <ul class="list-disc pl-4 space-y-1">
+                                                    <li><strong>Tiefgarage, Straßenverkehrsamt</strong> (Anmeldung und Abmeldung von Kfz)</li>
+                                                    <li><strong>Ausgabe von Kennzeichen</strong></li>
+                                                    <li><strong>Parkscheinautomat</strong> (bar und EC-Karte)</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        `,
+                        questions: [
+                            { num: 21, text: "21. Sie brauchen ein Formular für die Steuererklärung.", opts: ["a) 1. Obergeschoss", "b) 4. Obergeschoss", "c) anderes Stockwerk"], correct: 0 },
+                            { num: 22, text: "22. Sie haben Fragen zum Kindergeld.", opts: ["a) 3. Obergeschoss", "b) Erdgeschoss", "c) anderes Stockwerk"], correct: 0 },
+                            { num: 23, text: "23. Sie haben falsch geparkt und wollen die Strafe bar bezahlen.", opts: ["a) 1. Obergeschoss", "b) Untergeschoss", "c) anderes Stockwerk"], correct: 2 },
+                            { num: 24, text: "24. Ihr neuer Reisepass ist fertig und Sie möchten ihn abholen.", opts: ["a) 2. Obergeschoss", "b) 1. Obergeschoss", "c) anderes Stockwerk"], correct: 1 },
+                            { num: 25, text: "25. Sie bekommen Besuch und brauchen Informationen über Hotels.", opts: ["a) 1. Obergeschoss", "b) Erdgeschoss", "c) anderes Stockwerk"], correct: 1 }
+                        ]
+                    },
+                    teil2: {
+                        title: "Teil 2: Anzeigen a–h",
+                        infoBox: `
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-2 text-xs text-gray-800">
+                                <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                                    <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige a</div>
+                                    <div class="font-bold mb-1">Kinderfreundliche Umgebung braucht Nachwuchs.</div>
+                                    <div>Die günstigsten Häuser der Stadt: Wir bieten Reihenhäuser ab 850,- € Miete (warm). In der nächsten Umgebung warten viele Einkaufsmöglichkeiten, Kindergärten und Schulen auf Sie und Ihre Kinder. Alle Häuser sind sehr verkehrsgünstig gelegen.</div>
+                                    <div class="mt-2 font-bold text-gray-700">Tel.: 030 / 67 98 89 23</div>
+                                </div>
+                                <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                                    <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige b</div>
+                                    <div class="font-bold mb-1">Glas- und Gebäudereinigung</div>
+                                    <div><strong>VON KÜCHE BIS KELLER: WIR MACHEN RICHTIG SAUBER!</strong><br>Schimmelbeseitigung – Büroreinigung – Grundreinigung – Keller- und Dachbodenreinigung – Glasreinigung – Baureinigung – Teppichreinigung.<br>Preisvorschläge nach kostenfreier Besichtigung. Keine Kosten für Anfahrt.</div>
+                                    <div class="mt-2 font-bold text-gray-700">GGB-Dietze-Korrekt-GmbH, Tel. 06074-278690</div>
+                                </div>
+                                <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                                    <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige c</div>
+                                    <div class="font-bold mb-1">Marken-Einbauküchen zu Super-Schnäppchenpreisen!</div>
+                                    <div><strong>70 %, 80 % günstiger! Nur 4 Tage!</strong><br>Bitte bringen Sie Ihre Küchenmaße mit. Unsere Fachberater planen Ihre neue Küche direkt. Diese wird <strong>schnell fachgerecht geliefert und montiert. Meistens innerhalb einer Woche.</strong></div>
+                                    <div class="mt-2 font-bold text-gray-700">Wohnküchen, Wilhelmstr. 76, Berlin</div>
+                                </div>
+                                <div class="bg-gray-800 text-white border-2 border-gray-900 rounded p-3 shadow-sm">
+                                    <div class="font-bold text-sm text-white border-b border-gray-600 pb-1 mb-2">Anzeige d</div>
+                                    <div class="font-bold mb-1">Kartonfritze kommt!</div>
+                                    <div>Umzugskartons, neu in vielen verschiedenen Größen: S, M, L, XL: Euro 0,50/0,75/1,20/1,30.<br>Lieferung frei Haus möglich.</div>
+                                    <div class="mt-2 font-bold text-gray-200">Seeberger Str. 88/90, Tel.: 531 5906</div>
+                                </div>
+                                <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                                    <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige e</div>
+                                    <div class="font-bold mb-1">Top-Lage, Top-Preis</div>
+                                    <div>Wir bieten 1–4 Zi-Wohnungen z. B. 4-Zi-Wohnung, ca. 90 m² schon ab 580 € warm. Top-Ausstattung, z. B.: Hochwertige Fußbodenbeläge, verglaste Loggia; gern Familien mit Kindern.</div>
+                                    <div class="mt-2 font-bold text-gray-700">www.wbg-lieg.de | Tel. 030/874356-0</div>
+                                </div>
+                                <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                                    <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige f</div>
+                                    <div class="font-bold mb-1">Küchen aus Polen!</div>
+                                    <div>Schöne neue Küchen müssen nicht teuer sein. Wir bieten Ihnen polnische Küchen zu polnischen Preisen in 1A-Qualität.<br><strong>Wichtig: Lieferzeit bis zu drei Monaten</strong>, aber unschlagbar im Preis.</div>
+                                    <div class="mt-2 font-bold text-gray-700">Plinther Fenster GmbH, Tel. 033444-405</div>
+                                </div>
+                                <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                                    <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige g</div>
+                                    <div class="font-bold mb-1">Mietspiegel aktuell</div>
+                                    <div>Ist Ihre Wohnung zu teuer? Was wird für vergleichbare Wohnungen in Ihrer Nähe bezahlt? Ab sofort kann online der aktuelle Mietspiegel für Ihre Wohnung ermittelt werden. Die Nutzung ist kostenlos.</div>
+                                    <div class="mt-2 font-bold text-gray-700">www.mietspiegel.de</div>
+                                </div>
+                                <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                                    <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige h</div>
+                                    <div class="font-bold mb-1">günstiger + besser wohnen</div>
+                                    <div><strong>www.wohnen-heute.de</strong><br>Sie suchen sich die passende Wohnung aus. Geben Sie dann die Suchnummer im Suchfeld ein. Sofort erscheint eine ausführliche Beschreibung. Schneller, praktischer und günstiger kommen Sie nicht an Ihre neue Wohnung.</div>
+                                    <div class="mt-2 font-bold text-gray-700">www.wohnen-heute.de</div>
+                                </div>
+                            </div>
+                        `,
+                        questions: [
+                            { num: 26, text: "26. Nach einem Wasserschaden brauchen Sie schnell eine neue Küche.", correctLetter: "c" },
+                            { num: 27, text: "27. Sie suchen im Internet nach einer neuen Wohnung.", correctLetter: "h" },
+                            { num: 28, text: "28. Sie möchten wissen, wie hoch die Mietpreise in Ihrer Stadt normalerweise sind.", correctLetter: "g" },
+                            { num: 29, text: "29. Sie wollen umziehen und suchen eine Firma, die Möbel transportiert.", correctLetter: "x" },
+                            { num: 30, text: "30. Ihre Nachbarn suchen ein Haus zur Miete. Geben Sie einen Tipp.", correctLetter: "a" }
+                        ]
+                    },
+                    teil3: {
+                        title: "Teil 3: Texte verstehen",
+                        items: [
+                            {
+                                text: `<b>Neue Fahrpläne in München</b><br><br>Sehr geehrte Fahrgäste,<br>ab dem 1. Dezember kommt es zu Fahrplanänderungen in unserem Buslinienverkehr. Die Fahrpläne für Straßenbahnen und U-Bahnen ändern sich aber nicht!<br><br>Die wichtigsten Änderungen im Busfahrplan haben wir für Sie zusammengefasst: Die <strong>Buslinie 19</strong> fährt nicht mehr zur Messe, sondern vom Bahnhof zum Leopoldplatz. Neu ist auch, dass diese Buslinie nicht zweimal, sondern viermal pro Stunde fährt. Die Wartezeiten werden also deutlich kürzer.<br><br>Auch bei der <strong>Buslinie 91</strong> wird es Änderungen geben: Sie fährt dann zweimal und nicht mehr einmal pro Stunde vom Bahnhof zur Messe.<br><br>Genaue Informationen zu den neuen Fahrplänen für Busse finden Sie an allen Bushaltestellen und in unseren Verkaufs- und Beratungsstellen.<br><br><i>Ihre Verkehrsbetriebe München</i>`,
+                                q1: { num: 31, text: "31. Neue Fahrpläne gibt es nur für Busse.", correct: "richtig" },
+                                q2: { num: 32, text: "32. Vom Bahnhof zur Messe fährt ab Dezember...", opts: ["a) Buslinie 19 viermal pro Stunde.", "b) Buslinie 91 einmal pro Stunde.", "c) Buslinie 91 zweimal pro Stunde."], correct: 2 }
+                            },
+                            {
+                                text: `<b>Liebe Vereinsmitglieder,</b><br><br>wie jedes Jahr laden wir Sie zur Mitgliederversammlung ein. Dieses Treffen findet am 15.10. von 17 bis 20 Uhr statt. Wir werden Sie über die Entwicklung der Mitgliederzahlen, aber auch über Einnahmen und Ausgaben informieren. Außerdem zeigen wir Bilder vom Sommerfest im letzten Jahr. Die neue Vereinsleitung – d. h., mindestens drei Personen – wird gewählt. Herr Hunke möchte in Zukunft keine Aufgaben mehr übernehmen.<br><br>Gesprächsthema wird u.a. die Verbesserung der Sicherheit in unserem Vereinshaus sein. Nach dem Einbruch im letzten Jahr haben wir ein neues Kamerasystem eingebaut. Eigentlich brauchen wir auch neue Türschlösser und Fenster, diese sind aber teuer. Darüber müssen wir sprechen.<br><br>Wir danken für Ihr Kommen.<br><br><i>Mit freundlichen Grüßen<br>Die Vereinsleitung</i>`,
+                                q1: { num: 33, text: "33. Der Verein hat ein regelmäßiges Treffen pro Jahr.", correct: "richtig" },
+                                q2: { num: 34, text: "34. Die Mitglieder sprechen über...", opts: ["a) das nächste Sommerfest.", "b) die Wahl von Herrn Hunke.", "c) mehr Schutz vor Dieben und Einbrechern."], correct: 2 }
+                            },
+                            {
+                                text: `<b>Sehr geehrte Familie Erdmann,</b><br><br>es ist sehr schade, dass Sie an unserem Elternabend der Klasse 4a am letzten Dienstag nicht da sein konnten. Es wurden viele Themen besprochen, so auch unsere Klassenfahrt im Mai nach Berlin. Es ist wichtig, dass auch Sie alle Informationen zu dieser Fahrt bekommen. Deshalb bitte ich Sie, mich anzurufen oder durch Ihren Sohn Kevin einen Termin zu vereinbaren. Natürlich wollen wir, dass auch Kevin an der Klassenfahrt teilnimmt.<br><br>Meine Telefonnummer ist: 02326 34301 – täglich von 15.00 Uhr bis 16.00 Uhr.<br>Meine Sprechstunden sind montags von 12.00 Uhr bis 12.45 Uhr und donnerstags von 8.00 Uhr bis 8.45 Uhr.<br><br><i>Mit freundlichem Gruß<br>Ines Strotmer</i>`,
+                                q1: { num: 35, text: "35. Familie Erdmann hat am letzten Elternabend teilgenommen.", correct: "falsch" },
+                                q2: { num: 36, text: "36. Familie Erdmann...", opts: ["a) lässt ihren Sohn Kevin nicht mit auf die Klassenfahrt.", "b) soll am Dienstag in die Schule kommen.", "c) soll sich über die Klassenfahrt nach Berlin informieren."], correct: 2 }
+                            }
+                        ]
+                    },
+                    teil4: {
+                        title: "Teil 4: AGB (Allgemeine Geschäftsbedingungen)",
+                        infoBox: `
+                            <div class="bg-white border-2 border-gray-700 rounded-lg p-4 my-2 text-xs text-gray-800 space-y-3 shadow-sm">
+                                <h3 class="text-sm font-bold text-blue-900 border-b border-gray-300 pb-1 text-center">Allgemeine Geschäftsbedingungen – Kino zuhause 24</h3>
+                                <p>Bei „Kino zuhause 24“ können Sie im Internet DVDs ausleihen. Sie bekommen die DVDs dann per Post zugeschickt.</p>
+                                <div>
+                                    <h4 class="font-bold text-gray-900">1. Vertragsschluss</h4>
+                                    <p>Kunden können sich Online auf unserer Internetseite www.kinozuhause24.de anmelden und erhalten eine Bestätigung per E-Mail. Der Kunde ist für die Bestätigung seiner Angaben allein verantwortlich. <strong>Eine Anmeldung von Personen, die das achtzehnte Lebensjahr noch nicht vollendet haben, ist verboten.</strong> Auf Anfrage von „Kino zuhause 24“ muss der Kunde sein Alter durch Vorlage einer beglaubigten Kopie seines gültigen Personalausweis oder Reisepass nachweisen. Die vom Kunden ausgewählten DVDs werden dem Kunden so schnell wie möglich zugeschickt.</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900">2. Transportrisiko</h4>
+                                    <p>„Kino zuhause 24“ bestätigt den Versand aller DVDs per E-Mail. Es besteht die Möglichkeit, dass DVDs im Postversand verloren gehen. In diesem Fall muss der Kunde <strong>innerhalb von sieben Werktagen</strong> „Kino zuhause 24“ Bescheid geben, dass DVDs nicht angekommen sind. Gibt der Kunde nicht innerhalb von sieben Werktagen Bescheid, kann „Kino zuhause 24“ eine Pauschale von 25.00 Euro für jede in der Post verloren gegangenen DVD verlangen. „Kino zuhause 24“ stellt dem Kunden für den Transport Briefumschläge zur Verfügung. Der Kunde muss diese Umschläge für die Rücksendung der DVDs verwenden. Falls der Kunde den Umschlag verliert, muss er die Portokosten zahlen.</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900">3. Bezahlung</h4>
+                                    <p>Die Firma „Kino zuhause 24“ bietet für den DVD-Verleih verschiedene Modelle an: <strong>Der Kunde kann pro Monat 2 DVDs für 5.90 Euro ausleihen oder 4 DVDs für 8.90 Euro.</strong> Alle Preise sind inklusive der Versandkosten.</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900">4. Unterbrechung des Abonnements</h4>
+                                    <p>Der Kunde kann das Abonnement für einen Monat pro Jahr unterbrechen (z. B. wegen Urlaubs). Während dieser Zeit kann der Kunde keine DVDs ausleihen und muss auch die Gebühr nicht zahlen.</p>
+                                </div>
+                            </div>
+                        `,
+                        questions: [
+                            { num: 37, text: "37. Kinder dürfen sich bei „Kino zuhause 24“ anmelden.", correct: "falsch" },
+                            { num: 38, text: "38. Wenn eine DVD nicht bei Ihnen ankommt, müssen Sie spätestens nach drei Tagen Bescheid sagen.", correct: "falsch" },
+                            { num: 39, text: "39. Jeder Film kostet 5.90 Euro.", correct: "falsch" }
+                        ]
+                    },
+                    teil5: {
+                        title: "Teil 5: Lückentext (Brief an die Nachbarin)",
+                        infoBox: `
+                            <div class="bg-white border-2 border-gray-700 rounded-lg p-5 my-2 text-sm text-gray-800 space-y-3 shadow-sm leading-relaxed">
+                                <p><strong>(0) Liebe</strong> Frau Bräuning,</p>
+                                <p>mein Name ist Lara Weipert und ich ziehe <strong>[40]</strong> Woche in die Wohnung neben Ihnen ein. Ich wollte deshalb schon mal Bescheid geben, dass es in der nächsten Zeit etwas lauter werden könnte.</p>
+                                <p>Denn ich werde <strong>[41]</strong> und neue Möbel durch den Flur tragen. <strong>[42]</strong> werde ich Regale an die Wände schrauben. Ich werde versuchen, den Lärm auf die Zeit <strong>[43]</strong> 14 und 18 Uhr zu beschränken. Ich hoffe, Sie haben in dieser Zeit keine wichtigen Termine zuhause.</p>
+                                <p><strong>[44]</strong> melden Sie sich gerne bei mir. <strong>[45]</strong> ich dann eingezogen bin, können wir uns in Ruhe kennenlernen.</p>
+                                <p class="pt-2"><i>Ihre neue Nachbarin Lara Weipert</i></p>
+                            </div>
+                        `,
+                        questions: [
+                            { num: 40, text: "Lücke 40", opts: ["a) nächste", "b) letzte", "c) vorige"], correct: 0 },
+                            { num: 41, text: "Lücke 41", opts: ["a) ausziehen", "b) dekorieren", "c) renovieren"], correct: 2 },
+                            { num: 42, text: "Lücke 42", opts: ["a) Aber", "b) Außerdem", "c) Dennoch"], correct: 1 },
+                            { num: 43, text: "Lücke 43", opts: ["a) ab", "b) von", "c) zwischen"], correct: 2 },
+                            { num: 44, text: "Lücke 44", opts: ["a) Auch", "b) Dagegen", "c) Sonst"], correct: 2 },
+                            { num: 45, text: "Lücke 45", opts: ["a) Da", "b) Nach", "c) Wenn"], correct: 2 }
+                        ]
+                    }
+                }
+            ],
+            Sprechen: [], 
+            Schreiben: [
+                {
+                    type: "guide",
+                    title: "Поради та стратегія написання",
+                    content: `
+                        <div class="space-y-4 text-xs sm:text-sm text-gray-800">
+                            <div class="bg-blue-50 border-l-4 border-blue-600 p-4 rounded-r-xl">
+                                <h3 class="font-bold text-blue-900 text-sm mb-1">⏱️ Загальна регламентація</h3>
+                                <p>Час виконання: <strong>30 хвилин</strong>. Очікуваний обсяг: близько <strong>40–60 слів</strong>. Головне правило — висвітлити <strong>УСІ 4 пунктa (Leitpunkte)</strong> із завдання!</p>
+                            </div>
+
+                            <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-2 shadow-sm">
+                                <h4 class="font-bold text-gray-900 border-b border-gray-200 pb-2">🎯 Чек-лист успішного листа на B1:</h4>
+                                <ul class="list-disc pl-5 space-y-1.5 text-gray-700">
+                                    <li><strong>Вітання (Anrede):</strong> Правильний вибір формального/неформального стилю.</li>
+                                    <li><strong>Вступ (Einleitung):</strong> Подяка за лист або причина написання.</li>
+                                    <li><strong>Основна частина (Hauptteil):</strong> 4 окремі речення/абзаци відповідно до 4 Leitpunkte з теми.</li>
+                                    <li><strong>Причини / Пояснення:</strong> Використовуйте сполучники <em>weil / da / deshalb</em>.</li>
+                                    <li><strong>Завершення та Прощання (Schluss & Gruß):</strong> Фраза ввічливості та підпис.</li>
+                                </ul>
+                            </div>
+
+                            <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 text-amber-900 space-y-1">
+                                <div class="font-bold">⚠️ Часті помилки:</div>
+                                <div>1. Забули розкрити хоча б один пункт (за це знімають бали за зміст).</div>
+                                <div>2. Помилка у порядку слів після сполучника <strong>weil</strong> (дієслово іде в КІНЕЦЬ).</div>
+                                <div>3. Плутанина між <em>Du / Sie</em> (дотримуйтесь одного стилю в усьому листі).</div>
+                            </div>
+                        </div>
+                    `
+                },
+                {
+                    type: "guide",
+                    title: "Готові фрази для листі (Redemittel)",
+                    content: `
+                        <div class="space-y-4 text-xs sm:text-sm text-gray-800">
+                            
+                            <!-- Формальний лист -->
+                            <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-3 shadow-sm">
+                                <div class="font-bold text-blue-800 text-sm border-b border-gray-200 pb-1">🏢 Формальний лист (до фірми, термінів, орендодавця)</div>
+                                <div>
+                                    <div class="font-semibold text-gray-700">Привітання (Anrede):</div>
+                                    <div class="bg-gray-50 p-2 rounded text-gray-600 font-mono text-xs mt-1">
+                                        • Sehr geehrte Damen und Herren, (якщо ім'я невідоме)<br>
+                                        • Sehr geehrter Herr [Прізвище],<br>
+                                        • Sehr geehrte Frau [Прізвище],
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-gray-700">Причина звернення (Grund):</div>
+                                    <div class="bg-gray-50 p-2 rounded text-gray-600 font-mono text-xs mt-1">
+                                        • Ich schreibe Ihnen, weil...<br>
+                                        • Ich möchte Sie informieren, dass...<br>
+                                        • Leider muss ich unseren Termin am [Datum] absagen / verschieben.
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-gray-700">Вибачення та прохання:</div>
+                                    <div class="bg-gray-50 p-2 rounded text-gray-600 font-mono text-xs mt-1">
+                                        • Es tut mir leid, aber ich kann nicht kommen.<br>
+                                        • Könnten Sie mir bitte Informationen senden?<br>
+                                        • Ich bitte Sie um Verständnis.
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-gray-700">Прощання (Grußformel):</div>
+                                    <div class="bg-gray-50 p-2 rounded text-gray-600 font-mono text-xs mt-1">
+                                        • Mit freundlichen Grüßen<br>
+                                        • [Ваше Ім'я та Прізвище]
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Неформальний лист -->
+                            <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-3 shadow-sm">
+                                <div class="font-bold text-green-800 text-sm border-b border-gray-200 pb-1">✉️ Неформальний лист (друзям, колегам, знайомим)</div>
+                                <div>
+                                    <div class="font-semibold text-gray-700">Привітання (Anrede):</div>
+                                    <div class="bg-gray-50 p-2 rounded text-gray-600 font-mono text-xs mt-1">
+                                        • Lieber [Ім'я чоловіка], / Liebe [Ім'я жінки],<br>
+                                        • Hallo [Ім'я],
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-gray-700">Вступ та запрошення / допомога:</div>
+                                    <div class="bg-gray-50 p-2 rounded text-gray-600 font-mono text-xs mt-1">
+                                        • Wie geht es dir? Danke für deinen Brief / deine Einladung.<br>
+                                        • Ich lade dich herzlich zu meiner Party / meiner Hochzeit ein.<br>
+                                        • Ich helfe dir sehr gerne bei [dem Umzug / der Vorbereitung].
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-gray-700">Прощання (Grußformel):</div>
+                                    <div class="bg-gray-50 p-2 rounded text-gray-600 font-mono text-xs mt-1">
+                                        • Viele Grüße / Liebe Grüße<br>
+                                        • Dein [Твоє Ім'я] / Deine [Твоє Ім'я]
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    `
+                },
+                {
+                    type: "guide",
+                    title: "Ключова граматика для B1 (Grammatik)",
+                    content: `
+                        <div class="space-y-4 text-xs sm:text-sm text-gray-800">
+                            
+                            <!-- 1. Weil / Da -->
+                            <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-2 shadow-sm">
+                                <h4 class="font-bold text-blue-900 border-b border-gray-200 pb-1">1. Підрядні речення причини (weil / da)</h4>
+                                <p class="text-xs text-gray-600">Сполучники <strong>weil</strong> та <strong>da</strong> відправляють відмінюване дієслово в **найпростіший кінець** речення!</p>
+                                <div class="bg-blue-50 p-2.5 rounded border border-blue-200 text-xs font-mono">
+                                    • Ich kann nicht kommen, <strong>weil</strong> ich krank <strong>bin</strong>.<br>
+                                    • <strong>Da</strong> ich arbeiten <strong>muss</strong>, komme ich etwas später.
+                                </div>
+                            </div>
+
+                            <!-- 2. Deshalb -->
+                            <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-2 shadow-sm">
+                                <h4 class="font-bold text-blue-900 border-b border-gray-200 pb-1">2. Вказівка наслідку (deshalb / deswegen)</h4>
+                                <p class="text-xs text-gray-600">Після <strong>deshalb</strong> дієслово стоїть одразу на **другому місці**!</p>
+                                <div class="bg-blue-50 p-2.5 rounded border border-blue-200 text-xs font-mono">
+                                    • Ich bin krank, <strong>deshalb komme</strong> ich nicht.
+                                </div>
+                            </div>
+
+                            <!-- 3. Dass -->
+                            <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-2 shadow-sm">
+                                <h4 class="font-bold text-blue-900 border-b border-gray-200 pb-1">3. З'єднувальний сполучник (dass)</h4>
+                                <p class="text-xs text-gray-600">Дієслово також іде в **кінець** речення.</p>
+                                <div class="bg-blue-50 p-2.5 rounded border border-blue-200 text-xs font-mono">
+                                    • Ich hoffe, <strong>dass</strong> wir uns bald <strong>sehen</strong>.<br>
+                                    • Es tut mir leid, <strong>dass</strong> ich verspätet <strong>antworte</strong>.
+                                </div>
+                            </div>
+
+                            <!-- 4. Modalverben Im Präteritum -->
+                            <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-2 shadow-sm">
+                                <h4 class="font-bold text-blue-900 border-b border-gray-200 pb-1">4. Модальні дієслова в минулому часі (Präteritum)</h4>
+                                <p class="text-xs text-gray-600">Для розповідей про минуле у листі використовуйте Präteritum для модальних дієслів:</p>
+                                <div class="bg-blue-50 p-2.5 rounded border border-blue-200 text-xs font-mono">
+                                    • ich musste / konnte / wollte / durfte<br>
+                                    • <i>Приклад:</i> Gestern <strong>konnte</strong> ich nicht anrufen, weil ich arbeiten <strong>musste</strong>.
+                                </div>
+                            </div>
+
+                        </div>
+                    `
+                }
+            ]
+        };
+
+        /* ==========================================================================
+           ЛОГІКА ВІДОБРАЖЕННЯ ТА НАВІГАЦІЇ
+           ========================================================================== */
+        let currentCategory = "";
+        let currentTest = null;
+        let userAnswers = {};
+
+        function goBack() {
+            const screenTestContent = document.getElementById('screenTestContent');
+            const screenTestList = document.getElementById('screenTestList');
+            const screenMainMenu = document.getElementById('screenMainMenu');
+
+            if (!screenTestContent.classList.contains('hidden')) {
+                screenTestContent.classList.add('hidden');
+                screenTestList.classList.remove('hidden');
+                document.getElementById('mainAudio').pause();
+            } else if (!screenTestList.classList.contains('hidden')) {
+                screenTestList.classList.add('hidden');
+                screenMainMenu.classList.remove('hidden');
+                document.getElementById('backBtn').classList.add('hidden');
+            }
+        }
+
+        function openCategory(catKey) {
+            currentCategory = catKey;
+            document.getElementById('screenMainMenu').classList.add('hidden');
+            document.getElementById('screenTestList').classList.remove('hidden');
+            document.getElementById('backBtn').classList.remove('hidden');
+            document.getElementById('categoryTitle').innerText = catKey;
+
+            const grid = document.getElementById('testGrid');
+            grid.innerHTML = "";
+
+            const tests = examData[catKey] || [];
+            if(tests.length === 0) {
+                grid.innerHTML = `<p class="col-span-full text-center text-gray-400 py-4">Тести ще додаються...</p>`;
+                return;
+            }
+
+            tests.forEach((test, index) => {
+                grid.innerHTML += `
+                    <button onclick="loadTest('${catKey}', ${index})" class="p-4 bg-white border border-gray-200 rounded-xl shadow-sm hover:border-blue-500 hover:bg-blue-50 font-bold text-gray-800 text-center transition cursor-pointer">
+                        ${catKey === 'Schreiben' ? '📚' : '📝'} ${test.title}
+                    </button>
+                `;
+            });
+        }
+
+        function loadTest(catKey, testIndex) {
+            currentTest = examData[catKey][testIndex];
+            userAnswers = {};
+
+            document.getElementById('screenTestList').classList.add('hidden');
+            document.getElementById('screenTestContent').classList.remove('hidden');
+
+            document.getElementById('testMeta').innerText = `${currentTest.title}`;
+
+            const audioBox = document.getElementById('audioPlayerContainer');
+            const audioEl = document.getElementById('mainAudio');
+            const submitContainer = document.getElementById('submitContainer');
+
+            if (catKey === 'Horen') {
+                submitContainer.classList.remove('hidden');
+                document.getElementById('taskCountBadge').innerText = `20 завдань`;
+                if (currentTest.audioUrl) {
+                    audioBox.classList.remove('hidden');
+                    document.getElementById('audioSource').src = currentTest.audioUrl;
+                    audioEl.load();
+                }
+                renderHorenTest();
+            } else if (catKey === 'Lesen') {
+                submitContainer.classList.remove('hidden');
+                document.getElementById('taskCountBadge').innerText = `25 завдань (21-45)`;
+                audioBox.classList.add('hidden');
+                audioEl.pause();
+                renderLesenTest();
+            } else if (catKey === 'Schreiben') {
+                submitContainer.classList.add('hidden'); // Кнопка перевірки не потрібна для довідника
+                document.getElementById('taskCountBadge').innerText = `Довідник B1`;
+                audioBox.classList.add('hidden');
+                audioEl.pause();
+                renderSchreibenGuide();
+            }
+        }
+
+        /* --------------------------------------------------------------------------
+           РЕНДЕР HÖREN
+           -------------------------------------------------------------------------- */
+        function renderHorenTest() {
+            const container = document.getElementById('questionsContainer');
+            container.innerHTML = "";
+
+            ['teil1', 'teil2'].forEach((tKey, idx) => {
+                if(currentTest[tKey]) {
+                    container.innerHTML += `<div class="bg-blue-600 text-white p-2.5 rounded-lg text-xs font-bold uppercase">Teil ${idx+1}</div>`;
+                    currentTest[tKey].forEach(q => {
+                        container.innerHTML += buildAbcCard(q.num, q.question, q.opts);
+                    });
+                }
+            });
+
+            if(currentTest.teil3) {
+                container.innerHTML += `<div class="bg-blue-600 text-white p-2.5 rounded-lg text-xs font-bold uppercase mt-6">Teil 3 (Aufgaben 10–17)</div>`;
+                currentTest.teil3.forEach(pair => {
+                    container.innerHTML += `
+                        <div class="bg-white border border-gray-200 p-4 rounded-xl shadow-sm space-y-3" id="q_box_${pair.rfNum}">
+                            <div class="font-bold text-gray-900 text-sm">${pair.rfNum}. ${pair.statement}</div>
+                            <div class="flex gap-2 text-xs">
+                                <button onclick="selectRf(${pair.rfNum}, 'richtig', this)" class="rf-btn-${pair.rfNum} flex-1 py-2 border rounded-lg border-gray-200 hover:bg-gray-50 font-semibold cursor-pointer">Richtig</button>
+                                <button onclick="selectRf(${pair.rfNum}, 'falsch', this)" class="rf-btn-${pair.rfNum} flex-1 py-2 border rounded-lg border-gray-200 hover:bg-gray-50 font-semibold cursor-pointer">Falsch</button>
+                            </div>
+                            <div id="feedback_${pair.rfNum}" class="hidden text-xs font-bold pt-1"></div>
+                            <hr class="border-gray-100 my-2">
+                            <div class="font-bold text-gray-900 text-sm">${pair.abcNum}. ${pair.question}</div>
+                            <div class="space-y-1.5">
+                                ${pair.opts.map((opt, oIdx) => `
+                                    <label id="opt_lbl_${pair.abcNum}_${oIdx}" class="flex items-center p-2 border border-gray-200 rounded-lg text-xs hover:bg-gray-50 cursor-pointer">
+                                        <input type="radio" name="opt_${pair.abcNum}" value="${oIdx}" onclick="selectOpt(${pair.abcNum}, ${oIdx})" class="h-4 w-4 text-blue-600">
+                                        <span class="ml-2 text-gray-800">${opt}</span>
+                                    </label>
+                                `).join('')}
+                            </div>
+                            <div id="feedback_${pair.abcNum}" class="hidden text-xs font-bold pt-1"></div>
+                        </div>
+                    `;
+                });
+            }
+
+            if(currentTest.teil4) {
+                container.innerHTML += `
+                    <div class="bg-blue-600 text-white p-2.5 rounded-lg text-xs font-bold uppercase mt-6">Teil 4 (Aufgaben 18–20)</div>
+                    <div class="bg-white border border-gray-200 p-4 rounded-xl shadow-sm space-y-3">
+                        <div class="text-xs text-gray-600 bg-gray-50 p-3 rounded-lg border border-gray-200 space-y-1">
+                            <span class="font-bold text-gray-800">Sätze a–f:</span>
+                            ${currentTest.teil4.optionsList.map(o => `<div><b>${o.letter})</b> ${o.text}</div>`).join('')}
+                        </div>
+                        <div class="space-y-3 pt-2">
+                            ${currentTest.teil4.questions.map(q => `
+                                <div class="bg-gray-50 p-2.5 rounded-lg border border-gray-200 space-y-1">
+                                    <div class="flex items-center justify-between">
+                                        <span class="font-bold text-sm text-gray-800">Aufgabe ${q.num}:</span>
+                                        <select id="select_${q.num}" onchange="selectOpt(${q.num}, this.value)" class="bg-white border border-gray-300 text-xs rounded-md p-1.5 font-bold">
+                                            <option value="">-- Виберіть літеру (a-f) --</option>
+                                            ${currentTest.teil4.optionsList.map(o => `<option value="${o.letter}">${o.letter.toUpperCase()}</option>`).join('')}
+                                        </select>
+                                    </div>
+                                    <div id="feedback_${q.num}" class="hidden text-xs font-bold pt-1"></div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        /* --------------------------------------------------------------------------
+           РЕНДЕР LESEN
+           -------------------------------------------------------------------------- */
+        function renderLesenTest() {
+            const container = document.getElementById('questionsContainer');
+            container.innerHTML = "";
+
+            if (currentTest.teil1) {
+                let t1 = currentTest.teil1;
+                let html = `
+                    <div class="bg-blue-600 text-white p-2.5 rounded-lg text-xs font-bold uppercase">${t1.title}</div>
+                    <div class="bg-blue-50 border border-blue-200 p-3.5 rounded-xl text-xs text-gray-800 leading-relaxed">${t1.infoBox}</div>
+                `;
+                t1.questions.forEach(q => {
+                    html += buildAbcCard(q.num, q.text, q.opts);
+                });
+                container.innerHTML += html;
+            }
+
+            if (currentTest.teil2) {
+                let t2 = currentTest.teil2;
+                let html = `
+                    <div class="bg-blue-600 text-white p-2.5 rounded-lg text-xs font-bold uppercase mt-6">${t2.title}</div>
+                    <div class="bg-blue-50 border border-blue-200 p-3.5 rounded-xl text-xs text-gray-800 leading-relaxed">${t2.infoBox}</div>
+                    <div class="bg-white border border-gray-200 p-4 rounded-xl shadow-sm space-y-3 mt-3">
+                `;
+                t2.questions.forEach(q => {
+                    html += `
+                        <div class="bg-gray-50 p-2.5 rounded-lg border border-gray-200 text-xs space-y-1">
+                            <div class="flex items-center justify-between">
+                                <span class="font-bold text-gray-800">${q.text}</span>
+                                <select id="select_${q.num}" onchange="selectOpt(${q.num}, this.value)" class="bg-white border border-gray-300 text-xs rounded-md p-1.5 font-bold">
+                                    <option value="">-- Вибір --</option>
+                                    ${['a','b','c','d','e','f','g','h','x'].map(l => `<option value="${l}">${l.toUpperCase()}</option>`).join('')}
+                                </select>
+                            </div>
+                            <div id="feedback_${q.num}" class="hidden text-xs font-bold pt-1"></div>
+                        </div>
+                    `;
+                });
+                html += `</div>`;
+                container.innerHTML += html;
+            }
+
+            if (currentTest.teil3) {
+                let t3 = currentTest.teil3;
+                let html = `<div class="bg-blue-600 text-white p-2.5 rounded-lg text-xs font-bold uppercase mt-6">${t3.title}</div>`;
+                t3.items.forEach(item => {
+                    html += `
+                        <div class="bg-white border border-gray-200 p-4 rounded-xl shadow-sm space-y-3 mt-3">
+                            <div class="bg-gray-50 p-3 rounded-lg border border-gray-200 text-xs text-gray-800">${item.text}</div>
+                            
+                            <div class="font-bold text-gray-900 text-sm pt-1">${item.q1.text}</div>
+                            <div class="flex gap-2 text-xs">
+                                <button onclick="selectRf(${item.q1.num}, 'richtig', this)" class="rf-btn-${item.q1.num} flex-1 py-2 border rounded-lg border-gray-200 hover:bg-gray-50 font-semibold cursor-pointer">Richtig</button>
+                                <button onclick="selectRf(${item.q1.num}, 'falsch', this)" class="rf-btn-${item.q1.num} flex-1 py-2 border rounded-lg border-gray-200 hover:bg-gray-50 font-semibold cursor-pointer">Falsch</button>
+                            </div>
+                            <div id="feedback_${item.q1.num}" class="hidden text-xs font-bold pt-1"></div>
+
+                            <hr class="border-gray-100 my-2">
+
+                            <div class="font-bold text-gray-900 text-sm">${item.q2.text}</div>
+                            <div class="space-y-1.5">
+                                ${item.q2.opts.map((opt, oIdx) => `
+                                    <label id="opt_lbl_${item.q2.num}_${oIdx}" class="flex items-center p-2 border border-gray-200 rounded-lg text-xs hover:bg-gray-50 cursor-pointer">
+                                        <input type="radio" name="opt_${item.q2.num}" value="${oIdx}" onclick="selectOpt(${item.q2.num}, ${oIdx})" class="h-4 w-4 text-blue-600">
+                                        <span class="ml-2 text-gray-800">${opt}</span>
+                                    </label>
+                                `).join('')}
+                            </div>
+                            <div id="feedback_${item.q2.num}" class="hidden text-xs font-bold pt-1"></div>
+                        </div>
+                    `;
+                });
+                container.innerHTML += html;
+            }
+
+            if (currentTest.teil4) {
+                let t4 = currentTest.teil4;
+                let html = `
+                    <div class="bg-blue-600 text-white p-2.5 rounded-lg text-xs font-bold uppercase mt-6">${t4.title}</div>
+                    <div class="bg-blue-50 border border-blue-200 p-3.5 rounded-xl text-xs text-gray-800 leading-relaxed">${t4.infoBox}</div>
+                `;
+                t4.questions.forEach(q => {
+                    html += `
+                        <div class="bg-white border border-gray-200 p-4 rounded-xl shadow-sm space-y-2 mt-3">
+                            <div class="font-bold text-gray-900 text-sm">${q.text}</div>
+                            <div class="flex gap-2 text-xs">
+                                <button onclick="selectRf(${q.num}, 'richtig', this)" class="rf-btn-${q.num} flex-1 py-2 border rounded-lg border-gray-200 hover:bg-gray-50 font-semibold cursor-pointer">Richtig</button>
+                                <button onclick="selectRf(${q.num}, 'falsch', this)" class="rf-btn-${q.num} flex-1 py-2 border rounded-lg border-gray-200 hover:bg-gray-50 font-semibold cursor-pointer">Falsch</button>
+                            </div>
+                            <div id="feedback_${q.num}" class="hidden text-xs font-bold pt-1"></div>
+                        </div>
+                    `;
+                });
+                container.innerHTML += html;
+            }
+
+            if (currentTest.teil5) {
+                let t5 = currentTest.teil5;
+                let html = `
+                    <div class="bg-blue-600 text-white p-2.5 rounded-lg text-xs font-bold uppercase mt-6">${t5.title}</div>
+                    <div class="bg-blue-50 border border-blue-200 p-3.5 rounded-xl text-xs text-gray-800 leading-relaxed">${t5.infoBox}</div>
+                `;
+                t5.questions.forEach(q => {
+                    html += buildAbcCard(q.num, q.text, q.opts);
+                });
+                container.innerHTML += html;
+            }
+        }
+
+        /* --------------------------------------------------------------------------
+           РЕНДЕР SCHREIBEN (ДОВІДНИК ГРАМАТИКИ ТА ПОРАД)
+           -------------------------------------------------------------------------- */
+        function renderSchreibenGuide() {
+            const container = document.getElementById('questionsContainer');
+            container.innerHTML = `
+                <div class="space-y-4">
+                    ${currentTest.content}
+                </div>
+            `;
+        }
+
+        /* --------------------------------------------------------------------------
+           ДОПОМІЖНІ ФУНКЦІЇ ДЛЯ ШАБЛОНІВ
+           -------------------------------------------------------------------------- */
+        function buildAbcCard(num, titleText, opts) {
+            return `
+                <div class="bg-white border border-gray-200 p-4 rounded-xl shadow-sm space-y-2 mt-3">
+                    <div class="font-bold text-gray-900 text-sm">${titleText}</div>
+                    <div class="space-y-1.5">
+                        ${opts.map((opt, oIdx) => `
+                            <label id="opt_lbl_${num}_${oIdx}" class="flex items-center p-2 border border-gray-200 rounded-lg text-xs hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="opt_${num}" value="${oIdx}" onclick="selectOpt(${num}, ${oIdx})" class="h-4 w-4 text-blue-600">
+                                <span class="ml-2 text-gray-800">${opt}</span>
+                            </label>
+                        `).join('')}
+                    </div>
+                    <div id="feedback_${num}" class="hidden text-xs font-bold pt-1"></div>
+                </div>
+            `;
+        }
+
+        function selectRf(qNum, val, btnEl) {
+            userAnswers[qNum] = val;
+            document.querySelectorAll(`.rf-btn-${qNum}`).forEach(b => {
+                b.classList.remove('bg-blue-600', 'text-white', 'border-blue-600');
+                b.classList.add('border-gray-200', 'hover:bg-gray-50');
+            });
+            btnEl.classList.remove('border-gray-200', 'hover:bg-gray-50');
+            btnEl.classList.add('bg-blue-600', 'text-white', 'border-blue-600');
+        }
+
+        function selectOpt(qNum, val) {
+            userAnswers[qNum] = val;
+        }
+
+        /* --------------------------------------------------------------------------
+           ПЕРЕВІРКА ВІДПОВІДЕЙ ТА ВІЗУАЛЬНА ПІДСВІТКА
+           -------------------------------------------------------------------------- */
+        function checkAnswers() {
+            let score = 0;
+            let total = (currentCategory === 'Horen') ? 20 : 25;
+
+            const checkAbcQuestion = (qNum, correctIdx, opts) => {
+                const selectedIdx = userAnswers[qNum] !== undefined ? parseInt(userAnswers[qNum]) : null;
+                const fb = document.getElementById(`feedback_${qNum}`);
+                
+                opts.forEach((_, idx) => {
+                    const lbl = document.getElementById(`opt_lbl_${qNum}_${idx}`);
+                    if (!lbl) return;
+                    lbl.classList.remove('bg-green-100', 'border-green-500', 'text-green-800', 'bg-red-100', 'border-red-500', 'line-through');
+                    
+                    if (idx === correctIdx) {
+                        lbl.classList.add('bg-green-100', 'border-green-500', 'text-green-800', 'font-bold');
+                    } else if (idx === selectedIdx && selectedIdx !== correctIdx) {
+                        lbl.classList.add('bg-red-100', 'border-red-500', 'line-through');
+                    }
+                });
+
+                if (fb) {
+                    fb.classList.remove('hidden', 'text-green-600', 'text-red-600', 'text-yellow-600');
+                    if (selectedIdx === null) {
+                        fb.classList.add('text-yellow-600');
+                        fb.innerText = '⚠️ Ви не обрали відповідь.';
+                    } else if (selectedIdx === correctIdx) {
+                        score++;
+                        fb.classList.add('text-green-600');
+                        fb.innerText = '✅ Правильно!';
+                    } else {
+                        fb.classList.add('text-red-600');
+                        fb.innerText = `❌ Неправильно. Правильна відповідь: ${opts[correctIdx]}`;
+                    }
+                }
+            };
+
+            const checkRfQuestion = (qNum, correctVal) => {
+                const selectedVal = userAnswers[qNum];
+                const fb = document.getElementById(`feedback_${qNum}`);
+                const btns = document.querySelectorAll(`.rf-btn-${qNum}`);
+
+                btns.forEach(btn => {
+                    const isRichtigBtn = btn.innerText.trim().toLowerCase() === 'richtig';
+                    const btnVal = isRichtigBtn ? 'richtig' : 'falsch';
+
+                    btn.classList.remove('bg-green-500', 'bg-red-500', 'text-white', 'border-green-500', 'border-red-500');
+
+                    if (btnVal === correctVal) {
+                        btn.classList.add('bg-green-500', 'text-white', 'border-green-500');
+                    } else if (btnVal === selectedVal && selectedVal !== correctVal) {
+                        btn.classList.add('bg-red-500', 'text-white', 'border-red-500');
+                    }
+                });
+
+                if (fb) {
+                    fb.classList.remove('hidden', 'text-green-600', 'text-red-600', 'text-yellow-600');
+                    if (!selectedVal) {
+                        fb.classList.add('text-yellow-600');
+                        fb.innerText = '⚠️ Ви не обрали відповідь.';
+                    } else if (selectedVal === correctVal) {
+                        score++;
+                        fb.classList.add('text-green-600');
+                        fb.innerText = '✅ Правильно!';
+                    } else {
+                        fb.classList.add('text-red-600');
+                        fb.innerText = `❌ Неправильно. Правильно: ${correctVal.toUpperCase()}`;
+                    }
+                }
+            };
+
+            const checkSelectQuestion = (qNum, correctLetter) => {
+                const selectedVal = userAnswers[qNum];
+                const selectEl = document.getElementById(`select_${qNum}`);
+                const fb = document.getElementById(`feedback_${qNum}`);
+
+                if (selectEl) {
+                    selectEl.classList.remove('border-green-500', 'border-red-500', 'bg-green-50', 'bg-red-50');
+                    if (selectedVal === correctLetter) {
+                        selectEl.classList.add('border-green-500', 'bg-green-50');
+                    } else if (selectedVal) {
+                        selectEl.classList.add('border-red-500', 'bg-red-50');
+                    }
+                }
+
+                if (fb) {
+                    fb.classList.remove('hidden', 'text-green-600', 'text-red-600', 'text-yellow-600');
+                    if (!selectedVal) {
+                        fb.classList.add('text-yellow-600');
+                        fb.innerText = '⚠️ Ви не обрали літеру.';
+                    } else if (selectedVal === correctLetter) {
+                        score++;
+                        fb.classList.add('text-green-600');
+                        fb.innerText = '✅ Правильно!';
+                    } else {
+                        fb.classList.add('text-red-600');
+                        fb.innerText = `❌ Неправильно. Правильно: ${correctLetter.toUpperCase()}`;
+                    }
+                }
+            };
+
+            if (currentCategory === 'Horen') {
+                currentTest.teil1?.forEach(q => checkAbcQuestion(q.num, q.correct, q.opts));
+                currentTest.teil2?.forEach(q => checkAbcQuestion(q.num, q.correct, q.opts));
+                currentTest.teil3?.forEach(p => {
+                    checkRfQuestion(p.rfNum, p.rfCorrect);
+                    checkAbcQuestion(p.abcNum, p.abcCorrect, p.opts);
+                });
+                currentTest.teil4?.questions.forEach(q => checkSelectQuestion(q.num, q.correctLetter));
+
+            } else if (currentCategory === 'Lesen') {
+                currentTest.teil1?.questions.forEach(q => checkAbcQuestion(q.num, q.correct, q.opts));
+                currentTest.teil2?.questions.forEach(q => checkSelectQuestion(q.num, q.correctLetter));
+                currentTest.teil3?.items.forEach(item => {
+                    checkRfQuestion(item.q1.num, item.q1.correct);
+                    checkAbcQuestion(item.q2.num, item.q2.correct, item.q2.opts);
+                });
+                currentTest.teil4?.questions.forEach(q => checkRfQuestion(q.num, q.correct));
+                currentTest.teil5?.questions.forEach(q => checkAbcQuestion(q.num, q.correct, q.opts));
+            }
+
+            alert(`Результат ${currentCategory}:\nВаш результат: ${score} з ${total}`);
+        }
+    </script>
+</body>
+</html>
