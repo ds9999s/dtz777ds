@@ -24,7 +24,6 @@
 
     <main class="flex-grow max-w-4xl w-full mx-auto p-4 flex flex-col justify-center">
 
-        <!-- Головне меню -->
         <div id="screenMainMenu" class="space-y-6">
             <div class="text-center">
                 <h2 class="text-2xl font-extrabold text-gray-900">Оберіть розділ іспиту</h2>
@@ -54,7 +53,6 @@
             </div>
         </div>
 
-        <!-- Список тестів -->
         <div id="screenTestList" class="hidden space-y-6">
             <div class="text-center">
                 <h2 id="categoryTitle" class="text-2xl font-extrabold text-blue-600 uppercase"></h2>
@@ -63,7 +61,6 @@
             <div id="testGrid" class="grid grid-cols-2 sm:grid-cols-3 gap-3"></div>
         </div>
 
-        <!-- Вміст тесту або Шпаргалки -->
         <div id="screenTestContent" class="hidden space-y-4">
             
             <div id="audioPlayerContainer" class="sticky top-14 z-40 bg-blue-50 border border-blue-200 p-3 rounded-xl shadow-sm space-y-2 hidden">
@@ -136,7 +133,48 @@
                             { num: 20, correctLetter: "d" }
                         ]
                     }
+                },
+
+                {
+                    id: 2,
+                    title: "Hören - Test 2",
+                    audioUrl: "https://www.dropbox.com/scl/fi/u28y7vfk5kkje8xx1e7v6/PTT-20200512-WA0003.mp3?rlkey=o8vrv1pevzqr87mca9jji94v7&st=0iklwqlr&raw=1",
+                    teil1: [
+                        { num: 1, question: "1-Was soll Frau Hellmeier tun? ", opts: ["a) Heute Nachmittag in die Zeitarbeitsfirma gehen.", "b) Morgen in die Zeitarbeitsfirma gehen.", "c) Sich bei der Zeitarbeitsfirma bewerben."], correct: 1 },
+                        { num: 2, question: "2-Was soll Alex Tun?", opts: ["a) für beter eine Wohnung finden.", "b) Peter anrufen.", "c) Peters Brille suchen."], correct: 2 },
+                        { num: 3, question: "3-Was soll Frau Mazurkiewicz tun?", opts: ["a) Das Buch heute abholen.", "b) Ein Buch bestellen.", "c) In der Buchhandlung anrufen."], correct: 2 },
+                        { num: 4, question: "4-Sie möchten sich beschweren. Was müssen Sie tun?", opts: ["a) Die 2 drücken.", "b) Die 3 drücken.", "c) Die ,,4 drücken."], correct: 1 }
+                    ],
+                    teil2: [
+                        { num: 5, question: "5 Wie wird das Wetter im Süden von Deutschland?", opts: ["a) Die Temperaturen sinken.", "b) Es bleibt kühl.", "c) Es wird wärmer."], correct: 2 },
+                        { num: 6, question: "6 Wo läuft ein Tier auf der Autobahn?", opts: ["a) Auf der A 1.", "b) Auf der A3.", "c) Auf der A5."], correct: 0 },
+                        { num: 7, question: "7 Was kann man heute Abend in Bonn machen?", opts: ["a) Radio Bär besichtigen.", "b) Eine Tanzveranstaltung besuchen.", "c) Eine Veranstaltung im Museum besuchen."], correct: 1 },
+                        { num: 8, question: "8 Vorsicht vor ", opts: ["a) Blitzen.", "b) fallenden Dingen.", "c) starkem Regen."], correct: 1 },
+                        { num: 9, question: "9 Wie kann man eine CD gewinnen?", opts: ["a) Man muss anrufen.", "b) Man muss ins Internet gehen.", "c) Man muss Musik machen."], correct: 1 }
+                    ],
+                    teil3: [
+                        { pairId: "1", rfNum: 10, statement: "Frau Bastian telefoniert mit einer Kollegin.", rfCorrect: "falsch", abcNum: 11, question: "Was soll sie tun, wenn ihr Sohn zu lange für die Hausaufgaben braucht?", opts: ["a) Die Lehrerin anrufen.", "b) Eine Entschuldigung schreiben.", "c) Ihrem Sohn helfen."], abcCorrect: 1 },
+                        { pairId: "2", rfNum: 12, statement: "Die Frau möchte eine Hose kaufen.", rfCorrect: "falsch", abcNum: 13, question: "Die Kundin", opts: ["a) bekommt ihr Geld zurück.", "b) kann die Hose ohne Quittung zurückgeben.", "c) muss die Hose wieder mitnehmen."], abcCorrect: 1 },
+                        { pairId: "3", rfNum: 14, statement: "Frau Ziller ist neu in der Firma.", rfCorrect: "richtig", abcNum: 15, question: "Frau Ziller", opts: ["a) arbeitet im Zimmer von Herrn Bach.", "b) hat insgesamt vier Kollegen.", "c) ist die einzige Frau in der Firma."], abcCorrect: 2 },
+                        { pairId: "4", rfNum: 16, statement: "Georg und Kathrin ziehen zusammen in eine neue Wohnung.", rfCorrect: "falsch", abcNum: 17, question: "Welche Bitte hat Kathrin an Georg? Er soll ", opts: ["a) beim Umzug helfen.", "b) die alte Wohnung renovieren.", "c) Möbel verkaufen."], abcCorrect: 0 }
+                    ],
+                    teil4: {
+                        optionsList: [
+                            { letter: "a", text: "Auch Geschwister aus zweiten Ehen können ein gutes Verhältnis haben." },
+                            { letter: "b", text: "Brüder und Schwestern sind wichtig, um über die Vergangenheit zu" },
+                            { letter: "c", text: "Ein großer Altersunterschied zwischen Geschwistern ist kein Problem." },
+                            { letter: "d", text: "Freunde sind heute wichtiger als Geschwister" },
+                            { letter: "e", text: "Von Geschwistern kann man viel lernen." },
+                            { letter: "f", text: "man keine Brüder und Schwestern hat, gibt es keinen Streit" }
+                        ],
+                        questions: [
+                            { num: 18, correctLetter: "b" },
+                            { num: 19, correctLetter: "e" },
+                            { num: 20, correctLetter: "a" }
+                        ]
+                    }
                 }
+
             ],
             Lesen: [
                 {
@@ -362,7 +400,121 @@
                     }
                 }
             ],
-            Sprechen: [], 
+            Sprechen: [
+                {
+                    type: "guide",
+                    title: "Sprechen (DTZ B1) — Комплексна підготовка",
+                    content: `
+                        <div class="space-y-6 text-xs sm:text-sm text-gray-800">
+                            
+                            <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-3 shadow-sm">
+                                <div class="font-bold text-blue-800 text-sm border-b border-gray-200 pb-2 flex items-center gap-2">
+                                    <span>👤</span> Teil 1: Sich vorstellen (Знайомство)
+                                </div>
+                                <p class="text-xs text-gray-600">На іспиті вам потрібно коротко розказати про себе за пунктами. Натисніть на картку, щоб переглянути приклад фрази:</p>
+                                
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+                                    <div class="p-3 bg-gray-50 rounded-lg border border-gray-200">
+                                        <div class="font-bold text-blue-900 text-xs">1. Name / Name</div>
+                                        <div class="text-xs text-gray-600 mt-1">«Ich heiße [Name] und mein Familienname ist [Nachname].»</div>
+                                    </div>
+                                    <div class="p-3 bg-gray-50 rounded-lg border border-gray-200">
+                                        <div class="font-bold text-blue-900 text-xs">2. Alter / Вік</div>
+                                        <div class="text-xs text-gray-600 mt-1">«Ich bin [Zahl] Jahre alt.»</div>
+                                    </div>
+                                    <div class="p-3 bg-gray-50 rounded-lg border border-gray-200">
+                                        <div class="font-bold text-blue-900 text-xs">3. Land / Країна</div>
+                                        <div class="text-xs text-gray-600 mt-1">«Ich komme aus der Ukraine.»</div>
+                                    </div>
+                                    <div class="p-3 bg-gray-50 rounded-lg border border-gray-200">
+                                        <div class="font-bold text-blue-900 text-xs">4. Wohnort / Місто проживання</div>
+                                        <div class="text-xs text-gray-600 mt-1">«Ich wohne jetzt in [Stadt], in Deutschland.»</div>
+                                    </div>
+                                    <div class="p-3 bg-gray-50 rounded-lg border border-gray-200">
+                                        <div class="font-bold text-blue-900 text-xs">5. Sprachen / Мови</div>
+                                        <div class="text-xs text-gray-600 mt-1">«Meine Muttersprache ist Ukrainisch, ich spreche auch Englisch und lerne Deutsch.»</div>
+                                    </div>
+                                    <div class="p-3 bg-gray-50 rounded-lg border border-gray-200">
+                                        <div class="font-bold text-blue-900 text-xs">6. Beruf / Професія</div>
+                                        <div class="text-xs text-gray-600 mt-1">«Ich habe ... studiert / Ich bin von Beruf ... und arbeite zurzeit als ...»</div>
+                                    </div>
+                                </div>
+                                <div class="bg-amber-50 p-2.5 rounded-lg border border-amber-200 text-xs text-amber-900">
+                                    💡 <strong>Порада екзаменатора:</strong> Будьте готові пробуквувати своє ім'я (Buchstabieren) або назвати номер телефону чи поштовий індекс!
+                                </div>
+                            </div>
+
+                            <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-3 shadow-sm">
+                                <div class="font-bold text-blue-800 text-sm border-b border-gray-200 pb-2 flex items-center gap-2">
+                                    <span>🖼️</span> Teil 2: Bild beschreiben (Опис картинки)
+                                </div>
+                                <p class="text-xs text-gray-600">Завжди дотримуйтесь алгоритму з 4 кроків при описі будь-якої фотографії:</p>
+                                
+                                <div class="space-y-2 text-xs">
+                                    <div class="p-2.5 bg-blue-50 rounded-lg border border-blue-200">
+                                        <div class="font-bold text-blue-900">Крок 1: Що ви бачите (Was sehe ich?)</div>
+                                        <div class="text-gray-700 italic">«Auf dem Bild sehe ich eine Frau / einen Mann / viele Leute. Sie sind im Supermarkt / im Büro / zu Hause...»</div>
+                                    </div>
+                                    <div class="p-2.5 bg-blue-50 rounded-lg border border-blue-200">
+                                        <div class="font-bold text-blue-900">Крок 2: Тема фотографії (Thema)</div>
+                                        <div class="text-gray-700 italic">«Das Thema des Bildes ist Gesundheit / Arbeit / Einkaufen / Familie...»</div>
+                                    </div>
+                                    <div class="p-2.5 bg-blue-50 rounded-lg border border-blue-200">
+                                        <div class="font-bold text-blue-900">Крок 3: Особистий досвід (Eigene Erfahrung)</div>
+                                        <div class="text-gray-700 italic">«Ich persönlich habe auch Erfahrungen damit. Ich kaufe oft im Supermarkt ein / Ich arbeite gern im Büro...»</div>
+                                    </div>
+                                    <div class="p-2.5 bg-blue-50 rounded-lg border border-blue-200">
+                                        <div class="font-bold text-blue-900">Крок 4: Порівняння з рідною країною (In meinem Heimatland)</div>
+                                        <div class="text-gray-700 italic">«In meinem Heimatland (in der Ukraine) ist das ähnlich / anders, weil...»</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-3 shadow-sm">
+                                <div class="font-bold text-blue-800 text-sm border-b border-gray-200 pb-2 flex items-center gap-2">
+                                    <span>💬</span> Teil 3: Gemeinsam planen (Спільне планування)
+                                </div>
+                                <p class="text-xs text-gray-600">Готові сценарії діалогів із пунктами для обговорення та виразами (Redemittel):</p>
+
+                                <div class="space-y-4 pt-1">
+                                    
+                                    <div class="border border-gray-200 rounded-lg p-3 bg-gray-50 space-y-2">
+                                        <div class="font-bold text-gray-900 text-xs text-blue-900">📍 Сценарій 1: Einem Freund beim Umzug helfen (Допомога з переїздом)</div>
+                                        <div class="text-xs text-gray-700"><strong>Завдання:</strong> Ваш спільний друг переїжджає на вихідних і потребує допомоги. Сплануйте допомогу разом.</div>
+                                        <ul class="list-disc pl-4 text-xs text-gray-600 space-y-0.5">
+                                            <li>Wann helfen? (Tag und Uhrzeit)</li>
+                                            <li>Wie helfen? (Kisten tragen, Transporter fahren)</li>
+                                            <li>Verpflegung (Essen und Getränke für die Helfer)</li>
+                                            <li>Geschenk für die neue Wohnung</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="border border-gray-200 rounded-lg p-3 bg-gray-50 space-y-2">
+                                        <div class="font-bold text-gray-900 text-xs text-blue-900">📍 Сценарій 2: Einen Ausflug planen (Поїздка на вихідних)</div>
+                                        <div class="text-xs text-gray-700"><strong>Завдання:</strong> Ви хочете разом організувати заміську поїздку на вихідних.</div>
+                                        <ul class="list-disc pl-4 text-xs text-gray-600 space-y-0.5">
+                                            <li>Wohin fahren? (Park, Museum, Nachbarstadt)</li>
+                                            <li>Verkehrsmittel (Zug, Bus, Auto)</li>
+                                            <li>Was mitnehmen? (Essen, Trinken, Kamera)</li>
+                                            <li>Treffpunkt und Uhrzeit</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="bg-blue-50 p-3 rounded-lg border border-blue-200 space-y-2 text-xs">
+                                        <div class="font-bold text-blue-900">🔑 Корисні фрази для діалогу (Redemittel):</div>
+                                        <div><strong>Пропозиція:</strong> «Ich schlage vor, dass...» / «Wie wäre es mit...?»</div>
+                                        <div><strong>Згода:</strong> «Das klingt gut!» / «Einverstanden, das machen wir so.»</div>
+                                        <div><strong>Незгода / Альтернатива:</strong> «Ich bin mir nicht sicher. Vielleicht können wir lieber...?»</div>
+                                        <div><strong>Підсумок:</strong> «Gut, dann treffen wir uns am Samstag um 10 Uhr!»</div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    `
+                }
+            ], 
             Schreiben: [
                 {
                     type: "guide",
@@ -400,7 +552,6 @@
                     content: `
                         <div class="space-y-4 text-xs sm:text-sm text-gray-800">
                             
-                            <!-- Формальний лист -->
                             <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-3 shadow-sm">
                                 <div class="font-bold text-blue-800 text-sm border-b border-gray-200 pb-1">🏢 Формальний лист (до фірми, термінів, орендодавця)</div>
                                 <div>
@@ -436,7 +587,6 @@
                                 </div>
                             </div>
 
-                            <!-- Неформальний лист -->
                             <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-3 shadow-sm">
                                 <div class="font-bold text-green-800 text-sm border-b border-gray-200 pb-1">✉️ Неформальний лист (друзям, колегам, знайомим)</div>
                                 <div>
@@ -472,7 +622,6 @@
                     content: `
                         <div class="space-y-4 text-xs sm:text-sm text-gray-800">
                             
-                            <!-- 1. Weil / Da -->
                             <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-2 shadow-sm">
                                 <h4 class="font-bold text-blue-900 border-b border-gray-200 pb-1">1. Підрядні речення причини (weil / da)</h4>
                                 <p class="text-xs text-gray-600">Сполучники <strong>weil</strong> та <strong>da</strong> відправляють відмінюване дієслово в **найпростіший кінець** речення!</p>
@@ -482,7 +631,6 @@
                                 </div>
                             </div>
 
-                            <!-- 2. Deshalb -->
                             <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-2 shadow-sm">
                                 <h4 class="font-bold text-blue-900 border-b border-gray-200 pb-1">2. Вказівка наслідку (deshalb / deswegen)</h4>
                                 <p class="text-xs text-gray-600">Після <strong>deshalb</strong> дієслово стоїть одразу на **другому місці**!</p>
@@ -491,7 +639,6 @@
                                 </div>
                             </div>
 
-                            <!-- 3. Dass -->
                             <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-2 shadow-sm">
                                 <h4 class="font-bold text-blue-900 border-b border-gray-200 pb-1">3. З'єднувальний сполучник (dass)</h4>
                                 <p class="text-xs text-gray-600">Дієслово також іде в **кінець** речення.</p>
@@ -501,7 +648,6 @@
                                 </div>
                             </div>
 
-                            <!-- 4. Modalverben Im Präteritum -->
                             <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-2 shadow-sm">
                                 <h4 class="font-bold text-blue-900 border-b border-gray-200 pb-1">4. Модальні дієслова в минулому часі (Präteritum)</h4>
                                 <p class="text-xs text-gray-600">Для розповідей про минуле у листі використовуйте Präteritum для модальних дієслів:</p>
@@ -559,7 +705,7 @@
             tests.forEach((test, index) => {
                 grid.innerHTML += `
                     <button onclick="loadTest('${catKey}', ${index})" class="p-4 bg-white border border-gray-200 rounded-xl shadow-sm hover:border-blue-500 hover:bg-blue-50 font-bold text-gray-800 text-center transition cursor-pointer">
-                        ${catKey === 'Schreiben' ? '📚' : '📝'} ${test.title}
+                        ${catKey === 'Schreiben' || catKey === 'Sprechen' ? '📚' : '📝'} ${test.title}
                     </button>
                 `;
             });
@@ -599,6 +745,12 @@
                 audioBox.classList.add('hidden');
                 audioEl.pause();
                 renderSchreibenGuide();
+            } else if (catKey === 'Sprechen') {
+                submitContainer.classList.add('hidden'); // Кнопка перевірки не потрібна для Sprechen
+                document.getElementById('taskCountBadge').innerText = `Усна частина B1`;
+                audioBox.classList.add('hidden');
+                audioEl.pause();
+                renderSprechenGuide();
             }
         }
 
@@ -781,6 +933,18 @@
                 });
                 container.innerHTML += html;
             }
+        }
+
+        /* --------------------------------------------------------------------------
+           РЕНДЕР SPRECHEN (ДОВІДНИК ТА СЦЕНАРІЇ ДІАЛОГІВ)
+           -------------------------------------------------------------------------- */
+        function renderSprechenGuide() {
+            const container = document.getElementById('questionsContainer');
+            container.innerHTML = `
+                <div class="space-y-4">
+                    ${currentTest.content}
+                </div>
+            `;
         }
 
         /* --------------------------------------------------------------------------
