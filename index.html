@@ -173,6 +173,46 @@
                             { num: 20, correctLetter: "a" }
                         ]
                     }
+                },
+
+                {
+                    id: 3,
+                    title: "Hören - Test 3",
+                    audioUrl: "https://www.dropbox.com/scl/fi/86yk1zuf7s9gpqp1hzsn1/model3.mp3?rlkey=9uhc71u76ym0neyxojrm5v4l7&st=la9wgdr2&raw=1",
+                    teil1: [
+                        { num: 1, question: "1 Wie können Sie heute zum Südbahnhof fahren? ", opts: ["a) Mit der U1.", "b) Mit der U-Bahn und dem Bus.", "c) Überhaupt nicht."], correct: 1 },
+                        { num: 2, question: "2 Was soll Frau Aslan tun?", opts: ["a) Am Freitag vorbeikommen.", "b) Eine Fortbildung machen.", "c) Im Sekretariat anrufen."], correct: 2 },
+                        { num: 3, question: "3 Was kann man mit der Kundenkarte machen?", opts: ["a) Einkaufen und später bezahlen.", "b) Billiger einkaufen.", "c) Auch im Ausland einkaufen."], correct: 0 },
+                        { num: 4, question: "4 Was ist heute im Angebot?", opts: ["a) Gemüse.", "b)Fleisch.", "c) Obst."], correct: 2 }
+                    ],
+                    teil2: [
+                        { num: 5, question: "5 Wie wird das Wetter in Süddeutschland.", opts: ["a) Die Sonne scheint.", "b) Es gibt viele Wolken.", "c) Es regnet und schneit."], correct: 0 },
+                        { num: 6, question: "6 Wann hören Sie Tipps zur Arbeitssuche?", opts: ["a) Am Montag.", "b) Am Mittwoch.", "c) Am Wochennede."], correct: 1 },
+                        { num: 7, question: "7 Wo muss man sehr vorsichtig fahren?", opts: ["a) Auf der A 1.", "b) Auf der A 3.", "c) Auf der A 31."], correct: 2 },
+                        { num: 8, question: "8 Was kann man gewinnen?", opts: ["a) CDs.", "b) Eine Reise.", "c) Bargeld."], correct: 1 },
+                        { num: 9, question: "9 Herr Lohmann", opts: ["a) wird von der Polizei gesucht.", "b) hatte einen Unfall.", "c) wird seit Tagen vermisst."], correct: 0 }
+                    ],
+                    teil3: [
+                        { pairId: "1", rfNum: 10, statement: "Frau Brodsky telefoniert mit dem Deutschlehrer.", rfCorrect: "falsch", abcNum: 11, question: "Was soll Frau Brodsky machen?", opts: ["a) Ihrem Sohn mehr bei den Hausaufgaben helfen.", "b) Einen Nachhilfelehrer suchen.", "c) Ihren Sohn mittags länger in der Schule lassen."], abcCorrect: 2 },
+                        { pairId: "2", rfNum: 12, statement: "Herr Kowalski hat ein Gespräch beim JobCenter.", rfCorrect: "falsch", abcNum: 13, question: "Was muss Herr Kowalski noch tun?", opts: ["a) Verschiedene Unterlagen mitbringen.", "b) Den Antrag unterschreiben.", "c) In vier Wochen den Antrag abgeben."], abcCorrect: 1 },
+                        { pairId: "3", rfNum: 14, statement: "Frau Mavinga bewirbt sich.", rfCorrect: "richtig", abcNum: 15, question: "Was ist richtig!", opts: ["a) Frau Mavinga möchte 20 Stunden pro Woche arbeiten.", "b) Frau Mavinga möchte nicht am Samstag arbeiten.", "c) Frau Mavinga hat Berufserfahrung."], abcCorrect: 2 },
+                        { pairId: "4", rfNum: 16, statement: "Die Frau kauft eine neue Waschmaschine.", rfCorrect: "falsch", abcNum: 17, question: "Wann findet die Lieferung statt? Er soll ", opts: ["a) Am Donnerstagmorgen.", "b) Spätestens Ende der Woche.", "c) Am Nachmittag."], abcCorrect: 1 }
+                    ],
+                    teil4: {
+                        optionsList: [
+                            { letter: "a", text: "Wenn die Geschäfte sonntags geöffnet haben, führt das für alle zu mehr Stress." },
+                            { letter: "b", text: "Sonntagsarbeit ist beliebt, weil sie besser bezahlt wird." },
+                            { letter: "c", text: "Sonntagsarbeit ist gut für die Wirtschaft." },
+                            { letter: "d", text: "Warum sollen vor Weihnachten andere Regeln gelten als sonst im Jahr?" },
+                            { letter: "e", text: "Sonntagsarbeit ist kein Problem, weil man dafür einen anderen Tag in der Woche frei bekommt." },
+                            { letter: "f", text: "Die Angestellten wollen nicht gerne am Sonntag arbeiten." }
+                        ],
+                        questions: [
+                            { num: 18, correctLetter: "f" },
+                            { num: 19, correctLetter: "a" },
+                            { num: 20, correctLetter: "c" }
+                        ]
+                    }
                 }
 
             ],
@@ -398,6 +438,324 @@
                             { num: 45, text: "Lücke 45", opts: ["a) Da", "b) Nach", "c) Wenn"], correct: 2 }
                         ]
                     }
+                },
+
+                {
+                     id: 2,
+                    title: "Lesen - Test 2",
+                    teil1: {
+    title: "Teil 1: VHS Programm - Leben in Deutschland",
+    infoBox: `
+        <div class="overflow-x-auto my-2 border border-gray-300 rounded-lg shadow-sm">
+            <table class="w-full text-left border-collapse bg-white text-xs text-gray-800">
+                <thead>
+                    <tr class="bg-gray-100 border-b border-gray-300">
+                        <th class="p-2.5 font-bold border-r border-gray-300 w-1/3">Kapitel</th>
+                        <th class="p-2.5 font-bold">Themen / Kurse</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Kapitel 1</td>
+                        <td class="p-2.5">
+                            <div class="font-bold">Deutsch / Fremdsprachen</div>
+                            <ul class="list-disc pl-4 space-y-1 mt-1">
+                                <li>Deutsch A1+A2 In acht Wochen</li>
+                                <li>Italienisch für die Reise</li>
+                                <li>Englisch Aufbaukurs</li>
+                                <li>Silver Line: Englisch für Seniorinnen und Senioren</li>
+                                <li>Arabisch: Schrift und Grundlagen</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Kapitel 2</td>
+                        <td class="p-2.5">
+                            <div class="font-bold">Kunst / Handwerk</div>
+                            <ul class="list-disc pl-4 space-y-1 mt-1">
+                                <li>Fotografie: Bewegte Gegenstände und Körper fotografieren</li>
+                                <li>Musik: Gitarrespielen für Anfängerinnen und Anfänger</li>
+                                <li>Zeichnen und Malen</li>
+                                <li>Textiles Gestalten: selbst Stoffe weben und nähen</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Kapitel 3</td>
+                        <td class="p-2.5">
+                            <div class="font-bold">Sport / Ernährung / Gesundheit</div>
+                            <ul class="list-disc pl-4 space-y-1 mt-1">
+                                <li>Schwimmen für erwachsene Anfängerinnen und Anfänger</li>
+                                <li>Gesund und lecker: Lernen Sie die italienische Küche kennen</li>
+                                <li>Lauftraining für alle im Park</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Kapitel 4</td>
+                        <td class="p-2.5">
+                            <div class="font-bold">Geschichte / Philosophie / Psychologie</div>
+                            <ul class="list-disc pl-4 space-y-1 mt-1">
+                                <li>Die Ordnung der Welt: Philosophie im Mittelalter</li>
+                                <li>Musik: Von den Anfängen bis heute</li>
+                                <li>Wer bin ich?</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Kapitel 5</td>
+                        <td class="p-2.5">
+                            <div class="font-bold">Ausflüge / Reisen</div>
+                            <ul class="list-disc pl-4 space-y-1 mt-1">
+                                <li>Ausflüge für Seniorinnen und Senioren in die Umgebung</li>
+                                <li>Fotovorträge: England / Italien / Marokko</li>
+                                <li>Firmenbesichtigungen (Möbelfabrik, Käserei etc.)</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Kapitel 6</td>
+                        <td class="p-2.5">
+                            <div class="font-bold">Die junge VHS (für Kinder und Jugendliche von 10 bis 15 Jahren)</div>
+                            <ul class="list-disc pl-4 space-y-1 mt-1">
+                                <li>Schwimmen für Kinder, Kurse im Sportbad am Stadion</li>
+                                <li>Ferienfreizeit für Kinder – Spiel und Spaß im Stadtwald</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Kapitel 7</td>
+                        <td class="p-2.5">
+                            <div class="font-bold">Informationen und Wegweiser</div>
+                            <ul class="list-disc pl-4 space-y-1 mt-1">
+                                <li>Öffnungszeiten Kasse und Servicebüro</li>
+                                <li>Kursorte – alle Adressen und Lage im Stadtplan</li>
+                                <li>Kontakt-Telefonnummern</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    `,
+    questions: [
+        { num: 21, text: "21. Sie möchten wissen, wo in Ihrer Nähe ein Kurs stattfindet.", opts: ["a) Kapitel 5", "b) Kapitel 7", "c) anderes Kapitel"], correct: 1 },
+        { num: 22, text: "22. Sie möchten etwas für Ihre Fitness tun.", opts: ["a) Kapitel 2", "b) Kapitel 3", "c) anderes Kapitel"], correct: 1 },
+        { num: 23, text: "23. Sie möchten ein Musikinstrument spielen lernen.", opts: ["a) Kapitel 2", "b) Kapitel 4", "c) anderes Kapitel"], correct: 0 },
+        { num: 24, text: "24. Sie möchten italienische Gerichte kochen lernen.", opts: ["a) Kapitel 1", "b) Kapitel 5", "c) anderes Kapitel"], correct: 2 },
+        { num: 25, text: "25. Ihr 74-jähriger Nachbar ist neu eingezogen und möchte die Gegend kennenlernen.", opts: ["a) Kapitel 1", "b) Kapitel 5", "c) anderes Kapitel"], correct: 2 }
+    ]
+},
+teil2: {
+    title: "Teil 2: Anzeigen a–h",
+    infoBox: `
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-2 text-xs text-gray-800">
+            <!-- Anzeige a -->
+            <div class="bg-amber-50 border-2 border-amber-300 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-amber-900 border-b border-amber-200 pb-1 mb-2">Anzeige a</div>
+                <div class="font-bold mb-1">Kinderzimmer zu verkaufen – fast neu!</div>
+                <div>Birke hell, Kommode, Schreibtisch, Kleiderschrank (dreitürig) und diverse hochwertige Spielgeräte. Alle Möbel sind in einem sehr guten Zustand und können nur komplett abgegeben werden – Preis verhandelbar.</div>
+                <div class="mt-2 font-bold text-gray-700">Tel.: 0176-245678</div>
+            </div>
+
+            <!-- Anzeige b -->
+            <div class="bg-green-50 border-2 border-green-300 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-green-900 border-b border-green-200 pb-1 mb-2">Anzeige b</div>
+                <div class="font-bold mb-1">Neuwertiger Schreibtisch</div>
+                <div>Verstellbar, mit passendem Schreibtischstuhl und Regal mit 5 Einlegeböden zu verkaufen. Die Möbel müssen abgeholt werden. Preis insgesamt 350 Euro. Können auch einzeln verkauft werden. Preise VB.</div>
+                <div class="mt-2 font-bold text-gray-700">Tel.: 0160-3066231</div>
+            </div>
+
+            <!-- Anzeige c -->
+            <div class="bg-cyan-50 border-2 border-cyan-300 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-cyan-900 border-b border-cyan-200 pb-1 mb-2">Anzeige c</div>
+                <div class="font-bold mb-1">Möbel abzugeben!</div>
+                <div>Wegen Wohnungsauflösung diverse gut erhaltene Möbel an Selbstabholer günstig zu verkaufen! Z.B. -Sofa mit passendem Sessel, rosa Bezug -Wohnzimmertisch und Wohnzimmerschrank, Eiche rustikal -Blumenbank -Kleiderschrank, weißer Lack -Doppelbett -Nachttischchen<br>Die Möbel können am kommenden Wochenende besichtigt werden. Am Samstag zwischen 12.00 Uhr und 16.30 Uhr Am Sonntag zwischen 11.00 Uhr und 15.00 Uhr. Die Adresse erfahren Sie unter der Rufnummer:</div>
+                <div class="mt-2 font-bold text-gray-700">02323/45 54 67</div>
+            </div>
+
+            <!-- Anzeige d -->
+            <div class="bg-yellow-50 border-2 border-yellow-300 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-yellow-900 border-b border-yellow-200 pb-1 mb-2">Anzeige d</div>
+                <div class="font-bold mb-1">Flachbildschirm LCD TV</div>
+                <div>51 cm Diagonale, hochauflösend, auch für Computer geeignet, kann auch an der Wand befestigt werden. Der Bildschirm kann bei Interesse besichtigt und ausprobiert werden. Rufen Sie an und vereinbaren Sie mit uns einen Termin.</div>
+                <div class="mt-2 font-bold text-gray-700">
+                    Fernsehreparaturdienst Müller<br>
+                    Tel.: 0173-2337788<br>
+                    www.fernseh-mueller.de<br>
+                    fernseh@mueller.de
+                </div>
+            </div>
+
+            <!-- Anzeige e -->
+            <div class="bg-gray-50 border-2 border-gray-300 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-gray-900 border-b border-gray-200 pb-1 mb-2">Anzeige e</div>
+                <div class="font-bold mb-1">Wer hat Möbel zu verschenken?</div>
+                <div>Suche für meine Studentenbude einen Kleiderschrank und Sessel, möglichst gut erhalten, eventuell leicht reparaturbedürftig. Biete eine gut funktionierende Waschmaschine, eventuell im Tausch. Hole und bringe selbst.</div>
+                <div class="mt-2 font-bold text-gray-700">Tel.: 0234-457690</div>
+            </div>
+
+            <!-- Anzeige f -->
+            <div class="bg-purple-50 border-2 border-purple-300 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-purple-900 border-b border-purple-200 pb-1 mb-2">Anzeige f</div>
+                <div class="font-bold mb-1">Fehlkauf: schönes Brautkleid preiswert abzugeben</div>
+                <div>weiß, mit Schleier, Tasche und Handschuhen. Neupreis: 560 Euro, jetzt nur 300 Euro Habe das Kleid nie getragen, verkaufe es deshalb als neu. Zwei Kleider für die Engelchen, hellgelb, Gr. 152 und 128 Neu zusammen 350 Euro, für 200 Euro zu verkaufen. Bei Interesse können wir Ihnen ein Foto schicken.</div>
+                <div class="mt-2 font-bold text-gray-700">Tel.: 02325-13 45 65</div>
+            </div>
+
+            <!-- Anzeige g -->
+            <div class="bg-blue-50 border-2 border-blue-300 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-blue-200 pb-1 mb-2">Anzeige g</div>
+                <div class="font-bold mb-1">Babyausstattung zu verkaufen</div>
+                <div>Hemdchen, Bodys, Strampler, Jäckchen, Ausgehanzug, Wolldecke und zwei Schlafsäcke günstig zu verkaufen. Alle Sachen in Größe 56 und 64. Sehr gut erhalten, manches kaum getragen.</div>
+                <div class="mt-2 font-bold text-gray-700">Tel: 0176-5677644</div>
+            </div>
+
+            <!-- Anzeige h -->
+            <div class="bg-yellow-100 border-2 border-yellow-400 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-yellow-900 border-b border-yellow-300 pb-1 mb-2">Anzeige h</div>
+                <div class="font-bold mb-1">Pumuckl – 2. Hand</div>
+                <div>Markenkleidung für Kinder, Jugendliche und Erwachsene günstig kaufen!! Wir verkaufen sehr gut erhaltene Kleidung aus zweiter Hand zu günstigen Preisen. Neu eingetroffen: gebrauchte Brautkleider und Kleidung für Feste in verschiedenen Größen!! Kommen Sie vorbei und überzeugen Sie sich selbst von unserem Angebot.</div>
+                <div class="mt-2 font-bold text-gray-700">
+                    Pumuckl Second-Hand-Laden<br>
+                    Bahnhofstraße<br>
+                    92 44623 Herne
+                </div>
+            </div>
+        </div>
+    `,
+    questions: [
+        { num: 26, text: "26. Eine Bekannte ist zu einer Hochzeit eingeladen und braucht ein schönes Kleid.", correctLetter: "h" },
+        { num: 27, text: "27. Sie brauchen für Ihren Sohn ein Regal und einen Schreibtischstuhl.", correctLetter: "b" },
+        { num: 28, text: "28. Sie haben eine neue Wohnung und brauchen noch preiswerte Schlafzimmermöbel.", correctLetter: "c" },
+        { num: 29, text: "29. Sie möchten ein Babybett kaufen.", correctLetter: "x" },
+        { num: 30, text: "30. Sie brauchen für Ihr neugeborenes Baby Strampelanzüge und Unterwäsche.", correctLetter: "g" }
+    ]
+},
+teil3: {
+    title: "Teil 3: Texte verstehen",
+    items: [
+        {
+            text: `<b>Immer weniger der Schulanfänger</b><br><br>Die Zahl Schüler, die in Deutschland die erste Klasse der Grundschule besuchen, ist in den letzten zehn Jahren um 14 % zurückgegangen. Das teilte das Statistische Bundesamt in Wiesbaden mit. In den Ländern der alten Bundesrepublik ist die Zahl der Schulanfänger sogar um 17 % gesunken. In den fünf neuen Bundesländern und in Berlin dagegen blieb die Zahl in den letzten zehn Jahren unverändert.<br><br>Zu Beginn des jetzt laufenden Schuljahres kamen in ganz Deutschland 754.900 Kinder in die Schule. Das waren 2,3 % weniger als im Jahr davor. Am stärksten ging die Zahl der Erstklässler in diesem Schuljahr in Bremen und Schleswig-Holstein zurück.`,
+            q1: { num: 31, text: "31. Nur in Wiesbaden gibt es immer weniger Schulanfänger.", correct: "falsch" },
+            q2: { num: 32, text: "32. In diesem Schuljahr...", opts: ["a) gab es in Bremen und Schleswig-Holstein mehr Schulanfänger als im Vorjahr.", "b) gab es in Deutschland 2,3 % weniger Schulanfänger als im Vorjahr.", "c) gab es in Deutschland 14 % weniger Schulanfänger als im Vorjahr."], correct: 1 }
+        },
+        {
+            text: `<b>Liebe Mieterinnen, liebe Mieter,</b><br><br>sicher haben Sie in den Nachrichten schon gehört, dass es eine neue Müllverordnung gibt. Das heißt: In allen Häusern müssen ab sofort auch grüne Mülltonnen für Glas stehen. Bis jetzt war das freiwillig, ab dem nächsten Monat ist es Pflicht.<br><br>Wir werden in Ihrem Haus die grüne Tonne im Hof abstellen, da im Keller kein Platz für weitere Mülltonnen ist. Die neue grüne Tonne wird dann immer am ersten Dienstag eines Monats geleert.<br><br>Bitte denken Sie daran: Benutzen Sie ab dem nächsten Monat nur noch die grünen Tonnen für Glas. Wer Glas in die anderen Tonnen (grau, blau) wirft, muss mit einer Strafe rechnen!<br><br><i>Mit freundlichen Grüßen<br>Ihre Hausverwaltung</i>`,
+            q1: { num: 33, text: "33. Die neue Mülltonne wird im Hof stehen.", correct: "richtig" },
+            q2: { num: 34, text: "34. Die Hausverwaltung schreibt, dass...", opts: ["a) die grüne Tonne jeden Monat geleert wird.", "b) die Mieter und Mieterinnen zusätzliche Gebühren bezahlen müssen.", "c) man Glas auch in die graue Tonne tun kann."], correct: 0 }
+        },
+        {
+            text: `<b>Sehr geehrte Frau Korte,</b><br><br>Sie haben letzte Woche einen Teppich zur Reparatur und Reinigung in unser Geschäft gebracht. Unsere Fachleute haben nun festgestellt, dass allein die Reparatur der Löcher in Ihrem Teppich ca. 900 Euro kosten würde. Dazu kommt noch die Reinigung des Teppichs mit ca. 100 Euro.<br><br>Gern führen wir Ihren Auftrag wie gewünscht aus. Doch möchten wir Sie darauf hinweisen, dass wir Ihnen zu diesem Betrag schon einen sehr schönen neuen Teppich anbieten können.<br><br>Kommen Sie doch einfach noch einmal in unser Geschäft oder rufen Sie uns an, damit wir die Einzelheiten persönlich besprechen können.<br><br><i>Mit freundlichen Grüßen<br>Metin Özdemir</i>`,
+            q1: { num: 35, text: "35. Frau Korte hat bei Herrn Özdemir einen Teppich gekauft.", correct: "falsch" },
+            q2: { num: 36, text: "36. Herr Özdemir...", opts: ["a) hat die Teppichpreise reduziert.", "b) hat Frau Kortes Teppich gereinigt.", "c) macht Frau Korte einen Vorschlag."], correct: 2 }
+        }
+    ]
+},
+teil4: {
+    title: "Teil 4: Hausordnung",
+    infoBox: `
+        <div class="bg-white border-2 border-gray-700 rounded-lg p-4 my-2 text-xs text-gray-800 space-y-3 shadow-sm">
+            <h3 class="text-sm font-bold text-blue-900 border-b border-gray-300 pb-1 text-center">Hausordnung</h3>
+            <p>Die Hausordnung regelt das Zusammenleben aller Bewohner des Hauses. Sie enthält Rechte und Pflichten.</p>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">Lärm</h4>
+                <p>In der Zeit von 13.00 bis 15.00 Uhr sowie zwischen 22.00 und 6.00 Uhr dürfen, Radios, Fernseher, CD-Player etc. nur auf Zimmerlautstärke gestellt werden. Das Spielen von Instrumenten ist während der Mittagsruhe (13.00 bis 15.00 Uhr) und zwischen 19.00 und 8.00 Uhr verboten. Bei Feiern sollten Sie alle Nachbarn rechtzeitig informieren.</p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">Kinder</h4>
+                <p>Kinder dürfen sich nicht im Keller, in der Tiefgarage oder im Waschkeller aufhalten. Der Spielplatz und der Sandkasten müssen von den Eltern saubergemacht werden. Die Eltern müssen auch darauf achten, dass das benutzte Spielzeug weggeräumt wird.</p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">Sicherheit</h4>
+                <p>Haus- und Kellertüren müssen in der Zeit von 22.00 bis 6.00 Uhr geschlossen sein. Im Treppenhaus und Hausflur dürfen keine Fahrräder, Kinderwagen, Rollstühle etc. abgestellt werden, da das Treppenhaus und der Hausflur Fluchtwege sind (z. B. bei einem Brand). Das Grillen mit Holzkohle ist auf den Balkonen nicht erlaubt. Zum Grillen gibt es einen Grillplatz in der Nähe des Hauses.</p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">Reinigung</h4>
+                <p>Alle Mieter müssen abwechselnd Flur, Treppen und Fenster putzen. Müll darf nur in die Mülltonnen geworfen werden. Beim Gießen von Blumen darf das Wasser nicht auf die Fenster und Balkone anderer Mieter laufen.</p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">Lüften</h4>
+                <p>Die Wohnung muss auch im Winter ausreichend gelüftet werden. Lüften Sie aber nach Möglichkeit nur kurz. Fahrräder dürfen nur im Fahrradkeller, Autos nur auf den vorgesehenen Parkplätzen abgestellt werden.</p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">Haustiere</h4>
+                <p>Haustiere dürfen sich nur zusammen mit ihrem Besitzer im Garten oder im Treppenhaus aufhalten. Auf Spielplätzen dürfen sich keine Haustiere aufhalten.</p>
+            </div>
+        </div>
+    `,
+    questions: [
+        { num: 37, text: "37. Sie dürfen im Haus zwischen 14 Uhr und 15 Uhr Klavier spielen.", correct: "falsch" },
+        { num: 38, text: "38. Sie dürfen Kinderwagen in den Hausflur stellen.", correct: "falsch" },
+        { num: 39, text: "39. Hunde dürfen nur mit ihrem Besitzer auf den Spielplatz.", correct: "falsch" }
+    ]
+},
+teil5: {
+    title: "Teil 5: Brief ergänzen",
+    infoBox: `
+        <div class="bg-white border border-gray-300 rounded-lg p-4 my-2 text-xs text-gray-800 shadow-sm leading-relaxed">
+            <div class="mb-4">
+                Deutsch Lernen GmbH<br>
+                Konstanzer Allee 3<br>
+                10998 Berlin
+            </div>
+            <div class="text-right mb-4">23-05-20..</div>
+            <div class="font-bold mb-3">Informationen zu Ihren Deutschkursen</div>
+            <p class="mb-3">Sehr <b>(0) geehrte</b> Damen und Herren,</p>
+            <p>
+                ich habe gestern im Internet die Informationen gefunden, dass man bei Ihnen <b>(40) ______</b> machen kann, und möchte mehr Informationen darüber. Ich finde Ihr Angebot sehr interessant, <b>(41) ______</b> ich einen Deutschkurs machen möchte. Ich kann schon etwas Deutsch, <b>(42) ______</b> ich möchte meine Kenntnisse verbessern. Ich habe nur am Vormittag Zeit, weil meine Tochter dann <b>(43) ______</b> der Schule ist. Am besten wäre deshalb ein Kurs von 9 bis 12 Uhr, <b>(44) ______</b> ich meine Tochter vorher zur Schule bringen und danach wieder abholen kann. Bekomme ich eigentlich auch ein Zertifikat, <b>(45) ______</b> ich mit dem Kurs fertig bin?
+            </p>
+            <p class="mt-4">
+                Mit freundlichen Grüßen<br>
+                Maria Dreier
+            </p>
+        </div>
+    `,
+    questions: [
+        {
+            num: 40,
+            text: "40.",
+            opts: ["a) Angebote", "b) Ausbildung", "c) Deutschkurse"],
+            correct: 2
+        },
+        {
+            num: 41,
+            text: "41.",
+            opts: ["a) obwohl", "b) sodass", "c) weil"],
+            correct: 2
+        },
+        {
+            num: 42,
+            text: "42.",
+            opts: ["a) aber", "b) denn", "c) sondern"],
+            correct: 0
+        },
+        {
+            num: 43,
+            text: "43.",
+            opts: ["a) ab", "b) auf", "c) in"],
+            correct: 2
+        },
+        {
+            num: 44,
+            text: "44.",
+            opts: ["a) aber", "b) sodass", "c) sonst"],
+            correct: 1
+        },
+        {
+            num: 45,
+            text: "45.",
+            opts: ["a) damit", "b) während", "c) wenn"],
+            correct: 2
+        }
+    ]
+}
                 }
             ],
             Sprechen: [
