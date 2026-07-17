@@ -50,6 +50,11 @@
                     <div class="font-bold text-lg text-gray-900">Schreiben</div>
                     <div class="text-xs text-gray-500">Поради, фразі та граматика (30 Min)</div>
                 </button>
+                <button onclick="openCategory('Grammatik')" class="p-5 bg-white border border-gray-200 rounded-2xl shadow-sm hover:border-blue-500 hover:shadow-md transition text-left cursor-pointer">
+                    <div class="text-3xl mb-2">📚</div>
+                    <div class="font-bold text-lg text-gray-900">Grammatik</div>
+                    <div class="text-xs text-gray-500">Правила та вправи</div>
+                </button>
             </div>
         </div>
 
@@ -210,6 +215,46 @@
                         questions: [
                             { num: 18, correctLetter: "f" },
                             { num: 19, correctLetter: "a" },
+                            { num: 20, correctLetter: "c" }
+                        ]
+                    }
+                },
+
+                {
+                    id: 4,
+                    title: "Hören - Test 4",
+                    audioUrl: "https://www.dropbox.com/scl/fi/susnjqrbtzbr7izl6b6ja/Model-4.mp3?rlkey=gohp8zi5swq94ti671kg663yc&st=bq1rg3cr&raw=1",
+                    teil1: [
+                        { num: 1, question: "1 An welchem Gleis fährt der Zug nach Frankfurt? ", opts: ["a) Gleis 10.", "b) Gleis 11.", "c) Gleis 12."], correct: 2 },
+                        { num: 2, question: "2 Was ist das Problem?", opts: ["a) Eine falsche Kontonummer.", "b) Eine falsche Telefonnummer.", "c) Eine falsche Versicherung."], correct: 0 },
+                        { num: 3, question: "3 Wann kann Herr Mücke seinen Ausweis abholen?", opts: ["a) Heute bis 12 Uhr.", "b) Morgen Vormittag.", "c) Nächste Woche."], correct: 0 },
+                        { num: 4, question: "4 Wann ist Frau Aysel wieder da?", opts: ["a) Heute.", "b) Morgen.", "c) Übermorgen."], correct: 2 }
+                    ],
+                    teil2: [
+                        { num: 5, question: "5 Wer darf die Tropfen VitaFit nehmen?", opts: ["a) Auch Babys.", "b) Auch Kinder ab 6 Jahren.", "c) Nur Erwachsene."], correct: 1 },
+                        { num: 6, question: "6 Was kann man gewinnen?", opts: ["a) Ein Abendessen.", "b) Einen Besuch im Radiostudio.", "c) Eintrittskarten für ein Konzert."], correct: 2 },
+                        { num: 7, question: "7 Welche Straßenbahnen fahren auch in den Sommerferien?", opts: ["a) 1 und 2.", "b) 2 und 3.", "c) 4 und 5."], correct: 2 },
+                        { num: 8, question: "8 wie kann man zum Schloss kommen?", opts: ["a) Mit dem Bus.", "b) Mit der S-bahn.", "c) Zu Fuß."], correct: 0 },
+                        { num: 9, question: "9 Was kostet die Karte für das ganze Programm", opts: ["a) 15 Euro.", "b) 18 Euro.", "c) 40 Euro."], correct: 2 }
+                    ],
+                    teil3: [
+                        { pairId: "1", rfNum: 10, statement: "Die beiden Frauen sehen sich zum ersten Mal.", rfCorrect: "richtig", abcNum: 11, question: "Was soll Frau Schubert als Haushaltshilfe machen?", opts: ["a) Kinder betreuen.", "b) Kochen und putzen.", "c) Krankenpflege übernehmen."], abcCorrect: 1 },
+                        { pairId: "2", rfNum: 12, statement: "Frau Koslowski hat eine Frage an ihren Chef.", rfCorrect: "richtig", abcNum: 13, question: "Frau Koslowski", opts: ["a) arbeitet beim Fernsehen.", "b) hatte vor kurzem Urlaub.", "c) möchte drei Wochen Urlaub."], abcCorrect: 1 },
+                        { pairId: "3", rfNum: 14, statement: "Herr Klimke möchte seinen Termin auf nächste Woche verschieben.", rfCorrect: "falsch", abcNum: 15, question: "Herr Klimke kann", opts: ["a) direkt zum Doktor gehen.", "b) übermorgen wiederkommen.", "c) um 15 Uhr anrufen."], abcCorrect: 1 },
+                        { pairId: "4", rfNum: 16, statement: "Der Mann und Die Frau sind am Hauptbahnhof.", rfCorrect: "falsch", abcNum: 17, question: "Die Königstraße ist", opts: ["a) die nächste Straße rechts.", "b) ganz in der Nähe.", "c) zu Fuß 30 Minuten etnfernt."], abcCorrect: 2 }
+                    ],
+                    teil4: {
+                        optionsList: [
+                            { letter: "a", text: "Es ist nicht wichtig, ob das Gemüse <b>bio</b> ist." },
+                            { letter: "b", text: "Fisch ist zu teuer." },
+                            { letter: "c", text: "Fleich macht den Körper stark." },
+                            { letter: "d", text: "Kinder mögen oft kein Gemüse." },
+                            { letter: "e", text: "Obst und Gemüse selbst anzupflanzen macht Spaß." },
+                            { letter: "f", text: "Obst und Gemüse sind wichtig für die Gesundheit." }
+                        ],
+                        questions: [
+                            { num: 18, correctLetter: "a" },
+                            { num: 19, correctLetter: "f" },
                             { num: 20, correctLetter: "c" }
                         ]
                     }
@@ -1204,7 +1249,7 @@ teil5: {
                 },
                 {
                     type: "guide",
-                    title: "Готові фрази для листі (Redemittel)",
+                    title: "Готові фрази для листів (Redemittel)",
                     content: `
                         <div class="space-y-4 text-xs sm:text-sm text-gray-800">
                             
@@ -1361,6 +1406,8 @@ teil5: {
                     `
                 }
             ]
+            
+            
         };
 
         /* ==========================================================================
