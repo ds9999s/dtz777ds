@@ -105,17 +105,17 @@
                     title: "Hören - Test 1",
                     audioUrl: "https://www.dropbox.com/scl/fi/llyi06d7iavf9ceye2do1/mix_16m44s-audio-joiner.com-1.mp3?rlkey=rd8tyhsqj7gjc0jyyf303h7oj&st=jkdmq5l4&raw=1",
                     teil1: [
-                        { num: 1, question: "Wann werden die Möbel geliefert?", opts: ["a) Morgen Nachmittag.", "b) Morgen um 9 Uhr.", "c) Um 14 Uhr."], correct: 0 },
-                        { num: 2, question: "Wohin soll Frau Böhmer kommen?", opts: ["a) In den Kindergarten.", "b) Zur Agentur für Arbeit.", "c) Zur Schule."], correct: 1 },
-                        { num: 3, question: "Was ist heute besonders günstig?", opts: ["a) Das Essen im Restaurant.", "b) Damenmode.", "c) Geschirr."], correct: 2 },
-                        { num: 4, question: "Wo soll Herr Lee sein Auto abholen?", opts: ["a) Bei der Polizei.", "b) Bei einem Autohändler.", "c) In der Werkstatt."], correct: 2 }
+                        { num: 1, question: "1 Wann werden die Möbel geliefert?", opts: ["a) Morgen Nachmittag.", "b) Morgen um 9 Uhr.", "c) Um 14 Uhr."], correct: 0 },
+                        { num: 2, question: "2 Wohin soll Frau Böhmer kommen?", opts: ["a) In den Kindergarten.", "b) Zur Agentur für Arbeit.", "c) Zur Schule."], correct: 1 },
+                        { num: 3, question: "3 Was ist heute besonders günstig?", opts: ["a) Das Essen im Restaurant.", "b) Damenmode.", "c) Geschirr."], correct: 2 },
+                        { num: 4, question: "4 Wo soll Herr Lee sein Auto abholen?", opts: ["a) Bei der Polizei.", "b) Bei einem Autohändler.", "c) In der Werkstatt."], correct: 2 }
                     ],
                     teil2: [
-                        { num: 5, question: "Was müssen Sie beim Parken am Haupteingang beachten?", opts: ["a) Man darf nur 40 Minuten parken.", "b) Der Haupteingang ist geschlossen.", "c) Man muss 40 Minuten auf einen Parkplatz warten."], correct: 2 },
-                        { num: 6, question: "Was kann man nach den Nachrichten hören?", opts: ["a) Moderne Musik.", "b) Eine Kultursendung.", "c) Klaviermusik."], correct: 1 },
-                        { num: 7, question: "Wie macht man bei dem Gewinnspiel mit?", opts: ["a) Man muss beim Sender anrufen.", "b) Man muss sich auf der Internetseite anmelden.", "c) Man schreibt eine Postkarte."], correct: 0 },
-                        { num: 8, question: "Was kann man gewinnen?", opts: ["a) Ein Wochenende in Amsterdam.", "b) Billige Flugtickets.", "c) Eine Reise nach Paris."], correct: 2 },
-                        { num: 9, question: "Wie wird das Wetter in Westdeutschland?", opts: ["a) Es gibt Regen.", "b) Es gibt Schnee.", "c) Es wird sonnig."], correct: 2 }
+                        { num: 5, question: "5 Was müssen Sie beim Parken am Haupteingang beachten?", opts: ["a) Man darf nur 40 Minuten parken.", "b) Der Haupteingang ist geschlossen.", "c) Man muss 40 Minuten auf einen Parkplatz warten."], correct: 2 },
+                        { num: 6, question: "6 Was kann man nach den Nachrichten hören?", opts: ["a) Moderne Musik.", "b) Eine Kultursendung.", "c) Klaviermusik."], correct: 1 },
+                        { num: 7, question: "7 Wie macht man bei dem Gewinnspiel mit?", opts: ["a) Man muss beim Sender anrufen.", "b) Man muss sich auf der Internetseite anmelden.", "c) Man schreibt eine Postkarte."], correct: 0 },
+                        { num: 8, question: "8 Was kann man gewinnen?", opts: ["a) Ein Wochenende in Amsterdam.", "b) Billige Flugtickets.", "c) Eine Reise nach Paris."], correct: 2 },
+                        { num: 9, question: "9 Wie wird das Wetter in Westdeutschland?", opts: ["a) Es gibt Regen.", "b) Es gibt Schnee.", "c) Es wird sonnig."], correct: 2 }
                     ],
                     teil3: [
                         { pairId: "1", rfNum: 10, statement: "Der Herr befindet sich in einer Firma.", rfCorrect: "falsch", abcNum: 11, question: "Was möchte er wissen?", opts: ["a) Wann er den Ausweis abholen kann.", "b) Wann das Büro öffnet.", "c) Welche Papiere er braucht."], abcCorrect: 2 },
@@ -1096,11 +1096,297 @@ teil5: {
             opts: ["a) aber", "b) oder", "c) und"],
             correct: 1
         }
+
     ]
 }
 
-                }
+                },
+                { id: 4,
+                    title: "Lesen - Test 4 ",
+                    teil1: {
+    title: "Teil 1: Ihr Kaufhaus am Brand – Wegweiser",
+    infoBox: `
+        <div class="overflow-x-auto my-2 border border-gray-300 rounded-lg shadow-sm">
+            <table class="w-full text-left border-collapse bg-white text-xs text-gray-800">
+                <thead>
+                    <tr class="bg-gray-100 border-b border-gray-300">
+                        <th class="p-2.5 font-bold border-r border-gray-300 w-1/4">Stockwerk</th>
+                        <th class="p-2.5 font-bold">Bereiche und Angebote</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">3. OG</td>
+                        <td class="p-2.5">
+                            <b>Kinder-Welt</b><br>
+                            Bekleidung, Spielwaren, Baby & Kleinkind, Gesellschaftsspiele, Spielautos, Puppen, Restaurant-Café Friseursalon Kunden-WC
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">2. OG</td>
+                        <td class="p-2.5">
+                            <b>Herren-Welt Sport-Welt</b><br>
+                            Bekleidung, Herrenschuhe, Bekleidung, Sportartikel, Sportschuhe, Bademoden, Fitnessgeräte, Sporttaschen, Beauty & Accessoires Parfümerie, Drogerie, Kosmetiktaschen
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">1. OG</td>
+                        <td class="p-2.5">
+                            <b>Damen-Welt</b><br>
+                            Bekleidung, Damenschuhe, Tageswäsche, Nachtwäsche, Dessous, Fotoservice, Übergang zum Parkhaus, Parkhausautomat
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">EG</td>
+                        <td class="p-2.5">
+                            <b>Elektro-Kleingeräte und Technik</b><br>
+                            Uhren, Schmuck, Strümpfe, Lederwaren, Reisegepäck, Laptop- und Aktentaschen, Rucksäcke, Schultaschen, Schreibwaren, Bücher, Telefon, Geldautomat, Fernsehen und DVD, Computer, Spiele, HIFI, Handy und Festnetz, Digitalkameras
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">UG</td>
+                        <td class="p-2.5">
+                            <b>Rund um die Küche</b><br>
+                            Backen, Pfannen, Töpfe, Glas, Porzellan, Haushaltswaren, Haushaltswäsche Besteckwaren, Gästebetten, Kurzwaren, Süßwaren, Tabakwaren, Zeitschriften, Lotto, Geschenkeservice
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    `,
+    questions: [
+        {
+            num: 21,
+            text: "21. Sie möchten Ihre Haare schneiden lassen.",
+            opts: ["a) 2. OG", "b) 3. OG", "c) anderes Stockwerk"],
+            correct: 1
+        },
+        {
+            num: 22,
+            text: "22. Sie möchten Schokolade kaufen.",
+            opts: ["a) 1. OG", "b) 3. OG", "c) anderes Stockwerk"],
+            correct: 2
+        },
+        {
+            num: 23,
+            text: "23. Sie möchten etwas essen.",
+            opts: ["a) 1. OG", "b) 3. OG", "c) anderes Stockwerk"],
+            correct: 1
+        },
+        {
+            num: 24,
+            text: "24. Sie brauchen einen Wecker.",
+            opts: ["a) UG", "b) EG", "c) anderes Stockwerk"],
+            correct: 1
+        },
+        {
+            num: 25,
+            text: "25. Sie suchen ein Hemd für einen Freund.",
+            opts: ["a) 1. OG", "b) 2. OG", "c) anderes Stockwerk"],
+            correct: 1
+        }
+    ]
+    
+},
+
+teil2: {
+    title: "Teil 2: Anzeigen a–h",
+    infoBox: `
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-2 text-xs text-gray-800">
+            <!-- Anzeige A -->
+            <div class="bg-green-100 border-2 border-green-300 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-green-900 border-b border-green-300 pb-1 mb-2">Anzeige A</div>
+                <div class="font-bold mb-1 text-center">Schon mal an Versicherungen gedacht?</div>
+                <div>Sie machen bald Ihren Schulabschluss und suchen eine interessante Ausbildung? Warum nicht bei einer Versicherung? Versicherungen bieten Ausbildungen zum Kaufmann, Berater, Buchhalter und vielen anderen Berufen an. Wenn Sie mehr wissen wollen, machen Sie einen Termin bei unserer kostenlosen Ausbildungsberatung für den Bereich „Versicherungen“</div>
+                <div class="mt-2 font-bold text-gray-700 text-center">Termine unter 01805/62011221</div>
+            </div>
+
+            <!-- Anzeige B -->
+            <div class="bg-red-100 border-2 border-red-300 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-red-900 border-b border-red-300 pb-1 mb-2">Anzeige B</div>
+                <div class="font-bold mb-1 text-center">Jetzt wechseln</div>
+                <div>Versicherungen gibt es überall – aber nur wir haben die günstigsten Tarife! Informieren Sie sich jetzt über unsere Haftpflichtversicherung für Familien mit Kindern. Die optimale Versicherung für Sie und Ihre Angehörigen: beste Leistungen für wenig Geld, dreifacher Testsieger! Weitere Informationen per</div>
+                <div class="mt-2 font-bold text-gray-700 text-center">E-Mail unter Infos @top-versicherung24.eu</div>
+            </div>
+
+            <!-- Anzeige C -->
+            <div class="bg-purple-100 border-2 border-purple-300 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-purple-900 border-b border-purple-300 pb-1 mb-2">Anzeige C</div>
+                <div class="font-bold mb-1 text-center">Versicherungskaufmann</div>
+                <div>Bin 17 Jahre alt, guter Schulabschluss (Realschule), und möchte eine Ausbildung zum Versicherungskaufmann machen. Gerne ab sofort. Bin flexibel, neugierig und interessiere mich sehr für Versicherungen. Habe im letzten Jahr ein Praktikum bei einer großen Versicherungsgesellschaft gemacht. Wer gibt mir eine Chance? Jörg Peter Schmidt</div>
+                <div class="mt-2 font-bold text-gray-700 text-center">E-Mail: jpschmidt@cityweb.eu</div>
+            </div>
+
+            <!-- Anzeige D -->
+            <div class="bg-yellow-100 border-2 border-yellow-300 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-yellow-900 border-b border-yellow-300 pb-1 mb-2">Anzeige D</div>
+                <div class="font-bold mb-1 text-center">Arbeitsplatz Versicherung</div>
+                <div>Sie haben schon eine Ausbildung gemacht und in Ihrem Beruf gearbeitet – aber jetzt wollen Sie etwas Neues machen und Ihren Arbeitsplatz wechseln? Dann kommen Sie zu uns! Wir bieten eine sechsmonatige Weiterbildung zum Versicherungsberater an. Wenn Sie gern mit Menschen arbeiten und sich für Versicherungen interessieren, sollten Sie sich melden.</div>
+                <div class="mt-2 font-bold text-gray-700 text-center">Kontakt: Frau Schneider, 089/826590911</div>
+            </div>
+
+            <!-- Anzeige E -->
+            <div class="bg-orange-100 border-2 border-orange-300 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-orange-900 border-b border-orange-300 pb-1 mb-2">Anzeige E</div>
+                <div class="font-bold mb-1 text-center">TOP-Angebot</div>
+                <div>Ihre Versicherung ist zu teuer? Dann kommen Sie zu uns! Wir versichern Ihre Fahrzeuge zum günstigsten Tarif.<br><br>Wenn Sie mehr als ein Fahrzeug versichern, bekommen Sie sogar einen Extra-Rabatt. Warten Sie nicht und machen Sie gleich einen Termin mit einem Berater in Ihrer Nähe:</div>
+                <div class="mt-2 font-bold text-gray-700 text-center">EGO24 Versicherungen, Tel. 01800/39181711</div>
+            </div>
+
+            <!-- Anzeige F -->
+            <div class="bg-emerald-100 border-2 border-emerald-300 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-emerald-900 border-b border-emerald-300 pb-1 mb-2">Anzeige F</div>
+                <div class="font-bold mb-1 text-center">Ärger mit Versicherungen?</div>
+                <div>Ihre Versicherung zahlt nicht? Hier bekommen Sie Hilfe! Die Versicherungsberatung Neustadt ist von Montag bis Freitag für Sie da. Kommen Sie in unsere kostenlose Sprechstunde zwischen 12 und 14 Uhr, wenn Sie Hilfe bei Problemen mit Versicherungen brauchen. Unsere Experten sind für Sie da.</div>
+                <div class="mt-2 font-bold text-gray-700 text-center">Anmeldung unter 0819/71192211</div>
+            </div>
+
+            <!-- Anzeige G -->
+            <div class="bg-gray-100 border-2 border-gray-300 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-gray-900 border-b border-gray-300 pb-1 mb-2">Anzeige G</div>
+                <div class="font-bold mb-1 text-center">Arbeit und Versicherungen...</div>
+                <div>...gehören oft zusammen. Denn was passiert, wenn Sie krank werden und nicht mehr in Ihrem Beruf arbeiten können?<br>Unsere Versicherung „Beruf Komplett“ ist der ideale Schutz. Bei Krankheit zahlen wir eine Rente – Ihr Leben lang.<br>Handeln Sie jetzt und fordern Sie weitere Informationen an:</div>
+                <div class="mt-2 font-bold text-gray-700 text-center">ABC-Versicherungen, E_Mail:infos@abcversicherungen.de</div>
+            </div>
+
+            <!-- Anzeige H -->
+            <div class="bg-amber-100 border-2 border-amber-300 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-amber-900 border-b border-amber-300 pb-1 mb-2">Anzeige H</div>
+                <div class="font-bold mb-1 text-center">Es gibt so viele Versicherungen....</div>
+                <div>...aber welche braucht man wirklich? Beim Informationsabend an der VHS Neustadt beantwortet Herbert Walther Fragen zu Versicherungen welche Versicherungen sind sinnvoll? Wo finde ich die günstigste Versicherung? Diese und viele andere Fragen werden beantwortet. Am kommenden Mittwoch von 19.00 – 20.30 Uhr in Raum A01. Die Teilnahme ist kostenlos</div>
+            </div>
+        </div>
+    `,
+    questions: [
+        { num: 26, text: "26. Sie suchen eine günstige Autoversicherung.", correctLetter: "e" },
+        { num: 27, text: "27. Sie haben schon einige Zeit in Ihrem Beruf gearbeitet, möchten jetzt aber einen neuen Beruf erlernen.", correctLetter: "d" },
+        { num: 28, text: "28. Sie möchten sich über Versicherungen informieren und haben nur abends Zeit.", correctLetter: "h" },
+        { num: 29, text: "29. Sie suchen eine Haftpflichtversicherung für Ihren Hund.", correctLetter: "x" },
+        { num: 30, text: "30. Ihre Tochter sucht einen Ausbildungsplatz.", correctLetter: "a" }
+    ]
+},
+teil3: {
+    title: "Teil 3: Texte verstehen",
+    items: [
+        {
+            text: `<b>Immer weniger Schulanfänger</b><br><br>Die Zahl Schüler, die in Deutschland die erste Klasse der Grundschule besuchen, ist in den letzten zehn Jahren um 14% zurückgegangen.<br><br>Das teilte das Statistische Bundesamt in Wiesbaden mit. In den Ländern der alten Bundesrepublik ist die Zahl der Schulanfänger sogar um 17% gesunken.<br><br>In den fünf neuen Bundesländern und in Berlin dagegen blieb die Zahl in den letzten zehn Jahren unverändert.<br><br>Zu Beginn des jetzt laufenden Schuljahres kamen in ganz Deutschland 754.900 Kinder in die Schule.<br><br>Das waren 2,3% weniger als im Jahr davor.<br><br>Am stärksten ging die Zahl der Erstklässler in diesem Schuljahr in Bremen und Schleswig-Holstein zurück.`,
+            q1: { num: 31, text: "31. Nur in Wiesbaden gibt es immer weniger Schulanfänger.", correct: "falsch" },
+            q2: { num: 32, text: "32. In diesem Schuljahr...", opts: ["a) gab es in Bremen und Schleswig-Holstein mehr Schulanfänger als im Vorjahr.", "b) gab es in Deutschland 2,3% weniger Schulanfänger als im Vorjahr.", "c) gab es in Deutschland 14 %weniger Schulanfänger als im Vorjahr."], correct: 1 }
+        },
+        {
+            text: `<b>Liebe Nachbarn,</b><br><br>wie in den Jahren zuvor würden wir auch in diesem Sommer gerne unser Hausbewohner-Gartenfest feiern. Wir sind natürlich bereit, wieder bei der Vorbereitung und Organisation mitzumachen. Aber es wäre schön, wenn sich noch viele andere Mieter finden würden, die mithelfen, dass es auch dieses Jahr ein schönes Fest wird.<br><br>Deshalb möchten wir Sie alle für Samstag, den 28.Juni, um 17.00 Uhr zu den Müllers im 4. Stock einladen. Dort können wir gemeinsam alles Planen. Überlegen Sie sich doch schon mal einen passenden Termin und bringen Sie viele Ideen mit. Auch Ihre Kinder sind willkommen und Können Vorschläge machen.<br><br><i>Familie Huber und Familie Müller</i>`,
+            q1: { num: 33, text: "33. Das Gartenfest findet am Samstag, dem 28. Juni, ab 17.00 Uhr statt.", correct: "falsch" },
+            q2: { num: 34, text: "34. Die Nachbarn Sollen...", opts: ["a) Bescheid sagen ,ob ihnen der Termin passt.", "b) zu einem Treffen bei Familie Müller kommen.", "c) zum Fest keine Kinder mitbringen."], correct: 1 }
+        },
+        {
+            text: `Sehr geehrte Familie Kaminski,<br><br>wir möchten Sie als neue Mitbewohner der Wohnanlage in der Mainzer Straße herzlich begrüßen. Aus gegebenem Anlass nutzen wir die Gelegenheit, auch Sie darauf hinzuweisen, dass die Mülltrennung unbedingt beachtet werden muss. In letzter Zeit wurde mehrfach festgestellt, dass Sperrmüll in die Restmülltonne geworfen wurde. Möbel, Teppiche oder andere große Teile gehören zum Sperrmüll und müssen nicht von jedem Mieter selbst entsorgt werden. Das ist gar nicht so schwer. Die Abholung dafür können Sie telefonisch bei der Stadt anmelden. Einmal pro Jahr ist das sogar kostenfrei. Zu Ihrer Information erhalten Sie als Anlage ein Infoheft zur Mülltrennung und die wichtigsten Telefonnummern der Stadt.<br><br>Mit freundlichen Grüßen<br>PBK Hausverwaltungen<br>Nora Klose`,
+            q1: { num: 35, text: "35. Familie Kaminski wohnt schon lange in ihrer Wohnung.", correct: "falsch" },
+            q2: { num: 36, text: "36. Wenn man Sperrmüll wegwerfen möchte, muss man...", opts: ["a) bei der Stadtverwaltung anrufen.", "b) die Hausverwaltung informieren.", "c) ihn in der Restmülltonne entsorgen."], correct: 0 }
+        }
+    ]
+}, 
+teil4: {
+    title: "Teil 4: Hausordnung – Krankenhaus Neustadt",
+    infoBox: `
+        <div class="bg-white border-2 border-gray-700 rounded-lg p-4 my-2 text-xs text-gray-800 space-y-3 shadow-sm">
+            <h3 class="text-sm font-bold text-blue-900 border-b border-gray-300 pb-1 text-center">Hausordnung – Krankenhaus Neustadt</h3>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">§1 Aufenthalt der Patienten</h4>
+                <p>Die Patienten sollten während der Essens- und der Ruhezeiten in ihrem Zimmer bleiben. Patienten sollten immer passende Kleidung tragen (im Krankenzimmer z. B. Schlafanzug oder Bademantel, im Café Freizeitkleidung). Wenn Patienten das Krankenhaus verlassen wollen, müssen sie den Arzt um Erlaubnis fragen.</p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">§2 Verhalten</h4>
+                <p>Alle Patienten und Besucher sollen Rücksicht nehmen. Im gesamten Krankenhaus gibt es ein Rauchverbot, auch auf den Toiletten! Auch Alkohol ist im ganzen Krankenhaus verboten. Da Handys die Funktion medizinischer Geräte stören können, ist ihre Benutzung im Krankenhaus nicht erlaubt. Telefonieren Sie bitte nur mit dem Telefon in Ihrem Krankenzimmer. Im Krankenzimmer dürfen Sie keine eigenen Elektrogeräte wie z. B. Wasserkocher oder Fernseher benutzen. Die Verwendung von Notebooks und Tablet-Computern ist erlaubt.</p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">§3 Persönliche Gegenstände</h4>
+                <p>Patienten können persönliche Gegenstände mit in das Krankenzimmer nehmen. Nutzen Sie auch die abschließbaren Schränke in den Krankenzimmern. Beachten Sie aber, dass alle Gegenstände im Krankenzimmer nicht versichert sind. Wertvolle Gegenstände (Bargeld, Schmuck etc.) sollten Patienten bei der Verwaltung abgeben. Patienten erhalten dann eine Quittung und bekommen diese Gegenstände zurück, wenn sie sie wieder abholen.</p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">§4 Medikamente</h4>
+                <p>Die Medikamente werden von den Ärzten verschrieben und von den Pflegepersonen ausgegeben. Wenn Patienten andere Medikamente nehmen wollen oder müssen, müssen sie unbedingt zuerst den Arzt oder das Pflegepersonal informieren!</p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">§5 Mahlzeiten</h4>
+                <p>Jeder Patient bekommt einen Essensplan. Sie können aus drei Menüs wählen. Jeden Tag wird auch ein vegetarisches Essen angeboten. Wenn Patienten Speisen oder Getränke von ihren Besuchern bekommen, sollten sie zuerst den Arzt oder die Pflegepersonen fragen, ob sie diese Speisen oder Getränke auch essen bzw. trinken dürfen.</p>
+            </div>
+        </div>
+    `,
+    questions: [
+        { num: 37, text: "37. Patienten dürfen nur mit Zustimmung eines Arztes aus dem Krankenhaus gehen.", correct: "richtig" },
+        { num: 38, text: "38. Für Schmuck und Bargeld im Krankenzimmer gibt es eine Versicherung.", correct: "falsch" },
+        { num: 39, text: "39. Besucher sollen kein warmes Essen mitbringen.", correct: "falsch" }
+    ]
+},
+teil5: {
+    title: "Teil 5: Brief ergänzen",
+    infoBox: `
+        <div class="bg-white border border-gray-300 rounded-lg p-4 my-2 text-xs text-gray-800 shadow-sm leading-relaxed">
+            <p class="font-bold mb-3">Bewerbung um die Stelle <b>(0) als</b> Kassierer/in</p>
+            <p class="mb-3">Sehr geehrte Frau Kupfermann,</p>
+            <p>
+                <b>(40) ______</b> Dank für Ihre Bewerbung. Die Zahl der Bewerbungen war sehr hoch. <b>(41) ______</b> konnten wir Sie bei der Besetzung der Stelle <b>(42) ______</b> nicht berücksichtigen.
+            </p>
+            <p class="mt-2">
+                Es tut mir leid, dass wir <b>(43) ______</b> keine andere Nachricht geben können. Wir <b>(44) ______</b> Ihnen Ihre Bewerbungsunterlagen mit Dank zurück.
+            </p>
+            <p class="mt-2">
+                Für Ihren weiteren beruflichen Weg wünschen wir Ihnen <b>(45) ______</b>.
+            </p>
+            <p class="mt-4">
+                Mit freundlichen Grüßen<br>
+                Barbara Henrich<br>
+                Personalabteilung Rewa KG
+            </p>
+        </div>
+    `,
+    questions: [
+        {
+            num: 40,
+            text: "40.",
+            opts: ["a) guten", "b) netten", "c) vielen"],
+            correct: 2
+        },
+        {
+            num: 41,
+            text: "41.",
+            opts: ["a) Dabei", "b) Dafür", "c) Deshalb"],
+            correct: 2
+        },
+        {
+            num: 42,
+            text: "42.",
+            opts: ["a) gerne", "b) leider", "c) schade"],
+            correct: 1
+        },
+        {
+            num: 43,
+            text: "43.",
+            opts: ["a) Dir", "b) Ihnen", "c) Sie"],
+            correct: 1
+        },
+        {
+            num: 44,
+            text: "44.",
+            opts: ["a) holen", "b) schreiben", "c) senden"],
+            correct: 2
+        },
+        {
+            num: 45,
+            text: "45.",
+            opts: ["a) alles Gute", "b) etwas Gutes", "c) nichts Gutes"],
+            correct: 0
+        }
+    ]
+}
+},  
             ],
+
             Sprechen: [
                 {
                     type: "guide",
