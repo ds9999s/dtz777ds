@@ -1385,8 +1385,913 @@ teil5: {
     ]
 }
 },  
-            ],
+    { id: 5,
+        title: "Lesen - Test 5 ",
+        teil1: {
+    title: "Teil 1: Wegweiser",
+    infoBox: `
+        <div class="overflow-x-auto my-2 border border-gray-300 rounded-lg shadow-sm">
+            <table class="w-full text-left border-collapse bg-white text-xs text-gray-800">
+                <thead>
+                    <tr class="bg-gray-100 border-b border-gray-300">
+                        <th class="p-2.5 font-bold border-r border-gray-300 w-1/4">Etage</th>
+                        <th class="p-2.5 font-bold">Geschäfte und Angebote</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">4. Etage</td>
+                        <td class="p-2.5">
+                            • Toptrend - Modemarkt (Herren & Kinder)<br>
+                            • Sonnen-Apotheke<br>
+                            • Eiscafé „Angelina“ mit Sonnenterrasse<br>
+                            • Mr. Espresso - Italienischer Kaffeegenuss
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">3. Etage</td>
+                        <td class="p-2.5">
+                            • Toptrend - Modemarkt (Damen)<br>
+                            • Die Wäschebude - Nachtwäsche, Strümpfe, Dessous & Co.<br>
+                            • Pilar - Reinigung u. Änderungsschneiderei<br>
+                            • Thalassa - Ihre Buchhandlung
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">2. Etage</td>
+                        <td class="p-2.5">
+                            • Classic-Tattoo-Studio<br>
+                            • Nagel- und Kosmetikstudio Rosengarten<br>
+                            • Haar-Express - Trendfrisuren für Sie & Ihn<br>
+                            • Parfümerie Delacroix<br>
+                            • Juwelier Ambrosius
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">1. Etage</td>
+                        <td class="p-2.5">
+                            • MediaMarkt<br>
+                            • P+P Spielwaren und Bastelartikel<br>
+                            • Sonnenstudio Karibik<br>
+                            • Deppisch-Haushaltswaren - Alles für den Haushalt<br>
+                            • Intersport - Sport & Mehr
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">EG</td>
+                        <td class="p-2.5">
+                            • Netto - Ihr Lebensmitteldiscounter mit Frischobst und Gemüse<br>
+                            • Mediterrana – Fischspezialitäten<br>
+                            • Starway (Sandwiches, Pizza + Pasta)<br>
+                            • Nguyen-Vietnamküche<br>
+                            • *Augenblick-Ihr Optiker
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    `,
+    questions: [
+        {
+            num: 21,
+            text: "21. Sie brauchen Kopfschmerztabletten.",
+            opts: ["a) 2. Etage", "b) 3. Etage", "c) Andere Etage"],
+            correct: 2
+        },
+        {
+            num: 22,
+            text: "22. Sie möchten Ihrer Mutter zum Geburtstag eine modische Bluse schenken.",
+            opts: ["a) 2. Etage", "b) 3. Etage", "c) Andere Etage"],
+            correct: 1
+        },
+        {
+            num: 23,
+            text: "23. Sie möchten Ihrer Nichte eine Puppe kaufen.",
+            opts: ["a) 1. Etage", "b) 4. Etage", "c) Andere Etage"],
+            correct: 0
+        },
+        {
+            num: 24,
+            text: "24. Sie möchten einen Fußball kaufen.",
+            opts: ["a) EG", "b) 1. Etage", "c) Andere Etage"],
+            correct: 1
+        },
+        {
+            num: 25,
+            text: "25. Sie brauchen eine neue Salatschüssel.",
+            opts: ["a) EG", "b) 1. Etage", "c) Andere Etage"],
+            correct: 1
+        }
+    ]
+},
+teil2: {
+    title: "Teil 2: Anzeigen a–h",
+    infoBox: `
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-2 text-xs text-gray-800">
+            <!-- Anzeige A -->
+            <div class="bg-green-50 border-2 border-green-400 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-green-900 border-b border-green-300 pb-1 mb-2">Anzeige A</div>
+                <div class="font-bold mb-1">Mit Kindern oder Jugendlichen zuarbeiten ist Ihr Berufswunsch?</div>
+                <div>Dann ist die Ausbildung zum/zur staatlich anerkannten Erzieher/in an unserer Fachakademie für Sozialpädagogik genau das Richtige für Sie. Wir bereiten Sie auf Ihre zukünftige Arbeit in der Erziehung, Bildung oder Betreuung von Kindern, Jugendlichen oder jungen Erwachsenen vor.</div>
+                <div class="mt-2 font-semibold text-gray-600">- Mehr Informationen</div>
+            </div>
 
+            <!-- Anzeige B -->
+            <div class="bg-green-50 border-2 border-green-400 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-green-900 border-b border-green-300 pb-1 mb-2">Anzeige B</div>
+                <div class="font-bold mb-1">Suche für meinen Vater (95) freundliche Betreuung, Montag bis Samstag je ca. 4 Std:</div>
+                <div>Essen kochen, gemeinsam zu Mittag essen, Medikamente vorbereiten, vorlesen, Unterhaltung und Begleitung bei Arztbesuchen.</div>
+                <div class="mt-2 font-bold text-gray-700">Tel.: 0171-5131829</div>
+            </div>
+
+            <!-- Anzeige C -->
+            <div class="bg-green-50 border-2 border-green-400 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-green-900 border-b border-green-300 pb-1 mb-2">Anzeige C</div>
+                <div class="font-bold mb-1">Morgens arbeiten - mittags Freiheit genießen!</div>
+                <div>Motivierte und zuverlässige Mitarbeiter (m/w) für die Zustellung von Zeitungen und das Verteilen von Anzeigenblättern gesucht. Wenn Sie<br>- schon früh aktiv sind,<br>- gern zu Fuß unterwegs sind,<br>- schnell mit neuen Situationen umgehen können,<br>dann bewerben Sie sich bei uns!</div>
+                <div class="mt-2 font-bold text-gray-700">Bewerbungen und weitere Informationen bei Peter Kunz, Telefon 069-396-315.<br>Pressevertrieb Rhein-Main GmbH&Co</div>
+            </div>
+
+            <!-- Anzeige D -->
+            <div class="bg-blue-50 border-2 border-blue-300 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-blue-300 pb-1 mb-2">Anzeige D</div>
+                <div>SIWA Touristik gehört zu den führenden Reiseveranstaltern mit exklusiver Bustouristik im Rhein-Main-Gebiet. Sie fühlen sich in der Welt des Reisens zu Hause? Wir suchen zur Verstärkung unseres Teams eine/n<br><b>Reiseverkehrskauffrau/mann</b>. Sie passen zu uns, wenn Sie<br>• eine Ausbildung im Bereich Touristik abgeschlossen haben.<br>• erste Berufserfahrung mitbringen<br>• Freude daran haben, Kunden zu beraten.<br>Wir freuen uns auf Ihre Bewerbungsunterlagen!</div>
+                <div class="mt-2 text-gray-700"><b>SIWA Touristik GmbH</b><br>z. H. Angelika Essens<br>Lindigstr. 8 64807 Dieburg</div>
+            </div>
+
+            <!-- Anzeige E -->
+            <div class="bg-gray-50 border-2 border-dashed border-gray-400 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-gray-900 border-b border-gray-300 pb-1 mb-2">Anzeige E</div>
+                <div class="font-bold mb-1 text-center">Freundlicher Verkaufsberater (m/w/d) gesucht</div>
+                <div class="text-center">Für den Bereich PKW<br>Wir bieten Ihnen einen zukunftsorientierten Arbeitsplatz in Vollzeit bei einem modernen und erfolgreichen Familienunternehmen. Ihre Bewerbungsunterlagen senden Sie bitte per E-Mail an<br><b>robert.eschenbach@wuenscher.net</b><br>oder per Post an die folgende Adresse:</div>
+                <div class="mt-2 font-bold text-gray-700 text-center">Wünscher Fahrzeugteile GmbH z. Hd. Herrn Eschenbach<br>Römerstr. 33 63329 Egelsbach</div>
+            </div>
+
+            <!-- Anzeige F -->
+            <div class="bg-blue-50 border-2 border-blue-300 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-blue-300 pb-1 mb-2">Anzeige F</div>
+                <div>Sie suchen nach einer Tätigkeit werktags (Di–Sa) für ca. 2–3 Std. täglich?<br>Sie sind zuverlässig, freundlich und kontaktfreudig?<br>Sie sind mindestens 18 Jahre alt?<br>Sie besitzen einen PKW und eine gültige Fahrerlaubnis?<br>• Dann suchen wir Sie! Wir suchen <b>Mitarbeiter/innen für die Auslieferung von Paketen und Briefpost</b></div>
+                <div class="mt-2 font-bold text-gray-700">Informationen unter www.Rhein-Main-Brief-Logistik.de<br>Bewerbung@Rhein-Main-Brief-Logistik de</div>
+            </div>
+
+            <!-- Anzeige G -->
+            <div class="bg-gray-50 border-2 border-gray-300 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-gray-900 border-b border-gray-300 pb-1 mb-2">Anzeige G</div>
+                <div><b>40-jährige Pflegekraft sucht feste 24-Stunden-Stelle.</b><br>Ich stamme aus Ungarn und betreue seit vielen Jahren ältere Menschen in ihrem Zuhause. Ich habe viel Erfahrung in der Krankenpflege und Hauswirtschaft.<br>Ich wohne z. Zt. in Offenbach, bin aber flexibel.</div>
+                <div class="mt-2 font-bold text-gray-700">Tel. 0179-1 002656<br>(Bin erreichbar von 9 bis 19 Uhr)</div>
+            </div>
+
+            <!-- Anzeige H -->
+            <div class="bg-yellow-50 border-2 border-yellow-400 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-yellow-900 border-b border-yellow-300 pb-1 mb-2">Anzeige H</div>
+                <div class="font-bold mb-1 text-center">Teilzeitstelle ab sofort</div>
+                <div>Wir suchen einen fleißigen Lagermitarbeiter mit handwerklicher Berufsausbildung.<br><b>Arbeitszeit: Mo–Do 12:00–18:00 Uhr</b></div>
+                <div class="mt-2 text-gray-700 text-center">Bewerbungen und Informationen:<br><b>W. Nitzsch GmbH & Co</b><br>Leiderer Str. 12<br>63329 Langen<br>Tel. 06027141660</div>
+            </div>
+        </div>
+    `,
+    questions: [
+        { num: 26, text: "26. Ein Bekannter ist Elektriker. Er lernt vormittags Deutsch und sucht daher eine Stelle für nachmittags.", correctLetter: "h" },
+        { num: 27, text: "27. Ein Nachbar hat keinen Führerschein und möchte in den frühen Morgenstunden arbeiten.", correctLetter: "c" },
+        { num: 28, text: "28. Eine Bekannte kann gut mit alten Menschen umgehen und sucht eine Teilzeitarbeit in einem Privathaushalt.", correctLetter: "b" },
+        { num: 29, text: "29. Eine Freundin möchte gern eine Berufsausbildung in einem Reisebüro machen.", correctLetter: "x" },
+        { num: 30, text: "30. Eine Verwandte möchte einen Beruf erlernen, bei dem sie viel Kontakt zu jungen Menschen hat.", correctLetter: "a" }
+    ]
+}, 
+teil3: {
+    title: "Teil 3: Texte verstehen",
+    items: [
+        {
+            text: `<b>Museumsprojekt für Migranten</b><br><br>Früher kamen selten Migranten ins Stadtmuseum. Seref Cetin, der selbst aus der Türkei kommt, wollte das ändern. Seine Idee: ein türkisch-deutscher Familientag im Museum.<br>So entstand das Projekt „Brücken bauen“: Einsmal im Monat trafen sich Deutsche und Türken im Museum, um gemeinsam die aktuelle Ausstellung zu besuchen und anschließend darüber zu diskutieren.<br>Ein Museumspädagoge und der türkisch sprechende Cetin betreuten das Projekt, das am Anfang von der Stadt noch finanziell gefördert wurde.<br>Aber jetzt fehlt der Stadt das Geld und seit kurzem ist das Projekt „Brücken bauen“ gestoppt.<br>Das will Seref Cetin nicht einfach akzeptieren und bemüht sich gemeinsam mit dem Museum um neue Fördermittel – bisher leider ohne Erfolg.`,
+            q1: { num: 31, text: "31. Im Moment gibt es kein Geld für das Projekt.", correct: "richtig" },
+            q2: { num: 32, text: "32. Seref Cetin wollte...", opts: ["a) dass alle Museumspädagogen Türkisch lernen.", "b) dass die Stadt ein Museum baut.", "c) dass mehr Migranten ins Museum gehen."], correct: 2 }
+        },
+        {
+            text: `Teilnehmernummer 564 376 990<br><br>Sehr geehrte Frau Sand,<br><br>Sie möchten Ihren Fernseher und Ihr Radio zum 31.12. abmelden. Bitte beachten Sie Folgendes: Die Rundfunkgebührenpflicht endet mit Ende des Monats, in dem das Gerät nicht mehr benutzt wird und die Abmeldung der GEZ schriftlich mitgeteilt wird. Wird die Abmeldung wie bei Ihnen nicht rechtzeitig abgeschickt, müssen Sie leider die Gebühren weiterzahlen. Eine Abmeldung für frühere Monate ist also nicht möglich, Ihr Schreiben ist bei uns am 21.02. eingegangen, deshalb können wir Sie frühestens zum 28.02. abmelden. Bitte benutzen Sie das beigefügte Überweisungsformular und gleichen Sie den Betrag von EUR 34,06 sofort aus.<br><br>Mit freundlichen Grüßen<br><br>GEZ`,
+            q1: { num: 33, text: "33. Frau Sand hat neue Geräte.", correct: "falsch" },
+            q2: { num: 34, text: "34. Die GEZ...", opts: ["a) hat von Frau Sand zu viel Geld bekommen.", "b) möchte wissen, wie viele Geräte Frau Sand hat.", "c) konnte Frau Sand nicht am 31.Dezember abmelden."], correct: 2 }
+        },
+        {
+            text: `<b>Özdemir Teppichhandel</b><br>Teppichreinigung und -reparatur<br><br>Sehr geehrte Frau Korte,<br>Sie haben letzte Woche einen Teppich zur Reparatur und Reinigung in unser Geschäft gebracht. Unsere Fachleute haben nun festgestellt, dass allein die Reparatur der Löcher in Ihrem Teppich ca. 500 Eu kosten würde. Dazu kommt noch die Reinigung des Teppichs mit ca. 100 Euro.<br>Gern führen wir Ihren Auftrag wie gewünscht aus. Doch möchten wir Sie darauf hinweisen, dass wir Ihnen zu diesem Betrag schon einen sehr schönen neuen Teppich anbieten können. Kommen Sie doch einfach noch einmal in unser Geschäft oder rufen Sie uns an, damit wir die Einzelheiten persönlich besprechen können.<br><br>Mit freundlichen Grüßen<br>Metin Özdemir`,
+            q1: { num: 35, text: "35. Frau Korte hat bei Herrn Özdemir einen Teppich gekauft.", correct: "falsch" },
+            q2: { num: 36, text: "36. Herr Özdemir hat...", opts: ["a) die Teppichpreise reduziert.", "b) Frau Korte einen Vorschlag gemacht.", "c) Frau Kortes Teppich gereinigt."], correct: 1 }
+        }
+    ]
+},
+teil4: {
+    title: "Teil 4: Ernährungs-Tipps fit für den Arbeitstag",
+    infoBox: `
+        <div class="bg-white border-2 border-blue-900 rounded-lg p-4 my-2 text-xs text-gray-800 space-y-3 shadow-sm">
+            <h3 class="text-sm font-bold text-blue-900 border-b border-blue-200 pb-1 text-center">
+                Ernährungs-Tipps fit für den Arbeitstag
+            </h3>
+            <p class="font-semibold text-gray-700">
+                Die Deutsche Gesellschaft für Ernährung (DGE) e. V. gibt Tipps, wie Sie sich trotz Stress und Zeitmangel im Job gesund ernähren können.
+            </p>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">Zweimal frühstücken</h4>
+                <p>Wer frühmorgens nicht viel zu sich nehmen kann, sollte dies nach zwei bis drei Stunden nachholen. Essen Sie einmal großzügiger z. B. mit Müsli oder Vollkornbrot, einmal leichter z. B. mit Obst oder Joghurt. So erhalten auch „Morgenmuffel“ genug Energie für den Tagesanfang.</p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">Zwischenmahlzeiten verhindern Leistungstiefs</h4>
+                <p>Verteilen Sie kleinere Mahlzeiten aus Obst, fettarmen Milchprodukten oder dünn belegten Broten über den Tag. Das erhält die Konzentrationsfähigkeit, belastet Verdauungsorgane und Kreislauf wenig und vermeidet Heißhunger.</p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">Essen Sie nicht nebenbei</h4>
+                <p>In einer kleinen Pause können Sie Ihr Essen besser genießen. Sie fühlen sich nicht nur satt, sondern auch wohl. Außerdem verlieren Sie nicht so schnell den Überblick darüber, wie viel Sie gegessen haben. Das hilft, das Körpergewicht zu halten.</p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">Fastfood sinnvoll ergänzen</h4>
+                <p>Das Essen an der Imbissbude ist meist einseitig, salzig und fett. Wer hier isst, sollte die fehlenden Vitamine, Mineral- und Ballaststoffe zwischendurch oder abends durch Gemüse, Obst, Vollkorn- und Milchprodukte ergänzen.</p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">Mitgebrachtes kann eine gute Alternative sein</h4>
+                <p>Wer beim Kochen regelmäßig eine Portion einfriert oder am nächsten Tag zur Arbeit mitnimmt, spart nicht nur Geld. Man braucht in der Pause auch nicht in der Warteschlange vor der Imbissbude zu stehen.</p>
+            </div>
+        </div>
+    `,
+    questions: [
+        { num: 37, text: "37. Man soll immer frühstücken, auch wenn man keinen Hunger hat.", correct: "falsch" },
+        { num: 38, text: "38. Man soll für das Essen Pausen machen.", correct: "richtig" },
+        { num: 39, text: "39. Es ist günstiger, zur Arbeit Essen von zu Hause mitzunehmen.", correct: "richtig" }
+    ]
+},
+teil5: {
+    title: "Teil 5: Brief ergänzen",
+    infoBox: `
+        <div class="bg-white border border-gray-300 rounded-lg p-4 my-2 text-xs text-gray-800 shadow-sm leading-relaxed">
+            <p class="font-bold mb-3"><b>(0) Betreff</b>: Warnung vor SMS - Betrug</p>
+            <p class="mb-3">Liebe Eltern,</p>
+            <p>
+                mehrere Schüler <b>(40) ______</b> Schule haben eine SMS bekommen. Zum Beispiel: „Du hast gewonnen. ruf mich bitte <b>(41) ______</b> an“. Einige Kinder haben zurückgerufen und <b>(42) ______</b> nach ihrem Namen und ihrer Adresse gefragt. Eine Woche <b>(43) ______</b> kam eine Rechnung über 79,- Euro!
+            </p>
+            <p class="mt-2">
+                Achtung: es handelt sich hierbei um Betrug. Die Polizei ist schon informiert. Fragen Sie <b>(44) ______</b> Ihre Kinder, ob sie auch eine solche SMS erhalten haben. Wenn Sie eine Rechnung bekommen, zahlen Sie diese auf keinen Fall! <b>(45) ______</b> Sie bitte eine Anzeige bei der Polizei.
+            </p>
+            <p class="mt-4">
+                Mit freundlichen Grüßen<br>
+                die Schulleitung
+            </p>
+        </div>
+    `,
+    questions: [
+        {
+            num: 40,
+            text: "40.",
+            opts: ["a) deine", "b) eurer", "c) unserer"],
+            correct: 2
+        },
+        {
+            num: 41,
+            text: "41.",
+            opts: ["a) schneller", "b) sofort", "c) vorhin"],
+            correct: 1
+        },
+        {
+            num: 42,
+            text: "42.",
+            opts: ["a) werden", "b) würden", "c) wurden"],
+            correct: 2
+        },
+        {
+            num: 43,
+            text: "43.",
+            opts: ["a) spät", "b) später", "c) zu spät"],
+            correct: 1
+        },
+        {
+            num: 44,
+            text: "44.",
+            opts: ["a) bitte", "b) eigentlich", "c) schon"],
+            correct: 0
+        },
+        {
+            num: 45,
+            text: "45.",
+            opts: ["a) Geben", "b) Machen", "c) Senden"],
+            correct: 1
+        }
+    ]
+}
+},
+        { id: 6,
+            title: "Lesen - Model 6",
+            teil1: {
+    title: "Teil 1: Fernsehprogramm",
+    infoBox: `
+        <div class="overflow-x-auto my-2 border border-gray-300 rounded-lg shadow-sm">
+            <table class="w-full text-left border-collapse bg-white text-xs text-gray-800">
+                <thead>
+                    <tr class="bg-gray-100 border-b border-gray-300">
+                        <th class="p-2.5 font-bold border-r border-gray-300 w-1/4">Sender</th>
+                        <th class="p-2.5 font-bold">Programm</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">ARD</td>
+                        <td class="p-2.5">
+                            <b>17:30</b> Die Sendung mit der Maus - die Lieblingssendung unserer jüngsten Zuschauer<br>
+                            <b>18:00</b> Sportschau<br>
+                            <b>19:55</b> Ziehung der Lottozahlen
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">ZDF</td>
+                        <td class="p-2.5">
+                            <b>18:00</b> hallo deutschland: Geräte zum Stromsparen, die besten Kredite<br>
+                            <b>19:00</b> heute-Meldungen des Tages<br>
+                            <b>19:20</b> Wetter
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">ARTE</td>
+                        <td class="p-2.5">
+                            <b>17:10</b> Bangkok die Straßenküchen<br>
+                            <b>18:05</b> Das Leben zu zweit: Gute Nachrichten - Männer und Frauen passen doch zusammen<br>
+                            <b>19:00</b> ARTE Reportage: Der Regenwald in Thailand
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">hr 3</td>
+                        <td class="p-2.5">
+                            <b>17:50</b> Service Familie: Elterngeld<br>
+                            <b>18:30</b> Service Gesundheit: Wie Sie fit bleiben<br>
+                            <b>19:20</b> Hessentipp – Freizeitmagazin
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Pro Sieben</td>
+                        <td class="p-2.5">
+                            <b>18:00</b> Cafe Puls! Wie immer viele Kochideen - heute besonders mit Gemüse<br>
+                            <b>19:10</b> Galileo: Die teuersten Speisen der Welt<br>
+                            <b>20:15</b> Für Groß und Klein: Daddy ohne Plan (Spielfilm)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Kabel 1</td>
+                        <td class="p-2.5">
+                            <b>17:25</b> Auto: Sicherheit beim Fahren<br>
+                            <b>18:20</b> Abenteuer Leben: Wie Basketballer trainieren<br>
+                            <b>19:15</b> Serie: Jedes Kilo zählt ! Die richtige Diät
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">VOX</td>
+                        <td class="p-2.5">
+                            <b>18:00</b> Ratgeber: Geld - Die besten Bankkonten<br>
+                            <b>18:30</b> Magazin: Die moderne Familie<br>
+                            <b>19:00</b> Wissenshunger - Magazin
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    `,
+    questions: [
+        {
+            num: 21,
+            text: "21. Sie kochen gerne und möchten neue Rezepte kennen lernen.",
+            opts: ["a) ARTE", "b) Pro Sieben", "c) anderer Sender"],
+            correct: 1
+        },
+        {
+            num: 22,
+            text: "22. Sie wollen die Ergebnisse der Fußballspiele vom Samstag wissen.",
+            opts: ["a) ARD", "b) VOX", "c) anderer Sender"],
+            correct: 0
+        },
+        {
+            num: 23,
+            text: "23. Ihr Nachbar möchte einige Kilo abnehmen und braucht Tipps.",
+            opts: ["a) ARTE", "b) VOX", "c) anderer Sender"],
+            correct: 2
+        },
+        {
+            num: 24,
+            text: "24. Sie suchen ein kostenloses Girokonto.",
+            opts: ["a) hr 3", "b) VOX", "c) anderer Sender"],
+            correct: 1
+        },
+        {
+            num: 25,
+            text: "25. Sie wollen wissen, ob es morgen regnet.",
+            opts: ["a) ARTE", "b) ZDF", "c) anderer Sender"],
+            correct: 1
+        }
+    ]
+},
+teil2: {
+    title: "Teil 2: Anzeigen a–h",
+    infoBox: `
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-2 text-xs text-gray-800">
+            <!-- Anzeige A -->
+            <div class="bg-gray-50 border-2 border-gray-300 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-gray-900 border-b border-gray-300 pb-1 mb-2">Anzeige A</div>
+                <div class="font-bold mb-1">Kochparty für kids & Teens</div>
+                <div>Ein Kindergeburtstag als Kochparty.<br>Keine Tränen oder Konflikte am Geburtstag!<br>Altersgerechte Koch- und Backthemen, zum Beispiel Brot backen, leckere Desserts etc.</div>
+                <div class="mt-2 font-semibold text-gray-700">Kochschule Zwerg Nase<br>A. Bertram GbR Hohe Straße 126<br>60433 Frankfurt am Main<br>+49(0) 68 549 20 796 8<br>info@zwerg-nase.de</div>
+            </div>
+
+            <!-- Anzeige B -->
+            <div class="bg-gray-50 border-2 border-gray-300 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-gray-900 border-b border-gray-300 pb-1 mb-2">Anzeige B</div>
+                <div class="font-bold mb-1">So macht Kochen Spaß</div>
+                <div>Kochgeräte jetzt reduziert<br>Töpfe und Pfannen von Silit ab 19,00 €<br>Messer der Firma Zwilling ab 5,00 €<br>Messerblock von WMF ab 49,00 €<br>Küchenhelfer ab 1,00 €</div>
+                <div class="mt-2 font-bold text-gray-700">Kommen Sie vorbei: Im Güterbahnhof Halle 2</div>
+            </div>
+
+            <!-- Anzeige C -->
+            <div class="bg-green-50 border-2 border-green-400 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-green-900 border-b border-green-300 pb-1 mb-2">Anzeige C</div>
+                <div class="font-bold mb-1">Kurse im Herbst</div>
+                <div>
+                    51110 Vegan kochen 1, Mo - Fr. 18.00-21.00 Uhr<br>
+                    51200 Vegan kochen 2, Mo, 19,30-21.00 Uhr<br>
+                    51111 Glutenfrei kochen, Mo, 9.00 - 11.00 Uhr<br>
+                    51112 Lactosefrei kochen, Di, 18.00 - 19.30 Uhr<br>
+                    51113 Vegetarisch Kochen 1, Mo - Fr, 18.00 - 21.00 Uhr<br>
+                    51114 Vegetarisch kochen, Wochenendkurs
+                </div>
+            </div>
+
+            <!-- Anzeige D -->
+            <div class="bg-gray-50 border-2 border-gray-300 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-gray-900 border-b border-gray-300 pb-1 mb-2">Anzeige D</div>
+                <div class="font-bold mb-1 text-center">Kochen für jedermann</div>
+                <div class="text-center">Probleme mit Allergien?<br><br>Lernen Sie gesund zu kochen!</div>
+                <div class="mt-2 text-center">Kurse am Wochenende.</div>
+                <div class="mt-2 font-bold text-gray-700 text-center">Tel: 0176-654321</div>
+            </div>
+
+            <!-- Anzeige E -->
+            <div class="bg-gray-50 border-2 border-gray-300 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-gray-900 border-b border-gray-300 pb-1 mb-2">Anzeige E</div>
+                <div class="font-bold mb-1">Rita Bach: Fortbildungen für Köche</div>
+                <div><b>Kurse in Düsseldorf, Duisburg, Köln</b><br>Profi-Trainings in Ihrem Restaurant<br>Halbtagsschulungen, Tagesschulungen und mehrtägige Kurse Inhalte und Termine nach Ihren wünschen<br>Profi-Training für Hotelköche<br>Grundlagen: 22.07 / 22.09 / 24.11 / 10.10.2015<br>Aufbau: 21.08 / 23.10 / 25.11 / 17.12.2015<br>Festmahle richtig planen und gestalten: 24.07 / 24.09 / 26.11 / 08.12.2015</div>
+            </div>
+
+            <!-- Anzeige F -->
+            <div class="bg-green-50 border-2 border-green-400 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-green-900 border-b border-green-300 pb-1 mb-2">Anzeige F</div>
+                <div class="font-bold mb-1 text-center">Arzthekochkurse zu je 75,00 Eur</div>
+                <div class="text-center font-bold">Kochschule Heinemann</div>
+                <div>im köllerwiessen 13, 71063 Sindelfingen,<br>mail@koch-heinemann.de<br>Tel: 07031-96 130<br>Asiatisch kochen lernen. Fr 14.03.2014<br>Feine Desserts. Fr 23.05.2014<br><b>Deutsche Küche.</b> Fr 27.06.2014Ifer/lin<br>Pizza & Pasta. Fr 11.04.2014</div>
+            </div>
+
+            <!-- Anzeige G -->
+            <div class="bg-green-50 border-2 border-green-400 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-green-900 border-b border-green-300 pb-1 mb-2">Anzeige G</div>
+                <div class="font-bold mb-1">Volkshochschule Landkreis Goslar</div>
+                <div>Kinder ab 8 Jahren <b>lernen kochen in den Osterferien</b> von Montag bis Donnerstag jeweils 9.00 - 12.00 Uhr.<br>Lasst uns in den Ferien Pizza backen!<br>Gemeinsam kneten, nach eigenem Wunsch belegen. Zum Schluss gibt es noch einen Nachtisch. Bitte viel Appetit, Kochschürze und 5,00 € für Lebensmittel mitbringen.</div>
+            </div>
+
+            <!-- Anzeige H -->
+            <div class="bg-green-50 border-2 border-green-400 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-green-900 border-b border-green-300 pb-1 mb-2">Anzeige H</div>
+                <div class="font-bold mb-1">Bäckerei Landwehr</div>
+                <div>Neu bei uns:<br>Backkurse für Privatpersonen<br>Obstkuchen, <b>Hefegebäck, Torten, Brot, Brötchen</b> nur 49,90 €<br>Einfach anrufen... anmelden... Kommen!</div>
+            </div>
+        </div>
+    `,
+    questions: [
+        { num: 26, text: "26. Sie möchten lernen, wie man deutsches Essen kocht.", correctLetter: "f" },
+        { num: 27, text: "27. Sie möchten Vegetarisch kochen lernen.", correctLetter: "c" },
+        { num: 28, text: "28. Sie suchen einen Kochkurs in den Ferien für Kinder.", correctLetter: "g" },
+        { num: 29, text: "29. Sie möchten backen lernen.", correctLetter: "h" },
+        { num: 30, text: "30. Sie möchten Ihrem Vater einen Gutschein für einen Kochkurs schenken,", correctLetter: "x" }
+    ]
+},
+teil3: {
+    title: "Teil 3: Texte verstehen",
+    items: [
+        {
+            text: `<b>Haftstrafe für Einbrecher</b><br><br>Das Landgericht Magdeburg hat gestern drei Einbrecher zu mehreren Jahren Haft verurteilt. Gegen zwei 21-Jährige verhängte das Gericht Jugendstrafen von viereinviertel und fünf Jahren wegen gefährlicher Körperverletzung. Der dritte Angeklagte, ein 27-Jähriger, wurde ebenfalls zu viereinviertel Jahren Haft verurteilt. Das Trio war im März beim Einbruch in eine Gaststätte in der Magdeburger Innenstadt von Spaziergängern beobachtet worden. Um zu verhindern, dass sie die Polizei informierten, schlugen die Täter die Spaziergänger, so dass diese ins Krankenhaus mussten.`,
+            q1: { num: 31, text: "31. Drei Einbrecher wurden zu Gefängnis verurteilt.", correct: "richtig" },
+            q2: { num: 32, text: "32. Die Einbrecher...", opts: ["a) haben einen Polizisten schwer verletzt.", "b) müssen für fünf Jahre ins Gefängnis.", "c) wurden bei ihrer Tat beobachtet."], correct: 2 }
+        },
+        {
+            text: `Liebe Freunde des alten Hafens,<br><br>wie Sie wissen, hat die Stadt unser Areal verkauft und die Immobiliengesellschaft Schark will hier Reihenhäuser bauen. Das bedeutet, dass wir unseren Platz nach 61 Jahren zum 31. Oktober verlassen müssen. Als Ausgleich können wir ein Grundstück am Waldsee nutzen, auf dem aber keine Gebäude stehen, keine sanitären Anlagen usw.<br>Das heißt, wir müssen im Frühjahr fleißig arbeiten. Aber vorher wollen wir nochmal feiern: Wir laden Sie ein zur Abschiedsfeier am 30.10. ab 18 Uhr in unserem Vereinshaus.<br>Klausdieter Franke spielt mit seiner Band und für Essen und Getränke wird gesorgt.<br><br>Mit den besten Grüßen<br>Der Vorstand der Freunde des alten Hafens e. V.`,
+            q1: { num: 33, text: "33. Die Freunde des alten Hafens haben ihr Grundstück verkauft.", correct: "falsch" },
+            q2: { num: 34, text: "34. Die Freunde des alten Hafens...", opts: ["a) feiern am Waldsee.", "b) haben ein neues Vereinshaus.", "c) ziehen um an den Waldsee."], correct: 2 }
+        },
+        {
+            text: `Sehr geehrte Familie Müller,<br><br>wir haben die Nebenkosten für die Zeit vom 1.1 bis 31.12 des vergangenen Jahres abgerechnet. Die Abrechnung schließt mit einem Guthaben in Höhe von 150 € ab. Damit reduziert sich Ihre monatliche Nebenkostenvorauszahlung zukünftig um 12 Euro, so dass die Gesamtmiete ab 1. Februar nur noch 612.50 Euro beträgt.<br><br>Die genaue Zusammensetzung der Nebenkostenabrechnung entnehmen Sie bitte den Seiten.<br><br>Mit freundlichen Grüßen<br>Ihre Hausverwaltung`,
+            q1: { num: 35, text: "35. Ab 1.Februar muss Familie Müller mehr Miete zahlen.", correct: "falsch" },
+            q2: { num: 36, text: "36. Familie Müller...", opts: ["a) braucht ab Februar nichts mehr für die Nebenkosten auszugeben.", "b) hat zu viel an Nebenkosten bezahlt.", "c) muss im kommenden Jahr 150 Euro Nebenkosten bezahlen."], correct: 1 }
+        }
+    ]
+},
+teil4: {
+    title: "Teil 4: Informationen zum Mittagessen",
+    infoBox: `
+        <div class="bg-white border-2 border-blue-900 rounded-lg p-4 my-2 text-xs text-gray-800 space-y-3 shadow-sm leading-relaxed">
+            <h3 class="text-sm font-bold text-blue-900 border-b border-blue-200 pb-1 text-center">
+                Liebe Eltern,
+            </h3>
+            <p>
+                die Domino-Service GmbH übernimmt die Ausgabe von Mittagessen und Getränken an der Nürtingen - Grundschule. Mit dem beiliegenden Auftrags-Formular können Sie Ihr Kind für das regelmäßige Mittagessen anmelden.
+            </p>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">Zahlungsbedingungen</h4>
+                <p>
+                    Das Essensgeld wird jeden Monat am Tag nach der letzten Essenslieferung vom angegebenen Konto abgebucht. Geliefert wird von Montag bis Freitag. Berechnet wird die Anzahl der tatsächlichen Liefertage. Berechnet werden auch nicht rechtzeitig abgemeldete Mahlzeiten.<br>
+                    <b>Es werden keine Rechnungen ausgestellt. Die Menge der berechneten Mittagessen sehen Sie auf Ihrem Kontoauszug.</b>
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">Preis</h4>
+                <p>
+                    Eine Mahlzeit kostet insgesamt 2,16 €. Der anteilige Preis für Lieferung, Getränk und sonstige Serviceleistungen beträgt 0,46 €. Der Gesamtbetrag wird monatlich von Ihrem Konto eingezogen.
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">Fehlzeiten</h4>
+                <p>
+                    Fehlzeiten (z.B. wegen Klassenfahrten oder Krankheit) <b>müssen Sie uns spätestens einen Tag vorher mitteilen</b>. Wenn Sie Ihr Kind nicht rechtzeitig vom Essen abmelden, müssen wir die Mahlzeit berechnen. Sie haben folgende Möglichkeiten, uns zu erreichen: E-Mail: info@domino.de / Fax: 030-351 02335 / Telefon: 030-351 02 333.<br>
+                    Außerhalb der Geschäftszeiten können Sie auf unserem Anrufbeantworter Ihren Namen, Ihre Nachricht und Ihre Kundennummer hinterlassen.
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">Kündigung und Vertragslaufzeit</h4>
+                <p>
+                    Sie können den Vertrag zum letzten Tag eines Monats kündigen. Es sind nur schriftliche Kündigungen gültig (Einschreiben).
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">Hinweis</h4>
+                <p>
+                    <b>Bitte für jedes Kind / jede Person ein Anmeldeformular ausfüllen (auch für Geschwister).</b> Wir bitten um Ihr Verständnis, dass wir nur vollständig und leserlich ausgefüllte Formulare akzeptieren können.
+                </p>
+            </div>
+        </div>
+    `,
+    questions: [
+        { 
+            num: 37, 
+            text: "37. Sie bekommen jeden Monat mit der Post eine Rechnung für das Mittagessen Ihres Kindes.", 
+            correct: "falsch" 
+        },
+        { 
+            num: 38, 
+            text: "38. Wenn Ihr Kind heute krank wird, müssen Sie für das Essen nicht bezahlen.", 
+            correct: "falsch" 
+        },
+        { 
+            num: 39, 
+            text: "39. Wenn Sie zwei Kinder anmelden wollen, brauchen Sie nur ein Formular.", 
+            correct: "falsch" 
+        }
+    ]
+},
+teil5: {
+    title: "Teil 5: Brief ergänzen",
+    infoBox: `
+        <div class="bg-white border border-gray-300 rounded-lg p-4 my-2 text-xs text-gray-800 shadow-sm leading-relaxed">
+            <p class="text-right text-gray-500 mb-2">Kundennummer 23456<br>Wittenberg, d.6.04.20....</p>
+            <p class="font-bold border-b border-gray-200 pb-1 mb-3 text-center">ZAHLUNGSERINNERUNG</p>
+            <p class="mb-3"><b>(0) Sehr geehrte</b> Frau Schmied,</p>
+            <p>
+                bitte helfen Sie <b>(40) ______</b> : Unsere Buchhaltung hat den Betrag vom 59,65 € vom 0,03. noch nicht als Zahlungseingang feststellen <b>(41) ______</b>.
+            </p>
+            <p class="mt-2">
+                <b>(42) ______</b> Sie in der Hektik des Alltags vergessen, den Rechnungsbetrag zu überweisen? Wir bitten Sie in diesem Fall um Zahlung innerhalb der <b>(43) ______</b> 4 Tage.
+            </p>
+            <p class="mt-2">
+                Oder haben Sie den Betrag <b>(44) ______</b> bezahlt, und wir konnten das Geld nicht richtig zuordnen? <b>(45) ______</b> bitten wir um Zusendung des Zahlungsbelegs.
+            </p>
+            <p class="mt-3">
+                wir bedanken uns für Ihre Mithilfe.
+            </p>
+            <p class="mt-4">
+                Mit freundlichem Gruß<br>
+                Maria Kleidermann
+            </p>
+        </div>
+    `,
+    questions: [
+        {
+            num: 40,
+            text: "40.",
+            opts: ["a) euch", "b) ihnen", "c) uns"],
+            correct: 2
+        },
+        {
+            num: 41,
+            text: "41.",
+            opts: ["a) können", "b) müssen", "c) sollen"],
+            correct: 0
+        },
+        {
+            num: 42,
+            text: "42.",
+            opts: ["a) Haben", "b) Hätten", "c) Würden"],
+            correct: 0
+        },
+        {
+            num: 43,
+            text: "43.",
+            opts: ["a) letzten", "b) nächsten", "c) vorigen"],
+            correct: 1
+        },
+        {
+            num: 44,
+            text: "44.",
+            opts: ["a) erst", "b) schon", "c) wieder"],
+            correct: 1
+        },
+        {
+            num: 45,
+            text: "45.",
+            opts: ["a) Damit", "b) Dann", "c) sonst"],
+            correct: 1
+        }
+    ]
+}
+},
+  {id: 7,
+    title: "Lesen - Test 7",
+        teil1: {
+    title: "Teil 1: Online-Suchen",
+    infoBox: `
+        <div class="bg-white border-2 border-gray-300 rounded-lg p-3 my-2 text-xs text-gray-800 shadow-sm space-y-2 leading-tight">
+            <div>
+                <div class="font-bold text-gray-900 border-b border-gray-200 pb-0.5">Garten und Balkon</div>
+                <div>Gartenstühle und-tische, Grillgeräte, Pools, Gartenbaustoffe, Pflanzen, Farben, Reinigung, Sonnenschutz</div>
+            </div>
+            
+            <div>
+                <div class="font-bold text-gray-900 border-b border-gray-200 pb-0.5">Eisenwaren</div>
+                <div>Schlüssel und Schlösser, Alarmanlagen, Reinigungsmaschinen</div>
+            </div>
+
+            <div>
+                <div class="font-bold text-gray-900 border-b border-gray-200 pb-0.5">Farben</div>
+                <div>Wandfarbe, Tapeten, Erde, Blumentöpfe, Bilder, Bilderrahmen, Wanduhren, Treppenstufenmatten</div>
+            </div>
+
+            <div>
+                <div class="font-bold text-gray-900 border-b border-gray-200 pb-0.5">Alles für Bad und Küche</div>
+                <div>Duschen, Waschbecken, Badewannen, Heizungen, Küchenspülen, Küchentechnik, WCs, Haushaltsmaschinen</div>
+            </div>
+
+            <div>
+                <div class="font-bold text-gray-900 border-b border-gray-200 pb-0.5">Lampe und Elektro</div>
+                <div>Außenbeleuchtung, Wohnbeleuchtung, Lampen, Büroleuchten, Diskobeleuchtung, Stehlampen, Solarenergie, Kindersicherungen</div>
+            </div>
+
+            <div>
+                <div class="font-bold text-gray-900 border-b border-gray-200 pb-0.5">Holz und Bauen</div>
+                <div>Fenster, Außen- und Innentüren, Außen- und Innentreppen, Garagentore, Glas, Arbeitsplatten, Teppiche, Teppichböden, Parkett</div>
+            </div>
+
+            <div>
+                <div class="font-bold text-gray-900 border-b border-gray-200 pb-0.5">Haushalt und Auto</div>
+                <div>Umzugskartons, Werkzeug, Autoreinigung, Kinderfahrräder, Jugendfahrräder, Büromöbel, Kinder - und Jugendzimmermöbel, Küchenmöbel, Wohnzimmermöbel</div>
+            </div>
+
+            <div>
+                <div class="font-bold text-gray-900 border-b border-gray-200 pb-0.5">Mietservice</div>
+                <div>Profi-Geräte zu günstigen Tarifen mieten: Polsterreiniger, Teppichreiniger und shampooanierer, Parkettschleifmaschinen</div>
+            </div>
+
+            <div>
+                <div class="font-bold text-gray-900 border-b border-gray-200 pb-0.5">Kontakt</div>
+                <div>Für Reklamationen, Umtausch und sonstige Informationen: info@hammerundnagel.de, Tel.: 0800/75 32 76 .</div>
+            </div>
+
+            <div>
+                <div class="font-bold text-gray-900 border-b border-gray-200 pb-0.5">Wegbeschreibung</div>
+                <div>U3 bis Haltestelle Großhadern, Buslinie 7</div>
+            </div>
+        </div>
+    `,
+    questions: [
+        {
+            num: 21,
+            text: "21. Sie suchen einen Schrank für die Küche.",
+            opts: ["a) Garten und Balkon", "b) Haushalt und Auto", "c) andere Seiten"],
+            correct: 1
+        },
+        {
+            num: 22,
+            text: "22. Sie möchten einen Sonnenschirm kaufen.",
+            opts: ["a) Garten und Balkon", "b) Holz und Bauen", "c) andere Seiten"],
+            correct: 0
+        },
+        {
+            num: 23,
+            text: "23. Sie möchten eine Maschine für die Teppichreinigung leihen.",
+            opts: ["a) Lampen und Elektro", "b) Mietservice", "c) andere Seiten"],
+            correct: 1
+        },
+        {
+            num: 24,
+            text: "24. Sie wollen sich erkundigen, ob Ihr gewünschtes Produkt lieferbar ist.",
+            opts: ["a) Kontakt", "b) Wegbeschreibung", "c) andere Seiten"],
+            correct: 0
+        },
+        {
+            num: 25,
+            text: "25. Sie brauchen Stühle für draußen.",
+            opts: ["a) Farben", "b) Holz und Bauen", "c) andere Seiten"],
+            correct: 2
+        }
+    ]
+},
+teil2: {
+    title: "Teil 2: Anzeigen a–h",
+    infoBox: `
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-2 text-xs text-gray-800">
+            <!-- Anzeige A -->
+            <div class="bg-gray-50 border-2 border-gray-300 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-gray-900 border-b border-gray-300 pb-1 mb-2">Anzeige A</div>
+                <div class="font-bold mb-1">Gasthaus zur Tafelrunde</div>
+                <div>Das Restaurant für Ihre Festlichkeit Unser erlebnisreiches Ambiente im mittelalterlichen Flair bietet Ihnen und Ihren Gästen den idealen Ort für Festlichkeiten, Firmen- und Familienfeiern sowie Jubiläen und Tagungen .Deutsche, internationale sowie fleischlose Spezialitäten Kulinarischer Saisonkalender Senioren- und Kinderkarte Kalte und warme Buffetvariationen Hochzeitstreffen 150 Plätze im Restaurant Gebührenfreie Tiefgarage Geöffnet täglich ab 16 Uhr - sonn- und feiertags ab 11.30 Uhr, Tel. (01678) 12208</div>
+            </div>
+
+            <!-- Anzeige B -->
+            <div class="bg-gray-50 border-2 border-gray-300 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-gray-900 border-b border-gray-300 pb-1 mb-2">Anzeige B</div>
+                <div class="font-bold mb-1">Buffets für Ihre Feier ab10 Personen z.B:</div>
+                <div>• Schweinefilet mit Schnittlauchrahm .<br>• Pulensteak mit Tomaten_Mozzarella überbacken.<br>• Rinderbraten mit Bratensoße.<br>• Spätzle.<br>• Kroketten.<br>• Gemüseplatte<br>• ofrische Salate.<br>Preis pro Person:nur11,90 Euro,sind Sie an weiteren Buffet_Vorschlägen interessiert? Dann fordern Sie gleich unseren Prospekt an. Prty_Service Aumann. Tel.05044_66169.wwwpartyservice_aumann.de. ((Wir bringen Ihnen alle Speisen nach Hause)).</div>
+            </div>
+
+            <!-- Anzeige C -->
+            <div class="bg-gray-50 border-2 border-gray-300 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-gray-900 border-b border-gray-300 pb-1 mb-2">Anzeige C</div>
+                <div class="font-bold mb-1">Italienischer_Eissalon</div>
+                <div>sucht geeignete,helle Räumlichkeiten zur Eröffnung eines zweiten Eiscafés in guter Innenstadtlage von Essen, Erdgeschoss mindestens 50 qm,mit Sitzplatzmöglichkeiten vordem Salon, ab April oder Mai,langfristiger Mietvertrag erwünscht. Angebote bitte per E_ Mail an b.mazza@gmx.com oder telefonisch ab Sonntag unter 04331/7754</div>
+            </div>
+
+            <!-- Anzeige D -->
+            <div class="bg-gray-50 border-2 border-gray-300 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-gray-900 border-b border-gray-300 pb-1 mb-2">Anzeige D</div>
+                <div class="font-bold mb-1">Waldschlößchen</div>
+                <div>(Ihr feines Speiselokal im Naturschutzgebiet. ) unser Restaurant bietet Ihnen täglich (außer Montags))ab18:00Uhr in unseren gemütlich und behindertengerecht ausgestatteten Räumlichkeiten mit 50 Sitzplätzen eine große Auswahl an Sitzplätzen eine große Auswahl an Fleisch, Fisch und vegetarischen Gerichten. Für Ihre Anreise mit dem Auto Steht ein großer Parkplatz direkt am Haus zur Verfügung außerdem ein separater Raucher Bereich,wegen der großen Nachfrage bitten wir um Reservierungen unter Tel.09831/75493.</div>
+            </div>
+
+            <!-- Anzeige E -->
+            <div class="bg-gray-50 border-2 border-gray-300 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-gray-900 border-b border-gray-300 pb-1 mb-2">Anzeige E</div>
+                <div class="font-bold mb-1">Salzer</div>
+                <div>des ältest Apfelweinlokal in der Stadt ((eigene Apfelwein_und Apfelsaft_Herstellung)) Neben unseren 50 Plätzen im Lokal können wir Ihnen weitere 50 überdachte Plätze in unserem großen, begrünten Innenhof bieten. Für unsere kleinen Gäste steht ein Kinderspielplatz zur Verfügung. Unsere reichhaltige Speisekarte enthält auch spezielle Senioren und Junioren Angebote Täglich geöffnet von17 bis 1Uhr ((innenhof bis 23 Uhr))Talstraße 17(U3_Haltestelle Schillerplatz)</div>
+            </div>
+
+            <!-- Anzeige F -->
+            <div class="bg-gray-50 border-2 border-gray-300 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-gray-900 border-b border-gray-300 pb-1 mb-2">Anzeige F</div>
+                <div class="font-bold mb-1">Chinesische und Koreanische Köstlichkeiten</div>
+                <div>Ente, Huhn,Rindfleisch,Schweinefleisch ,Vegetarisch. Sonntags bieten wir auch ein umfang reiches Buffet mit Vor_und Nachspeisen an.In zentraler Innenstadtlage mit eigenen Parkplätzen Behindertenfreundliche .Zugänge zu allen Gästeräumen öffnungszeiten: Dienstags bis Sonntags von 11:30 bis 14:30 und von 18:00bis 24:00 Uhr Restaurant ((Bambus)) Berliner Straße 28.Telefon 01123/9945222</div>
+            </div>
+
+            <!-- Anzeige G -->
+            <div class="bg-gray-50 border-2 border-gray-300 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-gray-900 border-b border-gray-300 pb-1 mb-2">Anzeige G</div>
+                <div class="font-bold mb-1">Die Eislauf_Saison</div>
+                <div>ist eröffnet.. Wie jedes Jahr um diese Zeit eröffnen wir am Sonntag um 10:00Uhr unsere Eisbahn am Opernplatz, auf 400qm können Sie täglich bis in den späten Abend um 22:00 Uhr schlittschuh laufen. Der Eintritt für das Eisvergnügen kostet immer noch nur 3 ,€ pro Stunde. Die passende Disco_ Musik ist gratis. Wir halten auch Heißigetränke für Sie bereit.</div>
+            </div>
+
+            <!-- Anzeige H -->
+            <div class="bg-gray-50 border-2 border-gray-300 rounded-lg p-3 shadow-sm">
+                <div class="font-bold text-sm text-gray-900 border-b border-gray-300 pb-1 mb-2">Anzeige H</div>
+                <div class="font-bold mb-1">Hochzeitstorten</div>
+                <div>Geburtstagstorten, Jubiläumstorten Ihr Tortenspezialist fertigt zu jedem Anlass nach Ihrem Individuellen Wünschen und Ideen festliche Torten für Sie an. Gerne Laden wir Sie zu einem unverbindlichen Beratungsgespräch(bei einer Tasse Kaffee und einem Stück Torte)) ein Confisserie &&Chocolaterie, Torten_lädchen Am Marktplatz1,Tel07721_430967. www.torten_ladchen.de</div>
+            </div>
+        </div>
+    `,
+    questions: [
+        { num: 26, text: "26. Sie möchten Ihren Vater zum Essen einladen. Ihr Vater liebt die asiatische Küche und kann nicht alleine laufen.", correctLetter: "f" },
+        { num: 27, text: "27. Für eine Hochzeitsfeier mit über hundert Gästen suchen Sie ein passendes Restaurant.", correctLetter: "a" },
+        { num: 28, text: "28. Sie möchten Ihren Geburtstag zu Hause feiern, aber das Essen nicht selbst kochen. Sie erwarten zwölf Gäste.", correctLetter: "b" },
+        { num: 29, text: "29. Sie möchten mit Ihren Kindern (2 und 6 Jahre alt) am Samstagabend essen gehen. Sie wollen im Freien sitzen, aber trotzdem bei Regen nicht nass werden.", correctLetter: "e" },
+        { num: 30, text: "30. Sie haben Ihren Kindern versprochen, sie am Sonntag in ein Eiscafé zu einem großen Becher Eis einzuladen.", correctLetter: "x" }
+    ]
+},
+
+teil3: {
+    title: "Teil 3: Texte verstehen",
+    items: [
+        {
+            text: `<b>Girokonto für junge Leute</b><br><br>Banken und Sparkassen bieten Girokonten nicht nur für Jugendliche, sondern schon für Kinder ab sieben Jahren an.<br>Ein Beispiel hierfür ist ein neues Girokonto der In Direct-Bank. Das „Girokonto Junior Plus“ richtet sich an alle, die zwischen 12 und 26 Jahre alt sind. Es kann für Jugendliche bis 18 Jahren allerdings nur mit Zustimmung beider Elternteile eröffnet werden, die auch in eine Filiale der In Direct-Bank mitkommen müssen. Wer 18 Jahre oder älter ist, kann das Konto nicht nur alleine eröffnen, sondern den Antrag auch bequem online ausfüllen. Die Kontoführung ist kostenlos, und man braucht auch keine Bescheinigung darüber abzugeben, dass man sich in der Ausbildung oder im Studium befindet.`,
+            q1: { num: 31, text: "31. Bei der In Direct-Bank gibt es für Kinder ab sieben Jahren ein Girokonto.", correct: "richtig" },
+            q2: { num: 32, text: "32. Wenn man über 18 Jahre alt ist,...", opts: ["a) muss man das Konto nicht in einer Filiale eröffnen.", "b) muss man einen Ausbildungsvertrag oder Studentenausweis zeigen.", "c) muss man Kontoführungsgebühren bezahlen."], correct: 0 }
+        },
+        {
+            text: `Liebe Eltern,<br><br>in der letzten Zeit ist es in den Pausen immer wieder zu Streit zwischen Schülern gekommen. Der Grund dafür waren meist Sammelkarten (Pokémon, Yu-Gi-Oh! und andere), die Schüler in die Schule mitgebracht haben. In der letzten Woche haben mehrere Schüler sogar behauptet, dass Mitschüler ihre Sammelkarten gestohlen haben. Außerdem ist es nach einem Spiel mit Sammelkarten zu einer Schlägerei gekommen. Deshalb haben die Lehrer auf letzten Schulkonferenz beschlossen, dass an unserer Schule Sammelkarten verboten sind. Bitte achten Sie darauf, dass Ihre Kinder keine Sammelkarten mehr mit in die Schule nehmen.<br><br>Mit freundlichen Grüßen<br>Die Schulleitung`,
+            q1: { num: 33, text: "33. Das Verbot gilt nur in der Pause.", correct: "falsch" },
+            q2: { num: 34, text: "34. Weil Schüler sich geschlagen haben,...", opts: ["a) lädt die Schulleitung zur Elternkonferenz ein.", "b) sollen die Eltern ihren Kindern keine Sammelkarten mehr kaufen.", "c) verbietet die Schulkonferenz das Mitbringen von Sammelkarten."], correct: 2 }
+        },
+        {
+            text: `sehr geehrter Herr Demir,<br><br>die Kabelanlagen für TV- und Radioempfang werden in der Stettenstraße 19 von unserer Firma neu installiert. Im Rahmen dieser Installationsarbeiten müssen wir am 30.11. zwischen 09:00 und 16:00 Uhr in Ihre Wohnung / Ihre privaten Kellerräume und auf den Dachboden. Sollten Sie zu dem geplanten Termin nicht zu Hause sein können, vereinbaren Sie bitte unbedingt frühzeitig einen neuen Termin mit uns unter 0233/677632. Um die Einhaltung des Termins bzw. um seine rechtzeitige Verschiebung wird dringend gebeten. Sollten wir an dem genannten Termin keinen Zugang zu Ihren Räumlichkeiten erhalten, kann es sein, dass wir Ihren Anschluss aus technischen Gründen abschalten müssen.<br><br>Mit freundlichen Grüßen<br>Teletronica GmbH`,
+            q1: { num: 35, text: "35. Die Firma Teletronica GmbH kann auch an einem anderen Termin kommen.", correct: "richtig" },
+            q2: { num: 36, text: "36. Herr Demir soll vor dem 30.11. die Firma Teletronica GmbH anrufen,...", opts: ["a) wenn er an dem Tag nicht zu Hause ist.", "b) wenn er Informationen zu seinem TV- und Radioempfang braucht.", "c) wenn er keinen neuen Anschluss möchte."], correct: 0 }
+        }
+    ]
+},
+teil4: {
+    title: "Teil 4: Lieferlust",
+    infoBox: `
+        <div class="bg-white border-2 border-blue-900 rounded-lg p-4 my-2 text-xs text-gray-800 space-y-3 shadow-sm leading-relaxed">
+            <h3 class="text-sm font-bold text-blue-900 border-b border-blue-200 pb-1 text-center">
+                Hebel verloren
+            </h3>
+            <p>
+                Liferlust liefert viele Produkte zu Ihnen nach Hause, wo Sie online Waren bestellen können, die Sie normalerweise im Supermarkt finden, sowie Büromaterial und Computerzubehör.
+            </p>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">Wo?</h4>
+                <p>
+                    Das Angebot gilt für Personen ab 18 Jahren mit Wohnsitz in Berlin. Sie müssen auch ein deutsches Bankkonto oder eine Kreditkarte haben.
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">Wohin?</h4>
+                <p>
+                    Wir bieten nur innerhalb einer Schleife Berliner S-Bahn.
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">Wann?</h4>
+                <p>
+                    Wir bieten täglich zwischen 6 und 22 Uhr das Datum und die Uhrzeit auf unserer Website an.<br>
+                    Wenn ausnahmsweise keine Zeit zur Verfügung steht, wird sich der Fahrer mit Ihnen in Verbindung setzen.<br>
+                    <b>Wenn Sie zum vereinbarten Zeitpunkt nicht zu Hause sind, liefert der Fahrer die Ware an die Nachbarn oder stellt sie vor die erste geschlossene Tür (auch bei Mehrfamilienhäusern).</b>
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">Wie funktioniert dieser Service?</h4>
+                <p>
+                    Registrieren Sie sich auf unserer Website, wählen Sie den gewünschten Liefertermin aus, wählen Sie Ihre Ware aus und legen Sie diese in den Warenkorb.<br>
+                    Zahlen Sie dann, wenn Sie mit einer Kredit- oder Debitkarte fertig sind (wechseln Sie von dem angegebenen Konto). Sie erhalten eine Bestätigungsmail.
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">Was kostet das?</h4>
+                <p>
+                    Die Versandkosten richten sich nach dem Liefertermin. Es liegt zwischen 3 und 6 Euro.<br>
+                    <b>Sonntags betragen alle Lieferzeiten 6 EUR.</b><br>
+                    Auf zehn Bestellungen erhalten Sie 10% Rabatt. Wir freuen uns, Sie bald bei uns begrüßen zu dürfen!
+                </p>
+            </div>
+        </div>
+    `,
+    questions: [
+        { 
+            num: 37, 
+            text: "37. Die verlorene Leber bringt Lebensmittel zu Ihnen nach Hause.", 
+            correct: "richtig" 
+        },
+        { 
+            num: 38, 
+            text: "38. Wenn Sie nicht zu Hause sind, kommt der Fahrer erneut.", 
+            correct: "falsch" 
+        },
+        { 
+            num: 39, 
+            text: "39. Sonntags zahlen Sie weniger.", 
+            correct: "falsch" 
+        }
+    ]
+},
+teil5: {
+    title: "Teil 5: Lückentext (Bewerbungsschreiben)",
+    infoBox: `
+        <div class="bg-white border-2 border-gray-700 rounded-lg p-5 my-2 text-sm text-gray-800 space-y-3 shadow-sm leading-relaxed">
+            <p>Super Kauf-Märkte<br>Postfach 20 09<br>29086 Hamburg</p>
+            <p>Sehr <strong>(0) geehrte</strong> Damen und Herren,</p>
+            <p>ich habe am <strong>[40]</strong> Samstag Ihre Stellenanzeige gelesen. Gerne würde ich als Verkäuferin bei Ihnen arbeiten, <strong>[41]</strong> mir die Arbeit mit Menschen viel Spaß macht. Es ist kein Problem, <strong>[42]</strong> ich auch samstags arbeiten muss.</p>
+            <p>Im Moment arbeite ich noch bei der Bäckerei BackFrisch, <strong>[43]</strong> ich möchte lieber in einem Supermarkt arbeiten. Am liebsten würde ich in der Abteilung „Obst und Gemüse“ arbeiten, <strong>[44]</strong> ich kenne mich sehr gut damit aus. Können Sie mir sagen, ob das möglich ist?</p>
+            <p>Gerne komme ich nächste Woche zu Ihnen, <strong>[45]</strong> wir uns kennenlernen können.</p>
+            <p class="pt-2">Mit freundlichen Grüßen<br><i>Monika Reimann</i></p>
+        </div>
+    `,
+    questions: [
+        { num: 40, text: "Lücke 40", opts: ["a) kommenden", "b) letzten", "c) nächsten"], correct: 1 },
+        { num: 41, text: "Lücke 41", opts: ["a) dass", "b) ob", "c) weil"], correct: 2 },
+        { num: 42, text: "Lücke 42", opts: ["a) dass", "b) damit", "c) sodass"], correct: 0 },
+        { num: 43, text: "Lücke 43", opts: ["a) aber", "b) denn", "c) sondern"], correct: 0 },
+        { num: 44, text: "Lücke 44", opts: ["a) aber", "b) denn", "c) oder"], correct: 1 },
+        { num: 45, text: "Lücke 45", opts: ["a) als", "b) damit", "c) obwohl"], correct: 1 }
+    ]
+}
+},
+                    ],
             Sprechen: [
                 {
                     type: "guide",
