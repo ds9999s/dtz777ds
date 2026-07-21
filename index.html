@@ -2291,6 +2291,433 @@ teil5: {
     ]
 }
 },
+{id: 8,
+    title: "Lesen - Test 8(neu)",
+    teil1: {
+    title: "Teil 1: VHS Kursprogramm Übersicht",
+    infoBox: `
+        <div class="overflow-x-auto my-2 border border-gray-300 rounded-lg shadow-sm">
+            <table class="w-full text-left border-collapse bg-white text-xs text-gray-800">
+                <thead>
+                    <tr class="bg-gray-100 border-b border-gray-300">
+                        <th class="p-2.5 font-bold border-r border-gray-300 w-1/3">Bereich / Seite</th>
+                        <th class="p-2.5 font-bold">Inhalte & Kurse</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Natur und Umwelt (Seite 7-13)</td>
+                        <td class="p-2.5">Rund um den Garten - Geowissenschaften - Stadtrundgänge Abenteuer Astronomie - Exkursionen in die Natur- Kinder entdecken den Wald - Ökologisches Schülerlabor</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Gesellschaft und Politik (Seite 14-18)</td>
+                        <td class="p-2.5">Internationales und Interkulturelles - Länderkunde - Studienreisen Demokratie und Gesellschaft - Arbeit und Recht - Lebenswelten im Wandel</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Kultur und Künste (Seite 19-23)</td>
+                        <td class="p-2.5">Literatur - Theater und Hörspiel- Musikwerkstatt für Schüler - Kunst - Zeichnen und Malen -Fotografieren und Filmen- Jugendtheater</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Bewegung und Gesundheit (Seite 24-30)</td>
+                        <td class="p-2.5">Gesundheitsbildung - Entspannung - Sport und Spiel - Fitness und Gymnastik -Tanzen - Seniorensport- Zu dick ? Beratung für Junge - Mannschaftsspiel im Verein</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Berufliche Bildung / EDV (Seite 31-36)</td>
+                        <td class="p-2.5">Schlüsselqualifikationen Kommunikation - Computer - Grundlagen Textverarbeitung und Tabellenkalkulation - Betriebssysteme und Netzwerke Internet – Programmierung.</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Sprachen (Seite 37-43)</td>
+                        <td class="p-2.5">Deutsch als Zweitsprache - Integrationskurse - Deutsch für ausländische Studienbewerber - Englisch Französisch - Spanisch - Italienisch - Griechisch - Niederländisch - Türkisch Konversation und Grammatik</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Grundbildung (Seite 44-49)</td>
+                        <td class="p-2.5">Lesen und Schreiben lernen - Rechtschreibung Rechnen - Hauptschulabschluss - Realschulabschluss - Fachoberschulrei Profil PASS - Bewerbungstraining Rhetorik</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Allgemeine Informationen (Seite 50-52)</td>
+                        <td class="p-2.5">Beratung und Anmeldung - Öffnungszeiten - Preise und Ermäßigungen Kinderbetreuung- Anfahrtsskizze - Mitarbeiterinnen und Mitarbeiter</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    `,
+    questions: [
+        { num: 21, text: "21) Sie suchen einen Ausbildungsplatz und brauchen Hilfe bei der Bewerbung.", opts: ["a) Berufliche Bildung / EDV", "b) Grundbildung", "c) andere Überschrift"], correct: 1 },
+        { num: 22, text: "22) Sie wollen lernen , mit Ihrer neuen Digitalkamera gute Bilder zu machen .", opts: ["a) Grundbildung", "b) Kultur und Künste", "c) andere Überschrift"], correct: 1 },
+        { num: 23, text: "23 )Sie möchten wissen, was die Kurse kosten.", opts: ["a) Gesellschaft und Politik", "b) Grundbildung", "c) andere Überschrift"], correct: 2 },
+        { num: 24, text: "24 )Sie möchten noch einen deutschen Schulabschluss machen .", opts: ["a) Berufliche Bildung / EDV", "b) Grundbildung", "c) andere Überschrift"], correct: 1 },
+        { num: 25, text: "25) Sie möchten Sport machen .", opts: ["a) Gesellschaft und Politik", "b) Natur und Umwelt", "c) andere Überschrift"], correct: 2 }
+    ]
+},
+teil2: {
+    title: "Teil 2: Anzeigen a–h",
+    infoBox: `
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-2 text-xs text-gray-800">
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige a</div>
+                <div class="font-bold mb-1">1234 kochen - günstig und gut !</div>
+                <div>wie kann man gute und leckere Speisen zubereiten und gleichzeitig wenig Geld für die Zutaten ausgeben ? wir zeigen es Ihnen . Unsere Rezepte sind alltagserprobt und schonen Ihren Geldbeutel Montag , 28.04-18.30_21.30Uhr<br>4UStd16 , €<br>VHS Emma Gerken</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige b</div>
+                <div class="font-bold mb-1">2365 Textiles Gestalten</div>
+                <div>Anfängerinnen und Interessierte mit Kenntnissen können teilnehmen .wir zeigen alles von Anfang an : zuschneiden , nähen , Schnitte Kopieren . Nähmaschinen stehen in der VHS zur Verfügung Stoffe und Garn müssen Sie mitbringen .<br>Mo. , 10.15 11.45Uhr . ab 28.04<br>10 x 2 UStd.32 , € VHS_Erinka Kaiser</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige c</div>
+                <div class="font-bold mb-1">2364 Selbst Genähtes passt am besten !</div>
+                <div>wir zeigen Ihnen , wie Sie mit Ihrer Nähmaschine die schönste Kleidung herstellen können . Individuelle Beratung für die unterschiedlichen Nähmaschinenfabrikate . Samstag . 02.05 .<br>18.00 21.15 Uhr<br>1x 4 UStd- 10 , - €<br>VHS -sigrid und Franz schmit</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige d</div>
+                <div class="font-bold mb-1">1235 Kochen mit kontrolliert biologischen Zutaten</div>
+                <div>Exklusive Zutaten vom Bio - Bauern sind nicht günstig . aber dafür ein bisschen leckerer ! Auf jeden Fall sind sie gesund und schützen die Umwelt . Samstag , 09.05 . 16.00-18.30Uhr<br>Sonntag , 10.05.10.00- 12.30 Uhr 2x3 UStd 40.00 € Der Kurs findet in der VHS -küche statt .kosten für die Lebensmittel sind nicht im kurspreis enthalten.Das Geld dafür wird an den kurstagen eingesammelt ( ca .25 € )</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige e</div>
+                <div class="font-bold mb-1">545 55+ Handybedienung -leicht erlernt</div>
+                <div>Die wichtigsten Eigenschaften und Möglichkeiten Ihres eigenen Handys werden erklärt und aufgezeigt . Dieser Kurs eignet sich besonders für Seniorinnen und Senioren . Samstag .16.05<br>.14.00-18.30 Uhr<br>6UStd.15- €<br>VHS - Heinz Härtling</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige f</div>
+                <div class="font-bold mb-1">8866 Das Land der Gegensätze :</div>
+                <div>Paläste , Tempel , Städte und Dörfer , .... Indien ist ein faszinierendes Land .Wir zeigen einen Dia - Vortrag und informieren über die Menschen , die Geschichte des Landes und die wichtigsten Sehenswürdigkeiten . Mittwoch , 27.05..19.00-21.00 Uhr Kein Eintritt<br>VHS - Dr .Franziska Menseer</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige g</div>
+                <div class="font-bold mb-1">9876 Der schnelle Weg zur eigenen Homepage</div>
+                <div>Frauen aufgepasst ! Keine Angst vorm Programmieren .HTML - Dateien selbst erstellen ist leichter , als man denkt .Bei uns lernen Sie in wenigen Wochen , eine Homepage zu entwickeln und hochzuladen .Mo , 12.15 -13.45 Uhr , ab 28.04<br>15 x 2 UStd , 48 , - €<br>VHS - Luise Lachmann</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige h</div>
+                <div class="font-bold mb-1">5111 Einführung in die Grundlagen der EDV</div>
+                <div>Auch ohne Vorkenntnisse wird Ihnen hier das aktuelle Windows Betriebssystem erklärt .Das Ziel des Kurses ist es , die Einsatzmöglichkeiten eines PCs aufzuzeigen . Dieser Kurs richtet sich nur an Frauen . Do. 16.30 - 18.00 Uhr , ab 23.04<br>7 x 2 UStd , 49 .-- €<br>VHS Burkhard Eisen</div>
+            </div>
+        </div>
+    `,
+    questions: [
+        { num: 26, text: "26. Ihr 69-jähriger Vater hat sich ein Mobiltelefon gekauft und möchte jetzt lernen, wie man es benutzt.", correctLetter: "e" },
+        { num: 27, text: "27. Ihre Schwester hat einen Computer gekauft, weiß aber nicht, wie sie ihn bedienen kann.", correctLetter: "h" },
+        { num: 28, text: "28. Sie möchten nähen lernen, haben aber keine eigene Nähmaschine.", correctLetter: "b" },
+        { num: 29, text: "29. Sie kochen gerne, können aber nicht viel Geld für den Einkauf ausgeben.", correctLetter: "a" },
+        { num: 30, text: "30. Sie möchten eine Reise nach Indien buchen.", correctLetter: "x" }
+    ]
+},
+teil3: {
+    title: "Teil 3: Texte verstehen",
+items: [
+    {
+        text: `<b>Viel Geld landet im Abfalleimer</b><br><br>Jeder Haushalt in Deutschland wirft durchschnittlich pro Jahr Lebensmittel im Wert von 350 Euro in den Müll. Und zwar unabhängig von der Nationalität. Ob Italiener, Türken, Marokkaner oder Deutsche: Sie alle könnten ihr Einkaufsverhalten noch stark verbessern und eine Menge Geld sparen.<br><br>Was hilft, ist eine genaue Einkaufsplanung.<br><br>Das neue Heft „Preiswert clever haushalten“ der Verbraucher_Initiative Hannover informiert, worauf man beim Einkauf und bei der Lagerung achten sollte. Dazu gibt es Informationen, wann viele Obst- und Gemüsesorten Saison haben. Das Heft ist für vier Euro erhältlich bei der Verbraucher-Initiative Hannover, Elisenstraße 106, 52435 Hannover oder unter www.verbraucher.com.<br><br>Für Mitglieder der Initiative ist die Broschüre kostenlos.`,
+        q1: { num: 31, text: "31. Die Leute werfen viele Lebensmittel weg.", correct: "richtig" },
+        q2: { num: 32, text: "32. Man kann viel Geld sparen,...", opts: ["a) wenn Mitglied der Verbraucher_Initiative ist.", "b) wenn man seine Einkäufe richtig plant.", "c) wenn man zu jeder Jahreszeit mehr Obst und Gemüse isst."], correct: 1 }
+    },
+    {
+        text: `<b>Gas.Com</b><br><br>Sehr geehrter Herr Untermeyer,<br><br>wir freuen uns, Ihr kompetenter Partner in Sachen Gas zu werden. Mit unserer ganzen Energie und Erfahrung sind wir zuverlässig vor Ort für Sie da. Gerne bestätigen wir Ihnen den Abschluss Ihres Gasversorgungs-vertrags. Bitte prüfen Sie, ob Ihre persönlichen Daten im beiliegenden Vertrag vollständig und richtig sind, und senden diesen unterschrieben an uns zurück.<br><br>Ihre zukünftigen monatlichen Zahlungen in Höhe von 20,00 Euro überweisen Sie bitte erstmalig zum 04.04. unter Angabe Ihrer Kundennummer auf das unten genannte Konto. Für weitere Fragen stehen wir Ihnen selbstverständlich gern zur Verfügung.`,
+        q1: { num: 33, text: "33. Gas-Com wird Herrn Untermeyer kein Gas mehr liefern.", correct: "falsch" },
+        q2: { num: 34, text: "34. Er soll...", opts: ["a) den Vertrag kontrollieren.", "b) Fragen beantworten.", "c) sofort 20 Euro bar bezahlen."], correct: 0 }
+    },
+    {
+        text: `<b>SPAR BANK</b><br>Sehr geehrter Herr Osmanaj,<br><br>wir freuen uns Ihnen mitteilen zu dürfen, dass wir Ihren Antrag auf einen Kredit positiv beantworten können. Es stehen Ihnen ab sofort 5000 EUR zur Verfügung zu einem Zinssatz von 5,99 %. Die Laufzeit beträgt wie vereinbart 36 Monate mit einer monatlichen Rate von 152,00 EUR, beginnend mit dem 01. Mai. Sollten Sie die Raten verspätet zahlen, entstehen dadurch zusätzliche Gebühren. Die Summe von 5000 EUR wird in den nächsten Tagen auf das angegebene Konto überwiesen.<br><br>Sollten Sie noch weitere Wünsche oder Fragen haben, so stehe ich Ihnen zu unseren Geschäftszeiten zur Verfügung.<br><br>Mit freundlichen Grüßen<br>Ihre Spar-Bank`,
+        q1: { num: 35, text: "35. Herr Osmanaj braucht Geld.", correct: "richtig" },
+        q2: { num: 36, text: "36. Er...", opts: ["a) hat sich 5000 EUR geliehen.", "b) muss einen Termin vereinbaren.", "c) soll jetzt Gebühren bezahlen."], correct: 0 }
+    }
+]
+},
+teil4: {
+    title: "Teil 4: NAZ - Nordwestdeutsche Allgemeine Zeitung Geschäftsbedingungen für das Abonnement",
+    infoBox: `
+        <div class="bg-white border-2 border-blue-900 rounded-lg p-4 my-2 text-xs text-gray-800 space-y-3 shadow-sm leading-relaxed">
+            <h3 class="text-sm font-bold text-blue-900 border-b border-blue-200 pb-1 text-center">
+                NAZ - Nordwestdeutsche Allgemeine Zeitung<br>Geschäftsbedingungen für das Abonnement
+            </h3>
+            
+            <p>
+                <b>1.Die Nordwestdeutsche Allgemeine Zeitung erscheint täglich außer sonntags. Wenn Sie die Zeitung abonnieren, senden wir sie Ihnen an jede Adresse innerhalb von Deutschland - ohne zusätzliche Kosten.</b>
+            </p>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">2. Für das Abonnement zahlen Sie jeweils im Voraus. Sie haben die Möglichkeit, zwischen zwei Zahlungsarten zu wählen:</h4>
+                <p>
+                    a) Zahlung auf Rechnung: Sie erhalten eine Rechnung jeweils im Voraus für den von Ihnen gewünschten Zahlungsrhythmus.<br>
+                    b) Zahlung per Lastschrift: Der Betrag wird jeweils im Voraus für den gewünschten Zeitraum von Ihrem Konto abgebucht. Wenn Sie diese Möglichkeit wählen, erhalten Sie folgenden Rabatt:<br>
+                    • 5% Rabatt bei jährlicher Zahlung,<br>
+                    • 3% Rabatt bei halbjährlicher Zahlung,<br>
+                    • 2% Rabatt bei vierteljährlicher Zahlung.
+                </p>
+            </div>
+            
+            <p>
+                <b>3. Es gibt das Jahresabonnement (Laufzeit mindestens ein Jahr), das Wochenend-Abonnement für alle, die nicht viel Zeit zum Lesen haben (Sie erhalten die Zeitung nur freitags und samstags) und das Abonnement für Auszubildende und Studierende (30 % Rabatt gegenüber dem normalen Abonnement, nur bei Zahlung per Lastschrift).</b> Wird der Abonnementvertrag nicht 4 Wochen vor Ablauf schriftlich gekündigt, verlängert er sich automatisch.
+            </p>
+            
+            <p>
+                4. Preisänderungen werden in der NAZ bekanntgegeben.<br>
+                5. Kann die Zeitung wegen eines Streiks oder wegen höherer Gewalt (zum Beispiel Unwetter) nicht geliefert werden, hat der Abonnent keinen Anspruch auf Erstattung des Preises.<br>
+                6. Die NAZ kann das Abonnement kündigen, wenn der Abonnent zu spät bezahlt.<br>
+                7. Die NAZ kann eine Bestellung ohne Angabe von Gründen ablehnen.
+            </p>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">Widerrufsrecht</h4>
+                <p>
+                    Sie können Ihren Vertrag innerhalb von 14 Tagen nach Abschluss ohne Angabe von Gründen schriftlich widerrufen
+                </p>
+            </div>
+        </div>
+    `,
+    questions: [
+        { 
+            num: 37, 
+            text: "37. Die Lieferung der Zeitung kostet in Deutschland nichts extra.", 
+            correct: "richtig" 
+        },
+        { 
+            num: 38, 
+            text: "38. Beim Wochenend-Abonnement bekommen Sie auch am Sonntag eine Zeitung.", 
+            correct: "falsch" 
+        },
+        { 
+            num: 39, 
+            text: "39. Auszubildende bezahlen genauso viel wie alle anderen Abonnenten.", 
+            correct: "falsch" 
+        }
+    ]
+},
+teil5: {
+    title: "Teil 5: Modell 1 (Anfrage an Immobilienagentur)",
+    infoBox: `
+        <div class="bg-white border-2 border-gray-700 rounded-lg p-5 my-2 text-sm text-gray-800 space-y-3 shadow-sm leading-relaxed">
+            <p>Müller Immobilien<br>Hauptstraße 51<br>55120 Mainz</p>
+            <p class="text-right">Mainz, den 12.05</p>
+            <p>Sehr geehrte <strong>(0) Damen</strong> und Herren,</p>
+            <p>auf der Suche nach einer Wohnung sind wir auf <strong>[40]</strong> Anzeige gestoßen.</p>
+            <p>Meine Frau und ich kommen <strong>[41]</strong> Ägypten. Wir haben zwei Kinder, ein Mädchen und einen Jungen. Unsere Kinder <strong>[42]</strong> beide gern ein eigenes Zimmer haben. <strong>[43]</strong> brauchen wir eine größere Wohnung.</p>
+            <p>Sehr gerne würden wir uns die Wohnung ansehen und bitten <strong>[44]</strong> um einen Besichtigungstermin in der nächsten Woche.<br>Über Ihre <strong>[45]</strong> würden wir uns freuen.</p>
+            <p class="pt-2">Mit freundlichen Grüßen<br><i>Said Rahmani</i></p>
+        </div>
+    `,
+    questions: [
+        { num: 40, text: "Lücke 40", opts: ["a) deine", "b) ihre", "c) seine"], correct: 1 },
+        { num: 41, text: "Lücke 41", opts: ["a) aus", "b) in", "c) nach"], correct: 0 },
+        { num: 42, text: "Lücke 42", opts: ["a) müssen", "b) werden", "c) wollen"], correct: 2 },
+        { num: 43, text: "Lücke 43", opts: ["a) Deshalb", "b) Trotzdem", "c) Danach"], correct: 0 },
+        { num: 44, text: "Lücke 44", opts: ["a) dich", "b) euch", "c) Sie"], correct: 2 },
+        { num: 45, text: "Lücke 45", opts: ["a) Antwort", "b) Bitte", "c) Frage"], correct: 0 }
+    ]
+}
+},
+
+{id: 9,
+    title: "Lesen - Test 9(neu)",
+        teil1: {
+    title: "Teil 1: VHS Kursprogramm Übersicht",
+    infoBox: `
+        <div class="overflow-x-auto my-2 border border-gray-300 rounded-lg shadow-sm">
+            <table class="w-full text-left border-collapse bg-white text-xs text-gray-800">
+                <thead>
+                    <tr class="bg-gray-100 border-b border-gray-300">
+                        <th class="p-2.5 font-bold border-r border-gray-300 w-1/3">Bereich / Seite</th>
+                        <th class="p-2.5 font-bold">Inhalte & Kurse</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Natur und Umwelt (Seite 7-13)</td>
+                        <td class="p-2.5">Rund um den Garten - Geowissenschaften - Stadtrundgänge - Abenteuer Astronomie - Exkursionen in die Natur - Kinder entdecken den Wald - Ökologisches Schülerlabor</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Gesellschaft und Politik (Seite 14-18)</td>
+                        <td class="p-2.5">Internationales und Interkulturelles-Länderkunde - Studienreisen - Integrationspolitik (Bürgerprojekte) - Arbeit und Recht - Multikulturelles Zusammenleben</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Kultur und Künste (Seite 19-23)</td>
+                        <td class="p-2.5">Literatur / Theater und Hörspiel - Musikwerkstatt für Schüler - Kunst - Zeichnen und Malen - Fotografieren und Filmen - Jugendtheater</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Bewegung und Gesundheit (Seite 24-30)</td>
+                        <td class="p-2.5">Gesundheitsbildung - Entspannung - Sport und Spiel - Fitness und Gymnastik - Tanzen - Seniorensport - Zu dick? Beratung für Junge - Mannschaftsspiel im Verein</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Berufliche Bildung / EDV (Seite 31-36)</td>
+                        <td class="p-2.5">Schlüsselqualifikationen Kommunikation - Computer - Grundlagen Textverarbeitung und Tabellenkalkulation - Betriebssysteme und Netzwerke Internet - Programmierung</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Sprachen (Seite 37-43)</td>
+                        <td class="p-2.5">Deutsch als Zweitsprache - Integrationskurse - Deutsch für ausländische Studienbewerber - Englisch, Französisch, Spanisch, Italienisch, Griechisch, Niederländisch, Türkisch Konversation und Grammatik</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Grundbildung (Seite 44-49)</td>
+                        <td class="p-2.5">Lesen und Schreiben lernen - Rechtschreibung Rechnen - Hauptschulabschluss - Realschulabschluss - Fachoberschulrei Profil PASS - Bewerbungstraining Rhetorik</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Allgemeine Informationen (Seite 50-52)</td>
+                        <td class="p-2.5">Beratung und Anmeldung - Öffnungszeiten - Preise und Ermäßigungen - Kinderbetreuung - Anfahrtsskizze - Mitarbeiterinnen und Mitarbeiter</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    `,
+    questions: [
+        { num: 21, text: "21) Sie suchen einen Ausbildungsplatz und brauchen Hilfe bei der Bewerbung.", opts: ["a) Berufliche Bildung / EDV", "b) Grundbildung", "c) andere Überschrift"], correct: 1 },
+        { num: 22, text: "22) Sie wollen lernen , mit Ihrer neuen Digitalkamera gute Bilder zu machen .", opts: ["a) Grundbildung", "b) Kultur und Künste", "c) andere Überschrift"], correct: 1 },
+        { num: 23, text: "23) Sie möchten wissen, ob Sie als Schüler einen kurs billiger bekommen", opts: ["a) Gesellschaft und Politik", "b) Grundbildung", "c) andere Überschrift"], correct: 2 },
+        { num: 24, text: "24) Sie möchten noch einen deutschen Schulabschluss machen .", opts: ["a) Berufliche Bildung / EDV", "b) Grundbildung", "c) andere Überschrift"], correct: 2 },
+        { num: 25, text: "25) Sie sind neu in Deutschland und möchten Ihre stadt kennen lernen .", opts: ["a) Gesellschaft und Politik", "b) Natur und Umwelt", "c) andere Überschrift"], correct: 1 }
+    ]
+},
+teil2: {
+    title: "Teil 2: Anzeigen a–h",
+    infoBox: `
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-2 text-xs text-gray-800">
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige a</div>
+                <div class="font-bold mb-1">Schon mal an Versicherungen gedacht ?</div>
+                <div>Sie machen bald Ihren Schulabschluss und suchen eine interessante Ausbildung ? Warum nicht bei einer Versicherung ? Versicherungen bieten Ausbildungen zum Kaufmann , Berater , Buchhalter und vielen anderen Berufen an . Wenn Sie mehr wissen wollen , machen Sie einen Termin bei unserer kostenlosen Ausbildungsberatung für den Bereich ,, Versicherungen"<br>Termine unter 01805/62011221</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige b</div>
+                <div class="font-bold mb-1">BJetzt wechseln</div>
+                <div>Versicherungen gibt es überall _ aber nur wir haben die günstigen Tarife ! Informieren Sie sich jetzt über unsere Haftpflichtversicherung für Familien mit Kindern . Die optimale Versicherung für Sie und Ihre Angehörigen : beste Leistungen für wenig Geld , dreifacher Testsieger ! Weitere Informationen per<br>E - Mail unter Infos @ top-versicherung24.eu</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige c</div>
+                <div class="font-bold mb-1">Versicherungskaufmann</div>
+                <div>Bin 17 Jahre alt , guter Schulabschluss Realschule ) , und möchte eine Ausbildung zum Versicherungskaufmann machen . Gerne ab sofort . Bin flexibel , neugierig und interessiere mich sehr für Versicherungen . Habe im letzten Jahr ein Praktikum bei einer großen Versicherungsgesellschaft gemacht . Wer gibt mir eine Chance ? Jörg Peter Schmidt , E - mail : jpschmidt@cityweb.eu</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige d</div>
+                <div class="font-bold mb-1">Arbeitsplatz Versicherung</div>
+                <div>Sie haben schon eine Ausbildung gemacht und in Ihrem Beruf gearbeitet - aber jetzt wollen Sie etwas Neues machen und Ihren Arbeitsplatz wechseln ? Dann kommen Sie zu uns ! Wir bieten eine sechsmonatige Weiterbildung zum Versicherungsberater an . Wenn Sie gern mit Menschen arbeiten und sich für Versicherungen interessieren , sollten Sie sich melden .<br>Kontakt : Frau Schneider , 089/826590911</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige e</div>
+                <div class="font-bold mb-1">TOP - Angebot</div>
+                <div>Ihre Versicherung ist zu teuer ? Dann kommen Sie zu uns ! Wir versichern Ihre Fahrzeuge zum günstigsten Tarif .<br>Wenn Sie mehr als ein Fahrzeug versichern , bekommen Sie sogar einen Extra- Rabatt . Warten Sie nicht und machen Sie gleich einen Termin mit einem Berater in Ihrer Nähe :<br>EGO24 Versicherungen , Tel . 01800/39181711</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige f</div>
+                <div class="font-bold mb-1">Ärger mit Versicherungen ?</div>
+                <div>Ihre Versicherung zahlt nicht ?<br>Hier bekommen Sie Hilfe ! Die Versicherungsberatung Neustadt ist von Montag bis Freitag für Sie da . Kommen Sie in unsere kostenlose Sprechstunde zwischen 12 und 14 Uhr , wenn Sie Hilfe bei Problemen mit Versicherungen brauchen . Unsere Experten sind für Sie da .<br>Anmeldung unter 0819/71192211</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige g</div>
+                <div class="font-bold mb-1">Arbeit und Versicherungen ...</div>
+                <div>gehören oft zusammen . Denn was passiert , wenn sie krank werden und nicht mehr in Ihrem Beruf arbeiten können ?<br>Unsere Versicherung ,, Beruf Komplett " ist der ideale Schutz . Bei Krankheit zahlen wir eine Rente - Ihr Leben lang .<br>Handeln Sie jetzt und fordern Sie weitere Informationen an : ABC - Versicherungen ,<br>E_Mail : infos@abcversicherungen.de</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige h</div>
+                <div class="font-bold mb-1">Es gibt so viele Versicherungen ....</div>
+                <div>aber welche braucht man wirklich ? Beim Informationsabend an der VHS Neustadt beantwortet Herbert Walther Fragen zu Versicherungen welche Versicherungen sind sinnvoll ? Wo finde ich die günstigste Versicherung ? Diese und viele andere Fragen werden beantwortet . Am kommenden Mittwoch von 19.00 20.30 Uhr in Raum A01 .<br>Die Teilnahme ist kostenlos</div>
+            </div>
+        </div>
+    `,
+    questions: [
+        { num: 26, text: "26. Sie suchen eine günstige Autoversicherung.", correctLetter: "e" },
+        { num: 27, text: "27. Sie haben schon einige Zeit in Ihrem Beruf gearbeitet, möchten jetzt aber einen neuen Beruf erlernen.", correctLetter: "d" },
+        { num: 28, text: "28. Sie möchten sich über Versicherungen informieren und haben nur abends Zeit.", correctLetter: "h" },
+        { num: 29, text: "29. Sie suchen eine Haftpflichtversicherung für Ihren Hund.", correctLetter: "x" },
+        { num: 30, text: "30. Ihre Tochter sucht einen Ausbildungsplatz.", correctLetter: "a" }
+    ]
+},
+teil3: {
+    title: "Teil 3: Texte verstehen",
+items: [
+    {
+        text: `<b>Immer weniger der Schulanfänger</b><br><br>Die Zahl Schüler, die in Deutschland die erste Klasse der Grundschule besuchen, ist in den letzten zehn Jahren um 14 % zurückgegangen. Das teilte das Statistische Bundesamt in Wiesbaden mit.<br>In den Ländern der alten Bundesrepublik ist die Zahl der Schulanfänger sogar um 17 % gesunken. In den fünf neuen Bundesländern und in Berlin dagegen blieb die Zahl in den letzten zehn Jahren unverändert.<br>Zu Beginn des jetzt laufenden Schuljahres kamen in ganz Deutschland 754.900 Kinder in die Schule. Das waren 2,3 % weniger als im Jahr davor. Am stärksten ging die Zahl der Erstklässler in diesem Schuljahr in Bremen und Schleswig-Holstein zurück.`,
+        q1: { num: 31, text: "31. Nur in Wiesbaden gibt es immer weniger Schulanfänger.", correct: "falsch" },
+        q2: { num: 32, text: "32. In diesem Schuljahr...", opts: ["a) gab es in Bremen und Schleswig-Holstein mehr Schulanfänger als im Vorjahr.", "b) gab es in Deutschland 2,3 % weniger Schulanfänger als im Vorjahr.", "c) gab es in Deutschland 14 % weniger Schulanfänger als im Vorjahr."], correct: 1 }
+    },
+    {
+        text: `Liebe Eltern,<br><br>wie Sie wissen, wird am Montag, dem 20.04., und am Dienstag, dem 21.04., unser Kindergarten renoviert. Wie auf dem letzten Elternabend besprochen, bitten wir Sie, Ihre Kinder an diesen Tagen zu Hause zu lassen. Für die Kinder, die nicht zu Hause betreut werden können, gibt es eine Ersatzgruppe. Diese finden Sie in der Grundschule (neben unserem Kindergarten) in Raum 31. Frau Meier und eine Praktikantin werden dort die Kinder betreuen. Eine Anmeldung ist dringend erforderlich. Bitte tragen Sie den Namen Ihres Kindes / Ihrer Kinder in die Liste am Schwarzen Brett ein. Die Ersatzbetreuung kann an beiden Tagen nur in der Zeit von 8.00 Uhr bis 12.30 Uhr stattfinden.<br><br>Wir freuen uns auf unsere frisch renovierten Räume!`,
+        q1: { num: 33, text: "33. Der Kindergarten bleibt wegen Renovierungsarbeiten einen Tag geschlossen.", correct: "falsch" },
+        q2: { num: 34, text: "34. Die Eltern müssen...", opts: ["a) ihre Kinder vormittags und nachmittags alleine betreuen.", "b) ihre Kinder für die Ersatzbetreuung anmelden.", "c) ihre Kinder nachmittags zu Frau Meier bringen."], correct: 1 }
+    },
+    {
+        text: `<b>Eröffnung Ihres DDB-Cash-Kontos</b><br><br>Sehr geehrte Frau Aminde,<br>wir freuen uns, dass Sie sich für die Eröffnung eines DDB-Cash-Kontos entschieden haben, und danken Ihnen herzlich für Ihr Vertrauen. Ihr Internet-Konto kann ab sofort genutzt werden:<br><br>Konto-Nr: 109209784<br>Bankleitzahl: 600450999<br><br>In den nächsten 14 Tagen erhalten Sie Ihre DDB-Karte für den Geldautomaten und die dazu gehörige PIN (Persönliche Identifikationsnummer) zeitlich versetzt per Post.<br>Außerdem werden Ihnen ein gesonderter PIN-Brief und eine iTAN-Liste (indizierte Transaktionsnummern) für das Internet-Banking zugesandt.<br>Weitere Informationen finden Sie unter www.ddb-bank.de. Hier haben wir auch die häufig gestellten Fragen (FAQs) für Sie beantwortet.<br><br>Mit freundlichen Grüßen<br>Ihr Team der DDB-Bank`,
+        q1: { num: 35, text: "35. Wenn man Fragen hat, soll man den Telefon-Service der DDB-Bank anrufen.", correct: "falsch" },
+        q2: { num: 36, text: "36. Die DDB-Karte...", opts: ["a) muss man im Internet bei der DDB-Bank bestellen.", "b) muss man persönlich bei der Bank abholen.", "c) wird in einem Extrabrief zugeschickt."], correct: 2 }
+    }
+]
+},
+teil4: {
+    title: "Teil 4: MIGRÄNIN Produktinformation",
+    infoBox: `
+        <div class="bg-white border-2 border-blue-900 rounded-lg p-4 my-2 text-xs text-gray-800 space-y-3 shadow-sm leading-relaxed">
+            <h3 class="text-sm font-bold text-blue-900 border-b border-blue-200 pb-1 text-center">
+                (MIGRÄNIN)<br>Produktinformation
+            </h3>
+            
+            <p>
+                Migränin 400 mg Ibuprofen Dragees - schmerzstillendes, entzündungs- hemmendes und fiebersenkendes Mittel.
+            </p>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">-(Hinweise zur Einnahme)</h4>
+                <p>
+                    <b>Die Tabletten sollten mit ausreichend Flüssigkeit (z. B. ein Glas Wasser) während der Mahlzeiten oder nach den Mahlzeiten eingenommen werden.</b>
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">-(Weitere Informationen)</h4>
+                <p>
+                    Vor der Einnahme ist der Arzt über bestehende Krankheiten und Überempfindlichkeitsreaktionen zu informieren, da es unter Umständen zu Wechselwirkungen bzw. Erhöhung oder Senkung der Wirksamkeit der anderen Arzneimittel kommen kann.
+                </p>
+                <p class="mt-2">
+                    Während der Frühschwangerschaft, Stillzeit und bei Leberfunktionsstörungen, vorgeschädigter Niere, Magen-Darm-Beschwerden, Magen-Darm-Geschwüren, Bluthochdruck oder Herzleistungsschwäche und Allergieleiden sollte das Mittel nur unter ärztlicher Aufsicht bzw. nach Rücksprache angewendet werden. <b>Die aktive Teilnahme am Straßenverkehr und die Bedienung von Maschinen ist uneingeschränkt möglich.</b>
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">-(Gegenanzeigen von Migränin 400 mg Ibuprofen Dragees)</h4>
+                <p>
+                    Migränin darf nicht angewandt werden: bei bekannter Überempfindlichkeit gegenüber einem der Bestandteile, ungeklärten Blutbildungsstörungen, Magen-Darm-Geschwüren, <b>im letzten Drittel der Schwangerschaft</b>, bei Kindern unter 14 Jahren.
+                </p>
+            </div>
+        </div>
+    `,
+    questions: [
+        { 
+            num: 37, 
+            text: "37. Man soll die Tabletten nicht vor dem Essen nehmen.", 
+            correct: "richtig" 
+        },
+        { 
+            num: 38, 
+            text: "38. Nachdem man die Tabletten genommen hat, darf man nicht selbst Auto fahren.", 
+            correct: "falsch" 
+        },
+        { 
+            num: 39, 
+            text: "39. Während der gesamten Schwangerschaft darf das Medikament auf keinen Fall eingenommen werden.", 
+            correct: "falsch" 
+        }
+    ]
+},
+teil5: {
+    title: "Teil 5: Zahlungserinnerung",
+    infoBox: `
+        <div class="bg-white border-2 border-gray-700 rounded-lg p-5 my-2 text-sm text-gray-800 space-y-3 shadow-sm leading-relaxed">
+            <p>Rolf Waldner<br>Schlosstr. 98<br>90817 Nürnberg</p>
+            <p class="text-right">01.02.20</p>
+            <p>Sehr <strong>(0) geehrter</strong> Herr Waldner,</p>
+            <p>vor drei Wochen haben wir Ihnen eine Rechnung für Ihr neues Handy zugeschickt. Sie erhalten das Handy zum Sonderpreis von 150,00 Euro, <strong>[40]</strong> Sie einen neuen Vertrag abgeschlossen haben.</p>
+            <p>Leider haben Sie aber das Geld <strong>[41]</strong> heute noch nicht überwiesen. <strong>[42]</strong> möchten wir Sie noch einmal an die Überweisung erinnern. <strong>[43]</strong> Sie die Rechnung nicht innerhalb der nächsten zehn Tage zahlen, müssen wir leider Ihren Anschluss sperren. Dann <strong>[44]</strong> Sie nicht mehr telefonieren.</p>
+            <p>Haben Sie noch Fragen zu Ihrer Rechnung? Sie können uns gerne anrufen, <strong>[45]</strong> schicken Sie uns eine E-Mail.</p>
+            <p class="pt-2">Mit freundlichen Grüßen<br><i>A. Kaiser<br>SuperFon24 GmbH</i></p>
+        </div>
+    `,
+    questions: [
+        { num: 40, text: "Lücke 40", opts: ["a) als", "b) da", "c) dass"], correct: 1 },
+        { num: 41, text: "Lücke 41", opts: ["a) ab", "b) bis", "c) seit"], correct: 1 },
+        { num: 42, text: "Lücke 42", opts: ["a) Damit", "b) Deshalb", "c) Trotzdem"], correct: 1 },
+        { num: 43, text: "Lücke 43", opts: ["a) Obwohl", "b) weil", "c) wenn"], correct: 2 },
+        { num: 44, text: "Lücke 44", opts: ["a) können", "b) möchten", "c) müssen"], correct: 0 },
+        { num: 45, text: "Lücke 45", opts: ["a) aber", "b) oder", "c) und"], correct: 1 }
+    ]
+}
+},
+
                     ],
             Sprechen: [
                 {
