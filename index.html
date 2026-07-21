@@ -2717,7 +2717,209 @@ teil5: {
     ]
 }
 },
-
+{id: 10,
+    title: "Lesen - Test 10(neu)",
+        teil1: {
+    title: "Teil 1: Inhaltsverzeichnis Übersicht",
+    infoBox: `
+        <div class="overflow-x-auto my-2 border border-gray-300 rounded-lg shadow-sm">
+            <table class="w-full text-left border-collapse bg-white text-xs text-gray-800">
+                <thead>
+                    <tr class="bg-gray-100 border-b border-gray-300">
+                        <th class="p-2.5 font-bold border-r border-gray-300 w-1/3">Kapitel</th>
+                        <th class="p-2.5 font-bold">Inhalte</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Kapitel 1: Wohnen und Haushalt</td>
+                        <td class="p-2.5">Tipps zur Wohnungssuche - Den Umzug organisieren - Möbel und Haushaltsgeräte günstig einkaufen - Versicherungen für Wohnung und Einrichtung</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Kapitel 2: Geld verdienen</td>
+                        <td class="p-2.5">Arbeitsplatzsuche - Jobcenter: Informationen und Adressen - Bewerbungen schreiben: Tipps - Hilfe bei Kündigung - Adressen auf einen Blick: Beratungsstellen bei Fragen zum Arbeitsplatz und zu Verträgen</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Kapitel 3: Kinder und Familie</td>
+                        <td class="p-2.5">Finanzielle Unterstützung für Großfamilien (mehr als 3 Kinder)- Einen Kindergartenplatz finden- Schulen in Deutschland-Tipps: Hilfe bei Problemen in der Schule - Informationen zur Berufsausbildung: so unterstützen Sie Ihre Kinder- Hilfe bei Problemen in der Familie</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Kapitel 4: Rund ums Geld</td>
+                        <td class="p-2.5">Tipps: Welches Konto ist das richtige? - Kontogebühren bei Banken in Deutschland- Tipps: Wie man in Deutschland Einkäufe bezahlt (z. B. bar, EC-Karte) - Informationen: Welche Dokumente Sie für eine Kontoeröffnung brauchen</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Kapitel 5: In der Freizeit</td>
+                        <td class="p-2.5">Ausflugstipps für Familien - Die schönsten Zoos in Deutschland -Wenig Geld, viel Spaß: günstige Freizeitaktivitäten - Vereine in Deutschland: Tipps Adressen</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    `,
+    questions: [
+        { num: 21, text: "21 Sie suchen eine neue Stelle und brauchen Hilfe bei der Bewerbung.", opts: ["a) Kapitel 4", "b) Kapitel 5", "c) anderes Kapitel"], correct: 2 },
+        { num: 22, text: "22 Sie möchten wissen, ob es in Ihrer Nähe einen Sportverein gibt.", opts: ["a) Kapitel 1", "b) Kapitel 3", "c) anderes Kapitel"], correct: 2 },
+        { num: 23, text: "23 Sie möchten mit Ihrer kleinen Nichte am Sonntag einen Ausflug machen.", opts: ["a) Kapitel 3", "b) Kapitel 5", "c) anderes Kapitel"], correct: 1 },
+        { num: 24, text: "24 Sie möchten wissen, was ein Konto in Deutschland kostet.", opts: ["a) Kapitel 2", "b) Kapitel 4", "c) anderes Kapitel"], correct: 1 },
+        { num: 25, text: "25 Sie wollen einen Kühlschrank kaufen, aber Sie haben nicht viel Geld.", opts: ["a) Kapitel 1", "b) Kapitel 4", "c) anderes Kapitel"], correct: 0 }
+    ]
+},
+teil2: {
+    title: "Teil 2: Anzeigen a–h",
+    infoBox: `
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-2 text-xs text-gray-800">
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige a</div>
+                <div class="font-bold mb-1">Laden und / oder Büro in sehr guter Lage</div>
+                <div>Direkt in der Altstadt von Mainz . Hier ist Leben , hier findet immer etwas stadt , hier ist jeden Samstag der beliebte Meinzer Markt .<br>Hier können Sie von privat mieten : 87,66 m2 Laden mit großem Schaufenster für Euro 1100.00 36 .<br>44 m2 Büroraum für Euro 400,00 Beide Angebote ohne weiter Nebenkosten , direkt von Eigentümer<br>Tel : 06732-2478765 ( Walter Schutz )</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige b</div>
+                <div class="font-bold mb-1">Wir suchen Spanischlehrer für Nachhilfeunterricht am Nachmittag</div>
+                <div>Unsere Institut bietet intensive Betreuung für alle Klassen und alle Schularten sowie Ferien - und Intensivkurse an . Sie haben Erfahrung und sind motiviert ?<br>Zum 1. Oktober suchen wir für dreimal nachmittags einen engagierten Spanichlehrer in unserer Filiale in der Innenstadt Bitte bewerben Sie sich schriftlich .<br>Bewerbungen an :<br>Nachhilfeinstitut König<br>Herrn Lukas König<br>Gymnasiumstraße 31 55543 Bad kreuznach</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige c</div>
+                <div class="font-bold mb-1">Reinigungskräfte ( m / w )</div>
+                <div>auf 400 - Euro - Basis ab sofort für die Abendstunden gesucht . Einsatzort : Flughafen Frankfurt / Main wenn Sie belastbar sind und gerne im Team arbeiten , dann sollten Sie sich sofort telefonisch bei Frau Rückert oder Frau Dogan bewerben .<br>TOPCLEAN<br>069 / 535332 und 535333</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige d</div>
+                <div class="font-bold mb-1">Zur verstärkung unseres Teams</div>
+                <div>Suchen wir ab sofort in Voll- oder Teilzeit eine examinierte Pflegekraft ( m / w ) . Sie sind ausgebildete ( r Krankenpfleger / -in oder Altenpfleger / -in und freundlich , einfühlsam und zuverlässig .<br>Dann freuen wir uns auf Ihre telefonische oder schriftliche Bewerbung und würden Sie gern bald in unserem Team begrüßen . Nach der probezeit bieten wir interessante Fort- und Weiterbildungsmöglichkeiten .<br>Ambulante Altenpflege Pariser Straße 15 55268 Nieder - Olm Tel : 06136/510644</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige e</div>
+                <div class="font-bold mb-1">Mainz Innenestadt - zentrale Lage</div>
+                <div>Schöner Laden mit großem Schaufenster in toller Lage ganz in der Nähe des Mainzer Doms .Dort , wo sich Mainzer und Touristen treffen .<br>67 m2 , renoviert für 1100 , - Euro plus Nebenkosten<br>Stahnke Immobilien<br>Rheinstraße 187- Mainz<br>Telefon ( 06131 ) 577500</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige f</div>
+                <div class="font-bold mb-1">Wir schen Küchenhilfe ( m / w )</div>
+                <div>Auf 400 - Euro- Basis für Großküche . Wenn Sie gerne früh aufstehen , dann sind Sie bei uns richtig .<br>Freundliches Team wartet auf Sie als verstärkung von montags bis freitag in der Zeit von 5.00 bis 8.00 Uhr . Abholung von zu Hause durch unseren Firmenbus ist möglich .<br>Kontakt : Frau Hamoui<br>Tel : 0611/666063<br>Gasro- Service keller</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige g</div>
+                <div class="font-bold mb-1">NetSprachenstudio Luna</div>
+                <div>Sie planen Ihren Urlaub im Ausland und wollen endlich im Hotel oder Restaurant die Landessprache benutzen . Dann sind Sie bei uns richtig . Unsere Intensivkurse für Englisch, Französisch , Italienisch und Türkisch machen Sie fit für Ihren nächsten Urlaub .<br>Rufen Sie uns an : 069/669969<br>Frau Julia Schmidt hilft Ihnen gerne , den richtigen kurs zu finden Kurseinstieg jederzeit möglich .<br>Mo- Sa 10:00 - 20 : 00Uhr<br>So ist die Prüfung kein problem ! Termine und weitere Informationen : Hermann Schmidt , 040/2591211209 te</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige h</div>
+                <div class="font-bold mb-1">Altenpfleger_ein Beruf mit Zukunft .</div>
+                <div>3 Ausbildungsplätze zum / zum Alten pfleger / in , weil immer mehr Senioren unsere Hilfe brauchen , brauchen ganz dringend Ihre Hilfe . Wir bieten motivierten Auszubilden zum 1 , August eine qualifizierte Ausbildung in einem sicher Beruf . Sie haben Realschulabschluss oder einen guten Hauptschulabschluss ? Und haben Spaß daran älteren Menschen zu helfen ? Dann sollten Sie sich jetzt bewerben . Bitte senden Sie Ihre Bewerbungs Unterlagen an .<br>Alten und Pflegeheim<br>König Kurstraße 23 61231 Bad Nauheim</div>
+            </div>
+        </div>
+    `,
+    questions: [
+        { num: 26, text: "26. Sie suchen einen Laden mit Schaufenster und wollen höchstens 1100 Euro für Miete und Nebenkosten bezahlen.", correctLetter: "a" },
+        { num: 27, text: "27. Sie sind Krankenpfleger oder Krankenpflegerin und suchen halbtags Arbeit für vier Stunden täglich.", correctLetter: "d" },
+        { num: 28, text: "28. Sie haben einen guten Schulabschluss und möchten Altenpfleger oder Altenpflegerin werden.", correctLetter: "h" },
+        { num: 29, text: "29. Sie müssen für die Arbeit Spanisch lernen und suchen einen guten Spanischlehrer.", correctLetter: "x" },
+        { num: 30, text: "30. Sie suchen einen Mini-Job und möchten morgens arbeiten.", correctLetter: "f" }
+    ]
+},
+teil3: {
+    title: "Teil 3: Texte verstehen",
+items: [
+    {
+        text: `<b>Streik der Müllmänner</b><br><br>Die Müllmänner haben ernst gemacht. Wegen des Warnstreiks leerten die Mitarbeiter des Entsorgungsbetriebs gestern keine einzige Mainzer Mülltonne. Auch die Gelben Säcke wurden nicht abgeholt und die Straßen nicht gereinigt.<br>Was die Mitarbeiter des Entsorgungsbetriebes wollen, ist klar. „Wir fordern 8 % Gehaltserhöhung ab sofort“, sagen sie, „Und Finger weg von den Arbeitszeiten.“<br>Die Müllwerker verkündeten, dass das Angebot der Arbeitgeber eine Sauerei ist. Fünf Prozent Gehaltserhöhung und Verlängerung der Wochenarbeitszeit von 38,5 auf 40 Stunden, da müssen wir sogar noch Geld mitbringen.`,
+        q1: { num: 31, text: "31. Gestern haben die Leute der Entsorgungsbetriebe nicht gearbeitet.", correct: "richtig" },
+        q2: { num: 32, text: "32. Die Mitarbeiter wollen...", opts: ["a) 8 Prozent mehr verdienen.", "b) eine 40 Stunden-Arbeitswoche.", "c) eine Verkürzung der Arbeitszeit."], correct: 0 }
+    },
+    {
+        text: `Sehr geehrte Damen und Herren,<br><br>ab dem übernächsten Monat müssen wir Ihre Strompreise anpassen. Durch die aktuellen Änderungen des Marktpreises und die allgemeine Preissteigerung müssen wir die Tarife leider um 2,5 % anheben.<br>Ausführliche Informationen zu den neuen Tarifen erhalten Sie schriftlich mit der nächsten Abrechnung. Oder besuchen Sie schon jetzt unsere Internetseite, dort können Sie die neuen Preise bereits. Nachlass Ihre Abschlagszahlung werden wir ebenfalls mit der nächsten Abrechnung anpassen. Für alle anderen Fragen steht unser Serviceteam unter der Telefonnummer 0800/3300330 gerne zur Verfügung.<br>Wir hoffen, dass Sie auch trotz der Preiserhöhung weiterhin unser Kunde bleiben.<br><br>Mit freundlichen Grüßen<br>1-2 - Strom GmbH`,
+        q1: { num: 33, text: "33. Strom wird billiger.", correct: "falsch" },
+        q2: { num: 34, text: "34. Informationen zu den neuen Tarifen...", opts: ["a) bekommt man demnächst mit der Post.", "b) gibt es nur im Internet.", "c) kann man nur telefonisch erfragen."], correct: 0 }
+    },
+    {
+        text: `Liebe Kursteilnehmerinnen und Kursteilnehmer<br>(besonders die, die noch keine Nachrichten gehört haben)!<br><br>In Sorge um Sie möchten wir sagen: Es werden enorme Stürme heute Nachmittag und heute Nacht erwartet. Da kann einem vieles auf den Kopf fallen, angefangen von Bäumen oder Ästen bis hin zu vielleicht herumfliegenden Mülltonnen etc.<br>Nach dem Motto „Vorsicht ist besser“ sollten Sie deshalb heute Nachmittag und Abend unbedingt zu Hause bleiben und auch Türen und Fenster geschlossen halten. Es wurde sogar angeraten, die Rollläden zu schließen - zum Schutz der Scheiben.<br><br>Hoffen wir, dass es nicht schlimm wird.<br><br>Bis morgen und hoffentlich gesund<br>Ihre Lehrerinnen und Lehrer`,
+        q1: { num: 35, text: "35. Die Lehrerinnen und Lehrer warnen vor schlechtem Wetter.", correct: "richtig" },
+        q2: { num: 36, text: "36. Die Kursteilnehmerinnen und Kursteilnehmer sollen...", opts: ["a) morgen zu Hause bleiben.", "b) Nachrichten hören.", "c) nicht auf die Straße gehen."], correct: 2 }
+    }
+]
+},
+teil4: {
+    title: "Teil 4: Allgemeine Geschäftsbedingungen (Kino zuhause 24)",
+    infoBox: `
+        <div class="bg-white border-2 border-blue-900 rounded-lg p-4 my-2 text-xs text-gray-800 space-y-3 shadow-sm leading-relaxed">
+            <h3 class="text-sm font-bold text-blue-900 border-b border-blue-200 pb-1 text-center">
+                (Allgemeine Geschäftsbedingungen)
+            </h3>
+            
+            <p>
+                Bei "Kino zuhause 24" können Sie im Internet DVDS ausleihen. Sie bekommen die DVDS dann per Post zugeschickt.
+            </p>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">-1 Vertragsschluss</h4>
+                <p>
+                    Kunden können sich online auf unserer internetseite www.kinozuhause24.de anmelden und erhalten eine Bestätigung per E-Mail. Der Kunde ist für die Richtigkeit seiner Angaben allein verantwortlich. <b>Eine Anmeldung von Personen, die das achtzehnte Lebensjahr noch nicht vollendet haben, ist verboten.</b> Auf Anfrage von „Kino zuhause 24“ muss der Kunde sein Alter durch Vorlage einer beglaubigten Kopie seines gültigen Personalausweises oder Reisepasses nachweisen. Die vom Kunden ausgewählten DVDS werden dem Kunden so schnell wie möglich zugeschickt
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">-2 Transportrisiko</h4>
+                <p>
+                    „Kino zuhause 24“ bestätigt den Versand aller DVDS per E-Mail.Es besteht die Möglichkeit, dass DVDS im Postversand verloren gehen, <b>In diesem Fall muss der Kunde innerhalb von sieben Werktagen „Kino zuhause 24“ Bescheid geben, dass DVDS nicht angekommen sind.</b> Gibt der Kunde nicht innerhalb von sieben Werktagen Bescheid, kann Kino zuhause 24 eine Pauschale von 25.00 Euro für jede in der Post verloren gegangene DVD verlangen .Kino zuhause 24 stellt dem Kuden für den Transport Briefumschläge zu Verfügung die Kunde muss diese umschlagen für die Rücksendung der DVDS verwenden, Falls der Kunde den Umschlag verelieren muss er die Portokosten zahlen.
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">-3 Bezahlung</h4>
+                <p>
+                    Die Firma „Kino zuhause 24“ bietet für den DVD-Verleih verschiedene Modelle an. <b>Der Kunde kann pro Monat 2 DVDS für 5,90 Euro ausleihen oder 4 DVDS für 8,90 Euro.</b> Alle Preise sind inklusive der Versandkosten.
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">-4 Unterbrechung des Abonnements</h4>
+                <p>
+                    Der Kunde kann das Abonnement für einen Monat pro Jahr unterbrechen (z.B wegen Urlaubs). Während dieser Zeit kann der Kunde keine DVDs ausleihen und muss auch die Gebühr nicht zahlen.
+                </p>
+            </div>
+        </div>
+    `,
+    questions: [
+        { 
+            num: 37, 
+            text: "37. Kinder dürfen sich bei „Kino zuhause 24“ anmelden.", 
+            correct: "falsch" 
+        },
+        { 
+            num: 38, 
+            text: "38. Wenn eine DVD nicht bei Ihnen ankommt, müssen Sie spätestens nach drei Tagen Bescheid geben.", 
+            correct: "falsch" 
+        },
+        { 
+            num: 39, 
+            text: "39. Jeder Film kostet 5,90 Euro.", 
+            correct: "falsch" 
+        }
+    ]
+},
+teil5: {
+    title: "Teil 5: Bewerbung als Zeitungsausträger",
+    infoBox: `
+        <div class="bg-white border-2 border-gray-700 rounded-lg p-5 my-2 text-sm text-gray-800 space-y-3 shadow-sm leading-relaxed">
+            <p>Berliner Wochenblatt<br>Potsdamer Str.33<br>10358 Berlin</p>
+            <p class="text-right">Berlin, <strong>(0) den</strong> 12.09.20...</p>
+            <p><strong>Bewerbung als Zeitungsausträger</strong></p>
+            <p><strong>[40]</strong> geehrte Damen und Herren,</p>
+            <p>in Ihrer Anzeige vom 09.09 suchen <strong>[41]</strong> Mitarbeiter zum Verteilen Ihrer Zeitung. Ich <strong>[42]</strong> mich gern für diese Tätigkeit bewerben. Ich bin 26 Jahre alt und arbeite halbtags als Haushälterin.</p>
+            <p><strong>[43]</strong> es möglich ist, würde ich gerne am Dienstag und Donnerstag arbeiten. Sie <strong>[44]</strong> mich telefonisch unter 0138-434241 erreichen.</p>
+            <p>Ich freue mich auf Ihren Anruf.</p>
+            <p class="pt-2">Mit <strong>[45]</strong> Grüßen<br><i>Ellen Katz</i></p>
+        </div>
+    `,
+    questions: [
+        { num: 40, text: "Lücke 40", opts: ["a) Hoch", "b) lieber", "c) Sehr"], correct: 2 },
+        { num: 41, text: "Lücke 41", opts: ["a) Ihr", "b) sie", "c) Sie"], correct: 2 },
+        { num: 42, text: "Lücke 42", opts: ["a) möchte", "b) musste", "c) sollte"], correct: 0 },
+        { num: 43, text: "Lücke 43", opts: ["a) Als", "b) Wann", "c) Wenn"], correct: 2 },
+        { num: 44, text: "Lücke 44", opts: ["a) können", "b) müssen", "c) sollen"], correct: 0 },
+        { num: 45, text: "Lücke 45", opts: ["a) freundliche", "b) freundlichen", "c) freundlicher"], correct: 1 }
+    ]
+}
+},
                     ],
             Sprechen: [
                 {
