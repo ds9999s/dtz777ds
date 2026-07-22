@@ -2920,6 +2920,1497 @@ teil5: {
     ]
 }
 },
+{id: 11,
+    title: "Lesen - Test 11(neu)",
+teil1: {
+    title: "Teil 1: Kaufhaus Übersicht",
+    infoBox: `
+        <div class="overflow-x-auto my-2 border border-gray-300 rounded-lg shadow-sm">
+            <table class="w-full text-left border-collapse bg-white text-xs text-gray-800">
+                <thead>
+                    <tr class="bg-gray-100 border-b border-gray-300">
+                        <th class="p-2.5 font-bold border-r border-gray-300 w-1/3">Stockwerk</th>
+                        <th class="p-2.5 font-bold">Abteilungen / Angebote</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">3. OG: Kinder-Welt</td>
+                        <td class="p-2.5">Bekleidung, Spielwaren, Baby & Kleinkind, Gesellschaftsspiele, Spielautos, Puppen, Restaurant - Cafe, Friseursalon, Kunden-WC</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">2. OG: Herren-Welt / Bekleidung</td>
+                        <td class="p-2.5">Herrenschuhe / Sport-Welt: Bekleidung / Sportartikel, Sportschuhe, Bademoden, Fitnessgeräte, Sporttaschen, Beauty & Accessoires, Parfümerie, Drogerie, Kosmetiktaschen</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">1. OG: Damen-Welt</td>
+                        <td class="p-2.5">Bekleidung / Damenschuhe, Tageswäsche, Nachtwäsche, Dessous / Fotoservice, Übergang zum Parkhaus, Parkhausautomat</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">EG</td>
+                        <td class="p-2.5">Uhren, Schmuck, Strümpfe / Lederwaren, Reisegepäck, Laptop- und Aktentaschen, Rucksäcke, Schultaschen / Schreibwaren, Bücher, öffentliches Telefon, Geldautomat</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">UG: Rund um die Küche</td>
+                        <td class="p-2.5">Backen, Pfannen, Töpfe, Glas, Porzellan, Haushaltswaren, Haushaltswäsche, Bettwaren, Gästebetten, Kurzwaren, Süßwaren, Tabakwaren, Zeitschriften, Lotto, Geschenkservice</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    `,
+    questions: [
+        { num: 21, text: "21. Sie möchten Ihre Haare schneiden lassen.", opts: ["a) 2. OG", "b) 3. OG", "c) anderes Stockwerk"], correct: 1 },
+        { num: 22, text: "22. Sie wollen zu Ihrem Auto.", opts: ["a) UG", "b) EG", "c) anderes Stockwerk"], correct: 2 },
+        { num: 23, text: "23. Sie möchten etwas essen.", opts: ["a) 1. OG", "b) 3. OG", "c) anderes Stockwerk"], correct: 1 },
+        { num: 24, text: "24. Sie brauchen Teller.", opts: ["a) UG", "b) 1. OG", "c) anderes Stockwerk"], correct: 0 },
+        { num: 25, text: "25. Sie suchen ein Hemd für einen Freund.", opts: ["a) 1. OG", "b) 2. OG", "c) anderes Stockwerk"], correct: 1 }
+    ]
+},
+teil2: {
+    title: "Teil 2: Anzeigen a–h",
+    infoBox: `
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-2 text-xs text-gray-800">
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige a</div>
+                <div class="font-bold mb-1">TOP Konditionen für Ihr Geld !</div>
+                <div>Wir bieten ein kostenloses Girokonto ! Für die EC - karte zahlen Sie nur eine Gebühr von 10 Euro / Jahr . Persönliche Beratung . Tipps zur Altersvorsorge - alles inklusive . Weitere Informationen in einer Filiale in Ihrer Nähe !<br>Mannheimer Direktsbank , www.md-b.de</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige b</div>
+                <div class="font-bold mb-1">Traumwohnung gesucht ?</div>
+                <div>Die Travego - Bank berät Sie gerne : Erfüllen Sie sich den Traum von der eigenen Wohnung . Wir bieten Ihnen günstige Kredite für den Wohnungskauf und haben für jeden das passende Angebot . Kleine Stadtwohnungen oder großzügige Wohnungen für Familien . Mit uns werden Wohnträume wahr !<br>www.travego-bank.eu</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige c</div>
+                <div class="font-bold mb-1">Schnäppchen !</div>
+                <div>Ab sofort frei : Wohnung in ruhiger , aber trotzdem zentraler Lage ( Stadtpark ) , 2 , OG , 4 ZKDB Balkon , Laminat oder Fliesen in allen Räumen , frisch renoviert ( weiß gestrichen ) , Gasheizung , Einbauküche kann auf Wunsch übernommen werden , günstige Miete . Die ideale Wohnung für Familien ! Von privat : Zuschriften bitte unter Chiffre CDF871 an die Zeitung .</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige d</div>
+                <div class="font-bold mb-1">Nürnberger Stadtbank</div>
+                <div>Achtung , nur noch diesen Monat !<br>Ein besonderes Angebot für alle Auszubildenden : Unser kostenloses Girokonto für Auszubildende bis 25 Jahren . Inklusiv EC karte , Kreditkarte und natürlich unserem perfekten Service !<br>Genau : alles kostenlos !<br>Nur noch diesen Monat , entscheiden Sie sich jetzt für uns !<br>www.nuenberger-stadtbank.eu</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige e</div>
+                <div class="font-bold mb-1">Familien mit Kindern aufgepasst</div>
+                <div>Die Breisgauer Sparkasse bietet Ihnen zum Weltspartag am 31.Oktober etwas ganz Besonderes : Familien mit zwei oder mehr Kindern bekommen ein attraktives Geschenk und 100 Euro Startguthaben , wenn sie ein ,, Mäuskonto eröffnen Beim , Mäusekonto ,, bekommen Kinder zwichen 7 und 14 Jahren 5 % Zinsen auf ihr Sparguthaben !<br>Infos : www.breisgauersparkasse.eu</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige f</div>
+                <div class="font-bold mb-1">Noch in der Ausbildung ?</div>
+                <div>Aber noch keine eigene Wohnung ? Wir sind die Spezialisten für kleine Single - Wohnungen . Günstige Mieten , gute Lage , schön renoviert . Aktuelle Angebot finden Sie auf unserer Internetseite - schauen Sie sich danach einfach Ihre Traumwohnung von innen an . Termine für Besichtigungen an allen Wochenenden ! Und dann heißt es bald : Endlich eine eigene Wohnung !<br>www.azubi-wohnungen.eu</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige g</div>
+                <div class="font-bold mb-1">Finanzen auf einen Blick !</div>
+                <div>Auf unserer Internetseite vergleichen wir Angebote von über 100 deutschen Banken und Sparkassen . Bei uns erfahren Sie , wo es die besten Zinsen und die günstigsten Kredite gibt . Unabhängig und kostenlos ! Seit 10 Jahren Ihr partner für Fragen rund um Geld - DFV Deutscher Finanzvergleich . Besuchen Sie uns im Internet und überzeugen Sie sich selbst : www . dfv - ein - blick.eu</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige h</div>
+                <div class="font-bold mb-1">Bei uns ist Ihr Geld sicher !</div>
+                <div>Die Phoenix - Bank macht mehr aus Ihrem Geld . Sicherheit ist uns dabei das Wichtigste . Wir bieten Ihnen sehr gute Zinsen , zum Beispiel auf unserem ,, Sparkonto ,, wollen Sie zum Beispiel neue Möbel oder ein Auto kaufen ? Schon ab 15 Euro pro Monat können Sie für größere Anschaffungen sparen und bekommen hohe Zinsen . Weitere Informationen : www.jeden-monat-sparen.eu</div>
+            </div>
+        </div>
+    `,
+    questions: [
+        { num: 26, text: "26. Ein befreundetes Ehepaar mit zwei Kindern sucht eine Wohnung zur Miete .", correctLetter: "c" },
+        { num: 27, text: "27. Eine Bekannte macht eine Ausbildung und möchte eine kleine Wohnung mieten", correctLetter: "f" },
+        { num: 28, text: "28. Sie wollen wissen , welche Bank die besten Zinsen anbietet .", correctLetter: "g" },
+        { num: 29, text: "29. Sie möchten monatlich Geld sparen .", correctLetter: "h" },
+        { num: 30, text: "30. Ihr Bekannter ist 28 Jahre alt und sucht ein Girokonto , bei dem die EC - Karte nichts kostet .", correctLetter: "x" }
+    ]
+},
+teil3: {
+    title: "Teil 3: Texte verstehen",
+items: [
+    {
+        text: `<b>Mülltonnen bleiben stehen</b><br><br>Die Müllabfuhr hat ernst gemacht. Wegen des Warnstreiks leerten die Mitarbeiter des Entsorgungsbetriebs gestern keine einzige Mainzer Mülltonne. Auch die Gelben Säcke wurden nicht abgeholt und die Straßen nicht gereinigt.<br>Was die Mitarbeiter des Entsorgungsbetriebes wollen, ist klar. „Wir fordern acht prozent Gehaltserhöhung ab sofort“, sagen sie, „Und Finger weg von den Arbeitszeiten.“<br>Die Müllwerker verkündeten, dass das Angebot der Arbeitgeber eine Sauerei ist. Fünf Prozent Gehaltserhöhung und Verlängerung der Wochenarbeitszeit 38.5 auf 40 Stunden - da müssen wir sogar noch Geld mitbringen.`,
+        q1: { num: 31, text: "31. Gestern haben die Leute der Entsorgungsbetriebe nicht gearbeitet.", correct: "richtig" },
+        q2: { num: 32, text: "32. Die Mitarbeiter wollen...", opts: ["a) 8 Prozent mehr verdienen.", "b) eine 40-Stunden-Arbeitswoche.", "c) eine Verkürzung der Arbeitszeit."], correct: 0 }
+    },
+    {
+        text: `Liebe Eltern,<br><br>sicher haben Sie in den Nachrichten schon gehört, dass es für unseren Kindergarten im nächsten Jahr weniger Geld von der Stadt gibt. Das ist natürlich ein großes Problem für uns. Außerdem müssen wir dringend zwei Räume renovieren und auch wieder neue Spielsachen für die Kinder kaufen. Deshalb müssen wir leider die Beiträge ab Januar erhöhen, und zwar um 5 Euro pro Kind. Der monatliche Beitrag liegt dann bei 67 Euro. Wir bitten Sie um Ihr Verständnis. Leider ist das die einzige Möglichkeit, Ihren Kindern auch in Zukunft eine gute Betreuung anbieten zu können.<br><br>Es grüßt Sie herzlich<br>Julia Polanski<br>(Kindergartenleiterin)`,
+        q1: { num: 33, text: "33. Der Kindergarten braucht neue Spielsachen.", correct: "richtig" },
+        q2: { num: 34, text: "34. Der Kindergarten...", opts: ["a) bekommt kein Geld mehr von der Stadt.", "b) kostet ab sofort 67 € im Monat mehr.", "c) wird ab Januar teurer."], correct: 2 }
+    },
+    {
+        text: `<b>Zweite Mahnung</b><br><br>Sehr geehrte Frau Heck,<br><br>Sie haben unseren Online-Service „In zehn Schritten zur guten Bewerbung“ bestellt. Die Rechnung haben wir Ihnen am 23.08 per E-Mail zugesandt. Leider haben Sie die Rechnung auch nach unserer ersten Mahnung vom 10.10. nicht bezahlt.<br><br>Mit Ihrer Online-Bestellung vom 21.08. um 20.37 haben Sie mit uns einen gültigen Vertrag abgeschlossen. Deshalb haben wir das Recht, den Betrag gerichtlich einzufordern.<br><br>Da Sie uns als Kundin sehr wichtig sind, geben wir Ihnen nun zum letzten Mal die Möglichkeit, den offenen Rechnungsbetrag innerhalb der nächsten 5 Tage zu zahlen: Bitte überweisen Sie 109,00 € (99,00 € Bewerbungshilfe plus 10,00 € Mahngebühren) auf unser Konto (Nr. 98288, BLZ 584 611 48) bei der Sparkasse Mannheim.<br><br>Mit freundlichen Grüßen<br>Ihr topjob_Team`,
+        q1: { num: 35, text: "35. Frau Heck soll sofort 10,00 Euro bezahlen.", correct: "falsch" },
+        q2: { num: 36, text: "36. Frau Heck...", opts: ["a) hat den Online-Service am 23. August genutzt.", "b) hat fünf Tage Zeit, die Rechnung zu bezahlen.", "c) möchte sich zum Bewerbungstraining anmelden."], correct: 1 }
+    }
+]
+},
+teil4: {
+    title: "Teil 4: Sicherheitshinweise für „Digitalen Satelliten Receiver DSR 302“",
+    infoBox: `
+        <div class="bg-white border-2 border-blue-900 rounded-lg p-4 my-2 text-xs text-gray-800 space-y-3 shadow-sm leading-relaxed">
+            <h3 class="text-sm font-bold text-blue-900 border-b border-blue-200 pb-1 text-center">
+                Sicherheitshinweise für „Digitalen Satelliten Receiver DSR 302“
+            </h3>
+            
+            <p class="font-semibold text-gray-900">Bitte lesen Sie diese Sicherheitshinweise sorgfältig, bevor Sie das Gerät in Betrieb nehmen!</p>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">-Netzspannung und Anschluss</h4>
+                <p>
+                    Betreiben Sie das Gerät nur mit der auf dem Gehäuse angegebenen Spannung! Bei Gewitter oder längerer Abwesenheit, ziehen Sie den Netzstecker des Gerätes aus der Wandsteckdose. Trennen Sie auch Verbindungen zur Antenne, damit es nicht zu Beschädigungen Gewitter kommen kann.
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">-Belüftung</h4>
+                <p>
+                    Achten Sie darauf, keine Gegenstände auf das Gerät zu legen, um die Lüftungsschlitze nicht zu verdecken. Oberhalb und zur Seite soll das Gerät mindestens 10 cm Abstand zu allen anderen Gegenständen haben, damit die Wärme problemlos abgeleitet werden kann. Achten Sie darauf, dass keine Gegenstände in die Lüftungsschlitze gelangen können. Es besteht Lebensgefahr durch einen elektrischen Stromschlag!
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">-Aufstellungsort</h4>
+                <p>
+                    Stellen Sie den Gerät auf eine gerade Oberfläche. Stellen Sie das Gerät nicht in die Nähe einer Heizung und setzen Sie es auch nicht der direkten Sonneneinstrahlung aus. Das Gerät entwickelt Wärme, daher kann es zu Verfärbungen von Oberflächen kommen. Stellen Sie das Gerät deshalb auf eine geeignete Unterlage!
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">-Feuchtigkeit und Reinigung</h4>
+                <p>
+                    Sorgen Sie dafür, dass das Gerät nicht mit Wasser (z. B. Kondens- oder Spritzwasser) in Kontakt kommt und keine Feuchtigkeit eindringt. Vor dem Reinigen des Gerätes ziehen Sie den Stecker des Netzgerätes. Benutzen Sie ein trockenes oder nur leicht angefeuchtetes Tuch.
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">-Reparatur</h4>
+                <p>
+                    Öffnen Sie niemals selbst das Gerät: Auch ohne Anschluss an das Stromnetz besteht Lebensgefahr durch einen elektrischen Stromschlag. Reparaturen dürfen deshalb nur von Fachpersonal durchgeführt werden. Durch einen unsachgemäßen Fremdeingriff verlieren Sie den Garantieanspruch!
+                </p>
+            </div>
+        </div>
+    `,
+    questions: [
+        { 
+            num: 37, 
+            text: "37. Sie können leichte Gegenstände, zum Beispiel Zeitschriften problemlos auf das Gerät legen.", 
+            correct: "falsch" 
+        },
+        { 
+            num: 38, 
+            text: "38. Das Gerät darf nicht an einem zu warmen Ort stehen.", 
+            correct: "richtig" 
+        },
+        { 
+            num: 39, 
+            text: "39. Sie dürfen das Gerät selbst reparieren.", 
+            correct: "falsch" 
+        }
+    ]
+},
+teil5: {
+    title: "Teil 5: Beschwerdebrief",
+    infoBox: `
+        <div class="bg-white border-2 border-gray-700 rounded-lg p-5 my-2 text-sm text-gray-800 space-y-3 shadow-sm leading-relaxed">
+            <p>Büromöbel Huber GmbH<br>Postfach 23 23 90<br>68930 Nidderau</p>
+            <p class="text-right">23.04.2019</p>
+            <p>Sehr <strong>(0) geehrte</strong> Damen und Herren,</p>
+            <p>Vor vier Wochen habe ich einen Schreibtisch für meine 8.jährige Tochter bestellt, <strong>[40]</strong> ihn auch schon bezahlt. <strong>[41]</strong> habe ich den Schreibtisch bis heute nicht bekommen, obwohl die Lieferzeit nur 2 Wochen sein sollte.</p>
+            <p>Bei der Bestellung hat mir Ihre Mitarbeiterin auch gesagt, <strong>[42]</strong> der Schreibtisch schnell geliefert wird.</p>
+            <p>Meine Tochter braucht den Schreibtisch dringend, <strong>[43]</strong> sie viele Hausaufgaben machen muss.</p>
+            <p>Bitte melden Sie sich schnell bei mir, <strong>[44]</strong> wir dieses Problem lösen können. <strong>[45]</strong> ich bis Montag nichts von Ihnen höre, rufe ich meinen Rechtsanwalt an.</p>
+            <p class="pt-2">Mit freundlichen Grüßen<br><i>Thomas Zelezuy</i></p>
+        </div>
+    `,
+    questions: [
+        { num: 40, text: "Lücke 40", opts: ["a) Als", "b) oder", "c) und"], correct: 2 },
+        { num: 41, text: "Lücke 41", opts: ["a) Deshalb", "b) Leider", "c) Zum Glück"], correct: 1 },
+        { num: 42, text: "Lücke 42", opts: ["a) damit", "b) dass", "c) weil"], correct: 1 },
+        { num: 43, text: "Lücke 43", opts: ["a) damit", "b) obwohl", "c) weil"], correct: 2 },
+        { num: 44, text: "Lücke 44", opts: ["a) damit", "b) obwohl", "c) während"], correct: 0 },
+        { num: 45, text: "Lücke 45", opts: ["a) Damit", "b) Weil", "c) Wenn"], correct: 2 }
+    ]
+}
+},
+
+{id: 12,
+    title: "Lesen - Test 12(neu)",
+        teil1: {
+    title: "Teil 1: Kaufhaus Übersicht",
+    infoBox: `
+        <div class="overflow-x-auto my-2 border border-gray-300 rounded-lg shadow-sm">
+            <table class="w-full text-left border-collapse bg-white text-xs text-gray-800">
+                <thead>
+                    <tr class="bg-gray-100 border-b border-gray-300">
+                        <th class="p-2.5 font-bold border-r border-gray-300 w-1/3">Stockwerk</th>
+                        <th class="p-2.5 font-bold">Abteilungen / Angebote</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">3. OG: Kinder-Welt</td>
+                        <td class="p-2.5">Bekleidung, Spielwaren, Baby & Kleinkind, Gesellschaftsspiele, Spielautos, Puppen, Restaurant - Cafe, Friseursalon, Kunden-WC</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">2. OG: Herren-Welt / Bekleidung</td>
+                        <td class="p-2.5">Herrenschuhe / Sport-Welt: Bekleidung / Sportartikel, Sportschuhe, Bademoden, Fitnessgeräte, Sporttaschen, Beauty & Accessoires, Parfümerie, Drogerie, Kosmetiktaschen</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">1. OG: Damen-Welt</td>
+                        <td class="p-2.5">Bekleidung / Damenschuhe, Tageswäsche, Nachtwäsche, Dessous / Fotoservice, Übergang zum Parkhaus, Parkhausautomat</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">EG</td>
+                        <td class="p-2.5">Uhren, Schmuck, Strümpfe / Lederwaren, Reisegepäck, Laptop- und Aktentaschen, Rucksäcke, Schultaschen / Schreibwaren, Bücher, öffentliches Telefon, Geldautomat</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">UG: Rund um die Küche</td>
+                        <td class="p-2.5">Backen, Pfannen, Töpfe, Glas, Porzellan, Haushaltswaren, Haushaltswäsche, Bettwaren, Gästebetten, Kurzwaren, Süßwaren, Tabakwaren, Zeitschriften, Lotto, Geschenkservice</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    `,
+    questions: [
+        { num: 21, text: "21. Sie möchten Ihre Haare schneiden lassen.", opts: ["a) 2. OG", "b) 3. OG", "c) anderes Stockwerk"], correct: 1 },
+        { num: 22, text: "22. Sie möchten Schokolade kaufen.", opts: ["a) 1. OG", "b) 3. OG", "c) anderes Stockwerk"], correct: 2 },
+        { num: 23, text: "23. Sie möchten etwas essen.", opts: ["a) 1. OG", "b) 3. OG", "c) anderes Stockwerk"], correct: 1 },
+        { num: 24, text: "24. Sie brauchen Wecker.", opts: ["a) UG", "b) EG", "c) anderes Stockwerk"], correct: 1 },
+        { num: 25, text: "25. Sie suchen ein Hemd für einen Freund.", opts: ["a) 1. OG", "b) 2. OG", "c) anderes Stockwerk"], correct: 1 }
+    ]
+},
+teil2: {
+    title: "Teil 2: Anzeigen a–h",
+    infoBox: `
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-2 text-xs text-gray-800">
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige a</div>
+                <div class="font-bold mb-1">Haushaltsauflösung in Schwabing .</div>
+                <div>Wegen Umzug folgende Möbel günstig zu verkaufen<br>* 1 Gasherd<br>* Kühlschrank mit Gefrierfach , 4 Sterne<br>* Küchenstühle , weiß lackiert<br>* 4Passende Küchenstühle<br>* Wohnzimmertisch , Eiche Versch . Kleinteile wie Garderobenleisten Stehlampen .Regale . Kinderspielzeug etc.Guter bis sehr guter Zustand , sofort zum Mitnehmen<br>089/2339508</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige b</div>
+                <div class="font-bold mb-1">Schnäppchen machen - Geld sparen !</div>
+                <div>Elektromarkt räumt seine Lager ! Kühlschränke und Waschmaschinen und mehr zu Superpreisen - alle Geräte neu und mit Garantie ! Sonderaktion NUR am 1.Oktober :<br>* 10 % Rabatt auf alle Elektrokleingeräte wie Mixer , fönne , CD Player .<br>* 0,0 % Finanzierung bei bis zu 24 Monaten Laufzeit ab einem Einkaufswert von 500,00 EURO .<br>Kommen Sie vorbei und entdecken Sie die vielen Super - Angebote zum Umzug . Wir freuen uns auf Sie ! Elektromarkt , Johannisweg 23,80981 München .</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige c</div>
+                <div class="font-bold mb-1">Mitglied werden im Münchner Mieterverein .</div>
+                <div>Zahlen Sie zu viel für Nebenkosten & Co. ? Jede 2 Abrechnung ist nach neuesten Informationen falsch . Eiene Prüfung lohnt sich auch bei Mieterhöhung und Wohnungsmängeln .<br>Im Mieterverein genießen Sie :<br>* Beratung und Vertretung durch Juristen .<br>* Prozesskostenversicherung .<br>* Beratungszentren in Ihrer Nähe auch samstags<br>* Tipps & Informationen auch für Nichtmitglieder .<br>Der Münchner Mieterverein ist mit mehr als 90,000 Mitgliedern und seiner 110 - jährigen Geschichte eine Institution . Jetzt Mitglied werden :<br>www.muenchner-mieterverein.de</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige d</div>
+                <div class="font-bold mb-1">Traumwohnung erwünscht ..</div>
+                <div>Whng . in München Zentrum gesucht von Praktikantin im TV - Bereich.Mögl.1 Zi .; gern mit EBK o . Kühlschr . + Herd . Gern auch möbliert . Zum 1.10.0 . 1.11 . Max.600 € inkl .NK Für mind . 6 Monate , u . U. länger . Nähe U - Bahn wäre optimal .<br>Tel . 089/102928 .</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige e</div>
+                <div class="font-bold mb-1">wohnen auf Zeit</div>
+                <div>Von Aachen bis Zwickau - wir finden für Sie die Passende Unterkunft .<br>Wir sind spezialisiert auf möblierte Appartements , Wohnungen , Häuser und Zimmer . In allen deutschen Städten finden Sie bei uns günstige Mietangebote . Besuchen Sie unsere Internetseiten , informieren Sie sich und fordern Sie ein Angebot an !<br>www.mitwohnzentrale.de</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige f</div>
+                <div class="font-bold mb-1">Neueröffnung ! Möbelhaus SB- Markt Rupp - 1A - Qualität, günstige Preise .</div>
+                <div>Bei uns gibt es die neuen Möbel für Ihre Traumwohnung Super Angebote für jeden Geldbeutel !<br>Größe Eröffnungsfeier am verkaufsoffenen Sonntag Gewinnspiel und tollen Preisen ! Gewinnen Sie einer VW Waraan und eine von 100 Digicams von O " Mullivan Tolle Eröffnungsangebote für Groß und Klein !<br>Zu jeder gekauften Lampe zwei Glühbirnen gratis .<br>Zu jedem Küchenmöbel ab 25 € zwei Kaffeebecher Bares Geld sparen durch Selbstabholung . Möbel mitnehmen und selbst montieren , keine Lieferung.Möbelhaus SB - Markt Rupp . Turiner Platz 1-3 , 87432 München .</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige g</div>
+                <div class="font-bold mb-1">Möblierte Wohnung ab 1.10 . !</div>
+                <div>- schöne 2 - Z - Wohnung frei ab 1.10 .<br>- Rosenheim Zentrum<br>- 47qm Wohnfläche .<br>- kleiner Balkon , Südseite<br>- Laminatboden .<br>- Miete 650 , - €<br>- Nebenkosten 100 , - € .<br>Gute Lage in der Einkaufsstraße ,<br>Zur U - Bahn 5 Min . Zu Fuß<br>Küche und Wohnzimmer kompl . möbliert ,<br>Tei . 089/6127192</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige h</div>
+                <div class="font-bold mb-1">Prozente ! Prozente !! Prozente !!! Möbelsofortmarkt Schmidtbauer</div>
+                <div>Tolle Möbel für wenig Geld ? Dann kommen Sie zu Neue und gebrauchte Möbel speziell für :<br>* Küche<br>* Wohnzimmer<br>* Schlafzimmer<br>* Arbeitszimmer<br>Top Qualität , aber günstig ! Kein Elektro !<br>Lieferung zu Ihnen nach Hause gegen Aufpreis möglich .<br>Kein Montieren , MO - SA 10-17 Uhr<br>Möbelmarkt , Oststr . 89,81098 München ,</div>
+            </div>
+        </div>
+    `,
+    questions: [
+        { num: 26, text: "26. Ihr altes Sofa ist kaputt . Lassen Sie es reparieren .", correctLetter: "x" },
+        { num: 27, text: "27. Ihre Tochter möchte ein 3 - monatiges Praktikum in einer anderen Stadt machen und sucht ein Zimmer .", correctLetter: "e" },
+        { num: 28, text: "28. Sie haben Probleme mit Ihrem Vermieter und brauchen Hilfe .", correctLetter: "c" },
+        { num: 29, text: "29. Sie möchten Ihrem Sohn einen gebrauchten Schreibtisch kaufen .", correctLetter: "h" },
+        { num: 30, text: "30. Sie suchen einen günstigen neuen Kühlschrank", correctLetter: "b" }
+    ]
+},
+teil3: {
+    title: "Teil 3: Texte verstehen",
+    items: [
+        {
+            text: `<b>Mehr lernen - weniger bezahlen</b><br><br>Lernen ist heute nicht nur für Kinder wichtig. Auch Erwachsene besuchen immer mehr Kurse, um sich weiterzubilden: Viele lernen eine Sprache, aber auch Computerkurse sind besonders beliebt in Deutschland. Damit möglichst viele Menschen Kurse besuchen können, gibt es jetzt das neue Programm „Mehr lernen - bessere Chancen“.<br><br>Erwachsene mit niedrigem Einkommen oder Arbeitslos können bei der Agentur für Arbeit kostenlos einen „Bildungspass“ bekommen, mit dem sie ohne Gebühren einen Kurs nach Wahl zu ihrer Weiterbildung besuchen können. „Man muss aber genau hinschauen“, rät Hartmut Graser vom Bundesverband der Erwachsenenbildung, „Nicht als Anbieter von Kursen akzeptieren diesen Pass.“<br><br>Fragen Sie also zuerst ob Sie einen Kurs mit dem Bildungspass besuchen können. Wenn Sie nicht fragen, müssen Sie vielleicht den Kurs selbst bezahlen.<br>Weitere Informationen erhält man bei der Agentur für Arbeit oder unter der kostenlosen Servicenummer 0800/0911889.`,
+            q1: { num: 31, text: "31. Der Bildungspass ist nur für Kinder und Jugendliche.", correct: "falsch" },
+            q2: { num: 32, text: "32. Einen Bildungspass...", opts: ["a) erhält man, wenn man wenig verdient oder keine Arbeit hat.", "b) Kann man für jeden Kurs benutzen.", "c) muss man bei der Agentur für Arbeit kaufen."], correct: 0 }
+        },
+        {
+            text: `Liebe Eltern,<br><br>sicher haben Sie in den Nachrichten schon gehört, dass es für unseren Kindergarten im nächsten Jahr weniger Geld von der Stadt gibt. Das ist natürlich ein großes Problem für uns. Außerdem müssen wir dringend zwei Räume renovieren und auch wieder neue Spielsachen für die Kinder kaufen.<br><br>Deshalb müssen wir leider die Beiträge ab Januar erhöhen, und zwar um 5 Euro pro Kind. Der monatliche Beitrag liegt dann bei 67 Euro. Wir bitten Sie um Ihr Verständnis. Leider ist das die einzige Möglichkeit, Ihren Kindern auch in Zukunft eine gute Betreuung anbieten zu können.<br><br>Es grüßt Sie herzlich<br>Julia Polanski<br>(Kindergartenleiterin)`,
+            q1: { num: 33, text: "33. Die Eltern sollen bei der Renovierung helfen.", correct: "falsch" },
+            q2: { num: 34, text: "34. Der Kindergarten...", opts: ["a) bekommt kein Geld mehr von der Stadt.", "b) kostet ab sofort 67 € im Monat mehr.", "c) wird ab Januar teurer."], correct: 2 }
+        },
+        {
+            text: `<b>Zweite Mahnung</b><br><br>Sehr geehrte Frau Heck,<br><br>Sie haben unseren Online-Service „In zehn Schritten zur guten Bewerbung“ bestellt. Die Rechnung haben wir Ihnen am 23.08 per E-Mail zugesandt. Leider haben Sie die Rechnung auch nach unserer ersten Mahnung vom 10.10. nicht bezahlt.<br><br>Mit Ihrer Online-Bestellung vom 21.08. um 20.37 Uhr haben Sie mit uns einen gültigen Vertrag abgeschlossen. Deshalb haben wir das Recht, den Betrag gerichtlich einzufordern.<br><br>Da Sie uns als Kunde sehr wichtig sind, geben wir Ihnen nun zum letzten Mal die Möglichkeit, den offenen Rechnungsbetrag innerhalb der nächsten 5 Tage zu zahlen: Bitte überweisen Sie 109,00 € (99,00 € Bewerbungshilfe plus 10,00 € Mahngebühren) auf unser Konto (Nr. 98288, BLZ 584 611 48) bei der Sparkasse Mannheim.<br><br>Mit freundlichen Grüßen<br>Ihr topjob-Team`,
+            q1: { num: 35, text: "35. Frau Heck muss sofort 99,00 Euro bezahlen.", correct: "falsch" },
+            q2: { num: 36, text: "36. Frau Heck...", opts: ["a) hat den Online-Service am 23. August genutzt.", "b) hat fünf Tage Zeit, die Rechnung zu bezahlen.", "c) möchte sich zum Bewerbungstraining anmelden."], correct: 1 }
+        }
+    ]
+},
+teil4: {
+    title: "Teil 4: STADTBIBLIOTHEK AUGSBURG",
+    infoBox: `
+        <div class="bg-white border-2 border-blue-900 rounded-lg p-4 my-2 text-xs text-gray-800 space-y-3 shadow-sm leading-relaxed">
+            <h3 class="text-sm font-bold text-blue-900 border-b border-blue-200 pb-1 text-center">
+                STADTBIBLIOTHEK AUGSBURG
+            </h3>
+            
+            <p class="font-semibold text-gray-900">wir laden Sie ein – nicht nur zu Büchern und Lektüre</p>
+            
+            <p>
+                Mehr als drei Millionen Bücher,Zeitschriften und Neue Medien (DVDS, CDs, CD-ROMs) warten auf Sie.Sie laden nicht nur zum Mitnehmen, sondern auch zum Lesen,Studieren, Sehen und Hören vor Ort ein. Alle Medien stehen Ihnen kostenlos in den Räumen der Bibliotheken zur Verfügung. Gebührenfrei können Sie Titel aus den Freihandbeständen der Bibliotheken vor Ort aussuchen und entleihen.
+            </p>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">Mit Ihrem Bibliotheksausweis können Sie:</h4>
+                <p>
+                    *bis zu 20 Bücher insgesamt mitnehmen.<br>
+                    *ausgeliehene Titel vormerken.<br>
+                    *gewünschte Medien in die Stadtbibliothek Ihrer Wahl bestellen<br>
+                    *Leihfristen verlängern.<br>
+                    *Bestände aus dem Magazin der Zentralbibliothek bestellen.<br>
+                    *Medien im Lesesaal der Zentralbibliothek bereitstellen lassen.<br>
+                    *Arbeitskabinen, AV-Kabinen und Hörplätze nutzen.
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">-Gebühren</h4>
+                <p>
+                    Der Ausweis kostet für Erwachsene € 18,00 jährlich bzw. € 6,00 vierteljährlich. Auszubildende, Schülerinnen und Schüler,Studentinnen und Studenten, Renten-Versorgungs und Sozialhilfeempfänger,Arbeitslose sowie Schwerbehinderte mit einem Grad der Behinderung von wenigstens 50 zahlen bei Nachweis der Ermäßigungs-berechtigung €9,00 jährlich bzw. € 3,00 vierteljährlich.
+                </p>
+            </div>
+            
+            <p>
+                Die Leihfrist der Medien beträgt in der Regel 28 Kalendertage. Die Versäumnisgebühr bei Überschreiten der Leihfrist beträgt pro Medium und Öffnungstag €0,30 (unter 18 Jahren €0,15).Ist Ihr Benutzerkonto mit Gebühren oder sonstigen Kosten belastet, ist leider vor Bezahlung keine Ausleihe möglich.
+            </p>
+        </div>
+    `,
+    questions: [
+        { 
+            num: 37, 
+            text: "37. In der Bibliothek kann man CDs anhören.", 
+            correct: "richtig" 
+        },
+        { 
+            num: 38, 
+            text: "38. Man kann so viele Bücher mitnehmen, wie man möchte.", 
+            correct: "falsch" 
+        },
+        { 
+            num: 39, 
+            text: "39. Alle Rentner zahlen 18 Euro für einen Ausweis.", 
+            correct: "falsch" 
+        }
+    ]
+},
+teil5: {
+    title: "Teil 5: Fehlende Zeugnisse für den Arbeitsvertrag",
+    infoBox: `
+        <div class="bg-white border-2 border-gray-700 rounded-lg p-5 my-2 text-sm text-gray-800 space-y-3 shadow-sm leading-relaxed">
+            <p>Firma Schmidt & Söhne<br>Frau Julia Schmidt<br>Sternenweg 1<br>50912 Köln</p>
+            <p class="text-right">25.05.20..</p>
+            <p>Ihr Schreiben vom 20.05.2019.<br>Fehlende Zeugnisse für den Arbeitsvertrag.</p>
+            <p>Sehr <strong>(0) geehrte</strong> Frau Schmidt,</p>
+            <p>vielen Dank für Ihren Brief! Es stimmt: Ich hatte <strong>[40]</strong>, Ihnen meine Zeugnisse zu schicken. Ich habe sie jetzt aber kopiert <strong>[41]</strong> schicke Ihnen die Zeugnisse zusammen mit diesem Brief. Haben Sie jetzt alle Unterlagen <strong>[42]</strong> fehlt noch etwas?</p>
+            <p>Rufen Sie mich bitte an, <strong>[43]</strong> der Arbeitsvertrag fertig ist, <strong>[44]</strong> ich möchte ihn so schnell wie möglich unterschreiben. <strong>[45]</strong> ich gerade umgezogen bin, habe ich übrigens auch eine neue Telefonnummer: 0201/53 11 23. Meine neue Adresse hatten Sie ja schon. Vielen Dank!</p>
+            <p class="pt-2">Mit freundlichen Grüßen<br><i>Bernhard Jungmann</i></p>
+        </div>
+    `,
+    questions: [
+        { num: 40, text: "Lücke 40", opts: ["a) gedacht", "b) geschrieben", "c) vergessen"], correct: 2 },
+        { num: 41, text: "Lücke 41", opts: ["a) oder", "b) sodass", "c) und"], correct: 2 },
+        { num: 42, text: "Lücke 42", opts: ["a) deshalb", "b) oder", "c) und"], correct: 1 },
+        { num: 43, text: "Lücke 43", opts: ["a) sodass", "b) weil", "c) wenn"], correct: 2 },
+        { num: 44, text: "Lücke 44", opts: ["a) denn", "b) obwohl", "c) oder"], correct: 0 },
+        { num: 45, text: "Lücke 45", opts: ["a) Als", "b) Bevor", "c) Weil"], correct: 2 }
+    ]
+}
+},
+{id: 13,
+    title: "Lesen - Test 13(neu)",
+        teil1: {
+    title: "Teil 1: Baumarkt Übersicht",
+    infoBox: `
+        <div class="overflow-x-auto my-2 border border-gray-300 rounded-lg shadow-sm">
+            <table class="w-full text-left border-collapse bg-white text-xs text-gray-800">
+                <thead>
+                    <tr class="bg-gray-100 border-b border-gray-300">
+                        <th class="p-2.5 font-bold border-r border-gray-300 w-1/3">Bereich</th>
+                        <th class="p-2.5 font-bold">Angebote / Produkte</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Garten und Balkon</td>
+                        <td class="p-2.5">Gartenmöbel, Grillgeräte, Pools, Gartenbaustoffe, Pflanzen, wasserabweisende Farben für Gartenmöbel, Reinigung. Sonnenschutz: Markisen, Sonnendächer und Schirm</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Eisenwaren</td>
+                        <td class="p-2.5">Schlüssel und Schlösser, Schrauben, Nägel, Alarmanlagen, Reinigungsmaschinen für Metallwaren, Metallschutzmittel, Rostschutz, Polituren</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Farben</td>
+                        <td class="p-2.5">Wandfarbe, Tapeten, Erde, Blumentöpfe, Bilder, Bilderrahmen, Wanduhren, Treppenstufenmatten</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Alles für Bad und Küche</td>
+                        <td class="p-2.5">Duschen, Waschbecken, Badewannen, Heizungen, Küchenspülen, Küchentechnik, WCs, Badmöbel, Haushaltsmaschinen</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Lampe und Elektro</td>
+                        <td class="p-2.5">Außenbeleuchtung, Wohnbeleuchtung, Lampen, Büroleuchten, Diskobeleuchtung, Stehlampen, Solarenergie, Kindersicherungen</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Holz und Bauen</td>
+                        <td class="p-2.5">Fenster, Außen- und Innentüren, Außen- und Innentreppen, Garagentore, Glas, Arbeitsplatten, Teppiche, Teppichböden, Parkett</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Haushalt und Auto</td>
+                        <td class="p-2.5">Umzugskartons, Werkzeug, Autoreinigung, Ersatzteile, Kinderfahrräder, Jugendfahrräder, Büromöbel, Kinder- und Jugendzimmermöbel, Küchenmöbel, Wohnzimmermöbel</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Mietservice</td>
+                        <td class="p-2.5">Profi-Geräte zu günstigen Tarifen mieten: Polsterreiniger, Teppichreiniger und shampoonierer, Parkettschleifmaschinen</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Info & Service</td>
+                        <td class="p-2.5">Für Reklamationen, Umtausch und sonstige Informationen: info@hammerundnagel.de, Tel: 0800 75 32 768</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    `,
+    questions: [
+        { num: 21, text: "21. Sie suchen einen Schrank für Teller.", opts: ["a) Garten und Balkon", "b) Haushalt und Auto", "c) andere Seiten"], correct: 1 },
+        { num: 22, text: "22. Sie möchten einen Sonnenschirm kaufen.", opts: ["a) Garten und Balkon", "b) Holz und Bauen", "c) andere Seiten"], correct: 0 },
+        { num: 23, text: "23. Sie möchten eine Maschine für die Teppichreinigung leihen.", opts: ["a) Lampen und Elektro", "b) Mietservice", "c) andere Seiten"], correct: 1 },
+        { num: 24, text: "24. Sie möchten sich über ein Produkt beschweren.", opts: ["a) Info & Service", "b) Mietservice", "c) andere Seiten"], correct: 0 },
+        { num: 25, text: "25. Sie brauchen Stühle für draußen.", opts: ["a) Farben", "b) Holz und Bauen", "c) andere Seiten"], correct: 2 }
+    ]
+},
+teil2: {
+    title: "Teil 2: Anzeigen a–h",
+    infoBox: `
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-2 text-xs text-gray-800">
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige a</div>
+                <div class="font-bold mb-1">Kindergarten am Stadtpark</div>
+                <div>Wir sind ein neuer Kindergarten für 30 bis 40 Kinder . Damit Sie uns kennenlernen können , laden wir Sie zu unserem Tag der offenen Tür " ein _am kommenden Samstag ab 11 Uhr.Lernen Sie unsere Erzieherinnen kennen , schauen Sie sich die Gruppenräume und unsere Küche an und natürlich können Ihre kinder bei uns den ganzen Tag spielen ! Kindergarten am Stadtpark , Parkstraße 12 , 62190 Oberurse .</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige b</div>
+                <div class="font-bold mb-1">Arztpraxis am Thomasplatz</div>
+                <div>Sie suchen eine neue Arbeitsstelle?<br>Prima!Denn wir suchen ab sofort eine Arzthelferin für unsere Praxis (Hausarzt und Sportmedizin).<br>Voraussetzungen:gute Ausbildung und mindestens zwei Jahre Berufserfahrung, Freundlichkeit und natürlich auch Zuverlässigkeit.<br>Wir bieten einen Arbeitsplatz mit netten Chefs und Kollegen. Gute Bezahlung! Bewerbungen bitte per E-Mail an job@arztpraxis_thomasplatz.de</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige c</div>
+                <div class="font-bold mb-1">Babysitter!</div>
+                <div>Wir brauchen regelmäßig einen Babysitter werktags immer von 16 bis19 Uhr für unserer beiden Kinder, Tamara und Ronnie sind 3 und 4 und wirklich ganz lieb.<br>Wir bieten eine faire Bezahlung und gerne auch ein leckeres Abendessen mit der ganzen Familie.<br>Am besten jeden Diagnostagnachmittag,Gerne auch Schüler/Schülerin (ab 15 Jahre).<br>Telefonnummer 06129/211911078.</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige d</div>
+                <div class="font-bold mb-1">Sie möchten, dass Ihr Kind gesund bleibt.??</div>
+                <div>Wir auch<br>Deshalb bieten wie jetzt eine Ernährungsberatung für Eltern an:Hier lernen Sie welche Lebensmittel für Kinder besonder gut sind Für jedes alter das richtige Essen!Sie bekommen Rezepte für leckere Gerichte,die Kindern schmecken und gesund sind.<br>Außerdem bekommen Sie Tipps. Wie Sie auch schon mit kleinen Kindern zusammen kochen können_denn dass macht allen Spaß und die kleinen lernen viel .<br>Melden Sie sich gleich an(Termine Werktage oder auch am Wochenende)</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige e</div>
+                <div class="font-bold mb-1">16 jährige Schülerin passt auf Ihre Kinder auf.</div>
+                <div>Ich bin zuverlässig, freundlich und liebe Kinder über alles.<br>Ich habe immer von Montag bis Freitag ab 16Uhr Zeit,leider nicht am Wochenende.<br>Bitte nur innerhalb von Neustadt, da ich mit dem Fahrrad fahren muss.<br>Telefonnummer 0179/112987609.</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige f</div>
+                <div class="font-bold mb-1">Mehr Gesundheit für Ihre Kinder!</div>
+                <div>Wir bieten für Eltern und Kinder einmal pro Woche einen Kurs, in dem Sie gemeinsam Sport machen und Spaß haben,Gymnastik, Spiele mit dem Ball- so bleiben alle fit!.<br>Kosten:20Euro für vier Wochen.<br>Melden Sie sich gleich an:<br>Gesundheitszentrum Weidenstadt .Frau Beate Rudolf.<br>Oberes Tor 9,61298 Weidenstadt.</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige g</div>
+                <div class="font-bold mb-1">Neueröffnung</div>
+                <div>Ganz zentral am Marktplatz finden Sie ab sofort unsere moderne Kinderarztpraxis .<br>Dr:Markus Werner und Rotraud Franz<br>Freundliche Einrichtung der Zimmer<br>Persönliche Betreuung und viel Zeit für Ihre Kinder!Termin unter 06712/9891108.</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige h</div>
+                <div class="font-bold mb-1">Kindergarten ((Sonnenblumen)):</div>
+                <div>Bei uns sind täglich etwa 60 Kinder zum Spielen_Lernen,Essen.<br>Jetzt braucht unser Team Unterstützung!<br>Wir suchen ab sofort eine Erzieherin wenn Sie eine Ausbildung und auch schön Berufserfahrung haben ,bewerben Sie sich bei uns.<br>Katharina Reuter<br>Kindergarten (Sonnenblume)<br>Rheinallee 198,61309 Nidderau.</div>
+            </div>
+        </div>
+    `,
+    questions: [
+        { num: 26, text: "26. Ihre Bekannte sucht einen Kinderarzt für ihre kleine Tochter .", correctLetter: "g" },
+        { num: 27, text: "27. Ihre Bekannte ist Erzieherin und sucht eine Stelle im Kindergarten .", correctLetter: "h" },
+        { num: 28, text: "28. Sie brauchen Tipps für die gesunde Ernährung von Kindern .", correctLetter: "d" },
+        { num: 29, text: "29. Sie suchen für nächsten Samstag einen Babysitter .", correctLetter: "x" },
+        { num: 30, text: "30. Ihr Bekannter möchte sich mit seinem 5 - jährigen Sohn mehr bewegen .", correctLetter: "f" }
+    ]
+},
+teil3: {
+    title: "Teil 3: Texte verstehen",
+    items: [
+        {
+            text: `<b>neue Fahrpläne in München</b><br><br>Sehr geehrte Fahrgäste,<br><br>ab dem 1.Dezember kommt es zu Fahrplanänderungen in unserem Buslinienverkehr. Die Fahrpläne für Straßenbahnen und U-Bahnen ändern sich aber nicht!<br><br>Die wichtigsten Änderungen im Busfahrplan haben wir für Sie zusammengefasst:<br>Die Buslinie 19 fährt nicht mehr zur Messe, sondern vom Bahnhof zum Leopoldplatz. Neu ist auch, dass diese Buslinie nicht zweimal, sondern viermal pro stunde fährt. Die Wartezeiten werden also deutlich.<br>Auch bei der Buslinie 91 wird es Änderungen geben: Sie fährt dann zweimal und nicht mehr einmal pro Stunde vom Bahnhof zur Messe.<br><br>Genaue Informationen zu den neuen Fahrplänen für Busse finden Sie an allen Bushaltestellen und in unsere Verkaufs- und Beratungsstellen.<br><br>Ihre Verkehrsbetriebe München`,
+            q1: { num: 31, text: "31. Neue Fahrpläne gibt es nur für Busse.", correct: "richtig" },
+            q2: { num: 32, text: "32. Vom Bahnhof zur Messe fährt ab Dezember die...", opts: ["a) Buslinie 19 viermal pro Stunde.", "b) Buslinie 91 einmal pro Stunde", "c) Buslinie 91 zweimal pro Stunde."], correct: 2 }
+        },
+        {
+            text: `Liebe Eltern,<br><br>wir möchten Sie ganz herzlich zum diesjährigen Frühlingsfest der Astrid-Lindgren-Grundschule einladen. Das Fest findet wie immer am ersten Samstag nach den Osterferien statt, in diesem Jahr also am 17 April.<br>Auch diesmal werden die Schülerinnen und Schüler der Klassen 1 und 2 ein Singspiel und einen Tanz aufführen. Die Klassen 3 und 4 werden für Sie eine Kindermodenschau und einen Flohmarkt organisieren.<br>Kaffee, Kuchen, kalte Getränke und viele internationale Köstlichkeiten warten auf Sie. Geschwister sind herzlich willkommen. Der Eintritt ist natürlich frei, wir freuen uns aber über jede Kuchenspende.<br>Unser Frühlingsfest beginnt um 12 Uhr und endet um 17 Uhr.<br><br>Mit freundlichen Grüßen<br>Sylvia Schaller, Rektorin`,
+            q1: { num: 33, text: "33. Das Frühlingsfest findet zum ersten Mal statt.", correct: "falsch" },
+            q2: { num: 34, text: "34. Das Frühlingsfest...", opts: ["a) bietet ein buntes Unterhaltungsprogramm mit vielen Schülern.", "b) dauert bis in die Nacht.", "c) Kann man nur besuchen, wenn man Kuchen mitbringt."], correct: 0 }
+        },
+        {
+            text: `<b>Lernfix</b><br><br>Sehr geehrte Frau Novak,<br><br>Sie haben sich bei unserem Internetportal „Lernfix“ angemeldet und eine einjährige Mitgliedschaft abgeschlossen, in Ihrer Mitgliedschaft enthalten ist der Zugang zu alle elektronischen Wörterbüchern, die Teilnahme am Online-Kurs und das Herunterladen von E-Books auf Ihren Computer. Außerdem bekommen Sie mit unserem Newsletter immer aktuelle Tipps zu neuen Lernprogrammen und interessanten Büchern, Ihr Passwort für den Zugang lautet: W3YA89<br><br>Der Mitgliedsbeitrag in Höhe von 24,99 Euro in den nächsten Tagen fällig. Die Rechnung schicken wir Ihnen in Kürze per E-Mail. Oder entscheiden Sie sich noch für die Premium-Mitgliedschaft für 34,99 Euro und Sie erhalten zusätzlich ein tolles Lernprogramm für Ihren Computer von uns! Die Premium-Mitgliedschaft können sie einfach unter der folgenden Rufnummer beantragen: 0800/655900656.<br><br>Mit freundlichen Grüßen<br>Rainer Schmitz`,
+            q1: { num: 35, text: "35. Frau Novak hat eine Premium-Mitgliedschaft.", correct: "falsch" },
+            q2: { num: 36, text: "36. Frau Novak...", opts: ["a) bekommt ein Lehrbuch zugeschickt.", "b) hat die Rechnung schon bezahlt.", "c) kann bei „Lernfix“ Übungen im Internet machen."], correct: 2 }
+        }
+    ]
+},
+teil4: {
+    title: "Teil 4: Mittagsbetreuung an der Grundschule",
+    infoBox: `
+        <div class="bg-white border-2 border-blue-900 rounded-lg p-4 my-2 text-xs text-gray-800 space-y-3 shadow-sm leading-relaxed">
+            <h3 class="text-sm font-bold text-blue-900 border-b border-blue-200 pb-1 text-center">
+                Mittagsbetreuung an der Grundschule
+            </h3>
+            
+            <p class="font-semibold text-gray-900">Elterninformation</p>
+            
+            <p>
+                Dieses Angebot wird von der Stadt organisiert und findet ausschließlich während der regulären Schulzeiten statt. Die Betreuung deckt die Wochentage von Montag bis Freitag ab, jeweils in der Zeit von 11:00 bis 14:00 Uhr. Angemeldet werden können Grundschulkinder der Klassenstufen 1 bis 4.
+            </p>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">-Gebühren</h4>
+                <p>
+                    Die monatlichen Kosten richten sich flexibel nach der Anzahl der gebuchten wöchentlichen Betreuungstage: 5 Tage kosten 57,00 €, 4 Tage 45,60 €, 3 Tage 34,20 €, 2 Tage 22,80 € und ein einzelner Tag pro Woche liegt bei 11,40 €. Familien mit mehreren Kindern profitieren von Ermäßigungen: Bei zwei Kindern verringert sich der Betrag um 15 %, bei drei Kindern um 50 %, und ab dem vierten Kind entfallen die Gebühren komplett. Die Zahlungen sind durchgehend für das gesamte Jahr (12 Monate) zu leisten.
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">-Abwesenheit</h4>
+                <p>
+                    Der monatliche Beitrag bleibt in voller Höhe bestehen, selbst wenn das Kind an einzelnen Tagen nicht anwesend sein kann. Dies gilt ausdrücklich auch im Krankheitsfall des Kindes.
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">-Aktivitäten</h4>
+                <p>
+                    Das Konzept setzt neben der reinen Aufsichtspflicht vor allem auf die Förderung des sozialen Miteinanders. Die gemeinsame Zeit ist bewusst nicht als Arbeitszeit gestaltet, sondern rückt Erholung, Freizeit und Spaß in den Fokus. Die Kinder können spielen, basteln sowie frei drinnen und draußen aktiv sein. Um Geborgenheit zu vermitteln, werden verlässliche Gruppenregeln vereinbart. Jahreszeitliche Feste stärken zudem die Gemeinschaft.
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">-Hausaufgaben</h4>
+                <p>
+                    Es handelt sich ausdrücklich nicht um eine geführte Hausaufgabenbetreuung. Die Kinder haben jedoch die Möglichkeit, ihre Aufgaben eigenständig vor Ort zu erledigen.
+                </p>
+            </div>
+        </div>
+    `,
+    questions: [
+        { 
+            num: 37, 
+            text: "37. Die Mittagsbetreuung hat auch in den Ferien geöffnet.", 
+            correct: "falsch" 
+        },
+        { 
+            num: 38, 
+            text: "38. Wenn ein Kind krank ist, muss man für die Mittagsbetreuung nicht bezahlen.", 
+            correct: "falsch" 
+        },
+        { 
+            num: 39, 
+            text: "39. Die Kinder dürfen in der Mittagsbetreuung spielen.", 
+            correct: "richtig" 
+        }
+    ]
+},
+teil5: {
+    title: "Teil 5: Mitteilung des Liefertermins",
+    infoBox: `
+        <div class="bg-white border-2 border-gray-700 rounded-lg p-5 my-2 text-sm text-gray-800 space-y-3 shadow-sm leading-relaxed">
+            <p>81667 München</p>
+            <p class="text-right">München, den 20.5</p>
+            <p>Mitteilung <strong>(0) des</strong> Liefertermins.</p>
+            <p><strong>[40]</strong> geehrte Damen und Herren,</p>
+            <p>am 20.4. <strong>[41]</strong> wir bei Ihnen ein Zweisitzersofa, Modell "Venezia" bestellt. Sie haben uns zugesagt, dass die Lieferzeit vier Wochen beträgt. Wir sollten das Sofa am 18.5. <strong>[42]</strong>. <strong>[43]</strong> ist das Sofa bis heute nicht angekommen.</p>
+            <p>Bitte teilen Sie uns mit, <strong>[44]</strong> Sie das Sofa liefern werden.</p>
+            <p class="pt-2">Mit <strong>[45]</strong> Grüßen<br><i>Katherina Schoppel</i></p>
+        </div>
+    `,
+    questions: [
+        { num: 40, text: "Lücke 40", opts: ["a) Hoch", "b) Liebe", "c) Sehr"], correct: 2 },
+        { num: 41, text: "Lücke 41", opts: ["a) haben", "b) waren", "c) wurden"], correct: 0 },
+        { num: 42, text: "Lücke 42", opts: ["a) behalten", "b) bekommen", "c) liefern"], correct: 1 },
+        { num: 43, text: "Lücke 43", opts: ["a) Gerne", "b) Leider", "c) Schon"], correct: 1 },
+        { num: 44, text: "Lücke 44", opts: ["a) als", "b) wann", "c) warum"], correct: 1 },
+        { num: 45, text: "Lücke 45", opts: ["a) freundliche", "b) freundlichen", "c) freundlicher"], correct: 1 }
+    ]
+}
+},
+
+{id: 14,
+    title: "Lesen - Test 14(neu)",
+        teil1: {
+    title: "Teil 1: Baumarkt Übersicht",
+    infoBox: `
+        <div class="overflow-x-auto my-2 border border-gray-300 rounded-lg shadow-sm">
+            <table class="w-full text-left border-collapse bg-white text-xs text-gray-800">
+                <thead>
+                    <tr class="bg-gray-100 border-b border-gray-300">
+                        <th class="p-2.5 font-bold border-r border-gray-300 w-1/3">Bereich</th>
+                        <th class="p-2.5 font-bold">Angebote / Produkte</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Garten und Balkon</td>
+                        <td class="p-2.5">Gartenstuhl und Tisch, Grillgeräte, Pools, Gartenbaustoffe, Pflanzen, Farben für Gartenmöbel, Reinigung, Sonnenschutz</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Eisenwaren</td>
+                        <td class="p-2.5">Schlüssel und Schlösser, Schrauben, Nägel, Alarmanlagen, Reinigungsmaschinen für Metallwaren, Metallschutzmittel, Rostschutz, Polituren</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Farben</td>
+                        <td class="p-2.5">Wandfarbe, Tapeten, Erde, Blumentöpfe, Bilder, Bilderrahmen, Wanduhren, Treppenstufenmatten</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Alles für Bad und Küche</td>
+                        <td class="p-2.5">Duschen, Waschbecken, Badewannen, Heizungen, Küchenspülen, Küchentechnik, WCs, Badmöbel, Haushaltsmaschinen</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Lampe und Elektro</td>
+                        <td class="p-2.5">Außenbeleuchtung, Wohnbeleuchtung, Lampen, Büroleuchten, Diskobeleuchtung, Stehlampen, Solarenergie, Kindersicherungen</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Holz und Bauen</td>
+                        <td class="p-2.5">Fenster, Außen- und Innentüren, Außen- und Innentreppen, Garagentore, Glas, Arbeitsplatten, Teppiche, Teppichböden, Parkett</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Haushalt und Auto</td>
+                        <td class="p-2.5">Umzugskartons, Werkzeug, Autoreinigung, Ersatzteile, Kinderfahrräder, Jugendfahrräder, Büromöbel, Kinder- und Jugendzimmermöbel, Küchenmöbel, Wohnzimmermöbel</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Mietservice</td>
+                        <td class="p-2.5">Profi-Geräte zu günstigen Tarifen mieten: Polsterreiniger, Teppichreiniger und shampoonierer, Parkettschleifmaschinen</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Kontakt & Wegbeschreibung</td>
+                        <td class="p-2.5">Für Reklamationen, Umtausch und sonstige Informationen: info@hammerundnagel.de, Tel: 0800 75 32 768. U3 bis Haltestelle Großhadern, Buslinie 7</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    `,
+    questions: [
+        { num: 21, text: "21. Sie suchen einen Schrank für küche.", opts: ["a) Garten und Balkon", "b) Haushalt und Auto", "c) andere Seiten"], correct: 1 },
+        { num: 22, text: "22. Sie möchten einen Sonnenschirm kaufen.", opts: ["a) Garten und Balkon", "b) Holz und Bauen", "c) andere Seiten"], correct: 0 },
+        { num: 23, text: "23. Sie möchten eine Maschine für die Teppichreinigung leihen.", opts: ["a) Lampen und Elektro", "b) Mietservice", "c) andere Seiten"], correct: 1 },
+        { num: 24, text: "24. Sie möchten sich erkundigen, ob Ihr gewünschtes Produkt Lieferbar leihen", opts: ["a) Kontakt", "b) Wegbeschreibung", "c) andere Seiten"], correct: 0 },
+        { num: 25, text: "25. Sie brauchen Stühle für draußen.", opts: ["a) Farben", "b) Holz und Bauen", "c) andere Seiten"], correct: 2 }
+    ]
+},
+teil2: {
+    title: "Teil 2: Anzeigen a–h",
+    infoBox: `
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-2 text-xs text-gray-800">
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige a</div>
+                <div class="font-bold mb-1">Zeit für die kleinen</div>
+                <div>Wir bieten Ihnen eine liebevolle Betreuung Ihrer Kinder im Vorschulalter (bis 5 Jahre).<br>Die kleinen spielen bei uns ,lernen in unserem Garten Tiere und Pflanzen kennen und finden erste Freunde im gleichen Alter, Täglich von 8 bis 13Uhr ,auch am Wochenende.<br>Weitere Informationen unter 040/91817001</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige b</div>
+                <div class="font-bold mb-1">Der Unterricht ist zu schwer ?</div>
+                <div>Viele Kinder haben Probleme in der Schule - wir bieten Ihnen eine Lösung! Nachhilfe in allen Fächern für Kinder von 6 bis 16 Jahren. Erfahrene Lehrer helfen Ihren Kindern bei individuellen Lernproblemen. Unsere Kurse finden in kleinen Gruppen statt.<br>Vereinbaren Sie einen kostenlosen Probetermin: 01805/7771001</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige c</div>
+                <div class="font-bold mb-1">Wenig Zeit zum lernen?</div>
+                <div>Sie wollen etwas Neues lernen und einen Sprachkurs oder einen Computerkurs machen?Wir bieten Kurse für Berufstätige: Unsere kurse finden einmal pro Woche von Montag bis Freitag ab 18 Uhr statt.<br>Kursangebot:(z.B.)Fremdsprachen ,Computerprogramme, Rechnen,Briefe an Ämter schreiben. Fragen Sie uns ,wir haben auch den passenden Kurs für Sie Info@lernen365.eu</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige d</div>
+                <div class="font-bold mb-1">Mehr lernen !</div>
+                <div>In der Schule lernt man nicht alles. Für Kinder von 8 bis 16 Jahren bieten wir tolle Kurse an: Angefangen von „Kochen lernen" über „wie Pflege ich meine Haustiere?" bis hin zu „Neue Spiele-selbst ausgedacht".<br>Die Kurse finden am Wochenende statt, erfahrene Pädagogen haben die Leitung. Infos? Anrufen! 0800/9187009</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige e</div>
+                <div class="font-bold mb-1">wohin mit den Kindern,...</div>
+                <div>wenn die Eltern am Wochenende oder in den Schulferien keine Zeit haben?Zu uns<br>Wir bieten Kinderbetreuung an Wochenenden und während der Schulferien,für Kinder Von 6 bis 10 Jahren.Günstige Preise,zuverlässige Betreuung durch ausgebildete Erzieherinnen.<br>Weitere Informationen und Anmeldung:040/41271128</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige f</div>
+                <div class="font-bold mb-1">Lerninstitut Schröder GmbH</div>
+                <div>Während der Woche haben Sie viel zu tun-und sind abends müde. Sie wollen trotzdem etwas Neues lernen? Dann sprechen Sie uns an:<br>Unsere Kurse für Erwachsene finden ausschließlich an Wochenenden statt. Lernen Sie zum Beispiel, wie man eine Bewerbung schreibt, aber auch kochen oder basteln. Melden Sie sich jetzt an: Tel. 040 91819101</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige g</div>
+                <div class="font-bold mb-1">Lernhilfe Schmidt & Ziege (Hamburg)</div>
+                <div>Erfolgreich lernen Prüfungen bestehen Wir bieten Hilfe für Erwachsene,die eine Ausbildung oder ihren Meister machen und sich auf die Prüfung vorbereiten müssen.Bei uns bekommen Sie Hilfe und Ratschläge.Sie üben Prüfungsaufgaben und diskutieren mit anderen.So ist die Prüfung kein Problem !<br>Termin und weitere Informationen:Hermann Schmidt,040/2591211209</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige h</div>
+                <div class="font-bold mb-1">Lernen macht Spaß</div>
+                <div>Sie möchten Ihren Kindern beim Lernen helfen ? Aber sie wissen nicht ,wie Sie am besten helfen können? Unsere Lehrer beraten Sie gerne. Bei uns finden Sie viele gute Ideen- damit das Lernen mit den Kindern Spaß macht. Die Beratung ist kostenlos und findet jeden Dienstag und Donnerstag von 15 bis 17 Uhr statt. Melden Sie sich gleich an: 040/74092189</div>
+            </div>
+        </div>
+    `,
+    questions: [
+        { num: 26, text: "26. Sie möchten eine neue Sprache lernen und haben nur am Donnerstagabend Zeit.", correctLetter: "c" },
+        { num: 27, text: "27. Ihr vierzehnjähriges Kind möchte einen Kochkurs machen.", correctLetter: "d" },
+        { num: 28, text: "28. Sie möchten einen Computerkurs machen und haben nur Montagvormittag Zeit.", correctLetter: "x" },
+        { num: 29, text: "29. Sie möchten Ihrem Sohn bei den Hausaufgaben helfen und brauchen Tipps.", correctLetter: "h" },
+        { num: 30, text: "30. Sie arbeiten vormittags und suchen jemanden, der auf Ihre fünfjährige Tochter aufpasst.", correctLetter: "a" }
+    ]
+},
+teil3: {
+    title: "Teil 3: Texte verstehen",
+    items: [
+        {
+            text: `<b>Treppenhausreinigung</b><br><br>Liebe Hausbewohnerinnen und Hausbewohner,<br><br>wir haben Sie mehrfach darauf hingewiesen, dass die Mieter des Hauses für die Sauberkeit im Treppenhaus zuständig sind.<br><br>Trotzdem stellen wir fest, dass das Treppenhaus ständig schmutzig ist. Deshalb bieten wir Ihnen an, eine Reinigungsfirma mit dem Putzen des Treppenhauses zu beauftragen. Damit würden sich Ihre Nebenkosten um monatlich 5 Euro erhöhen. Bitte teilen Sie uns bis zum 1.6 mit, ob Sie dieser Neuregelung zustimmen.<br><br>Mit freundlichen Grüßen<br>Ihre Hausverwaltung`,
+            q1: { num: 31, text: "31. Das Treppenhaus ist nicht sauber genug.", correct: "richtig" },
+            q2: { num: 32, text: "32. Die Mieter...", opts: ["a - haben sich für eine Reinigungsfirma entschieden", "b - sollen bis zum 1.6. antworten.", "C - sollen bis dem 1.6. eine Putzfrau bestellen"], correct: 1 }
+        },
+        {
+            text: `Liebe Mieter,<br><br>wie Sie wissen, gibt es oft Probleme mit der Sauberkeit im Treppenhaus. Viele Mieter haben keine Zeit zum Putzen, weil sie den ganzen Tag arbeiten müssen.<br>Deshalb möchten wir, dass eine Firma die Treppe einmal pro Woche putzt. Wir haben auch ein Angebot: Die Kosten pro Mieter (bzw. pro Wohnung) liegen bei 5 Euro im Monat. Aber dafür hätten Sie ein sauberes Treppenhaus.<br>Bitte geben Sie uns bis zum Ende der Woche Bescheid, ob Sie einverstanden sind. Dann geben wir der Reinigungsfirma den Auftrag und ab dem kommenden Monat brauchen Sie sich nicht mehr um das Treppenhaus kümmern.<br><br>Mit freundlichen Grüßen<br>Ihre Hausverwaltung`,
+            q1: { num: 33, text: "33. Das Treppenhaus ist oft schmutzig.", correct: "richtig" },
+            q2: { num: 34, text: "34. Die Firma...", opts: ["a- beginnt Ende dieser Woche zu putzen.", "b-bekommt im Monat 5 Euro Mieter.", "c- soll alle zwei Wochen putzen."], correct: 1 }
+        },
+        {
+            text: `<b>SPERRMÜLL</b><br><b>KAPUTTE ODER ALTE MÖBEL, HAUSHALTSGERÄTE ETC.</b><br><br>Melden Sie Ihren Sperrmüll bitte telefonisch bei uns an. Danach teilen wir Ihnen einen Abholtermin mit. Wenn Sie den Termin nicht einhalten können, sollten Sie mindestens einen Tag vorher telefonisch absagen, da Sie sonst die Anfahrt bezahlen müssen. Die Abholung von Sperrmüll kostet 27,- Euro pro angefangene Viertelstunde Ladezeit. Sie können auch Express und Terminabholung vereinbaren. Dafür berechnen wir 65,- Euro für die erste Viertelstunde, für jede weitere Viertelstunde 40,- Euro. Um Kosten zu sparen, können Sie auch gemeinsam mit einem Nachbarn bestellen. Firmen und öffentliche Auftraggeber zahlen zusätzlich 10 Euro pro m².<br><br>Stadtwerke Wuppertal<br>Tel: 02 02- 145-23 23 23 35`,
+            q1: { num: 35, text: "35. Wenn Sie Sperrmüll haben, müssen Sie bei den Stadtwerken anrufen.", correct: "richtig" },
+            q2: { num: 36, text: "36. Normale Abholung kostet...", opts: ["a- 27, - EUR für 15 Minuten.", "b- nichts", "c -für Firmen gleich viel."], correct: 0 }
+        }
+    ]
+},
+teil4: {
+    title: "Teil 4: FERIENPASS",
+    infoBox: `
+        <div class="bg-white border-2 border-blue-900 rounded-lg p-4 my-2 text-xs text-gray-800 space-y-3 shadow-sm leading-relaxed">
+            <h3 class="text-sm font-bold text-blue-900 border-b border-blue-200 pb-1 text-center">
+                FERIENPASS
+            </h3>
+            <p>
+                sorgt wieder für Sommerspaß <b>Der Ferienpass der Landeshauptstadt Kiel macht auch dieses Jahr den Sommer zum besonderen Erlebnis.</b>Von Montag, 19. Mai an wird der begehrte Ferienpass an den Schulen und im Ferienpassbüro des Amtes für Schule,Kinder und Jugendeinrichtungen verkauft.<br>
+                Der Ferienpass kostet drei Euro, das Programmheft 50 Cent.
+            </p>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">•Infos Programmheft</h4>
+                <p>
+                    <b>Rund 400 Angebote von mehr als 80 Vereinen, Verbänden und Veranstaltern enthält das Programmheft.Außerdem bietet es weitere Anregungen für eine interessante Freizeitgestaltung für die Familie und stellt die vielfältigen KulturSport- und Freizeiteinrichtungen unserer Region vor.</b>
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">-Angebote des Ferienpasses</h4>
+                <p>
+                    Reiten, Segeln, Tanzen, Theater spielen, Naturerkundungen, Kochen, Computerkurse, Ausflüge und viele andere <b>Aktionen sorgen für erlebnisreiche Sommerferien vom 21. Juli bis zum 30. August.</b><br>
+                    Das Uni-Sportforum bietet wieder sein umfangreiches Programm mit Klettern am Kunstfelsen, Schwimmkursen, Mannschaftssport, online-Hockey und vielem mehr an. Zu den Höhepunkten des Sommers gehören Fußballcamps für Jungen und Mädchen.
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">-Den Ferienpass gibt es im Ferienpass-büro.</h4>
+                <p>
+                    Es befindet sich ab 19. Mai im Neuen Rathaus, Andreas-Gayk-Straße 31,Zimmer C 227 (Eingang neben der Touristinformation).<br>
+                    Es ist montags, dienstags, mittwochs und freitags von 9 bis 13 Uhr sowie donnerstags von 11 bis 17 Uhr geöffnet.
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">•Weitere Informationen</h4>
+                <p>
+                    <b>Telefonisch ist das Ferienpassbüro unter der Rufnummer 0431/901-2939 und per E-Mail unter der Adresse <a href="mailto:Ferienpass@kiel.de" class="text-blue-600 underline">Ferienpass@kiel.de</a> zu erreichen.</b>
+                </p>
+            </div>
+        </div>
+    `,
+    questions: [
+        { 
+            num: 37, 
+            text: "37. Das Programmheft informiert über die Frezeitmöglichkeiten in und um Kiel.", 
+            correct: "richtig" 
+        },
+        { 
+            num: 38, 
+            text: "38. Die Freizeitangebote des Ferienpasses beginnen am 19. Mai.", 
+            correct: "falsch" 
+        },
+        { 
+            num: 39, 
+            text: "39. Man kann den Ferienpass im Internet bestellen.", 
+            correct: "falsch" 
+        }
+    ]
+},
+teil5: {
+    title: "Teil 5: Ihr AKTUELL-Abonnement",
+    infoBox: `
+        <div class="bg-white border-2 border-gray-700 rounded-lg p-5 my-2 text-sm text-gray-800 space-y-3 shadow-sm leading-relaxed">
+            <p>Mathias Becker<br>Berger Str. 113<br>03621 Gotha</p>
+            <p class="text-center font-bold">AKTUELL-Abo-Service 81456 München</p>
+            <p class="text-right">München, <strong>(0) den</strong> 14.02.20..</p>
+            <p><strong>Ihr AKTUELL-Abonnement</strong></p>
+            <p><strong>[40]</strong> Becker,</p>
+            <p><strong>[41]</strong> für Ihre Bestellung. Wir liefern Ihnen die Zeitschrift AKTUELL ab Heft 6 dieses Jahres an <strong>[42]</strong> Adresse. Dank unseres schnellen Versandservice werden Sie schon am 15. des <strong>[43]</strong> Monats Ihr erstes AKTUELL Heft in Ihrem Briefkasten finden.</p>
+            <p>Bitte prüfen Sie zur Sicherheit Ihre Anschrift und informieren Sie uns, <strong>[44]</strong> Änderungen notwendig sind.</p>
+            <p>Wir wünschen Ihnen viel Freude mit <strong>[45]</strong> Zeitschrift.</p>
+            <p class="pt-2">Mit freundlichen Grüßen<br><i>Ihr Service Team AKTUELL</i></p>
+        </div>
+    `,
+    questions: [
+        { num: 40, text: "Lücke 40", opts: ["a) Lieber", "b) Sehr geehrter Herr", "c) Sie Herr"], correct: 1 },
+        { num: 41, text: "Lücke 41", opts: ["a) guten Dank", "b) herzlichen Gruß", "c) vielen Dank"], correct: 2 },
+        { num: 42, text: "Lücke 42", opts: ["a) Ihre oben genannte", "b) eine neue", "c) unsere"], correct: 0 },
+        { num: 43, text: "Lücke 43", opts: ["a) kommenden", "b) vergangenen", "c) letzten"], correct: 0 },
+        { num: 44, text: "Lücke 44", opts: ["a) als", "b) obwohl", "c) wenn"], correct: 2 },
+        { num: 45, text: "Lücke 45", opts: ["a) deiner", "b) seiner", "c) unserer"], correct: 2 }
+    ]
+}
+},
+
+{id: 15,
+    title: "Lesen - Test 15(neu)",
+        teil1: {
+    title: "Teil 1: Fernsehprogramm Übersicht",
+    infoBox: `
+        <div class="overflow-x-auto my-2 border border-gray-300 rounded-lg shadow-sm">
+            <table class="w-full text-left border-collapse bg-white text-xs text-gray-800">
+                <thead>
+                    <tr class="bg-gray-100 border-b border-gray-300">
+                        <th class="p-2.5 font-bold border-r border-gray-300 w-1/5">Sender</th>
+                        <th class="p-2.5 font-bold">Programm</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">ARD</td>
+                        <td class="p-2.5">17:30 Die Sendung mit der Maus, 18:00 Sportschau, 19:55 Ziehung der Lottozahlen</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">ZDF</td>
+                        <td class="p-2.5">18:00 hallo deutschland, 19:00 heute Meldungen des Tages, 19:20 Wetter</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">ARTE</td>
+                        <td class="p-2.5">17:10 Bangkok die Straßenküchen, 18:05 Das Leben zu zweit, 19:00 ARTE Reportage: Der Regenwald in Thailand</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">hr 3</td>
+                        <td class="p-2.5">17:50 Service Familie: Elterngeld, 18:30 Service Gesundheit: Wie Sie fit bleiben, 19:20 Hessentipp – Freizeitmagazin</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Pro Sieben</td>
+                        <td class="p-2.5">18:00 Cafe Puls! Wie immer viele Kochideen, 19:10 Galileo: Die teuersten Speisen der Welt, 20:15 Für Groß und Klein: Daddy ohne Plan (Spielfilm)</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Kabel 1</td>
+                        <td class="p-2.5">17:25 Auto: Sicherheit beim Fahren, 18:20 Abenteuer Leben: Wie Basketballer trainieren, 19:15 Serie: Jedes Kilo zählt ! Die richtige Diät</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">VOX</td>
+                        <td class="p-2.5">18:00 Ratgeber: Geld- Die besten Bankkonten, 18:30 Magazin: Die moderne Familie, 19:00 Wissenshunger- Magazin</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    `,
+    questions: [
+        { num: 21, text: "21 Frau Meyer kocht gerne und möchte neue Rezepte kennen kennen", opts: ["a) ARTE", "b) Pro Sieben", "c) anderer Sender"], correct: 1 },
+        { num: 22, text: "22 Der vierjährige Peter möchte gern eine Kindersendung sehen", opts: ["a) ARD", "b) VOX", "c) anderer Sender"], correct: 0 },
+        { num: 23, text: "23 Ihr Nachbar möchte einige Kilo abnehmen und braucht Tipps.", opts: ["a) ARTE", "b) VOX", "c) anderer Sender"], correct: 2 },
+        { num: 24, text: "24 Ihre Bekannte möchte sich mit ihren Kindern einen Film ansehen.", opts: ["a) hr 3", "b) VOX", "c) anderer Sender"], correct: 2 },
+        { num: 25, text: "25 Sie wollen wissen, ob es morgen regnet.", opts: ["a) ARTE", "b) ZDF", "c) anderer Sender"], correct: 1 }
+    ]
+},
+teil2: {
+    title: "Teil 2: Anzeigen a–h",
+    infoBox: `
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-2 text-xs text-gray-800">
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige a</div>
+                <div class="font-bold mb-1">1Zimmer_Apartment mitten im Zentrum</div>
+                <div>Kneipen und Restaurants direkt nebenan. Im Wohn./Schlafbereich befindet sich ein Bett Ein Kleiner Schreibtisch und ein TV Gerät stehen zur Verfügung. Die Miete für eine Person beträgt 420 € Plus Strom und Wasser.<br>Tel.894 45</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige b</div>
+                <div class="font-bold mb-1">1_Zimmer Wohnung, ca 35m, renoviert.EUR 350</div>
+                <div>Wenig Verkehr.Liegt neben einem Park.Einkaufsmöglichkeiten, Schulen und öffentliche Verkehrsmttel in der Nähe, Ein bauküche, Zentralheizung, Gas Ruhig gelegen,aber nur 10 Minuten bis zur Innenstadt<br>Tel 7132/38 18 90</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige c</div>
+                <div class="font-bold mb-1">(KOSTENFREIER SMS und Mail_Service für Wohnung)</div>
+                <div>Durch eine kostenfreie Registrierung auf unserer Hompage erhalten Sie auf Wunsch per SMS.Nachricht über neu ein getroffene Wohnungen und Besichtigungstermine.<br>Mehr Informationen finden Sie auf unserer Homepage unter www.Sefeider_Immobilien.de.</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige d</div>
+                <div class="font-bold mb-1">Für die ganze Familie. Reihenmittelhaus</div>
+                <div>mit vier Zimmer und 180m Terrasse und Balkon.<br>Das Reihenmittelhaus befindet sich in einer ruhigen.grünen Lage.<br>Ein Keller ist vorhanden für Waschmaschine und Trockner.<br>Miete 850 € NKan den Vermieter 70 € .</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige e</div>
+                <div class="font-bold mb-1">Das gemütliche 4_Zimmer_Haus mit ca 120m aus dem Jahr 1900</div>
+                <div>liegt im alten Ortskern die Wohnfläche verteilt sich auf 2 Ebenen in den letzten Jahren wurden um umfangreiche Sanierungsarbeiten durchgeführt_Kaufpreis 179,000EUR<br>Stahno, Immobilien<br>Tel.790 72 64</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige f</div>
+                <div class="font-bold mb-1">Schöne 3_Zimmer_Wohnung 72m im 5.DG (mit lift) in München Schwabing.</div>
+                <div>Miete inklusive Nebenkasse EUR 36o.<br>Wohnküche, modernes Bad/WC Praktische Abstellkammer, attraktive, parkettböden und hübscher. Küches_Balkon_sehr sonnig<br>Besichtigung nach Vereinbarung unter 085/683 26 34</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige g</div>
+                <div class="font-bold mb-1">Gemütliche 3_Zimmer_Wohnung mit 54m im Erdgeschoss_370EUR+120,EUR Nebenkosten.</div>
+                <div>Das Bad wurde komplett neu saniert.<br>Die Wohnung ist mit Laminat ausgelegt.<br>Schulen in der Nähe, Einkaufsmöglichkeiten,S_Bahn am CineMax zu Fuß ca.7Minuten Tel 34 90 52</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige h</div>
+                <div class="font-bold mb-1">Schöne und gut geschnittene 2_Zimmer_Wohnung in München _Haidhausen, 4 OG.</div>
+                <div>Die Wonung hat ca57m und kostet 660 EUR kalt NK130_EUR<br>Aus der Küche hat man einen wunderbaren Blick auf den Pariser Platz<br>Tel 089/58 90 72 34</div>
+            </div>
+        </div>
+    `,
+    questions: [
+        { num: 26, text: "26. Frau Schmetz sucht für sich und ihre Familie eine 4 Zimmer Wohnung oder eine Haus bis 1000EUR", correctLetter: "d" },
+        { num: 27, text: "27. Herr Mauer möchte mit Frau und Tochter umziehen. Ein kurzer Schulweg für seine Tochter wäre gut.", correctLetter: "g" },
+        { num: 28, text: "28. Frau Hauber sucht für sich allein eine kleine, ruhige Wohnung.", correctLetter: "b" },
+        { num: 29, text: "29. Herr Bauer möchte umziehen und sucht einen Nachmieter.", correctLetter: "x" },
+        { num: 30, text: "30. Frau Siebert hat eine Arbeitsstellen in München gefunden und muss mit ihrer Familie umziehen. Eine Wohnung mit viel Licht ist ihr wichtig.", correctLetter: "f" }
+    ]
+},
+teil3: {
+    title: "Teil 3: Texte verstehen",
+    items: [
+        {
+            text: `<b>Treppenhausreinigung</b><br><br>Liebe Hausbewohnerinnen und Hausbewohner,<br><br>wir haben Sie mehrfach darauf hingewiesen, dass die Mieter des Hauses für die Sauberkeit im Treppenhaus zuständig sind. Trotzdem stellen wir fest, dass das Treppenhaus ständig schmutzig ist.<br><br>Deshalb bieten wir Ihnen an, eine Reinigungsfirma mit dem Putzen des Treppenhauses zu beauftragen. Damit würden sich Ihre Nebenkosten um monatlich 5 Euro erhöhen.<br>Bitte teilen Sie uns bis zum 1.6 mit, ob Sie dieser Neuregelung zustimmen.<br><br>Mit freundlichen Grüßen<br>Ihre Hausverwaltung`,
+            q1: { num: 31, text: "31. Das Treppenhaus ist nicht sauber genug", correct: "richtig" },
+            q2: { num: 32, text: "32. Die Mieter...", opts: ["a-haben sich für eine Reinigungsfirma entschieden", "b-müssen ab dem 1.6. eine Putzfrau bezahlen", "c- sollen bis zum 1.6. antworten"], correct: 2 }
+        },
+        {
+            text: `Liebe Nachbarn,<br><br>wie in den Jahren zuvor würden wir auch in diesem Sommer gerne unser Hausbewohner-Gartenfest feiern.<br>Wir sind natürlich bereit, wieder bei der Vorbereitung Organisation mitzumachen.<br>Aber es wäre schön, wenn sich noch viele andere Mieter finden würden, die mithelfen, dass es auch dieses Jahr ein schönes Fest wird.<br>Deshalb möchten wir Sie alle für Samstag, den 28. Juni, um 17.00 Uhr zu den Müllers im 4. Stock einladen.<br>Dort können wir gemeinsam alles planen. Überlegen Sie sich doch schon mal einen passenden Termin und bringen Sie viele Ideen mit.<br>Auch Ihre Kinder sind willkommen und können Vorschläge machen.<br><br>Familie Huber und Familie Müller`,
+            q1: { num: 33, text: "33. Das Gartenfest findet am Samstag, dem 28. Juni, ab 17.00 Uhr statt.", correct: "falsch" },
+            q2: { num: 34, text: "34. Die Nachbarn sollen...", opts: ["a- Bescheid sagen, ob ihnen der Termin passt.", "b- zu einem Treffen bei Familie Müller kommen.", "c- zum Fest keine Kinder mitbringen."], correct: 1 }
+        },
+        {
+            text: `Rothenburg, den 15.04.20..<br><br>Sehr geehrte Familie Erdmann,<br><br>es ist sehr schade, dass Sie an unserem Elternabend der Klasse 4a am letzten Dienstag nicht da sein konnten. Es wurden viele Themen besprochen, so auch unsere Klassenfahrt im Mai nach Berlin. Es ist wichtig, dass auch Sie alle Informationen zu dieser Fahrt bekommen. Deshalb bitte ich Sie, mich anzurufen oder durch Ihren Sohn Kevin einen Termin zu vereinbaren. Natürlich wollen wir, dass auch Kevin an der Klassenfahrt teilnimmt.<br>Meine Telefonnummer ist: 02326 34301 täglich von 15.00 Uhr bis 16.00 Uhr.<br>Meine Sprechstunden sind montags von 12.00 Uhr bis 12.45 Uhr und donnerstags von 8.00 Uhr bis 8.45 Uhr.<br><br>Mit freundlichem Grüßen<br>Ines Strotmer`,
+            q1: { num: 35, text: "35. Kevins Eltern haben am letzten Elternabend teilgenommen.", correct: "falsch" },
+            q2: { num: 36, text: "36. Familie Erdmann...", opts: ["a- lässt Ihren Sohn Kevin nicht mit auf Klassenfahrt.", "b- soll Montag zu Kevins Lehrerin kommen.", "c- soll sich über die Klassenfahrt nach Berlin informieren."], correct: 2 }
+        }
+    ]
+},
+teil4: {
+    title: "Teil 4: Die Kindertagesstätte Süd informiert die Eltern:",
+    infoBox: `
+        <div class="bg-white border-2 border-blue-900 rounded-lg p-4 my-2 text-xs text-gray-800 space-y-3 shadow-sm leading-relaxed">
+            <h3 class="text-sm font-bold text-blue-900 border-b border-blue-200 pb-1 text-center">
+                Die Kindertagesstätte Süd informiert die Eltern:<br>Essen in der Kindertagesstätte
+            </h3>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">-Wann und wo findet das gemeinsame Frühstück statt?</h4>
+                <p>
+                    <b>Alle Kinder gehen gegen 9.00 Uhr gemeinsam in den Speiseraum frühstücken,</b> Dort finden die Kinder ein gesundes und abwechslungsreiches Frühstück.
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">-Was wird zum Frühstück angeboten?</h4>
+                <p>
+                    Da das Frühstück für Kinder ein wichtiger Baustein in der Ernährung ist, bieten wir Ihren Kindern folgende Nahrungsmittel an: selbstgebackenes Brot, Brötchen, Knäckebrot, Obst und frisches Gemüse, Müsli, Cornflakes, Marmelade, Honig, Wurst und Käse und manchmal auch Schokocreme. Wie versuchen das Frühstück innerhalb einer Woche mit diesen Nahrungsmitteln abwechslungsreich zu gestalten, Zum Trinken gibt es ungesüßten Tee, Wasser und Milch oder Kakao.
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">-Wo wird das Mittagessen zubereitet?</h4>
+                <p>
+                    Zum Mittagessen gibt es ein Hauptgericht, Salat und eine Nachspeise oder Obst. Das Essen wird täglich frisch bei uns im Haus zubereitet.
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">-Welche Lebensmittel werden für das Mittagessen verwendet?</h4>
+                <p>
+                    Für das Mittagessen verwenden wir vor allem Lebensmittel aus der Umgebung und Bio-Produkte. Auf das eine oder andere Lebensmittel aus der Tiefkühltruhe können auch wir allerdings nicht verzichten. <b>Für Kinder darf etwas Süßes nicht ganz fehlen, deshalb gibt es ab und zu süßen Quark, Pudding, Waffeln, Muffins oder Eis zum Nachtisch.</b>
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">-Wer bekommt einen Nachmittagssnack?</h4>
+                <p>
+                    <b>Für die Kinder, die bis 17.00 Uhr in unserem Haus angemeldet sind, wird gegen 15,00 Uhr am Nachmittag noch einmal ein kleiner imbiss gereicht.</b> Dazu werden überwiegend Obst und Gemüse oder belegte Brote angeboten. Manchmal gibt es auch Kuchen bzw. etwas anderes Süßes,
+                </p>
+            </div>
+            
+            <p class="font-bold text-gray-900 mt-2">
+                -Die gesunde Ernährung Ihrer Kinder liegt uns ebenso am Herzen wie Bewegung!<br>
+                Ihr Team von der Kita Süd
+            </p>
+        </div>
+    `,
+    questions: [
+        { 
+            num: 37, 
+            text: "37. Zum Frühstück bleiben die Kinder in ihrem Gruppenraum.", 
+            correct: "falsch" 
+        },
+        { 
+            num: 38, 
+            text: "38. Zum Mittagessen gibt es manchmal eine süße Nachspeise.", 
+            correct: "richtig" 
+        },
+        { 
+            num: 39, 
+            text: "39. Alle Kinder bekommen nachmittags noch etwas zu essen.", 
+            correct: "falsch" 
+        }
+    ]
+},
+teil5: {
+    title: "Teil 5: Beschwerde an Möbel Fritz GmbH",
+    infoBox: `
+        <div class="bg-white border-2 border-gray-700 rounded-lg p-5 my-2 text-sm text-gray-800 space-y-3 shadow-sm leading-relaxed">
+            <p>Möbel Fritz GmbH<br>Turmstr. 200<br>21901 Hannover</p>
+            <p class="text-right">94227 Zwiesel<br>09.08.20</p>
+            <p>Sehr <strong>(0) geehrte</strong> Damen und Herren,</p>
+            <p>in der letzten Woche habe ich bei Ihnen einen Küchenschrank gekauft, <strong>[0]</strong> Ihr Angebot mich überzeugt hat. Der Schrank wurde auch schnell geliefert, <strong>[1]</strong> Ihre beiden Mitarbeiter haben den Schrank in meiner Küche an die Wand gehängt. Ich war zuerst sehr zufrieden. <strong>[2]</strong> als ich dann das Geschirr in den Schrank gestellt habe, ist plötzlich der Schrank heruntergefallen. Mein ganzes Geschirr ist <strong>[3]</strong> kaputt.</p>
+            <p>Sie haben dafür bestimmt eine Versicherung, sodass der Schaden bezahlt wird. Bitte melden Sie sich so schnell wie möglich, <strong>[4]</strong> ich brauche dringend neues Geschirr.</p>
+            <p>Außerdem teilen Sie mir bitte mit, <strong>[5]</strong> Ihre Mitarbeiter den Schrank wieder aufhängen können.</p>
+            <p class="pt-2">Mit freundlichen Grüßen<br><i>Karin Schnell</i></p>
+        </div>
+    `,
+    questions: [
+        { num: 0, text: "Lücke 0", opts: ["a) obwohl", "b) sodass", "c) weil"], correct: 2 },
+        { num: 1, text: "Lücke 1", opts: ["a) aber", "b) oder", "c) und"], correct: 2 },
+        { num: 2, text: "Lücke 2", opts: ["a) Aber", "b) Oder", "c) Und"], correct: 0 },
+        { num: 3, text: "Lücke 3", opts: ["a) erst", "b) gestern", "c) jetzt"], correct: 2 },
+        { num: 4, text: "Lücke 4", opts: ["a) aber", "b) denn", "c) oder"], correct: 1 },
+        { num: 5, text: "Lücke 5", opts: ["a) damit", "b) wann", "c) weil"], correct: 1 }
+    ]
+}
+},
+
+{id: 15,
+    title: "Lesen - Test 15(neu)",
+        teil1: {
+    title: "Teil 1: Finanzkompass Übersicht",
+    infoBox: `
+        <div class="overflow-x-auto my-2 border border-gray-300 rounded-lg shadow-sm">
+            <table class="w-full text-left border-collapse bg-white text-xs text-gray-800">
+                <thead>
+                    <tr class="bg-gray-100 border-b border-gray-300">
+                        <th class="p-2.5 font-bold border-r border-gray-300 w-1/3">Kapitel</th>
+                        <th class="p-2.5 font-bold">Inhalte</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Kapitel 1: Der Finanzkompass für jede Lebensphase</td>
+                        <td class="p-2.5">Girokonten für Jugendliche - eigenes Geld, Das Sparkonto - Das müssen Singles beachten, Altersvorsorge-heute schon an morgen denken - Sie haben Kinder? - Das Elterngeld</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Kapitel 2: Girokonto & Co.</td>
+                        <td class="p-2.5">So eröffnen Sie ein Girokonto, Karten weg - was jetzt? - In europäischen Ländern bezahlen- einfach, schnell preiswert</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Kapitel 3: Geld leihen</td>
+                        <td class="p-2.5">So beantragen Sie einen Kredit, Wo Sie Kredit bekommen, Wer Geld bekommt – Ratenkauf</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Kapitel 4: Geld verdienen</td>
+                        <td class="p-2.5">Gut bezahlter Job gesucht!, Das Gehalt- So werden Sie Ihr eigener Chef, Steur sparen</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Kapitel 5: Versicherungen</td>
+                        <td class="p-2.5">Auto fahren- ohne zu viel zu zahlen, So schützen Sie Haus und Hof</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Kapitel 6: Wenn Not am Mann ist</td>
+                        <td class="p-2.5">Arbeitslos? - Keine Panik!, Arbeitslosengeld !!</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Kapitel 7: Die besten Rechtstipps für den Alltag</td>
+                        <td class="p-2.5">Der Handyvertrag, Der Ausbildungsvertrag, Der Mietvertrag</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    `,
+    questions: [
+        { num: 21, text: "21. Sie möchten wissen, wie Sie in Italien zahlen können.", opts: ["a) Kapitel 2", "b) Kapitel 3", "c) anderes Kapitel"], correct: 0 },
+        { num: 22, text: "22. Sie möchten sich über die Rente informieren.", opts: ["a) Kapitel 1", "b) Kapitel 7", "c) anderes Kapitel"], correct: 0 },
+        { num: 23, text: "23. Sie haben Ärger mit Ihrem Vermieter.", opts: ["a) Kapitel 5", "b) Kapitel 7", "c) anderes Kapitel"], correct: 1 },
+        { num: 24, text: "24. Sie möchten Ihr Geld selbstständig verdienen.", opts: ["a) Kapitel 3", "b) Kapitel 4", "c) anderes Kapitel"], correct: 1 },
+        { num: 25, text: "25. Familie Müller möchte weniger Steuern bezahlen.", opts: ["a) Kapitel 1", "b) Kapitel 4", "c) anderes Kapitel"], correct: 1 }
+    ]
+},
+teil2: {
+    title: "Teil 2: Anzeigen a–h",
+    infoBox: `
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-2 text-xs text-gray-800">
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige a</div>
+                <div class="font-bold mb-1">Billiger telefonieren?</div>
+                <div>Die Verbindung ist zu schlecht oder zu teuer? Bestellen Sie Ihren neuen Anschluss über mich.<br>Füllen Sie ganz einfach das Bestellformular online aus. Den Rest erledige ich dann für Sie völlig KOSTENLOS!<br>Wir haben die besten Preise!</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige b</div>
+                <div class="font-bold mb-1">Hilfe rund um den Computer</div>
+                <div>Wir stellen Ihnen die neuesten Modelle vor,erklären vor- und Nachteile, helfen bei Computer-problemen und führen Schulungen bei Ihnen zu Hause im Bereich, Microsoft Windows, Microsoft Office und vieles mehr durch, Selbstverständlich beraten wir Sie auch beim Kauf von Computern.<br>0176/21766625</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige c</div>
+                <div class="font-bold mb-1">Gebrauchte Haushaltsgeräte!</div>
+                <div>Unser Service für Sie :Lieferung wann Sie es möchten:frei Haus bei zu 70 km um die Filiale, in der der Artikel gekauft wurde. Kann auf Wunsch auch abends ab 19:00 Uhr erfolgen. Wir liefern europaweit.<br>Telefon :38 71 57</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige d</div>
+                <div class="font-bold mb-1">Handwerkliche Hilfe für Ihre Wohnung.</div>
+                <div>* kleinstreparaturen<br>* Anbringen von Regalen und Gardinenstangen, Lampen und vielem mehr.<br>* Aufbau und Abbau von Badmöbeln, wohn und Büromöbeln, schlaf und jugendzimmern, Küchen.<br>Kontakt und Antragen über hilfe@gmx, da.</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige e</div>
+                <div class="font-bold mb-1">Sie suchen einen kompetenten Umzugs_und Transportpartner?</div>
+                <div>Wir bieten den Rundum Service für Ihren Umzug an<br>* privatumzüge, Büro _u. Firmenumzüge<br>* UmzugsKartons und packmittel<br>Beratung und ein Angebot ist für Sie als Kunde kostenlos und unverbindlich<br>Rothermel, Leistadter Straße. 29.<br>Telefon :0621/738693</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige f</div>
+                <div class="font-bold mb-1">Computer Grundlagen</div>
+                <div>In diesem kurs erhalten Sie erste grundsätzliche Einblicke in die Arbeit am Computer<br>Sie üben den Umgang mit der Maus und lernen den Aufbau der PC_Tastatur kennen. Wir zeigen Ihnen auch, wie man das Internet für sich nutzt.<br>Vorkenntnisse :keine</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige g</div>
+                <div class="font-bold mb-1">Eine Leitung-drei Möglichkeiten :</div>
+                <div>Genießen Sie die Vielfalt von mehr als 130 digitalen TV _Sendern_in bester Bild_und Tongualitätund eröffnen Sie sich die zusatzoptionen.<br>Telefonieren und Internetzugang via kobel.</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige h</div>
+                <div class="font-bold mb-1">Dataserv_Rückkauf von Altgeräten</div>
+                <div>Sie müssen Ihre alten Computer rechtzeitig durch neue ersetzen? Dieser Austausch kostet Zeit.<br>Wenden Sie sich gleich an die Spezialisten! Wir holen die alten Geräte direkt in Ihrem Unternehmen ab.<br>Rufen Sie uns einfach an : 0711/7896935</div>
+            </div>
+        </div>
+    `,
+    questions: [
+        { num: 26, text: "26. Frau Schmitz sucht jemanden , der ihre neue Küche zusammenbaut .", correctLetter: "d" },
+        { num: 27, text: "27. Herr Huber möchte für sein Telefon weniger als bis jetzt zehlen .", correctLetter: "a" },
+        { num: 28, text: "28. Frau Keller will einen Computer kaufen und braucht Informationen .", correctLetter: "b" },
+        { num: 29, text: "29. Herr studer zieht in eine andere Wohnung und braucht dabei Hilfe .", correctLetter: "e" },
+        { num: 30, text: "30. Frau Miere will eine neue Waschmaschine kaufen und möchte sie nach Hause bringen lassen .", correctLetter: "x" }
+    ]
+},
+teil3: {
+    title: "Teil 3: Texte verstehen",
+    items: [
+        {
+            text: `<b>Ratgeber für gesunde kinderernährung</b><br><br>Übergewicht macht auch kindern schon schwer zu schaffen.<br>Hänseleien, sportliche Misserfolge und modische Probleme begleiten sie durch Kindergarten und Schule.<br>Auch gesundheitlich sind die früh zugelegten Kilos höchst bedenklich Der Ratgeber „Bärenstarke kinderkost“ der verbraucherzentrale Nordrhein-Westfalen hilft Eltern rundlicher lieblinge, ihre Kinder an gesunde Ernährung heranzuführen.<br>Mütter und Väter finden darin tipps, das Essverhalten ihrer Kinder kritisch zu sehen.<br>Außerdem erhalten sie Ratschläge, wie man Essen, Trinken und Süßes für die kleinen richtig auswählt und dosiert.<br>Ausgewogene Rezepte für alle Mahlzeiten des Tages sind in dem Ratgeber ebenfalls enthalten.<br>Auch die Kinder sollen bei der vorbereitung dieser gesunden Speisen aktiv mitmachen.`,
+            q1: { num: 31, text: "31) Das Buch hilft Eltern, ihre Kinder gesünder zu ernähren.", correct: "richtig" },
+            q2: { num: 32, text: "32) Das Buch empfiehlt,", opts: ["a- darauf zu achten, was kinder Essen.", "b- dass sich Kinder viel bewegen sollen.", "c- Kinder essen zu lassen, was sie wollen"], correct: 0 }
+        },
+        {
+            text: `Sehr geehrte Eltern,<br><br>unsere Bundesjugendspiele (Laufen, Springen und Werfen) finden am Donnerstag, den 25.06. von 8.20 Uhr bis ca. 12.00 Uhr statt.<br>Alle Kinder treffen sich um 8.20 Uhr mit ihren Klassenlehrern / lehrerinnen in ihren Klassenräumen. Um 8.45 Uhr ist die offizielle Eröffnung auf dem Sportplatz. Ihre Kinder sollten geeignete Sportkleidung dabeihaben: Turnschuhe für draußen, kurze Sporthose, T-Shirt, Trainings- oder Jogginganzug.<br>Bitte geben Sie Ihren Kindern auch etwas zum Frühstück und ein Getränk mit, egal wie das Wetter wird. Wenn es regnet, findet normaler Unterricht nach Stundenplan statt.<br>Ihren Kindern wünschen wir viel Erfolg!<br><br>Mit sportlichen Grüßen<br>die Schulleitung`,
+            q1: { num: 33, text: "33) Die Kinder sollen etwas zum Essen und zum Trinken mitbringen.", correct: "richtig" },
+            q2: { num: 34, text: "34) Bei Regen", opts: ["a- fallen die Bundesjugendspiele aus.", "b- haben die Kinder am 25.06. frei.", "c- müssen die Kinder ihren Jogginganzug anziehen."], correct: 0 }
+        },
+        {
+            text: `Versäumte Rückgabe von Büchern der Stadt Bochum<br><br>Sehr geehrter Herr Jakobi,<br><br>Sie haben bis heute die ausgeliehenen Bücher und CDs nicht zurückgegeben und auch die Gebühren in Höhe von 20,00 Euro nicht bezahlt. Wir haben Ihre aktuelle Adresse jetzt erst vom Einwohnermeldeamt bekommen.<br>Wir fordern Sie hiermit zum letzten Mal auf, die Bücher bis zum 1. August zurückzugeben und die Verspätungsgebühren in Höhe von 20,00 Euro zu überweisen. Verwenden Sie dazu bitte den beigefügten Zahlschein. Bis dahin ist Ihr Ausweis ungültig, das heißt, Sie können nichts ausleihen.<br><br>Mit freundlichen Grüßen<br>Müller`,
+            q1: { num: 35, text: "35) Herr Jakobi soll seine neue Adresse angeben.", correct: "falsch" },
+            q2: { num: 36, text: "36) Er muss", opts: ["a- eine Strafe zahlen.", "b- neue Bücher kaufen.", "c- seinen Ausweis zurückgeben."], correct: 0 }
+        }
+    ]
+},
+teil4: {
+    title: "Teil 4: Die Versichertenkarte Ihrer Krankenkasse",
+    infoBox: `
+        <div class="bg-white border-2 border-blue-900 rounded-lg p-4 my-2 text-xs text-gray-800 space-y-3 shadow-sm leading-relaxed">
+            <h3 class="text-sm font-bold text-blue-900 border-b border-blue-200 pb-1 text-center">
+                Die Versichertenkarte Ihrer Krankenkasse
+            </h3>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">*Wofür brauchen Sie die Versichertenkarte?</h4>
+                <p>
+                    Mit Ihrer persönlichen Krankenversichertenkarte erhalten Sie in Deutschland ärztliche und zahnärztliche Behandlung bei rund 165.000 Vertragsärzten. Unter diesen Ärzten können Sie frei wählen. Sie legen einfach vor Behandlungsbeginn Ihre Krankenversichertenkarte vor und weisen sich damit als Versicherter unserer Krankenkasse aus. Mit Ihrer Unterschrift auf der Rückseite der Krankenversichertenkarte bestätigen Sie, dass Sie oder Ihre Angehörigen bei uns zum Zeitpunkt der Leistungsinanspruchnahme versichert sind.
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">•Wann erhalten Sie erstmalig Ihre Versichertenkarte?</h4>
+                <p>
+                    Sie erhalten erstmalig Ihre Krankenversichertenkarte, wenn Ihre Mitgliedschaft Familienversicherung beginnt. <b>Die Krankenversichertenkarte gilt in der Regel für eine Dauer von vier Jahren.</b>
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">•Wann erhalten Sie eine neue Versichertenkarte?</h4>
+                <p>
+                    Die Inhalte der Versichertenkarte sind gesetzlich vorgeschrieben. Eine neue Versichertenkarte erhalten Sie daher zum Beispiel bei einer Namensänderung oder Adressänderung.<br>
+                    <b>Wenn Sie Ihren Namen oder Ihre Adresse online ändern, erhalten Sie nach etwa einer Woche automatisch eine neue Versichertenkarte.</b> Wenn Sie Ihre Karte verlieren, Ihnen die Karte gestohlen wird oder defekt ist, können Sie eine neue Karte anfordern.<br>
+                    Ihre Versichertenkarte ist vier Jahre gültig. <b>Danach senden wir Ihnen automatisch eine neue Karte zu Diese erhalten Sie spätestens drei Wochen vor Ablauf der Gültigkeit.</b>
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">•Zum Schluss noch eine Bitte:</h4>
+                <p>
+                    Die Versichertenkarte ermöglicht Ihnen den Zugang zu allen Leistungen Ihrer Krankenkasse. Bewahren Sie diese bitte daher so sicher auf wie Ihre EC-Karte.
+                </p>
+            </div>
+        </div>
+    `,
+    questions: [
+        { 
+            num: 37, 
+            text: "37. Die Versichertenkarten sind fünf Jahre lang gültig.", 
+            correct: "falsch" 
+        },
+        { 
+            num: 38, 
+            text: "38. Wenn Sie umziehen, können Sie eine neue Versichertenkarte.", 
+            correct: "richtig" 
+        },
+        { 
+            num: 39, 
+            text: "39. Wenn die Versichertenkarte ungültig wird, muss man eine neue beantragen.", 
+            correct: "falsch" 
+        }
+    ]
+},
+teil5: {
+    title: "Teil 5: Einladung zur Silbernen Hochzeit",
+    infoBox: `
+        <div class="bg-white border-2 border-gray-700 rounded-lg p-5 my-2 text-sm text-gray-800 space-y-3 shadow-sm leading-relaxed">
+            <p>Liebe Stefanie, <strong>(0) lieber</strong> Frank,</p>
+            <p>vielen Dank für die Einladung zur Silbernen Hochzeit!</p>
+            <p>Ich freue mich sehr für euch, <strong>[40]</strong> ihr jetzt schon 25 Jahre verheiratet seid und <strong>[41]</strong> Beziehung immer noch so gut funktioniert! Wir kennen uns jetzt auch <strong>[42]</strong> fast zehn Jahre.</p>
+            <p>Deshalb tut es mir sehr leid, dass ich nicht zu eurer Feier kommen <strong>[43]</strong>. Ich <strong>[44]</strong> so gern kommen. Aber leider habe ich meinen Jahresurlaub <strong>[45]</strong> fest gebucht und bin an euren Festtag in Frankreich im Urlaub.</p>
+            <p>Ich wünsche euch eine wunderbare Feier!</p>
+            <p>Nochmals vielen Dank für die Einladung und liebe Grüße<br><i>Annika</i></p>
+        </div>
+    `,
+    questions: [
+        { num: 40, text: "Lücke 40", opts: ["a) damit", "b) dass", "c) weshalb"], correct: 1 },
+        { num: 41, text: "Lücke 41", opts: ["a) eure", "b) ihre", "c) seine"], correct: 0 },
+        { num: 42, text: "Lücke 42", opts: ["a) aber", "b) mehr", "c) schon"], correct: 2 },
+        { num: 43, text: "Lücke 43", opts: ["a) kann", "b) muss", "c) will"], correct: 0 },
+        { num: 44, text: "Lücke 44", opts: ["a) bin", "b) wäre", "c) würde"], correct: 2 },
+        { num: 45, text: "Lücke 45", opts: ["a) noch", "b) noch nicht", "c) schon"], correct: 2 }
+    ]
+}
+},
+
+{id: 16,
+    title: "Lesen - Test 16(neu)",
+        teil1: {
+    title: "Teil 1: Finanzkompass Übersicht",
+    infoBox: `
+        <div class="overflow-x-auto my-2 border border-gray-300 rounded-lg shadow-sm">
+            <table class="w-full text-left border-collapse bg-white text-xs text-gray-800">
+                <thead>
+                    <tr class="bg-gray-100 border-b border-gray-300">
+                        <th class="p-2.5 font-bold border-r border-gray-300 w-1/3">Kapitel</th>
+                        <th class="p-2.5 font-bold">Inhalte</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Kapitel 1: Der Finanzkompass für jede Lebensphase</td>
+                        <td class="p-2.5">Girokonten für Jugendliche - eigenes Geld, Das Sparkonto - Das müssen Singles beachten, Altersvorsorge-heute schon an morgen denken - Sie haben Kinder? - Das Elterngeld</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Kapitel 2: Girokonto & Co.</td>
+                        <td class="p-2.5">So eröffnen Sie ein Girokonto, Karten weg - was jetzt? - In europäischen Ländern bezahlen- einfach, schnell preiswert</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Kapitel 3: Geld leihen</td>
+                        <td class="p-2.5">So beantragen Sie einen Kredit, Wo Sie Kredit bekommen, Wer Geld bekommt – Ratenkauf</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Kapitel 4: Geld verdienen</td>
+                        <td class="p-2.5">Gut bezahlter Job gesucht!, Das Gehalt- So werden Sie Ihr eigener Chef, Steur sparen</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Kapitel 5: Versicherungen</td>
+                        <td class="p-2.5">Auto fahren- ohne zu viel zu zahlen, So schützen Sie Haus und Hof</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Kapitel 6: Wenn Not am Mann ist</td>
+                        <td class="p-2.5">Arbeitslos? - Keine Panik!, Arbeitslosengeld !!</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-bold bg-gray-50 border-r border-gray-300">Kapitel 7: Die besten Rechtstipps für den Alltag</td>
+                        <td class="p-2.5">Der Handyvertrag, Der Ausbildungsvertrag, Der Mietvertrag</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    `,
+    questions: [
+        { num: 21, text: "21. Sie möchten wissen, wie Sie in Italien zahlen können.", opts: ["a) Kapitel 2", "b) Kapitel 3", "c) anderes Kapitel"], correct: 0 },
+        { num: 22, text: "22. Sie möchten sich über die Rente informieren.", opts: ["a) Kapitel 1", "b) Kapitel 7", "c) anderes Kapitel"], correct: 0 },
+        { num: 23, text: "23. Sie möchten günstig und sicher fahren.", opts: ["a) Kapitel 3", "b) Kapitel 5", "c) anderes Kapitel"], correct: 1 },
+        { num: 24, text: "24. Sie möchten Ihr Geld selbstständig verdienen.", opts: ["a) Kapitel 3", "b) Kapitel 4", "c) anderes Kapitel"], correct: 1 },
+        { num: 25, text: "25. Familie Müller möchte weniger Steuern bezahlen.", opts: ["a) Kapitel 1", "b) Kapitel 4", "c) anderes Kapitel"], correct: 1 }
+    ]
+},
+teil2: {
+    title: "Teil 2: Anzeigen a–h",
+    infoBox: `
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-2 text-xs text-gray-800">
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige a</div>
+                <div class="font-bold mb-1">Neueröffnung - Fahrschule Zeiss Ausbildung in allen Führerscheinklassen Beginn mit 16 Jahren möglich!</div>
+                <div>Lernen in ruhiger & entspannter Atmosphäre. Betreuung durch erfahrene & Kompetente Fahrlehrer „Theorieunterricht 7 Mal die Woche .Praktische Fahrstunden individuell und flixbel Ferienfahrschule, Seminare ,Fahrtrainings Sischerheitstraining. Neugierig geworden? Lassen Sie sich von unserem Schnupperangebot überzeugen ! Jetzt anmelden und 20% sparen! Beginn mit 16 Jahren möglich !<br>Fahrschule Zeiss, Überring 362, 50678 Köln.<br>Tel 0221/60806688 www.fahrschule-zeiss.de</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige b</div>
+                <div class="font-bold mb-1">K019 Babysitterkurs</div>
+                <div>Ein Kurs für Jugendliche und Erwachsene, die gerne Babys und Kleinkinder betreuen möchten. Er vermittelt kenntnisse darüber, was ein guter Babysitter wissen muss:<br>• Säuglingspflege und Ernährung<br>• Baden und Wickeln<br>• Rechtliche Fragen<br>• Spielvorschläge<br>Bei regelmäßiger Teilnahme erhalten die Teilnehmer/innen ein babysitterdiplom Termine : montags. Zeit:17:00-17:30 Uhr DAEUR :5 Treffen, Gebühr :10,00 €<br>Leitung Frau Watt, Kinderkrankenschwester.</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige c</div>
+                <div class="font-bold mb-1">Ausbildung zum staatlich geprüften Webentwickler und Programmierer</div>
+                <div>Ausbildung im fernunterricht.<br>Ausbildungsdauer. 12 Monate.<br>Voraussetzungen : Realschulabschluss, PC Grund kenntnisse , insbesondere Betriebssystem Windows.<br>Ausbildungsbeginn jeweils : Februar /September Kostenlos. Informaterial anfordern unter www.fernlern-akademie24.de oder rufen Sie uns an: 0185553355<br>FernlernAkademie 24</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige d</div>
+                <div class="font-bold mb-1">Stehen Sie gerne früh auf?</div>
+                <div>Dann sind Sie der/die Richtige für uns.<br>Wir suchen eine/ n Zeitungsausträger/-in für unser Mainecho: das jeden Samstag bis mittags im Briefkasten sein muss<br>INTERESSIERT?<br>Guter Verdienst garantiert<br>Kontakt:Frau Oberst .0179 34 56 89 304</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige e</div>
+                <div class="font-bold mb-1">Erzieher/-in in Teilzeit gesucht</div>
+                <div>Ihre Aufgabenbereiche<br>• Betreuung und Erziehung der Kinder<br>• Elternarbeit.<br>Ihre Qualifikationen<br>• Ausbildung zum/zur Erzieher/-in<br>• Mehrjährige Berufserfahrung.<br>• Eigeninitiative und Engagement<br>Wir bieten :<br>• Arbeit in einem engagierten Team.<br>• Fort -und Weiterbildungsmöglichkeiten<br>• Festanstellung in Teilzeit -Ihre aussagekräftige Bewerbung richten Sie bitte bis zum 15 Juli an:<br>Waldkindergarten Wuppertal.<br>Grüner weg 32,42118 Wuppertal</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige f</div>
+                <div class="font-bold mb-1">Wir suchen für unsere neu eröffnete Filiale Aushilfen (m/w)</div>
+                <div>In der Zeit von 15 bis 18 Uhr<br>Im Rahmen einer geringfügigen Beschäftigung<br>Sie treten kundenorientiert und freundlich auf?<br>Sie suchen eine interessante und abwechslungsreiche Tätigkeit in einem jungen Team ?<br>Dann senden Sie Ihre Bewerbungsunterlagen an :<br>Herrn Müllershagen Bäckerei Korn & Back<br>Nordring 24, 44787 Bochum.</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige g</div>
+                <div class="font-bold mb-1">Förderung durch das Arbeitsamt (Bildungsgutschein)</div>
+                <div>Bestimmte Personengruppen können für Ihre weiterbildung eine finanzielle Hilfe bekommen.<br>Ob Sie Anspruch auf einen solchen Bildungsgutschein haben, wird vom Berater Ihrer zuständigen Arbeitsagentur individuell geprüft und entschieden.<br>Wenn Sie Fragen haben dann sprechen Sie uns einfach an :<br>Bundesagentur für Arbeit<br>Auch in Ihrer Nähe.</div>
+            </div>
+            <div class="bg-white border-2 border-gray-800 rounded p-3 shadow-sm">
+                <div class="font-bold text-sm text-blue-900 border-b border-gray-200 pb-1 mb-2">Anzeige h</div>
+                <div class="font-bold mb-1">VHS Berlin - Nachholen von schulabschlüssen für Erwachsene</div>
+                <div>Fachhochschulreife . Real- oder Hauptschulabschluss<br>Beginn ab November. Dauer 18 Monate<br>Zeit nachmittags oder abends<br>Mindestalter 18 Jahre.<br>Aufnahmetest in Deutsch. Englisch und Mathematik<br>Bewerbungsschluss :15 Oktober<br>Kosten:55 Euro pro Monat<br>Kontakt: Herr Michalek 069-55447730</div>
+            </div>
+        </div>
+    `,
+    questions: [
+        { num: 26, text: "26. Sie haben keinen Schulabschluss . Jetzt möchten Sie einen Realschulabschluss machen .", correctLetter: "h" },
+        { num: 27, text: "27. Sie suchen eine Arbeitsstelle in Vollzeit .", correctLetter: "x" },
+        { num: 28, text: "28. Sie brauchen finanzielle Unterstützung für Ihre Fortbildung .", correctLetter: "g" },
+        { num: 29, text: "29. Sie möchten den Führerschein machen .", correctLetter: "a" },
+        { num: 30, text: "30. Sie suchen einen Nebenjob haben , aber nur am Nachmittag Zeit .", correctLetter: "f" }
+    ]
+},
+teil3: {
+    title: "Teil 3: Texte verstehen",
+    items: [
+        {
+            text: `<b>Ratgeber für gesunde kinderernährung</b><br><br>Übergewicht macht auch Kindern schon schwer zu schaffen. Hänseleien, sportliche Misserfolge und modische Probleme begleiten sie durch Kindergarten und Schule. Auch gesundheitlich sind die früh zugelegten Kilos höchst bedenklich. Der Ratgeber „Bärenstarke kinderkost“ (150 Seiten, 9,80 €) der Verbraucherzentrale Nordrhein-Westfalen hilft Eltern, ihre Kinder an gesunde Ernährung heranzuführen. Mütter und Väter finden Tipps, das Essverhalten ihrer Kinder kritisch zu sehen. Außerdem erhalten sie Ratschläge, wie man Essen, Trinken und Süßes für die Kleinen richtig auswählt und dosiert. Ausgewogene Rezepte für alle Mahlzeiten des Tages sind in dem Ratgeber ebenfalls enthalten. Auch die Kinder sollen bei der Vorbereitung dieser gesunden Speisen aktiv mitmachen.`,
+            q1: { num: 31, text: "31) Die Verbraucherzentrale bietet ein Buch an.", correct: "richtig" },
+            q2: { num: 32, text: "32) Die Verbraucherzentrale empfiehlt,", opts: ["a- darauf zu achten, was Kinder essen.", "b- dass sich Kinder viel bewegen sollen.", "c- Kinder essen zu lassen, was sie wollen"], correct: 0 }
+        },
+        {
+            text: `Sehr geehrte Eltern,<br><br>unsere Bundesjugendspiele (Laufen, Springen und Werfen) finden am Donnerstag, den 25.06. von 8.20 Uhr bis ca. 12.00 Uhr statt.<br>Alle Kinder treffen sich um 8.20 Uhr mit ihren Klassenlehrern / lehrerinnen in ihren Klassenräumen. Um 8.45 Uhr ist die offizielle Eröffnung auf dem Sportplatz. Ihre Kinder sollten geeignete Sportkleidung dabeihaben: Turnschuhe für draußen, kurze Sporthos, T-Shirt, Trainings- oder Jogginganzug.<br>Bitte geben Sie Ihren Kindern auch etwas zum Frühstück und ein Getränk mit, egal wie das Wetter wird. Wenn es regnet, findet normaler Unterricht nach Stundenplan statt.<br>Ihren Kindern wünschen wir viel Erfolg!<br><br>Mit sportlichen Grüßen<br>die Schulleitung`,
+            q1: { num: 33, text: "33) Die Schülerinnen und Schüler sollen etwas zum Essen und zum Trinken mitbringen.", correct: "richtig" },
+            q2: { num: 34, text: "34) Bei Regen", opts: ["a- fallen die Bundesjugendspiele aus.", "b- haben die Schülerinnen und Schüler am Donnerstag frei.", "c- müssen die Schülerinnen und Schüler ihre warme Jacke anziehen."], correct: 0 }
+        },
+        {
+            text: `Sehr geehrte Frau Fuhrmann,<br>sehr geehrter Herr Fuhrmann,<br><br>die von Ihnen gebuchte Reise „7-Tage-Radwanderung entlang der Donau“ vom 7. bis 13. Mai findet leider nicht statt, weil die erforderliche Teilnehmerzahl von 12 Personen nicht erreicht wurde.<br>Wir bedauern diesen Umstand sehr, können Ihnen aber die gleiche Reise zum selben Preis für den Termin vom 11. bis 17. Juni anbieten.<br>Hier gibt es noch einige freie Plätze. Teilen Sie uns doch bitte so schnell wie möglich mit, ob Sie mit der Terminänderung einverstanden sind oder ob Sie von der Reise zurücktreten möchten.<br>Ihre Anzahlung überweisen wir Ihnen dann selbstverständlich umgehend zurück.<br><br>Mit freundlichen Grüßen<br><br>Ihr Reisebüro „Pedalo“`,
+            q1: { num: 35, text: "35) Für die Reise im Mai haben sich zu viele Leute angemeldet.", correct: "falsch" },
+            q2: { num: 36, text: "36) Das Reisebüro...", opts: ["a- bittet Frau und Herrn Fuhrmann, an der Reise im Mai teilzunehmen.", "b- fragt, ob Frau und Herr Fuhrmann die Reise im Juni machen möchten.", "c- hat die Anzahlung schon zurückgezahlt."], correct: 1 }
+        }
+    ]
+},
+teil4: {
+    title: "Teil 4: Die Versichertenkarte Ihrer Krankenkasse",
+    infoBox: `
+        <div class="bg-white border-2 border-blue-900 rounded-lg p-4 my-2 text-xs text-gray-800 space-y-3 shadow-sm leading-relaxed">
+            <h3 class="text-sm font-bold text-blue-900 border-b border-blue-200 pb-1 text-center">
+                Die Versichertenkarte Ihrer Krankenkasse
+            </h3>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">*Wofür brauchen Sie die Versichertenkarte?</h4>
+                <p>
+                    Mit Ihrer persönlichen Krankenversichertenkarte erhalten Sie in Deutschland ärztliche und zahnärztliche Behandlung bei rund 165.000 Vertragsärzten. Unter diesen Ärzten können Sie frei wählen. Sie legen einfach vor Behandlungsbeginn Ihre Krankenversichertenkarte vor und weisen sich damit als Versicherter unserer Krankenkasse aus. Mit Ihrer Unterschrift auf der Rückseite der Krankenversichertenkarte bestätigen Sie, dass Sie oder Ihre Angehörigen bei uns zum Zeitpunkt der Leistungsinanspruchnahme versichert sind.
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">•Wann erhalten Sie erstmalig Ihre Versichertenkarte?</h4>
+                <p>
+                    Sie erhalten erstmalig Ihre Krankenversichertenkarte, wenn Ihre Mitgliedschaft Familienversicherung beginnt. <b>Die Krankenversichertenkarte gilt in der Regel für eine Dauer von vier Jahren.</b>
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">•Wann erhalten Sie eine neue Versichertenkarte?</h4>
+                <p>
+                    Die Inhalte der Versichertenkarte sind gesetzlich vorgeschrieben. Eine neue Versichertenkarte erhalten Sie daher zum Beispiel bei einer Namensänderung oder Adressänderung.<br>
+                    <b>Wenn Sie Ihren Namen oder Ihre Adresse online ändern, erhalten Sie nach etwa einer Woche automatisch eine neue Versichertenkarte.</b> Wenn Sie Ihre Karte verlieren, Ihnen die Karte gestohlen wird oder defekt ist, können Sie eine neue Karte anfordern.<br>
+                    Ihre Versichertenkarte ist vier Jahre gültig. <b>Danach senden wir Ihnen automatisch eine neue Karte zu Diese erhalten Sie spätestens drei Wochen vor Ablauf der Gültigkeit.</b>
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-gray-900">•Zum Schluss noch eine Bitte:</h4>
+                <p>
+                    Die Versichertenkarte ermöglicht Ihnen den Zugang zu allen Leistungen Ihrer Krankenkasse. Bewahren Sie diese bitte daher so sicher auf wie Ihre EC-Karte.
+                </p>
+            </div>
+        </div>
+    `,
+    questions: [
+        { 
+            num: 37, 
+            text: "37. Die Versichertenkarten sind fünf Jahre lang gültig.", 
+            correct: "falsch" 
+        },
+        { 
+            num: 38, 
+            text: "38. Wenn Sie umziehen, bekommen Sie eine neue Versichertenkarte.", 
+            correct: "richtig" 
+        },
+        { 
+            num: 39, 
+            text: "39. Wenn die Versichertenkarte ungültig wird, muss man eine neue beantragen.", 
+            correct: "falsch" 
+        }
+    ]
+},
+teil5: {
+    title: "Teil 5: Bewerbung als Zeitungsausträger",
+    infoBox: `
+        <div class="bg-white border-2 border-gray-700 rounded-lg p-5 my-2 text-sm text-gray-800 space-y-3 shadow-sm leading-relaxed">
+            <p>Berliner Wochenblatt<br>Potsdamer Str.33<br>10358 Berlin</p>
+            <p class="text-right">Berlin, <strong>(0) den</strong> 12.09....</p>
+            <p><strong>Bewerbung als Zeitungsausträger</strong></p>
+            <p><strong>[40]</strong> geehrte Damen und Herren,</p>
+            <p>in Ihrer Anzeige vom 09.09. suchen <strong>[41]</strong> Mitarbeiter zum Verteilen Ihrer Zeitung. Ich <strong>[42]</strong> mich gern für diese Nebentätigkeit bewerben. Ich bin 26 Jahre alt und arbeite halbtags als Haushälterin.</p>
+            <p><strong>[43]</strong> es möglich ist, würde ich gern am Dienstag und Donnerstag arbeiten. Sie <strong>[44]</strong> mich telefonisch unter 030/434241.</p>
+            <p>Ich freue mich auf Ihren Anruf.</p>
+            <p class="pt-2">Mit <strong>[45]</strong> Grüßen<br><i>Ellen Katz</i></p>
+        </div>
+    `,
+    questions: [
+        { num: 40, text: "Lücke 40", opts: ["a) Hoch", "b) Liebe", "c) sehr"], correct: 2 },
+        { num: 41, text: "Lücke 41", opts: ["a) Ihr", "b) Sie", "c) sie"], correct: 1 },
+        { num: 42, text: "Lücke 42", opts: ["a) möchte", "b) müsste", "c) sollte"], correct: 0 },
+        { num: 43, text: "Lücke 43", opts: ["a) Als", "b) Wann", "c) Wenn"], correct: 2 },
+        { num: 44, text: "Lücke 44", opts: ["a) erreichen", "b) rufen", "c) telefonieren"], correct: 0 },
+        { num: 45, text: "Lücke 45", opts: ["a) freundliche", "b) freundlichen", "c) freundlicher"], correct: 1 }
+    ]
+}
+
+},
+
                     ],
             Sprechen: [
                 {
