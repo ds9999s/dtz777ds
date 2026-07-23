@@ -55,6 +55,11 @@
                     <div class="font-bold text-lg text-gray-900">Grammatik</div>
                     <div class="text-xs text-gray-500">Правила та вправи</div>
                 </button>
+                <button onclick="openCategory('Wortschatz')" class="p-5 bg-white border border-gray-200 rounded-2xl shadow-sm hover:border-blue-500 hover:shadow-md transition text-left cursor-pointer">
+                     <div class="text-3xl mb-2">🧠</div>
+                    <div class="font-bold text-lg text-gray-900">Wortschatz</div>
+                    <div class="text-xs text-gray-500">Словниковий запас</div>
+                </button>
             </div>
         </div>
 
@@ -4527,6 +4532,114 @@ teil5: {
                     `
                 }
             ], 
+                        Wortschatz: [
+        {
+            title: "Словник 2: Загальна лексика",
+            content: `
+                <div class="overflow-x-auto bg-white rounded-lg shadow">
+                    <table class="min-w-full text-left border-collapse">
+                        <thead class="bg-blue-100 border-b-2 border-blue-200">
+                            <tr>
+                                <th class="px-4 py-3 font-semibold text-gray-700">Німецька</th>
+                                <th class="px-4 py-3 font-semibold text-gray-700">Українська</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-4 py-3">der Antrag</td>
+                                <td class="px-4 py-3">заява</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-4 py-3">der Vertrag</td>
+                                <td class="px-4 py-3">договір</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-4 py-3">die Rechnung</td>
+                                <td class="px-4 py-3">рахунок</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            `
+        },
+
+        {title: "Словник зі слів Teil 1",
+            content: `
+                <div class="overflow-x-auto bg-white rounded-lg shadow">
+                    <table class="min-w-full text-left border-collapse">
+                        <thead class="bg-blue-100 border-b-2 border-blue-200">
+                            <tr>
+                                <th class="px-4 py-3 font-semibold text-gray-700">Німецька</th>
+                                <th class="px-4 py-3 font-semibold text-gray-700">Українська</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-4 py-3">Grundbildung</td>
+                                <td class="px-4 py-3">Базова освіта</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-4 py-3">Ausbildungsplatz</td>
+                                <td class="px-4 py-3">Місце для навчання</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-4 py-3">Gesellschaft und Politik</td>
+                                <td class="px-4 py-3">Суспільство та політика</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-4 py-3">Berufliche Bildung/EDV</td>
+                                <td class="px-4 py-3">Професійна освіта/інформаційні технології</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-4 py-3">die Kündigung</td>
+                                <td class="px-4 py-3">звільнення / скасування договору</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-4 py-3">die Weiterbildung</td>
+                                <td class="px-4 py-3">підвищення кваліфікації</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-4 py-3">der Bildungsgutschein</td>
+                                <td class="px-4 py-3">освітній ваучер</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-4 py-3">Gesellschaft und Politik</td>
+                                <td class="px-4 py-3">Суспільство та політика</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-4 py-3">Gesellschaft und Politik</td>
+                                <td class="px-4 py-3">Суспільство та політика</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-4 py-3">Gesellschaft und Politik</td>
+                                <td class="px-4 py-3">Суспільство та політика</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-4 py-3">Gesellschaft und Politik</td>
+                                <td class="px-4 py-3">Суспільство та політика</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-4 py-3">Gesellschaft und Politik</td>
+                                <td class="px-4 py-3">Суспільство та політика</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-4 py-3">Gesellschaft und Politik</td>
+                                <td class="px-4 py-3">Суспільство та політика</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-4 py-3">Gesellschaft und Politik</td>
+                                <td class="px-4 py-3">Суспільство та політика</td>
+                            </tr>
+
+
+                    
+                        </tbody>
+                    </table>
+                </div>
+            `
+        }
+    ],
+
             Schreiben: [
                 {
                     type: "guide",
@@ -4809,7 +4922,14 @@ teil5: {
                 audioBox.classList.add('hidden');
                 audioEl.pause();
                 renderSprechenGuide();
-            }
+            } else if (catKey === 'Wortschatz') {
+        // ДОДАНИЙ БЛОК ДЛЯ СЛОВНИКА
+        submitContainer.classList.add('hidden'); // Ховаємо кнопку "Перевірити"
+        document.getElementById('taskCountBadge').innerText = `Словник`;
+        audioBox.classList.add('hidden');
+        audioEl.pause();
+        renderSchreibenGuide(); // Використовуємо готовий рендер, бо він робить те саме!
+    }
         }
 
         /* --------------------------------------------------------------------------
@@ -5016,6 +5136,7 @@ teil5: {
                 </div>
             `;
         }
+    
 
         /* --------------------------------------------------------------------------
            ДОПОМІЖНІ ФУНКЦІЇ ДЛЯ ШАБЛОНІВ
@@ -5036,6 +5157,7 @@ teil5: {
                 </div>
             `;
         }
+        
 
         function selectRf(qNum, val, btnEl) {
             userAnswers[qNum] = val;
@@ -5047,6 +5169,8 @@ teil5: {
             btnEl.classList.add('bg-blue-600', 'text-white', 'border-blue-600');
         }
 
+
+    
         function selectOpt(qNum, val) {
             userAnswers[qNum] = val;
         }
@@ -5123,6 +5247,8 @@ teil5: {
                     }
                 }
             };
+
+
 
             const checkSelectQuestion = (qNum, correctLetter) => {
                 const selectedVal = userAnswers[qNum];
