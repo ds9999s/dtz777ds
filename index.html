@@ -1,96 +1,164 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DTZ B1 Trainer</title>
+    <title>DTZ B1/B2 Trainer</title>
+    <!-- Tailwind CSS v4 CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
         .custom-scrollbar::-webkit-scrollbar { width: 6px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-800 min-h-screen flex flex-col font-sans">
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased relative overflow-x-hidden">
 
-    <header class="bg-blue-600 text-white shadow-md sticky top-0 z-50">
-        <div class="max-w-4xl mx-auto px-4 py-3 flex justify-between items-center">
-            <h1 class="text-lg font-bold">DTZ B1 Trainer</h1>
-            <button id="backBtn" class="hidden bg-blue-700 hover:bg-blue-800 text-xs font-semibold px-3 py-2 rounded-lg transition cursor-pointer" onclick="goBack()">
-                ⬅ Назад
+    <!-- Фоновий м'який градієнтний відблиск -->
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-gradient-to-b from-blue-400/15 via-indigo-500/5 to-transparent blur-3xl pointer-events-none -z-10"></div>
+
+    <!-- Шапка з ефектом Glassmorphism -->
+    <header class="bg-white/75 backdrop-blur-md border-b border-slate-200/80 sticky top-0 z-50 transition-all">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 py-3.5 flex justify-between items-center">
+            <div class="flex items-center gap-2.5">
+                <span class="bg-blue-600 text-white font-extrabold text-xs px-2.5 py-1 rounded-lg tracking-wider shadow-sm shadow-blue-500/20">DTZ</span>
+                <h1 class="text-base font-bold text-slate-900 tracking-tight">Trainer <span class="text-xs font-semibold text-blue-600 bg-blue-50 border border-blue-100 px-2 py-0.5 rounded-full ml-1">B1 / B2</span></h1>
+            </div>
+            <button id="backBtn" class="hidden bg-slate-100 hover:bg-slate-200 text-slate-700 active:scale-95 text-xs font-semibold px-3.5 py-2 rounded-xl transition duration-200 border border-slate-200 flex items-center gap-1.5 cursor-pointer" onclick="goBack()">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+                Назад
             </button>
         </div>
     </header>
 
-    <main class="flex-grow max-w-4xl w-full mx-auto p-4 flex flex-col justify-center">
+    <main class="flex-grow max-w-4xl w-full mx-auto p-4 sm:p-6 flex flex-col justify-center">
 
-        <div id="screenMainMenu" class="space-y-6">
-            <div class="text-center">
-                <h2 class="text-2xl font-extrabold text-gray-900">Оберіть розділ іспиту</h2>
-                <p class="text-xs text-gray-500 mt-1">Підготовка до тестування DTZ B1</p>
+        <!-- Головне меню -->
+        <div id="screenMainMenu" class="space-y-8 my-auto py-6">
+            <div class="text-center max-w-md mx-auto space-y-2">
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Оберіть розділ іспиту</h2>
+                <p class="text-xs sm:text-sm text-slate-500">Інтерактивна підготовка до DTZ B1 та просунуті модулі B2–C1</p>
             </div>
-            <div class="grid grid-cols-2 gap-4">
-                <button onclick="openCategory('Horen')" class="p-5 bg-white border border-gray-200 rounded-2xl shadow-sm hover:border-blue-500 hover:shadow-md transition text-left cursor-pointer">
-                    <div class="text-3xl mb-2">🎧</div>
-                    <div class="font-bold text-lg text-gray-900">Hören</div>
-                    <div class="text-xs text-gray-500">Аудіювання (25 Min)</div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                
+                <!-- Hören -->
+                <button onclick="openCategory('Horen')" class="group relative p-5 bg-white/80 backdrop-blur-sm border border-slate-200/90 rounded-2xl shadow-sm hover:shadow-xl hover:shadow-blue-500/5 hover:border-blue-400/80 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 text-left cursor-pointer overflow-hidden">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="w-11 h-11 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors duration-200">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/></svg>
+                        </div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full border border-slate-200/60">25 Min</span>
+                    </div>
+                    <div class="font-bold text-lg text-slate-900 group-hover:text-blue-600 transition-colors">Hören</div>
+                    <div class="text-xs text-slate-500 mt-0.5">Аудіювання та сприйняття на слух</div>
                 </button>
-                <button onclick="openCategory('Lesen')" class="p-5 bg-white border border-gray-200 rounded-2xl shadow-sm hover:border-blue-500 hover:shadow-md transition text-left cursor-pointer">
-                    <div class="text-3xl mb-2">📖</div>
-                    <div class="font-bold text-lg text-gray-900">Lesen</div>
-                    <div class="text-xs text-gray-500">Читання (45 Min)</div>
+
+                <!-- Lesen -->
+                <button onclick="openCategory('Lesen')" class="group relative p-5 bg-white/80 backdrop-blur-sm border border-slate-200/90 rounded-2xl shadow-sm hover:shadow-xl hover:shadow-emerald-500/5 hover:border-emerald-400/80 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 text-left cursor-pointer overflow-hidden">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="w-11 h-11 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition-colors duration-200">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                        </div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full border border-slate-200/60">45 Min</span>
+                    </div>
+                    <div class="font-bold text-lg text-slate-900 group-hover:text-emerald-600 transition-colors">Lesen</div>
+                    <div class="text-xs text-slate-500 mt-0.5">Читання та розуміння текстів</div>
                 </button>
-                <button onclick="openCategory('Sprechen')" class="p-5 bg-white border border-gray-200 rounded-2xl shadow-sm hover:border-blue-500 hover:shadow-md transition text-left cursor-pointer">
-                    <div class="text-3xl mb-2">🗣️</div>
-                    <div class="font-bold text-lg text-gray-900">Sprechen</div>
-                    <div class="text-xs text-gray-500">Усна частина</div>
+
+                <!-- Sprechen -->
+                <button onclick="openCategory('Sprechen')" class="group relative p-5 bg-white/80 backdrop-blur-sm border border-slate-200/90 rounded-2xl shadow-sm hover:shadow-xl hover:shadow-purple-500/5 hover:border-purple-400/80 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 text-left cursor-pointer overflow-hidden">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="w-11 h-11 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center group-hover:bg-purple-600 group-hover:text-white transition-colors duration-200">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                        </div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider bg-purple-50 text-purple-700 border border-purple-200/60 px-2.5 py-1 rounded-full">B2–C1 Upgrade</span>
+                    </div>
+                    <div class="font-bold text-lg text-slate-900 group-hover:text-purple-600 transition-colors">Sprechen</div>
+                    <div class="text-xs text-slate-500 mt-0.5">Усна частина, діалоги та заміна "Ich denke"</div>
                 </button>
-                <button onclick="openCategory('Schreiben')" class="p-5 bg-white border border-gray-200 rounded-2xl shadow-sm hover:border-blue-500 hover:shadow-md transition text-left cursor-pointer">
-                    <div class="text-3xl mb-2">✍️</div>
-                    <div class="font-bold text-lg text-gray-900">Schreiben</div>
-                    <div class="text-xs text-gray-500">Поради, фразі та граматика (30 Min)</div>
+
+                <!-- Schreiben -->
+                <button onclick="openCategory('Schreiben')" class="group relative p-5 bg-white/80 backdrop-blur-sm border border-slate-200/90 rounded-2xl shadow-sm hover:shadow-xl hover:shadow-amber-500/5 hover:border-amber-400/80 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 text-left cursor-pointer overflow-hidden">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="w-11 h-11 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center group-hover:bg-amber-600 group-hover:text-white transition-colors duration-200">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
+                        </div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full border border-slate-200/60">30 Min</span>
+                    </div>
+                    <div class="font-bold text-lg text-slate-900 group-hover:text-amber-600 transition-colors">Schreiben</div>
+                    <div class="text-xs text-slate-500 mt-0.5">Листи, фрази та письмова частина</div>
                 </button>
-                <button onclick="openCategory('Grammatik')" class="p-5 bg-white border border-gray-200 rounded-2xl shadow-sm hover:border-blue-500 hover:shadow-md transition text-left cursor-pointer">
-                    <div class="text-3xl mb-2">📚</div>
-                    <div class="font-bold text-lg text-gray-900">Grammatik</div>
-                    <div class="text-xs text-gray-500">Правила та вправи</div>
+
+                <!-- Grammatik -->
+                <button onclick="openCategory('Grammatik')" class="group relative p-5 bg-white/80 backdrop-blur-sm border border-slate-200/90 rounded-2xl shadow-sm hover:shadow-xl hover:shadow-indigo-500/5 hover:border-indigo-400/80 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 text-left cursor-pointer overflow-hidden">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="w-11 h-11 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center group-hover:bg-indigo-600 group-hover:text-white transition-colors duration-200">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                        </div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full border border-slate-200/60">Правила</span>
+                    </div>
+                    <div class="font-bold text-lg text-slate-900 group-hover:text-indigo-600 transition-colors">Grammatik</div>
+                    <div class="text-xs text-slate-500 mt-0.5">Конспекти від Nawras Jessri та додаткова інформація</div>
                 </button>
-                <button onclick="openCategory('Wortschatz')" class="p-5 bg-white border border-gray-200 rounded-2xl shadow-sm hover:border-blue-500 hover:shadow-md transition text-left cursor-pointer">
-                     <div class="text-3xl mb-2">🧠</div>
-                    <div class="font-bold text-lg text-gray-900">Wortschatz</div>
-                    <div class="text-xs text-gray-500">Словниковий запас</div>
+
+                <!-- Wortschatz -->
+                <button onclick="openCategory('Wortschatz')" class="group relative p-5 bg-white/80 backdrop-blur-sm border border-slate-200/90 rounded-2xl shadow-sm hover:shadow-xl hover:shadow-rose-500/5 hover:border-rose-400/80 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 text-left cursor-pointer overflow-hidden">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="w-11 h-11 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center group-hover:bg-rose-600 group-hover:text-white transition-colors duration-200">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 01-2 2h-0a2 2 0 01-2-2v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                        </div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full border border-slate-200/60">Лексика</span>
+                    </div>
+                    <div class="font-bold text-lg text-slate-900 group-hover:text-rose-600 transition-colors">Wortschatz</div>
+                    <div class="text-xs text-slate-500 mt-0.5">Словниковий запас за темами</div>
                 </button>
+
             </div>
         </div>
 
-        <div id="screenTestList" class="hidden space-y-6">
-            <div class="text-center">
-                <h2 id="categoryTitle" class="text-2xl font-extrabold text-blue-600 uppercase"></h2>
-                <p class="text-xs text-gray-500 mt-1">Оберіть розділ або тест</p>
+        <!-- Список тестів -->
+        <div id="screenTestList" class="hidden space-y-6 py-4">
+            <div class="text-center space-y-1">
+                <h2 id="categoryTitle" class="text-2xl font-extrabold text-blue-600 uppercase tracking-wide"></h2>
+                <p class="text-xs text-slate-500">Оберіть розділ або потрібний тест для початку</p>
             </div>
-            <div id="testGrid" class="grid grid-cols-2 sm:grid-cols-3 gap-3"></div>
+            <div id="testGrid" class="grid grid-cols-2 sm:grid-cols-3 gap-3.5"></div>
         </div>
 
-        <div id="screenTestContent" class="hidden space-y-4">
+        <!-- Контент тесту -->
+        <div id="screenTestContent" class="hidden space-y-4 py-2">
             
-            <div id="audioPlayerContainer" class="sticky top-14 z-40 bg-blue-50 border border-blue-200 p-3 rounded-xl shadow-sm space-y-2 hidden">
-                <div class="flex items-center justify-between text-blue-800 font-bold text-xs">
-                    <span>🔊 Аудіотрек (Завдання 1-20)</span>
+            <!-- Аудіоплеєр -->
+            <div id="audioPlayerContainer" class="sticky top-16 z-40 bg-blue-50/90 backdrop-blur-md border border-blue-200/80 p-3.5 rounded-2xl shadow-sm space-y-2 hidden">
+                <div class="flex items-center justify-between text-blue-900 font-bold text-xs">
+                    <span class="flex items-center gap-1.5">
+                        <svg class="w-4 h-4 text-blue-600 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                        Аудіотрек (Завдання 1-20)
+                    </span>
                 </div>
-                <audio id="mainAudio" controls class="w-full h-9">
+                <audio id="mainAudio" controls class="w-full h-9 rounded-lg">
                     <source id="audioSource" src="" type="audio/mpeg">
                 </audio>
             </div>
 
-            <div class="bg-white p-3 rounded-xl border border-gray-200 text-sm font-bold text-gray-700 flex justify-between items-center">
-                <span id="testMeta">Test</span>
-                <span id="taskCountBadge" class="text-xs font-normal bg-gray-100 text-gray-600 px-2 py-1 rounded-md"></span>
+            <!-- Метадавні тесту -->
+            <div class="bg-white/80 backdrop-blur-sm p-3.5 rounded-2xl border border-slate-200/80 text-sm font-bold text-slate-700 flex justify-between items-center shadow-sm">
+                <span id="testMeta" class="text-slate-900">Test</span>
+                <span id="taskCountBadge" class="text-xs font-semibold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg border border-slate-200/60"></span>
             </div>
 
-            <div id="questionsContainer" class="space-y-6 max-h-[calc(100vh-220px)] overflow-y-auto pr-1 custom-scrollbar"></div>
+            <!-- Список питань -->
+            <div id="questionsContainer" class="space-y-4 max-h-[calc(100vh-240px)] overflow-y-auto pr-1.5 custom-scrollbar"></div>
 
+            <!-- Кнопка перевірки -->
             <div id="submitContainer" class="pt-2">
-                <button id="checkAnswersBtn" onclick="checkAnswers()" class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition shadow cursor-pointer text-sm">
+                <button id="checkAnswersBtn" onclick="checkAnswers()" class="w-full py-3.5 bg-blue-600 hover:bg-blue-700 active:scale-[0.99] text-white font-bold rounded-2xl transition duration-200 shadow-lg shadow-blue-500/25 cursor-pointer text-sm tracking-wide">
                     Überprüfen (Перевірити)
                 </button>
             </div>
@@ -98,6 +166,8 @@
         </div>
 
     </main>
+</body>
+</html>
 
     <script>
         /* ==========================================================================
@@ -7449,7 +7519,1611 @@ Grammatik: [
 
         </div>
     `
-}
+},
+{
+        id: "perfekt-guide",
+        title: "Das Perfekt — Повний курс (Nawras Jessri)",
+        type: "guide",
+        content: `
+            <div class="space-y-8 text-slate-800 font-sans max-w-5xl mx-auto p-1 sm:p-2">
+                
+                <!-- HEADER BANNER -->
+                <div class="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 p-6 sm:p-8 rounded-3xl text-white shadow-xl shadow-indigo-500/10 space-y-4">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                        <span class="px-3 py-1.5 bg-white/20 rounded-full text-xs font-bold backdrop-blur-md">
+                            🎓 Nawras Jessri — Deutschlehrer und Prüfer B1 & B2
+                        </span>
+                        <span class="px-3 py-1.5 bg-amber-400 text-amber-950 rounded-full text-xs font-bold">
+                            📖 Повний конспект
+                        </span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Das Perfekt (Минулий час)</h2>
+                    <p class="text-sm sm:text-base text-blue-100 leading-relaxed">
+                        Основна форма минулого часу в німецькій розмовній мові. Описує завершені дії в минулому.
+                    </p>
+                </div>
+
+                <!-- 1. WAS IST DAS PERFEKT -->
+                <div class="bg-white/90 backdrop-blur-sm border border-slate-200/90 rounded-2xl p-5 sm:p-6 shadow-sm space-y-4">
+                    <div class="flex items-center gap-3 border-b border-slate-100 pb-3">
+                        <span class="text-2xl">🧠</span>
+                        <h3 class="text-xl font-bold text-slate-900">1. Was ist das Perfekt? (Що таке Perfekt?)</h3>
+                    </div>
+                    
+                    <p class="text-sm text-slate-600">
+                        Das Perfekt ist eine <strong>Vergangenheitsform</strong> (форма минулого часу).
+                    </p>
+
+                    <div class="space-y-2 text-sm">
+                        <div class="flex items-start gap-2 bg-slate-50 p-3.5 rounded-xl border border-slate-200/60">
+                            <span class="text-blue-600 font-bold">🔹</span>
+                            <span>Man verwendet es meistens <strong>beim Sprechen</strong> (Використовується переважно під час розмови).</span>
+                        </div>
+                        <div class="flex items-start gap-2 bg-slate-50 p-3.5 rounded-xl border border-slate-200/60">
+                            <span class="text-blue-600 font-bold">🔹</span>
+                            <span>Es beschreibt <strong>abgeschlossene Handlungen in der Vergangenheit</strong> (Описує завершені дії в минулому).</span>
+                        </div>
+                    </div>
+
+                    <!-- Examples -->
+                    <div class="bg-blue-50/60 border border-blue-200/80 p-4 rounded-xl space-y-2 text-sm">
+                        <div class="font-bold text-blue-900 mb-1">🗣️ Beispiele:</div>
+                        <p class="text-slate-800">• Ich <strong>habe</strong> gestern eine Pizza <strong>gegessen</strong>. 🍕 <span class="text-xs text-slate-500">(Die Handlung ist abgeschlossen)</span></p>
+                        <p class="text-slate-800">• Ich <strong>habe</strong> einen Kuchen <strong>gebacken</strong>. 🎂 <span class="text-xs text-slate-500">(Die Handlung ist fertig)</span></p>
+                        <p class="text-slate-800">• Er <strong>hat</strong> den Film <strong>gesehen</strong>. 🎬</p>
+                    </div>
+                </div>
+
+                <!-- 2. WANN VERWENDEN WIR DAS PERFEKT -->
+                <div class="bg-white/90 backdrop-blur-sm border border-slate-200/90 rounded-2xl p-5 sm:p-6 shadow-sm space-y-4">
+                    <div class="flex items-center gap-3 border-b border-slate-100 pb-3">
+                        <span class="text-2xl">🙋‍♂️</span>
+                        <h3 class="text-xl font-bold text-slate-900">2. Wann verwenden wir das Perfekt? (Коли вживаємо?)</h3>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+                        <div class="p-3.5 bg-emerald-50/80 border border-emerald-200/80 rounded-xl space-y-1">
+                            <span class="font-bold text-emerald-950">✅ Etwas ist in der Vergangenheit passiert:</span>
+                            <p class="text-emerald-900 italic">Ich habe gestern gearbeitet. 💼</p>
+                        </div>
+                        <div class="p-3.5 bg-emerald-50/80 border border-emerald-200/80 rounded-xl space-y-1">
+                            <span class="font-bold text-emerald-950">✅ Wir erzählen eine Erfahrung:</span>
+                            <p class="text-emerald-900 italic">Wir sind nach Koblenz gereist. 🧳</p>
+                        </div>
+                        <div class="p-3.5 bg-emerald-50/80 border border-emerald-200/80 rounded-xl space-y-1 sm:col-span-2">
+                            <span class="font-bold text-emerald-950">✅ In der Alltagssprache (statt Präteritum):</span>
+                            <p class="text-emerald-900 italic">Sie hat mich gestern angerufen. ☎️</p>
+                        </div>
+                    </div>
+
+                    <!-- Zeitangaben -->
+                    <div class="p-4 bg-amber-50/90 border border-amber-200/80 rounded-xl text-sm space-y-1.5">
+                        <span class="font-bold text-amber-950">⏳ Zeitangaben im Perfekt (Слова-маркери часу):</span>
+                        <p class="font-semibold text-amber-900">
+                            gestern, vorgestern, letzte Woche, letztes Jahr, letzter Montag/Sommer, letztes Mal
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 3. WIE BILDET MAN DAS PERFEKT -->
+                <div class="bg-white/90 backdrop-blur-sm border border-slate-200/90 rounded-2xl p-5 sm:p-6 shadow-sm space-y-4">
+                    <div class="flex items-center gap-3 border-b border-slate-100 pb-3">
+                        <span class="text-2xl">🛠️</span>
+                        <h3 class="text-xl font-bold text-slate-900">3. Wie bildet man das Perfekt? (Формула)</h3>
+                    </div>
+
+                    <div class="p-4.5 bg-gradient-to-r from-blue-50 to-indigo-50 border border-indigo-200/80 rounded-2xl text-center font-extrabold text-base sm:text-lg text-slate-900 shadow-sm">
+                        Perfekt = <span class="text-indigo-600">Hilfsverb (haben / sein)</span> + ... + <span class="text-amber-600">Partizip II</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm pt-2">
+                        <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+                            <span class="font-bold text-indigo-700">1. Hilfsverb im Präsens:</span>
+                            <ul class="list-disc pl-4 space-y-1 text-xs sm:text-sm text-slate-600">
+                                <li><strong>"sein"</strong> → Reisen, Bewegung, Veränderung (fahren, gehen, fliegen...)</li>
+                                <li><strong>"haben"</strong> → normale Handlungen (essen, kaufen, lernen...)</li>
+                            </ul>
+                        </div>
+                        <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+                            <span class="font-bold text-amber-700">2. Partizip II:</span>
+                            <p class="text-xs sm:text-sm text-slate-600">
+                                Форма дієслова минулого часу, яка завжди стоїть <strong>у самому кінці речення</strong>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. SATZBAU IM PERFEKT -->
+                <div class="bg-white/90 backdrop-blur-sm border border-slate-200/90 rounded-2xl p-5 sm:p-6 shadow-sm space-y-4">
+                    <div class="flex items-center gap-3 border-b border-slate-100 pb-3">
+                        <span class="text-2xl">🧱</span>
+                        <h3 class="text-xl font-bold text-slate-900">4. Satzbau im Perfekt (Порядок слів)</h3>
+                    </div>
+
+                    <div class="p-3.5 bg-indigo-50/70 border border-indigo-200/80 rounded-xl font-semibold text-center text-indigo-950 text-sm sm:text-base">
+                        Subjekt + <span class="underline decoration-indigo-500 font-bold text-indigo-700">haben/sein</span> (Position 2) + andere Satzteile + <span class="underline decoration-amber-500 font-bold text-amber-700">Partizip II</span> (Satzende)
+                    </div>
+
+                    <!-- Beispiele list -->
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs sm:text-sm border-collapse">
+                            <thead>
+                                <tr class="bg-slate-100 text-slate-700 font-bold">
+                                    <th class="p-2.5 rounded-l-lg">Subjekt</th>
+                                    <th class="p-2.5 text-indigo-600">Hilfsverb</th>
+                                    <th class="p-2.5">Mittelfeld (інші слова)</th>
+                                    <th class="p-2.5 text-amber-600 rounded-r-lg">Partizip II</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 text-slate-800 font-mono">
+                                <tr><td class="p-2.5">Ich</td><td class="p-2.5 font-bold text-indigo-600">habe</td><td class="p-2.5">einen Apfel</td><td class="p-2.5 font-bold text-amber-600">gegessen. 🍏</td></tr>
+                                <tr><td class="p-2.5">Sie</td><td class="p-2.5 font-bold text-indigo-600">ist</td><td class="p-2.5">früh</td><td class="p-2.5 font-bold text-amber-600">aufgestanden. 🛏️</td></tr>
+                                <tr><td class="p-2.5">Er</td><td class="p-2.5 font-bold text-indigo-600">hat</td><td class="p-2.5">das Fenster</td><td class="p-2.5 font-bold text-amber-600">geöffnet. 🪟</td></tr>
+                                <tr><td class="p-2.5">Wir</td><td class="p-2.5 font-bold text-indigo-600">sind</td><td class="p-2.5">nach Hause</td><td class="p-2.5 font-bold text-amber-600">gegangen. 🏠</td></tr>
+                                <tr><td class="p-2.5">Ihr</td><td class="p-2.5 font-bold text-indigo-600">habt</td><td class="p-2.5">Pizza</td><td class="p-2.5 font-bold text-amber-600">bestellt. 🍕</td></tr>
+                                <tr><td class="p-2.5">Wir</td><td class="p-2.5 font-bold text-indigo-600">sind</td><td class="p-2.5">mit dem Zug</td><td class="p-2.5 font-bold text-amber-600">gefahren. 🚆</td></tr>
+                                <tr><td class="p-2.5">Er</td><td class="p-2.5 font-bold text-indigo-600">hat</td><td class="p-2.5">Musik</td><td class="p-2.5 font-bold text-amber-600">gehört. 🎧</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- WANN BENUTZT MAN HABEN ODER SEIN -->
+                <div class="bg-white/90 backdrop-blur-sm border border-slate-200/90 rounded-2xl p-5 sm:p-6 shadow-sm space-y-4">
+                    <div class="flex items-center gap-3 border-b border-slate-100 pb-3">
+                        <span class="text-2xl">✏️</span>
+                        <h3 class="text-xl font-bold text-slate-900">Wann benutzt man „haben“ oder „sein“?</h3>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- SEIN -->
+                        <div class="p-4 bg-sky-50/80 border border-sky-200/80 rounded-2xl space-y-3">
+                            <h4 class="font-bold text-sky-900 text-lg border-b border-sky-200 pb-1">
+                                🔹 SEIN
+                            </h4>
+                            <ul class="text-xs sm:text-sm space-y-1.5 text-slate-700">
+                                <li>• <strong>Bewegung von A nach B:</strong><br><i class="text-sky-900">Ich bin zur Schule gegangen. 🚶‍♀️</i></li>
+                                <li>• <strong>Zustandsänderung (Зміна стану):</strong><br><i class="text-sky-900">Der Preis ist gestiegen. 📈</i><br><i class="text-sky-900">Ein Unfall ist passiert. 🚗</i><br><i class="text-sky-900">Das Glas ist auf den Boden gefallen. 🍷</i></li>
+                            </ul>
+                        </div>
+
+                        <!-- HABEN -->
+                        <div class="p-4 bg-purple-50/80 border border-purple-200/80 rounded-2xl space-y-3">
+                            <h4 class="font-bold text-purple-900 text-lg border-b border-purple-200 pb-1">
+                                🔸 HABEN
+                            </h4>
+                            <ul class="text-xs sm:text-sm space-y-1.5 text-slate-700">
+                                <li>• <strong>Fast alle anderen Verben:</strong><br><i class="text-purple-900">Ich habe gekocht. 🍳</i></li>
+                                <li>• <strong>Verben mit Akkusativobjekt:</strong><br><i class="text-purple-900">Sie hat ein Buch gelesen. 📖</i><br><i class="text-purple-900">Er hat eine E-Mail geschrieben. 💻</i><br><i class="text-purple-900">Ich habe ein Handy gekauft. 📱</i></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- VERB COMPARISON TABLES -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 text-xs sm:text-sm">
+                        <!-- Beispiele mit SEIN -->
+                        <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+                            <div class="font-bold text-sky-800">Beispiele mit sein:</div>
+                            <table class="w-full text-left">
+                                <tbody class="divide-y divide-slate-200">
+                                    <tr><td class="py-1 font-bold">gehen</td><td>Ich bin zur Arbeit gegangen. 👠</td></tr>
+                                    <tr><td class="py-1 font-bold">fahren</td><td>Wir sind nach Berlin gefahren. 🚗</td></tr>
+                                    <tr><td class="py-1 font-bold">kommen</td><td>Er ist zu spät gekommen. ⏰</td></tr>
+                                    <tr><td class="py-1 font-bold">aufstehen</td><td>Er ist um 6 Uhr aufgestanden. ⏰</td></tr>
+                                    <tr><td class="py-1 font-bold">laufen</td><td>Ich bin schnell gelaufen. 🏃‍♂️</td></tr>
+                                    <tr><td class="py-1 font-bold">fliegen</td><td>Wir sind nach Spanien geflogen. ✈️</td></tr>
+                                    <tr><td class="py-1 font-bold">reisen</td><td>Sie ist nach Italien gereist. 🧳</td></tr>
+                                    <tr><td class="py-1 font-bold">aufwachen</td><td>Ich bin heute früh aufgewacht. 🌼</td></tr>
+                                    <tr><td class="py-1 font-bold">umziehen</td><td>Er ist in eine neue Wohnung umgezogen. 🏠</td></tr>
+                                    <tr><td class="py-1 font-bold">sterben</td><td>Der Hund ist alt gestorben. 🐶</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Beispiele mit HABEN -->
+                        <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+                            <div class="font-bold text-purple-800">Beispiele mit haben:</div>
+                            <table class="w-full text-left">
+                                <tbody class="divide-y divide-slate-200">
+                                    <tr><td class="py-1 font-bold">essen</td><td>Ich habe eine Pizza gegessen. 🍕</td></tr>
+                                    <tr><td class="py-1 font-bold">spielen</td><td>Wir haben Fußball gespielt. ⚽</td></tr>
+                                    <tr><td class="py-1 font-bold">lernen</td><td>Wir haben viel gelernt. 🎓</td></tr>
+                                    <tr><td class="py-1 font-bold">kaufen</td><td>Sie hat ein neues Handy gekauft. 📱</td></tr>
+                                    <tr><td class="py-1 font-bold">schreiben</td><td>Ich habe eine E-Mail geschrieben. 💻</td></tr>
+                                    <tr><td class="py-1 font-bold">kochen</td><td>Du hast Suppe gekocht. 🍲</td></tr>
+                                    <tr><td class="py-1 font-bold">machen</td><td>Er hat seine Hausaufgaben gemacht. 📑</td></tr>
+                                    <tr><td class="py-1 font-bold">hören</td><td>Wir haben Musik gehört. 🎧</td></tr>
+                                    <tr><td class="py-1 font-bold">sehen</td><td>Ihr habt einen Film gesehen. 🎬</td></tr>
+                                    <tr><td class="py-1 font-bold">sagen</td><td>Sie haben nichts gesagt. 🙊</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. BILDUNG DES PARTIZIP II (DIE 4 VERBTYPEN) -->
+                <div class="bg-white/90 backdrop-blur-sm border border-slate-200/90 rounded-2xl p-5 sm:p-6 shadow-sm space-y-4">
+                    <div class="flex items-center gap-3 border-b border-slate-100 pb-3">
+                        <span class="text-2xl">🧩</span>
+                        <h3 class="text-xl font-bold text-slate-900">5. Bildung des Partizip II (4 Типи дієслів)</h3>
+                    </div>
+
+                    <p class="text-sm text-slate-600">
+                        Більшість дієслів утворюються за формулою <strong>ge- + Stamm + -(e)t / -en</strong>. Але форма залежить від типу дієслова:
+                    </p>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs sm:text-sm border-collapse border border-slate-200 rounded-xl">
+                            <thead>
+                                <tr class="bg-slate-100 font-bold text-slate-800">
+                                    <th class="p-3 border border-slate-200">Typ</th>
+                                    <th class="p-3 border border-slate-200">Bildung</th>
+                                    <th class="p-3 border border-slate-200">Beispiel</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200 text-slate-700">
+                                <tr>
+                                    <td class="p-3 font-bold">Regelmäßige Verben <br><span class="text-xs font-normal text-slate-500">(schwache Verben)</span></td>
+                                    <td class="p-3 font-mono text-blue-600 font-bold">ge + Stamm + t</td>
+                                    <td class="p-3">machen → gemacht<br>spielen → gespielt</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-bold">Unregelmäßige Verben <br><span class="text-xs font-normal text-slate-500">(starke Verben)</span></td>
+                                    <td class="p-3 font-mono text-purple-600 font-bold">ge + veränderter Stamm + en</td>
+                                    <td class="p-3">gehen → gegangen<br>essen → gegessen</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-bold">Trennbare Verben</td>
+                                    <td class="p-3 font-mono text-amber-600 font-bold">Präfix + ge + Stamm + t/en</td>
+                                    <td class="p-3">aufstehen → aufgestanden<br>anrufen → angerufen</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-bold">Untrennbare Verben</td>
+                                    <td class="p-3 font-mono text-rose-600 font-bold">❌ kein „ge-“ + Stamm + t/en</td>
+                                    <td class="p-3">besuchen → besucht</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- EXCEPTION VERBEN MIT -IEREN -->
+                    <div class="p-4 bg-rose-50/80 border border-rose-200/80 rounded-xl text-xs sm:text-sm space-y-2">
+                        <div class="font-bold text-rose-950">⚠️ Ausnahme: Verben mit -ieren (z. B. studieren) → kein "ge-"!</div>
+                        <p class="text-rose-900">Дієслова, що закінчуються на <strong>-ieren</strong>, УТВОРЮЮТЬ Partizip II БЕЗ префікса "ge-":</p>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1 font-mono text-slate-800">
+                            <div>• studieren → <strong>studiert</strong> <span class="font-sans text-xs text-slate-500">(Ich habe Medizin studiert. ✏️)</span></div>
+                            <div>• telefonieren → <strong>telefoniert</strong> <span class="font-sans text-xs text-slate-500">(Du hast telefoniert. ☎️)</span></div>
+                            <div>• reparieren → <strong>repariert</strong> <span class="font-sans text-xs text-slate-500">(Er hat das Fahrrad repariert. 🛠️)</span></div>
+                            <div>• organisieren → <strong>organisiert</strong> <span class="font-sans text-xs text-slate-500">(Wir haben eine Party organisiert. 🎈)</span></div>
+                            <div>• informieren → <strong>informiert</strong> <span class="font-sans text-xs text-slate-500">(Sie hat mich informiert. 📎)</span></div>
+                            <div>• präsentieren → <strong>präsentiert</strong> <span class="font-sans text-xs text-slate-500">(Wir haben das Projekt präsentiert. 📊)</span></div>
+                            <div>• fotografieren → <strong>fotografiert</strong> <span class="font-sans text-xs text-slate-500">(Ich habe Fotos fotografiert. 📷)</span></div>
+                            <div>• probieren → <strong>probiert</strong> <span class="font-sans text-xs text-slate-500">(Du hast das Essen probiert. 🍽️)</span></div>
+                            <div>• passieren → <strong>passiert</strong> <span class="font-sans text-xs text-slate-500">(Es ist ein Unfall passiert. 🚑 - sein!)</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5.1 REGELMÄSSIGE & UNREGELMÄSSIGE DETAILS -->
+                <div class="bg-white/90 backdrop-blur-sm border border-slate-200/90 rounded-2xl p-5 sm:p-6 shadow-sm space-y-6">
+                    
+                    <!-- Schwache Verben -->
+                    <div class="space-y-3">
+                        <h4 class="font-bold text-slate-900 text-base sm:text-lg border-b border-slate-100 pb-2">
+                            5.1 Regelmäßige Verben (schwache Verben): <span class="text-blue-600 font-mono text-sm">ge- + Stamm + -t</span>
+                        </h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm font-mono">
+                            <div class="p-2.5 bg-slate-50 border border-slate-200/60 rounded-lg">machen → gemacht <span class="font-sans text-slate-500">(Ich habe gemacht.)</span></div>
+                            <div class="p-2.5 bg-slate-50 border border-slate-200/60 rounded-lg">wohnen → gewohnt <span class="font-sans text-slate-500">(Wir haben gewohnt.)</span></div>
+                            <div class="p-2.5 bg-slate-50 border border-slate-200/60 rounded-lg">spielen → gespielt <span class="font-sans text-slate-500">(Du hast gespielt.)</span></div>
+                            <div class="p-2.5 bg-slate-50 border border-slate-200/60 rounded-lg">arbeiten → gearbeitet <span class="font-sans text-slate-500">(Ich habe gearbeitet. 💼)</span></div>
+                            <div class="p-2.5 bg-slate-50 border border-slate-200/60 rounded-lg">lernen → gelernt <span class="font-sans text-slate-500">(Wir haben gelernt.)</span></div>
+                            <div class="p-2.5 bg-slate-50 border border-slate-200/60 rounded-lg">tanzen → getanzt <span class="font-sans text-slate-500">(Du hast getanzt. 💃)</span></div>
+                            <div class="p-2.5 bg-slate-50 border border-slate-200/60 rounded-lg">kaufen → gekauft <span class="font-sans text-slate-500">(Ich habe gekauft.)</span></div>
+                            <div class="p-2.5 bg-slate-50 border border-slate-200/60 rounded-lg">lachen → gelacht <span class="font-sans text-slate-500">(Wir haben gelacht. 😄)</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Starke Verben -->
+                    <div class="space-y-3">
+                        <h4 class="font-bold text-slate-900 text-base sm:text-lg border-b border-slate-100 pb-2">
+                            5.2 Unregelmäßige Verben (starke Verben): <span class="text-purple-600 font-mono text-sm">ge- + veränderter Stamm + -en</span>
+                        </h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm font-mono">
+                            <div class="p-2.5 bg-slate-50 border border-slate-200/60 rounded-lg">gehen → gegangen <span class="font-sans text-slate-500">(Ich bin gegangen. 🚶‍♀️)</span></div>
+                            <div class="p-2.5 bg-slate-50 border border-slate-200/60 rounded-lg">nehmen → genommen <span class="font-sans text-slate-500">(Du hast genommen. 📖)</span></div>
+                            <div class="p-2.5 bg-slate-50 border border-slate-200/60 rounded-lg">essen → gegessen <span class="font-sans text-slate-500">(Du hast gegessen. 🍽️)</span></div>
+                            <div class="p-2.5 bg-slate-50 border border-slate-200/60 rounded-lg">helfen → geholfen <span class="font-sans text-slate-500">(Er hat mir geholfen. 🤝)</span></div>
+                            <div class="p-2.5 bg-slate-50 border border-slate-200/60 rounded-lg">sehen → gesehen <span class="font-sans text-slate-500">(Er hat gesehen. 🎬)</span></div>
+                            <div class="p-2.5 bg-slate-50 border border-slate-200/60 rounded-lg">singen → gesungen <span class="font-sans text-slate-500">(Wir haben gesungen. 🎵)</span></div>
+                            <div class="p-2.5 bg-slate-50 border border-slate-200/60 rounded-lg">schreiben → geschrieben <span class="font-sans text-slate-500">(Wir haben geschrieben. ✍️)</span></div>
+                            <div class="p-2.5 bg-slate-50 border border-slate-200/60 rounded-lg">sprechen → gesprochen <span class="font-sans text-slate-500">(Ich habe gesprochen. 👤)</span></div>
+                            <div class="p-2.5 bg-slate-50 border border-slate-200/60 rounded-lg">trinken → getrunken <span class="font-sans text-slate-500">(Ich habe getrunken. 💧)</span></div>
+                            <div class="p-2.5 bg-slate-50 border border-slate-200/60 rounded-lg">finden → gefunden <span class="font-sans text-slate-500">(Sie hat gefunden. 🔍)</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Trennbare Verben -->
+                    <div class="space-y-3">
+                        <h4 class="font-bold text-slate-900 text-base sm:text-lg border-b border-slate-100 pb-2">
+                            5.3 Trennbare Verben: <span class="text-amber-600 font-mono text-sm">Präfix + ge- + Stamm + -t/-en</span>
+                        </h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm font-mono">
+                            <div class="p-2.5 bg-slate-50 border border-slate-200/60 rounded-lg">aufstehen → aufgestanden <span class="font-sans text-slate-500">(Ich bin aufgestanden. ⏰)</span></div>
+                            <div class="p-2.5 bg-slate-50 border border-slate-200/60 rounded-lg">einkaufen → eingekauft <span class="font-sans text-slate-500">(Wir haben eingekauft. 🛒)</span></div>
+                            <div class="p-2.5 bg-slate-50 border border-slate-200/60 rounded-lg">anrufen → angerufen <span class="font-sans text-slate-500">(Du hast mich angerufen. 📞)</span></div>
+                            <div class="p-2.5 bg-slate-50 border border-slate-200/60 rounded-lg">mitbringen → mitgebracht <span class="font-sans text-slate-500">(Er hat Kuchen mitgebracht. 🧃)</span></div>
+                            <div class="p-2.5 bg-slate-50 border border-slate-200/60 rounded-lg">abholen → abgeholt <span class="font-sans text-slate-500">(Ich habe dich abgeholt. 🚗)</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Untrennbare Verben -->
+                    <div class="space-y-3">
+                        <h4 class="font-bold text-slate-900 text-base sm:text-lg border-b border-slate-100 pb-2">
+                            5.4 Untrennbare Verben: <span class="text-rose-600 font-mono text-sm">❌ kein „ge-“ (Präfixe: be-, ver-, er-, emp-, ent-, ge-, zer-, miss-)</span>
+                        </h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm font-mono">
+                            <div class="p-2.5 bg-slate-50 border border-slate-200/60 rounded-lg">besuchen → besucht <span class="font-sans text-slate-500">(Ich habe Oma besucht. 👵)</span></div>
+                            <div class="p-2.5 bg-slate-50 border border-slate-200/60 rounded-lg">verstehen → verstanden <span class="font-sans text-slate-500">(Wir haben alles verstanden. 🧠)</span></div>
+                            <div class="p-2.5 bg-slate-50 border border-slate-200/60 rounded-lg">bekommen → bekommen <span class="font-sans text-slate-500">(Sie hat ein Geschenk bekommen. 🎁)</span></div>
+                            <div class="p-2.5 bg-slate-50 border border-slate-200/60 rounded-lg">verkaufen → verkauft <span class="font-sans text-slate-500">(Sie hat ihr Auto verkauft. 🚗)</span></div>
+                            <div class="p-2.5 bg-slate-50 border border-slate-200/60 rounded-lg">studieren → studiert <span class="font-sans text-slate-500">(Ich habe Architektur studiert. 🏛️)</span></div>
+                            <div class="p-2.5 bg-slate-50 border border-slate-200/60 rounded-lg">missverstehen → missverstanden <span class="font-sans text-slate-500">(Ich habe dich falsch verstanden. 👧)</span></div>
+                            <div class="p-2.5 bg-slate-50 border border-slate-200/60 rounded-lg">erreichen → erreicht <span class="font-sans text-slate-500">(Ich habe den Zug erreicht. 🦲)</span></div>
+                            <div class="p-2.5 bg-slate-50 border border-slate-200/60 rounded-lg">empfehlen → empfohlen <span class="font-sans text-slate-500">(Der Arzt hat Ruhe empfohlen. 🩺)</span></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- 6. WICHTIGE VERBEN IM PERFEKT (CONJUGATION TABLE) -->
+                <div class="bg-white/90 backdrop-blur-sm border border-slate-200/90 rounded-2xl p-5 sm:p-6 shadow-sm space-y-4">
+                    <div class="flex items-center gap-3 border-b border-slate-100 pb-3">
+                        <span class="text-2xl">📖</span>
+                        <h3 class="text-xl font-bold text-slate-900">6. Wichtige Verben im Perfekt (Таблиці відмінювання)</h3>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-center text-xs sm:text-sm border-collapse border border-slate-200">
+                            <thead>
+                                <tr class="bg-slate-100 font-bold text-slate-800">
+                                    <th class="p-2 border border-slate-200">Pronomen</th>
+                                    <th class="p-2 border border-slate-200 text-sky-700">gehen (sein)</th>
+                                    <th class="p-2 border border-slate-200">machen (haben)</th>
+                                    <th class="p-2 border border-slate-200">essen (haben)</th>
+                                    <th class="p-2 border border-slate-200">sehen (haben)</th>
+                                    <th class="p-2 border border-slate-200">schlafen (haben)</th>
+                                    <th class="p-2 border border-slate-200">kaufen (haben)</th>
+                                    <th class="p-2 border border-slate-200">schreiben (haben)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200 font-mono text-slate-700">
+                                <tr>
+                                    <td class="p-2 font-bold font-sans">ich</td>
+                                    <td class="p-2 bg-sky-50/50 font-semibold text-sky-900">bin gegangen</td>
+                                    <td class="p-2">habe gemacht</td>
+                                    <td class="p-2">habe gegessen</td>
+                                    <td class="p-2">habe gesehen</td>
+                                    <td class="p-2">habe geschlafen</td>
+                                    <td class="p-2">habe gekauft</td>
+                                    <td class="p-2">habe geschrieben</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 font-bold font-sans">du</td>
+                                    <td class="p-2 bg-sky-50/50 font-semibold text-sky-900">bist gegangen</td>
+                                    <td class="p-2">hast gemacht</td>
+                                    <td class="p-2">hast gegessen</td>
+                                    <td class="p-2">hast gesehen</td>
+                                    <td class="p-2">hast geschlafen</td>
+                                    <td class="p-2">hast gekauft</td>
+                                    <td class="p-2">hast geschrieben</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 font-bold font-sans">er/sie/es</td>
+                                    <td class="p-2 bg-sky-50/50 font-semibold text-sky-900">ist gegangen</td>
+                                    <td class="p-2">hat gemacht</td>
+                                    <td class="p-2">hat gegessen</td>
+                                    <td class="p-2">hat gesehen</td>
+                                    <td class="p-2">hat geschlafen</td>
+                                    <td class="p-2">hat gekauft</td>
+                                    <td class="p-2">hat geschrieben</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 font-bold font-sans">wir</td>
+                                    <td class="p-2 bg-sky-50/50 font-semibold text-sky-900">sind gegangen</td>
+                                    <td class="p-2">haben gemacht</td>
+                                    <td class="p-2">haben gegessen</td>
+                                    <td class="p-2">haben gesehen</td>
+                                    <td class="p-2">haben geschlafen</td>
+                                    <td class="p-2">haben gekauft</td>
+                                    <td class="p-2">haben geschrieben</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 font-bold font-sans">ihr</td>
+                                    <td class="p-2 bg-sky-50/50 font-semibold text-sky-900">seid gegangen</td>
+                                    <td class="p-2">habt gemacht</td>
+                                    <td class="p-2">habt gegessen</td>
+                                    <td class="p-2">habt gesehen</td>
+                                    <td class="p-2">habt geschlafen</td>
+                                    <td class="p-2">habt gekauft</td>
+                                    <td class="p-2">habt geschrieben</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 font-bold font-sans">sie/Sie</td>
+                                    <td class="p-2 bg-sky-50/50 font-semibold text-sky-900">sind gegangen</td>
+                                    <td class="p-2">haben gemacht</td>
+                                    <td class="p-2">haben gegessen</td>
+                                    <td class="p-2">haben gesehen</td>
+                                    <td class="p-2">haben geschlafen</td>
+                                    <td class="p-2">haben gekauft</td>
+                                    <td class="p-2">haben geschrieben</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 6.2 LIST OF TOP VERBS WITH EXAMPLES -->
+                <div class="bg-white/90 backdrop-blur-sm border border-slate-200/90 rounded-2xl p-5 sm:p-6 shadow-sm space-y-4">
+                    <h4 class="font-bold text-slate-900 text-base sm:text-lg border-b border-slate-100 pb-2">
+                        Найважливіші дієслова для іспиту B1/B2 (Wichtige Verben im Perfekt)
+                    </h4>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm">
+                        <div class="p-3 bg-slate-50 rounded-xl space-y-1 border border-slate-200/60">
+                            <span class="font-bold text-indigo-700">trinken (haben) → getrunken</span>
+                            <p class="text-slate-600">Ich habe Wasser getrunken. 💧</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl space-y-1 border border-slate-200/60">
+                            <span class="font-bold text-sky-700">bleiben (sein!) → geblieben</span>
+                            <p class="text-slate-600">Wir sind zu Hause geblieben. 🏠</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl space-y-1 border border-slate-200/60">
+                            <span class="font-bold text-indigo-700">finden (haben) → gefunden</span>
+                            <p class="text-slate-600">Er hat seine Schlüssel gefunden. 🔑</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl space-y-1 border border-slate-200/60">
+                            <span class="font-bold text-indigo-700">verlieren (haben) → verloren</span>
+                            <p class="text-slate-600">Du hast dein Handy verloren. 📱</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl space-y-1 border border-slate-200/60">
+                            <span class="font-bold text-indigo-700">beginnen (haben) → begonnen</span>
+                            <p class="text-slate-600">Der Kurs hat begonnen. 🛈</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl space-y-1 border border-slate-200/60">
+                            <span class="font-bold text-sky-700">fahren (sein!) → gefahren</span>
+                            <p class="text-slate-600">Ich bin nach Köln gefahren. 🚗</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl space-y-1 border border-slate-200/60">
+                            <span class="font-bold text-sky-700">laufen (sein!) → gelaufen</span>
+                            <p class="text-slate-600">Sie ist schnell gelaufen. 🏃‍♀️</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl space-y-1 border border-slate-200/60">
+                            <span class="font-bold text-indigo-700">helfen (haben) → geholfen</span>
+                            <p class="text-slate-600">Ihr habt uns geholfen. 🤝</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl space-y-1 border border-slate-200/60">
+                            <span class="font-bold text-indigo-700">treffen (haben) → getroffen</span>
+                            <p class="text-slate-600">Wir haben Freunde getroffen. 👥</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl space-y-1 border border-slate-200/60">
+                            <span class="font-bold text-indigo-700">denken (haben) → gedacht</span>
+                            <p class="text-slate-600">Ich habe an dich gedacht. 💭</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl space-y-1 border border-slate-200/60">
+                            <span class="font-bold text-indigo-700">erzählen (haben) → erzählt</span>
+                            <p class="text-slate-600">Ich habe eine Geschichte erzählt. 📖</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl space-y-1 border border-slate-200/60">
+                            <span class="font-bold text-indigo-700">beschreiben (haben) → beschrieben</span>
+                            <p class="text-slate-600">Er hat die Situation beschrieben. 📜</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl space-y-1 border border-slate-200/60">
+                            <span class="font-bold text-indigo-700">erklären (haben) → erklärt</span>
+                            <p class="text-slate-600">Sie hat den Plan erklärt. 📘</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl space-y-1 border border-slate-200/60">
+                            <span class="font-bold text-indigo-700">begründen (haben) → begründet</span>
+                            <p class="text-slate-600">Wir haben unsere Meinung begründet. 💬</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl space-y-1 border border-slate-200/60">
+                            <span class="font-bold text-indigo-700">vorschlagen (haben) → vorgeschlagen</span>
+                            <p class="text-slate-600">Er hat einen Ausflug vorgeschlagen. 🏞️</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl space-y-1 border border-slate-200/60">
+                            <span class="font-bold text-indigo-700">zustimmen (haben) → zugestimmt</span>
+                            <p class="text-slate-600">Ich habe dem Vorschlag zugestimmt. 👍</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl space-y-1 border border-slate-200/60">
+                            <span class="font-bold text-indigo-700">ablehnen (haben) → abgelehnt</span>
+                            <p class="text-slate-600">Sie hat das Angebot abgelehnt. 🚫</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl space-y-1 border border-slate-200/60">
+                            <span class="font-bold text-indigo-700">vergleichen (haben) → verglichen</span>
+                            <p class="text-slate-600">Wir haben die Preise verglichen. 💰</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl space-y-1 border border-slate-200/60">
+                            <span class="font-bold text-indigo-700">diskutieren (haben) → diskutiert</span>
+                            <p class="text-slate-600">Ihr habt lange diskutiert. 🗣️</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl space-y-1 border border-slate-200/60">
+                            <span class="font-bold text-indigo-700">sich entschuldigen → sich entschuldigt</span>
+                            <p class="text-slate-600">Er hat sich für die Verspätung entschuldigt. ⏰</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. FAZIT / SUMMARY BANNER (LIGHT THEME) -->
+                <div class="p-5 sm:p-6 bg-amber-50/90 border border-amber-200 rounded-2xl space-y-3 shadow-sm text-amber-950">
+                    <div class="font-bold text-base sm:text-lg text-amber-900 border-b border-amber-200 pb-2 flex items-center gap-2">
+                        <span>📌</span> 7. Das Perfekt ist:
+                    </div>
+                    <ul class="text-xs sm:text-sm text-amber-900 space-y-2 leading-relaxed">
+                        <li>✔️ <strong>Hilfsverb (haben/sein) + Partizip II</strong></li>
+                        <li>✔️ Wird in der <strong>gesprochenen Sprache</strong> verwendet und beschreibt <strong>abgeschlossene Handlungen</strong>.</li>
+                        <li>✔️ Es gibt <strong>regelmäßige, unregelmäßige, trennbare & untrennbare Verben</strong>.</li>
+                        <li>💡 <i>Man muss leider viele Formen auswendig lernen!</i></li>
+                    </ul>
+                </div>
+
+            </div>
+        `
+    }, 
+    {
+        id: "adjektivdeklination-guide",
+        title: "Adjektivdeklination im Nominativ — Повний курс (Nawras Jessri)",
+        type: "guide",
+        content: `
+            <div class="space-y-8 text-slate-800 font-sans max-w-5xl mx-auto p-1 sm:p-2">
+                
+                <!-- HEADER BANNER -->
+                <div class="bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 p-6 sm:p-8 rounded-3xl text-white shadow-xl shadow-orange-500/10 space-y-4">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                        <span class="px-3 py-1.5 bg-white/20 rounded-full text-xs font-bold backdrop-blur-md">
+                            🎓 Nawras Jessri — Deutschlehrer und Prüfer B1 & B2
+                        </span>
+                        <span class="px-3 py-1.5 bg-white text-orange-950 rounded-full text-xs font-bold">
+                            📖 Повний конспект (Teil 1)
+                        </span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Adjektivdeklination (Відмінювання прикметників)</h2>
+                    <p class="text-sm sm:text-base text-orange-100 leading-relaxed">
+                        Чому в одному реченні кажуть «Das Auto ist <strong>neu</strong>», а в іншому — «Das <strong>neue</strong> Auto»? Вчимося правильно додавати закінчення до прикметників!
+                    </p>
+                </div>
+
+                <!-- INTRO PUZZLE -->
+                <div class="bg-white/90 backdrop-blur-sm border border-slate-200/90 rounded-2xl p-5 sm:p-6 shadow-sm space-y-4">
+                    <div class="flex items-center gap-3 border-b border-slate-100 pb-3">
+                        <span class="text-2xl">👉</span>
+                        <h3 class="text-xl font-bold text-slate-900">Порівняйте 4 речення (Schau dir diese Sätze an)</h3>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm font-mono">
+                        <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl">1. Das Auto ist <strong class="text-rose-600">neu</strong>.</div>
+                        <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl">2. Das <strong class="text-indigo-600">neue</strong> Auto steht vor dem Haus.</div>
+                        <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl">3. Der Baum ist <strong class="text-rose-600">groß</strong>.</div>
+                        <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl">4. Ein <strong class="text-indigo-600">großer</strong> Baum verschönert den Garten.</div>
+                    </div>
+
+                    <div class="p-4 bg-amber-50/80 border border-amber-200/80 rounded-xl text-xs sm:text-sm text-amber-950 space-y-1">
+                        <p class="font-bold">❓ Чому "neu" без закінчення, а "neue" із закінченням?</p>
+                        <p class="font-bold">❓ Чому кажуть "großer Baum", але "groß" в іншому реченні?</p>
+                        <p class="text-amber-900 pt-1 font-sans">Щоб це зрозуміти, потрібно знати головне правило: <strong>де саме стоїть прикметник у реченні!</strong></p>
+                    </div>
+                </div>
+
+                <!-- RULE 1: ADJEKTIV NACH DEM NOMEN -->
+                <div class="bg-white/90 backdrop-blur-sm border border-slate-200/90 rounded-2xl p-5 sm:p-6 shadow-sm space-y-4">
+                    <div class="flex items-center gap-3 border-b border-slate-100 pb-3">
+                        <span class="text-2xl">❌</span>
+                        <h3 class="text-xl font-bold text-slate-900">1. Adjektive nach dem Nomen (Прикметник після іменника)</h3>
+                    </div>
+
+                    <div class="p-3.5 bg-rose-50 border border-rose-200 rounded-xl font-bold text-rose-950 text-sm sm:text-base text-center">
+                        💡 Keine Endung = keine Dekination! (Без закінчень)
+                    </div>
+
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Якщо прикметник стоїть <strong>після дієслова</strong> (праворуч від іменника/суб'єкта), він залишається в своїй базовій формі (Grundform / Positiv). Це називається <i>prädikatives Adjektiv</i>.
+                    </p>
+
+                    <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm font-semibold text-slate-700">
+                        📌 Типові дієслова: <span class="text-indigo-600">sein, werden, bleiben, aussehen, scheinen</span> тощо.
+                    </div>
+
+                    <!-- Examples -->
+                    <div class="bg-slate-50/80 border border-slate-200 p-4 rounded-xl space-y-2 text-sm font-mono">
+                        <p class="text-slate-800">• Das Auto ist <strong class="text-rose-600">neu</strong>. 🚗</p>
+                        <p class="text-slate-800">• Der Baum ist <strong class="text-rose-600">groß</strong>. 🌳</p>
+                        <p class="text-slate-800">• Die Tasche ist <strong class="text-rose-600">rot</strong>. 👜</p>
+                        <p class="text-slate-800">• Die Katze ist <strong class="text-rose-600">süß</strong>. 🐱</p>
+                    </div>
+
+                    <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-xs sm:text-sm font-bold text-emerald-950 flex items-center gap-2">
+                        <span>🟡 Merke:</span> Wenn das Adjektiv nach dem Verb steht ➔ KEINE ENDUNG!
+                    </div>
+                </div>
+
+                <!-- RULE 2: ADJEKTIV VOR DEM NOMEN -->
+                <div class="bg-white/90 backdrop-blur-sm border border-slate-200/90 rounded-2xl p-5 sm:p-6 shadow-sm space-y-4">
+                    <div class="flex items-center gap-3 border-b border-slate-100 pb-3">
+                        <span class="text-2xl">✅</span>
+                        <h3 class="text-xl font-bold text-slate-900">2. Adjektive vor dem Nomen ➔ dekliniert!</h3>
+                    </div>
+
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Якщо прикметник стоїть <strong>безпосередньо перед іменником</strong>, він ОБОВ'ЯЗКОВО отримує закінчення (Endung).
+                    </p>
+
+                    <div class="p-4 bg-indigo-50/70 border border-indigo-200 rounded-xl text-xs sm:text-sm space-y-2 text-indigo-950">
+                        <div class="font-bold text-indigo-900">Це закінчення залежить від 4 факторів:</div>
+                        <ul class="list-disc pl-5 space-y-1 font-medium">
+                            <li>🔹 <strong>dem Artikel:</strong> артикля (der, ein, kein, mein...)</li>
+                            <li>🔹 <strong>dem Kasus:</strong> відмінка (Nominativ, Akkusativ, Dativ...)</li>
+                            <li>🔹 <strong>dem Genus:</strong> роду (Maskulin m, Feminin f, Neutral n)</li>
+                            <li>🔹 <strong>Singular oder Plural:</strong> однини чи множини</li>
+                        </ul>
+                    </div>
+
+                    <!-- Examples -->
+                    <div class="bg-slate-50/80 border border-slate-200 p-4 rounded-xl space-y-2 text-sm font-mono">
+                        <p class="text-slate-800">• Das <strong class="text-indigo-600">neue</strong> Auto steht vor dem Haus. 🚗</p>
+                        <p class="text-slate-800">• Der <strong class="text-indigo-600">große</strong> Baum wächst schnell. 🌳</p>
+                        <p class="text-slate-800">• Ein <strong class="text-indigo-600">schöner</strong> Tag beginnt. 🌼</p>
+                        <p class="text-slate-800">• Eine <strong class="text-indigo-600">kleine</strong> Katze schläft auf dem Sofa. 🐱</p>
+                    </div>
+                </div>
+
+                <!-- NOMINATIV ENDINGS TABLE -->
+                <div class="bg-white/90 backdrop-blur-sm border border-slate-200/90 rounded-2xl p-5 sm:p-6 shadow-sm space-y-4">
+                    <div class="flex items-center gap-3 border-b border-slate-100 pb-3">
+                        <span class="text-2xl">📘</span>
+                        <h3 class="text-xl font-bold text-slate-900">Adjektivendungen im Nominativ (Називний відмінок)</h3>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs sm:text-sm border-collapse border border-slate-200 rounded-xl">
+                            <thead>
+                                <tr class="bg-slate-100 font-bold text-slate-800">
+                                    <th class="p-3 border border-slate-200">Genus (Рід)</th>
+                                    <th class="p-3 border border-slate-200 text-blue-700">Bestimmter Artikel (Означений)</th>
+                                    <th class="p-3 border border-slate-200 text-blue-800">Endung</th>
+                                    <th class="p-3 border border-slate-200 text-emerald-700">Unbestimmter Artikel (Неозначений)</th>
+                                    <th class="p-3 border border-slate-200 text-emerald-800">Endung</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200 font-mono text-slate-700">
+                                <tr>
+                                    <td class="p-3 font-bold font-sans">Maskulin (m)</td>
+                                    <td class="p-3">der schön<strong class="text-blue-600">e</strong> / toll<strong class="text-blue-600">e</strong> Mann 👨</td>
+                                    <td class="p-3 font-bold text-blue-600">-e</td>
+                                    <td class="p-3">ein schön<strong class="text-emerald-600">er</strong> / toll<strong class="text-emerald-600">er</strong> Mann 👨</td>
+                                    <td class="p-3 font-bold text-emerald-600">-er</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-bold font-sans">Feminin (f)</td>
+                                    <td class="p-3">die schön<strong class="text-blue-600">e</strong> / hübsch<strong class="text-blue-600">e</strong> Frau 👩</td>
+                                    <td class="p-3 font-bold text-blue-600">-e</td>
+                                    <td class="p-3">eine schön<strong class="text-emerald-600">e</strong> / hübsch<strong class="text-emerald-600">e</strong> Frau 👩</td>
+                                    <td class="p-3 font-bold text-emerald-600">-e</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-bold font-sans">Neutral (n)</td>
+                                    <td class="p-3">das schön<strong class="text-blue-600">e</strong> / klein<strong class="text-blue-600">e</strong> Kind 👶</td>
+                                    <td class="p-3 font-bold text-blue-600">-e</td>
+                                    <td class="p-3">ein schön<strong class="text-emerald-600">es</strong> / klein<strong class="text-emerald-600">es</strong> Kind 👶</td>
+                                    <td class="p-3 font-bold text-emerald-600">-es</td>
+                                </tr>
+                                <tr class="bg-amber-50/40">
+                                    <td class="p-3 font-bold font-sans">Plural (pl)</td>
+                                    <td class="p-3">die schön<strong class="text-amber-600">en</strong> / nett<strong class="text-amber-600">en</strong> Kinder 👦👧</td>
+                                    <td class="p-3 font-bold text-amber-600">-en</td>
+                                    <td class="p-3">schön<strong class="text-rose-600">e</strong> / klein<strong class="text-rose-600">e</strong> Kinder <br><span class="text-[10px] text-slate-500 font-sans">(❌ ohne Artikel)</span></td>
+                                    <td class="p-3 font-bold text-rose-600">-e</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- RULES SUMMARY BOX -->
+                    <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm space-y-2 text-slate-700">
+                        <div class="font-bold text-slate-900">📌 Правила запам'ятовування:</div>
+                        <p>1. Після <strong>bestimmten Artikeln</strong> (der/die/das) увесь однина отримує закінчення <strong class="text-blue-600">-e</strong>, а у множині (Plural) ➔ <strong class="text-amber-600">-en</strong>.</p>
+                        <p>2. Після <strong>ein / eine / ein</strong> закінчення показують рід іменника: Maskulin ➔ <strong class="text-emerald-600">-er</strong>, Feminin ➔ <strong class="text-emerald-600">-e</strong>, Neutral ➔ <strong class="text-emerald-600">-es</strong>.</p>
+                        <p>3. У множині <strong>без артикля</strong> (ohne Artikel) додається закінчення <strong class="text-rose-600">-e</strong>.</p>
+                    </div>
+                </div>
+
+                <!-- EXAMPLES COMPARISON -->
+                <div class="bg-white/90 backdrop-blur-sm border border-slate-200/90 rounded-2xl p-5 sm:p-6 shadow-sm space-y-4">
+                    <h4 class="font-bold text-slate-900 text-base sm:text-lg border-b border-slate-100 pb-2">
+                        Порівняльна таблиця прикладів (Bestimmter vs. Unbestimmter Artikel)
+                    </h4>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm font-mono">
+                        <div class="p-4 bg-blue-50/60 border border-blue-200 rounded-xl space-y-1.5">
+                            <div class="font-bold text-blue-900 font-sans mb-2">🟦 Bestimmter Artikel:</div>
+                            <p>• Das große Haus 🏠</p>
+                            <p>• Das neue Auto 🚗</p>
+                            <p>• Die alte Zeitung 📰</p>
+                            <p>• Die moderne Uhr ⌚</p>
+                            <p>• Der schwarze Hund 🐶</p>
+                            <p>• Der starke Mann 🏋️‍♂️</p>
+                            <p>• Der freundliche Verkäufer 👨‍💼</p>
+                            <p>• Die nette Nachbarin 👩‍🌾</p>
+                            <p>• Das billige Fahrrad 🚲</p>
+                            <p>• Das interessante Thema 📚</p>
+                            <p>• Der neue Kollege 🧑‍💼</p>
+                            <p>• Die leckere Suppe 🍲</p>
+                            <p>• Die weißen Schuhe 👟</p>
+                            <p>• Die netten Kinder 👦👧</p>
+                        </div>
+
+                        <div class="p-4 bg-emerald-50/60 border border-emerald-200 rounded-xl space-y-1.5">
+                            <div class="font-bold text-emerald-900 font-sans mb-2">🟩 Unbestimmter Artikel:</div>
+                            <p>• Ein großes Haus 🏠</p>
+                            <p>• Ein neues Auto 🚗</p>
+                            <p>• Eine alte Zeitung 📰</p>
+                            <p>• Eine moderne Uhr ⌚</p>
+                            <p>• Ein schwarzer Hund 🐶</p>
+                            <p>• Ein starker Mann 🏋️‍♂️</p>
+                            <p>• Ein freundlicher Verkäufer 👨‍💼</p>
+                            <p>• Eine nette Nachbarin 👩‍🌾</p>
+                            <p>• Ein billiges Fahrrad 🚲</p>
+                            <p>• Ein interessantes Thema 📚</p>
+                            <p>• Ein neuer Kollege 🧑‍💼</p>
+                            <p>• Eine leckere Suppe 🍲</p>
+                            <p>• Weiße Schuhe <span class="text-[10px] text-slate-500 font-sans">(ohne Artikel)</span> 👟</p>
+                            <p>• Nette Kinder <span class="text-[10px] text-slate-500 font-sans">(ohne Artikel)</span> 👦👧</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CATEGORIZED EXAMPLES BY GENUS -->
+                <div class="bg-white/90 backdrop-blur-sm border border-slate-200/90 rounded-2xl p-5 sm:p-6 shadow-sm space-y-6">
+                    <h4 class="font-bold text-slate-900 text-base sm:text-lg border-b border-slate-100 pb-2">
+                        Приклади в реченнях за родами (Beispiele im Nominativ)
+                    </h4>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
+                        <!-- MASKULIN -->
+                        <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+                            <div class="font-bold text-rose-700 font-sans border-b border-slate-200 pb-1">🔴 Maskulin (der / ein):</div>
+                            <p class="text-slate-800">• Der <strong>große</strong> Baum steht im Garten. 🌳</p>
+                            <p class="text-slate-800">• Ein <strong>großer</strong> Garten verschönert das Haus.</p>
+                            <p class="text-slate-800">• Der <strong>schöne</strong> Tag ist sonnig. ☀️</p>
+                            <p class="text-slate-800">• Ein <strong>schöner</strong> Tag beginnt. 🌼</p>
+                            <p class="text-slate-800">• Der <strong>freundliche</strong> Mann hilft gern. 🧔</p>
+                            <p class="text-slate-800">• Ein <strong>freundlicher</strong> Mann ist nett. 😊</p>
+                            <p class="text-slate-800">• Der <strong>junge</strong> Lehrer erklärt die Aufgabe.</p>
+                            <p class="text-slate-800">• Ein <strong>junger</strong> Lehrer erklärt die Aufgabe.</p>
+                            <p class="text-slate-800">• Der <strong>starke</strong> Wind weht heute. 📣</p>
+                            <p class="text-slate-800">• Ein <strong>netter</strong> Polizist hilft dem Kind. 👮‍♂️</p>
+                        </div>
+
+                        <!-- NEUTRAL -->
+                        <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+                            <div class="font-bold text-amber-700 font-sans border-b border-slate-200 pb-1">🟡 Neutral (das / ein):</div>
+                            <p class="text-slate-800">• Das <strong>blaue</strong> Kleid gefällt mir. 👗</p>
+                            <p class="text-slate-800">• Ein <strong>nettes</strong> Mädchen hilft ihrer Mutter.</p>
+                            <p class="text-slate-800">• Das <strong>neue</strong> Handy ist teuer. 📱</p>
+                            <p class="text-slate-800">• Ein <strong>modernes</strong> Haus steht in der Stadt. 🏠</p>
+                            <p class="text-slate-800">• Ein <strong>wichtiges</strong> Formular fehlt noch. 📝</p>
+                            <p class="text-slate-800">• Ein <strong>interessantes</strong> Buch liegt auf dem Tisch. 📖</p>
+                        </div>
+
+                        <!-- FEMININ -->
+                        <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+                            <div class="font-bold text-purple-700 font-sans border-b border-slate-200 pb-1">🟣 Feminin (die / eine):</div>
+                            <p class="text-slate-800">• Die <strong>neue</strong> Tasche ist rot. 👜</p>
+                            <p class="text-slate-800">• Das ist eine <strong>kleine</strong> Katze. 🐱</p>
+                            <p class="text-slate-800">• Die <strong>kleine</strong> Katze ist süß. 🐱</p>
+                            <p class="text-slate-800">• Die <strong>nette</strong> Nachbarin hilft mir oft. 👩‍🌾</p>
+                            <p class="text-slate-800">• Eine <strong>freundliche</strong> Frau spricht mit mir.</p>
+                            <p class="text-slate-800">• Eine <strong>leckere</strong> Suppe steht auf dem Tisch. 🍲</p>
+                            <p class="text-slate-800">• Die <strong>deutsche</strong> Sprache ist schön. 🇩🇪</p>
+                        </div>
+
+                        <!-- PLURAL -->
+                        <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+                            <div class="font-bold text-emerald-700 font-sans border-b border-slate-200 pb-1">🟢 Plural (die / ohne Artikel):</div>
+                            <p class="text-slate-800">• Die <strong>neuen</strong> Schuhe sind bequem. 👟</p>
+                            <p class="text-slate-800">• <strong>Neue</strong> Schuhe sind oft teuer. 👠</p>
+                            <p class="text-slate-800">• Die <strong>jungen</strong> Frauen sind hübsch. 👩‍🦰</p>
+                            <p class="text-slate-800">• <strong>Freundliche</strong> Kollegen machen Spaß. 🧑‍🤝‍🧑</p>
+                            <p class="text-slate-800">• <strong>Alte</strong> Möbel sind manchmal wertvoll. 🪑</p>
+                            <p class="text-slate-800">• <strong>Nette</strong> Leute helfen dir gern. 😊</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FINAL SUMMARY BANNER -->
+                <div class="p-5 sm:p-6 bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-2xl space-y-3 shadow-sm text-amber-950">
+                    <div class="font-bold text-base sm:text-lg text-amber-900 border-b border-amber-200 pb-2 flex items-center gap-2">
+                        <span>💡</span> Шпаргалка підсумку (Zusammenfassung):
+                    </div>
+                    <ul class="text-xs sm:text-sm text-amber-900 space-y-2 leading-relaxed font-semibold">
+                        <li>🔸 Adjektiv <strong>nach dem Verb</strong> ➔ <i>keine Endung!</i> (Das Auto ist neu)</li>
+                        <li>🔸 Adjektiv <strong>vor dem Nomen</strong> ➔ <i>Endung je nach Artikel + Kasus + Genus!</i></li>
+                        <li>🔹 <strong>der/die/das/eine</strong> ➔ Endung <strong>-e</strong></li>
+                        <li>🔹 <strong>ein (m)</strong> ➔ <strong>-er</strong> &nbsp;|&nbsp; <strong>ein (n)</strong> ➔ <strong>-es</strong></li>
+                        <li>🔹 <strong>Plural mit „die“</strong> ➔ <strong>-en</strong> &nbsp;|&nbsp; <strong>Plural ohne Artikel</strong> ➔ <strong>-e</strong></li>
+                    </ul>
+                </div>
+
+            </div>
+        `
+    },
+    {
+        id: "futur1-guide",
+        title: "Futur I (Майбутній час) — Повний курс (Nawras Jessri)",
+        type: "guide",
+        content: `
+            <div class="space-y-8 text-slate-800 font-sans max-w-5xl mx-auto p-1 sm:p-2">
+                
+                <!-- HEADER BANNER -->
+                <div class="bg-gradient-to-r from-fuchsia-600 via-purple-600 to-indigo-600 p-6 sm:p-8 rounded-3xl text-white shadow-xl shadow-purple-500/10 space-y-4">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                        <span class="px-3 py-1.5 bg-white/20 rounded-full text-xs font-bold backdrop-blur-md">
+                            🎓 Nawras Jessri — Deutschlehrer und Prüfer B1 & B2
+                        </span>
+                        <span class="px-3 py-1.5 bg-white text-purple-950 rounded-full text-xs font-bold">
+                            ⏳ Граматичний довідник
+                        </span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Futur I (Майбутній час)</h2>
+                    <p class="text-sm sm:text-base text-purple-100 leading-relaxed">
+                        Використовується, щоб говорити про майбутні події, плани, припущення або обіцянки.
+                    </p>
+                </div>
+
+                <!-- 1. WIE BILDET MAN DAS FUTUR I? -->
+                <div class="bg-white/90 backdrop-blur-sm border border-slate-200/90 rounded-2xl p-5 sm:p-6 shadow-sm space-y-5">
+                    <div class="flex items-center gap-3 border-b border-slate-100 pb-3">
+                        <span class="text-2xl">🛠️</span>
+                        <h3 class="text-xl font-bold text-slate-900">1. Wie bildet man das Futur I? (Як утворюється)</h3>
+                    </div>
+
+                    <div class="p-4 bg-indigo-50/70 border border-indigo-200 rounded-xl font-semibold text-center text-indigo-950 text-sm sm:text-base">
+                        Subjekt + <span class="underline decoration-indigo-500 font-bold text-indigo-700">konjugiertes „werden“</span> + andere Satzteile + <span class="underline decoration-fuchsia-500 font-bold text-fuchsia-700">Infinitiv am Satzende</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start pt-2">
+                        <!-- Konjugation -->
+                        <div class="space-y-3">
+                            <h4 class="font-bold text-slate-700 text-sm">📌 Konjugation von „werden“:</h4>
+                            <table class="w-full text-left text-sm border-collapse border border-slate-200 rounded-lg overflow-hidden">
+                                <thead>
+                                    <tr class="bg-slate-100 text-slate-700">
+                                        <th class="p-2.5 border-b border-slate-200">Personalpronomen</th>
+                                        <th class="p-2.5 border-b border-slate-200 text-indigo-700">Verbform</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100 font-mono text-slate-800">
+                                    <tr><td class="p-2.5 font-bold font-sans">ich</td><td class="p-2.5 font-bold text-indigo-600">werde</td></tr>
+                                    <tr><td class="p-2.5 font-bold font-sans">du</td><td class="p-2.5 font-bold text-indigo-600">wirst</td></tr>
+                                    <tr><td class="p-2.5 font-bold font-sans">er/sie/es</td><td class="p-2.5 font-bold text-indigo-600">wird</td></tr>
+                                    <tr><td class="p-2.5 font-bold font-sans">wir</td><td class="p-2.5 font-bold text-indigo-600">werden</td></tr>
+                                    <tr><td class="p-2.5 font-bold font-sans">ihr</td><td class="p-2.5 font-bold text-indigo-600">werdet</td></tr>
+                                    <tr><td class="p-2.5 font-bold font-sans">sie / Sie</td><td class="p-2.5 font-bold text-indigo-600">werden</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Beispiele -->
+                        <div class="space-y-3">
+                            <h4 class="font-bold text-slate-700 text-sm">🗣️ Beispiele:</h4>
+                            <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl space-y-2.5 text-sm font-mono text-slate-800">
+                                <p>• Ich <strong class="text-indigo-600">werde</strong> <strong class="text-fuchsia-700">umziehen</strong>. 🏠</p>
+                                <p>• Wir <strong class="text-indigo-600">werden</strong> morgen früh mit dem Zug nach Köln <strong class="text-fuchsia-700">fahren</strong>. 🚂</p>
+                                <p>• Es <strong class="text-indigo-600">wird</strong> morgen <strong class="text-fuchsia-700">regnen</strong>. 🌧️</p>
+                                <p>• Sie <strong class="text-indigo-600">werden</strong> <strong class="text-fuchsia-700">diskutieren</strong>. 💬</p>
+                                <div class="mt-3 pt-3 border-t border-slate-200 font-sans text-xs text-slate-600 italic">
+                                    "Ich werde dich morgen anrufen. 📞" <br>
+                                    (= Ich rufe dich morgen an, aber die Form mit „werden“ klingt formeller.)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. WANN BENUTZT MAN DAS FUTUR I? (4 CATEGORIES) -->
+                <div class="bg-white/90 backdrop-blur-sm border border-slate-200/90 rounded-2xl p-5 sm:p-6 shadow-sm space-y-6">
+                    <div class="flex items-center gap-3 border-b border-slate-100 pb-3">
+                        <span class="text-2xl">💡</span>
+                        <h3 class="text-xl font-bold text-slate-900">2. Wann benutzt man das Futur I? (Коли використовується)</h3>
+                    </div>
+
+                    <!-- A. Pläne / Absichten -->
+                    <div class="bg-blue-50/60 border border-blue-200 rounded-xl p-4 sm:p-5 space-y-3">
+                        <h4 class="font-bold text-blue-900 text-lg flex items-center gap-2">
+                            <span class="bg-blue-200 text-blue-800 px-2 py-0.5 rounded text-sm">A</span>
+                            Pläne, Absichten / Ideen (nicht 100% sicher)
+                        </h4>
+                        <p class="text-sm text-blue-800 font-medium">👉 Verwendung bei noch unsicheren, nicht festen Plänen.</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm font-mono text-slate-800 pt-1">
+                            <p>• Ich werde einen B2 Kurs besuchen.</p>
+                            <p>• Sie wird Medizin studieren. 🎓</p>
+                            <p>• Wir werden in den Ferien nach Berlin fahren. 🚗</p>
+                            <p>• Ich werde ein neues Handy kaufen. 📱</p>
+                            <p>• Ich werde ein Praktikum machen. 💼</p>
+                            <p>• Ich werde nach der Prüfung eine Ausbildung machen.</p>
+                        </div>
+                    </div>
+
+                    <!-- B. Vermutungen über die Zukunft -->
+                    <div class="bg-amber-50/60 border border-amber-200 rounded-xl p-4 sm:p-5 space-y-3">
+                        <h4 class="font-bold text-amber-900 text-lg flex items-center gap-2">
+                            <span class="bg-amber-200 text-amber-800 px-2 py-0.5 rounded text-sm">B</span>
+                            Vermutungen über die Zukunft (Припущення)
+                        </h4>
+                        <ul class="flex flex-wrap gap-2 text-xs font-semibold text-amber-800 mb-3">
+                            <li class="bg-white px-2 py-1 rounded border border-amber-200 shadow-sm">• bestimmt/sicher (100%)</li>
+                            <li class="bg-white px-2 py-1 rounded border border-amber-200 shadow-sm">• wahrscheinlich (~80%)</li>
+                            <li class="bg-white px-2 py-1 rounded border border-amber-200 shadow-sm">• vielleicht (~50%)</li>
+                            <li class="bg-white px-2 py-1 rounded border border-amber-200 shadow-sm">• möglicherweise (~40%)</li>
+                            <li class="bg-white px-2 py-1 rounded border border-amber-200 shadow-sm">• vermutlich</li>
+                        </ul>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm font-mono text-slate-800">
+                            <div class="space-y-2">
+                                <p>• Der Himmel ist bewölkt ☁️. Es <strong class="text-fuchsia-700">wird regnen</strong> 🌧️.</p>
+                                <p>• Sie <strong class="text-fuchsia-700">wird</strong> wahrscheinlich zu spät <strong class="text-fuchsia-700">kommen</strong>. ⏰</p>
+                                <p>• Die Preise <strong class="text-fuchsia-700">werden steigen</strong>. 📈</p>
+                                <p>• Er <strong class="text-fuchsia-700">wird</strong> krank <strong class="text-fuchsia-700">sein</strong>. 🤒</p>
+                                <p>• Wir <strong class="text-fuchsia-700">werden</strong> möglicherweise <strong class="text-fuchsia-700">umziehen</strong>. 🏠</p>
+                            </div>
+                            <div class="space-y-2">
+                                <p>• Ihr <strong class="text-fuchsia-700">werdet</strong> die Prüfung <strong class="text-fuchsia-700">bestehen</strong>. (hoffentlich!)</p>
+                                <p>• Er <strong class="text-fuchsia-700">wird</strong> vielleicht nicht zur Party <strong class="text-fuchsia-700">kommen</strong>.</p>
+                                <p>• Die Temperatur sinkt. Es <strong class="text-fuchsia-700">wird</strong> vielleicht <strong class="text-fuchsia-700">schneien</strong>. ❄️</p>
+                                <p>• Er trinkt keinen Kaffee. Er <strong class="text-fuchsia-700">wird</strong> bestimmt besser <strong class="text-fuchsia-700">schlafen</strong>. 😴</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- C. Versprechen und Entscheidungen -->
+                    <div class="bg-emerald-50/60 border border-emerald-200 rounded-xl p-4 sm:p-5 space-y-3">
+                        <h4 class="font-bold text-emerald-900 text-lg flex items-center gap-2">
+                            <span class="bg-emerald-200 text-emerald-800 px-2 py-0.5 rounded text-sm">C</span>
+                            Versprechen und Entscheidungen (Обіцянки та рішення)
+                        </h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm font-mono text-slate-800 pt-1">
+                            <div>
+                                <p class="font-bold font-sans text-emerald-800 mb-2">📌 1. Versprechen:</p>
+                                <p>• Ich werde dich nie verlassen. ❤️</p>
+                                <p>• Ich werde immer für dich da sein. 😊</p>
+                                <p>• Ich werde dein Geheimnis bewahren. 🤐</p>
+                                <p>• Es wird alles gut werden. 💪</p>
+                                <p>• Ihr werdet nie allein sein. 👥</p>
+                                <p>• Ich werde dich beschützen. 🛡️</p>
+                            </div>
+                            <div>
+                                <p class="font-bold font-sans text-emerald-800 mb-2">📌 2. Entscheidungen:</p>
+                                <p>• Ich werde mit dem Rauchen aufhören. 🚭</p>
+                                <p>• Er wird regelmäßig sparen. 💰</p>
+                                <p>• Ich werde mehr Zeit mit der Familie verbringen.</p>
+                                <p>• Ich werde früher ins Bett gehen. 🛏️</p>
+                                <p>• Ich werde weniger Zeit am Handy verbringen. 📱</p>
+                                <p>• Ich werde jeden Tag 10 neue Wörter lernen.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- D. Befehle -->
+                    <div class="bg-rose-50/60 border border-rose-200 rounded-xl p-4 sm:p-5 space-y-3">
+                        <h4 class="font-bold text-rose-900 text-lg flex items-center gap-2">
+                            <span class="bg-rose-200 text-rose-800 px-2 py-0.5 rounded text-sm">D</span>
+                            Befehle (Накази — рідко, але можливо)
+                        </h4>
+                        <p class="text-sm text-rose-800">
+                            Das Futur I kann in der 2. Person Singular oder Plural verwendet werden, um Befehle auszudrücken. Diese Form wirkt oft <strong>streng oder nachdrücklich</strong>.
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm font-mono text-slate-800 pt-1">
+                            <p>• Du <strong class="text-indigo-600">wirst</strong> jetzt sofort dein Zimmer <strong class="text-fuchsia-700">aufräumen!</strong></p>
+                            <p>• Ihr <strong class="text-indigo-600">werdet</strong> leise <strong class="text-fuchsia-700">sein!</strong> 🤫</p>
+                            <p>• Du <strong class="text-indigo-600">wirst</strong> dich <strong class="text-fuchsia-700">entschuldigen!</strong> 🙇</p>
+                            <p>• Sie <strong class="text-indigo-600">werden</strong> diesen Bericht sofort <strong class="text-fuchsia-700">lesen!</strong> 📄</p>
+                            <p>• Du <strong class="text-indigo-600">wirst</strong> mir <strong class="text-fuchsia-700">zuhören!</strong> 👂</p>
+                            <p>• Du <strong class="text-indigo-600">wirst</strong> mir jetzt die Wahrheit <strong class="text-fuchsia-700">sagen!</strong></p>
+                            <p>• Ihr <strong class="text-indigo-600">werdet</strong> eure Smartphones <strong class="text-fuchsia-700">weglegen!</strong> 📱</p>
+                            <p>• Ihr <strong class="text-indigo-600">werdet</strong> sofort den Fernseher <strong class="text-fuchsia-700">ausschalten!</strong> 📺❌</p>
+                            <p>• Du <strong class="text-indigo-600">wirst</strong> deinen Bruder nicht mehr <strong class="text-fuchsia-700">schlagen!</strong> 👊❌</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. FUTUR I ODER PRÄSENS? -->
+                <div class="bg-white/90 backdrop-blur-sm border border-slate-200/90 rounded-2xl p-5 sm:p-6 shadow-sm space-y-5">
+                    <div class="flex items-center gap-3 border-b border-slate-100 pb-3">
+                        <span class="text-2xl">⚖️</span>
+                        <h3 class="text-xl font-bold text-slate-900">3. Futur I oder Präsens? (Як говорити про майбутнє?)</h3>
+                    </div>
+
+                    <p class="text-sm text-slate-600 mb-4">In der deutschen Sprache kann man über die Zukunft auf zwei Arten sprechen:</p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                        <!-- Futur I Block -->
+                        <div class="p-4 bg-amber-50 border border-amber-200 rounded-xl space-y-2">
+                            <h4 class="font-bold text-amber-900 text-base flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-amber-400 inline-block"></span> Futur I
+                            </h4>
+                            <ul class="list-disc pl-5 space-y-1 text-slate-700">
+                                <li>Wird verwendet, wenn etwas <strong>nicht sicher</strong> ist.</li>
+                                <li>Man hat einen <strong>Plan</strong>, eine <strong>Absicht</strong> oder eine <strong>Vermutung</strong>.</li>
+                                <li>Klingt oft etwas <strong>formeller</strong> oder <strong>neutraler</strong>.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Präsens + Zeitangabe Block -->
+                        <div class="p-4 bg-blue-50 border border-blue-200 rounded-xl space-y-2">
+                            <h4 class="font-bold text-blue-900 text-base flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-blue-500 inline-block"></span> Präsens + Zeitangabe
+                            </h4>
+                            <ul class="list-disc pl-5 space-y-1 text-slate-700">
+                                <li>Wird verwendet, wenn etwas <strong>fest geplant, organisiert</strong> oder <strong>sicher</strong> ist.</li>
+                                <li>Besonders häufig im <strong>Alltag</strong> und bei <strong>klaren Zeitangaben</strong>.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Vergleich (Comparison) -->
+                    <div class="mt-6 pt-4 border-t border-slate-100 space-y-4">
+                        <h4 class="font-bold text-slate-800 text-lg">🎯 Vergleich (Порівняння):</h4>
+                        
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-sm border-collapse">
+                                <thead>
+                                    <tr class="text-slate-800">
+                                        <th class="p-3 border-b-2 border-amber-200 bg-amber-50/50 w-1/2">
+                                            <span class="w-2.5 h-2.5 rounded-full bg-amber-400 inline-block mr-1"></span> Futur I
+                                        </th>
+                                        <th class="p-3 border-b-2 border-blue-200 bg-blue-50/50 w-1/2">
+                                            <span class="w-2.5 h-2.5 rounded-full bg-blue-500 inline-block mr-1"></span> Präsens mit Zeitangabe
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100 font-mono text-slate-800">
+                                    <tr>
+                                        <td class="p-3 bg-amber-50/20">Ich <strong class="text-indigo-600">werde</strong> nach Odessa <strong class="text-fuchsia-700">fliegen</strong>. ✈️<br><span class="text-xs font-sans text-amber-700 italic">(unsicherer Plan)</span></td>
+                                        <td class="p-3 bg-blue-50/20">Ich <strong class="text-blue-700">fliege morgen</strong> nach Odessa. 📆<br><span class="text-xs font-sans text-blue-700 italic">(fest geplant)</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 bg-amber-50/20">Ich <strong class="text-indigo-600">werde</strong> ein neues Handy <strong class="text-fuchsia-700">kaufen</strong>. 📱</td>
+                                        <td class="p-3 bg-blue-50/20">Ich <strong class="text-blue-700">kaufe morgen</strong> ein neues Handy. ✅</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 bg-amber-50/20">Wir <strong class="text-indigo-600">werden</strong> eine Party <strong class="text-fuchsia-700">machen</strong>. 🎉</td>
+                                        <td class="p-3 bg-blue-50/20">Wir <strong class="text-blue-700">machen am Samstag</strong> eine Party. 📆</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 bg-amber-50/20">Wir <strong class="text-indigo-600">werden</strong> bald <strong class="text-fuchsia-700">umziehen</strong>.</td>
+                                        <td class="p-3 bg-blue-50/20">Wir <strong class="text-blue-700">ziehen nächste Woche</strong> um. 🏠</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 bg-amber-50/20">Wir <strong class="text-indigo-600">werden</strong> einen Ausflug <strong class="text-fuchsia-700">machen</strong>.</td>
+                                        <td class="p-3 bg-blue-50/20">Wir <strong class="text-blue-700">machen morgen</strong> einen Klassenausflug. 🚌</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 bg-amber-50/20">Sie <strong class="text-indigo-600">wird</strong> vielleicht <strong class="text-fuchsia-700">kommen</strong>.</td>
+                                        <td class="p-3 bg-blue-50/20">Sie <strong class="text-blue-700">kommt um 18 Uhr</strong> zur Party. 🎈</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Summary Cheat Sheet -->
+                    <div class="mt-4 p-4 bg-slate-50 border border-slate-200 rounded-xl">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-xs sm:text-sm">
+                                <thead>
+                                    <tr class="text-slate-500 font-bold border-b border-slate-200">
+                                        <th class="py-2 px-3">Form</th>
+                                        <th class="py-2 px-3">Wann benutzt man sie?</th>
+                                        <th class="py-2 px-3">Beispiel</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="py-2 px-3 font-bold text-amber-700"><span class="w-2.5 h-2.5 rounded-full bg-amber-400 inline-block mr-1"></span> Futur I</td>
+                                        <td class="py-2 px-3 text-slate-600">Unsicher, Absicht, Vermutung</td>
+                                        <td class="py-2 px-3 font-mono text-slate-800">Ich werde bald dich anrufen.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-2 px-3 font-bold text-blue-700"><span class="w-2.5 h-2.5 rounded-full bg-blue-500 inline-block mr-1"></span> Präsens + Zeit</td>
+                                        <td class="py-2 px-3 text-slate-600">Sicher, geplant, real</td>
+                                        <td class="py-2 px-3 font-mono text-slate-800">Ich rufe dich morgen an.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        `
+    },
+    {
+    id: "komparativ-superlativ-guide",
+    title: "Komparativ & Superlativ — Повний курс (Nawras Jessri)",
+    type: "guide",
+    content: `
+        <div class="space-y-8 text-slate-800 font-sans max-w-5xl mx-auto p-1 sm:p-2">
+            
+            <!-- HEADER BANNER -->
+            <div class="bg-gradient-to-r from-teal-500 via-emerald-500 to-green-500 p-6 sm:p-8 rounded-3xl text-white shadow-xl shadow-emerald-500/10 space-y-4">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                    <span class="px-3 py-1.5 bg-white/20 rounded-full text-xs font-bold backdrop-blur-md">
+                        🎓 Nawras Jessri — Deutschlehrer und Prüfer B1 & B2
+                    </span>
+                    <span class="px-3 py-1.5 bg-white text-emerald-950 rounded-full text-xs font-bold">
+                        ⚖️ Граматичний довідник
+                    </span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Komparativ & Superlativ</h2>
+                <p class="text-sm sm:text-base text-emerald-50 leading-relaxed">
+                    Ступені порівняння прикметників: як сказати, що щось є «швидшим» (Komparativ) або «найкращим» (Superlativ).
+                </p>
+            </div>
+
+            <!-- 1. WARUM BRAUCHEN WIR DIE STEIGERUNG -->
+            <div class="bg-white/90 backdrop-blur-sm border border-slate-200/90 rounded-2xl p-5 sm:p-6 shadow-sm space-y-4">
+                <div class="flex items-center gap-3 border-b border-slate-100 pb-3">
+                    <span class="text-2xl">🧐</span>
+                    <h3 class="text-xl font-bold text-slate-900">1. Warum brauchen wir die Steigerung von Adjektiven?</h3>
+                </div>
+                
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    Прикметники описують якість предметів. Але коли ми порівнюємо два або більше об'єктів, ми використовуємо ступені порівняння.
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm font-mono text-slate-800">
+                    <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl">
+                        <span class="text-xs font-sans text-slate-500 block">Positiv:</span>
+                        Das Fahrrad ist <strong>schnell</strong>. 🚲
+                    </div>
+                    <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl">
+                        <span class="text-xs font-sans text-slate-500 block">Komparativ:</span>
+                        Das Auto ist <strong>schneller</strong>. 🚗
+                    </div>
+                    <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-xl">
+                        <span class="text-xs font-sans text-emerald-700 block">Superlativ:</span>
+                        Das Flugzeug ist <strong class="text-emerald-700">am schnellsten</strong>! ✈️
+                    </div>
+                </div>
+
+                <div class="p-3.5 bg-amber-50 border border-amber-200 rounded-xl text-xs sm:text-sm text-amber-950 font-medium">
+                    💡 <strong>Der Superlativ zeigt:</strong> „Das ist das Beste, Schönste, Schnellste...“ (найвищий ступінь якості).
+                </div>
+            </div>
+
+            <!-- 2. DIE DREI STEIGERUNGSFORMEN TABLE -->
+            <div class="bg-white/90 backdrop-blur-sm border border-slate-200/90 rounded-2xl p-5 sm:p-6 shadow-sm space-y-4">
+                <div class="flex items-center gap-3 border-b border-slate-100 pb-3">
+                    <span class="text-2xl">📊</span>
+                    <h3 class="text-xl font-bold text-slate-900">2. Die drei Steigerungsformen im Überblick</h3>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs sm:text-sm border-collapse border border-slate-200 rounded-xl">
+                        <thead>
+                            <tr class="bg-slate-100 font-bold text-slate-800">
+                                <th class="p-3 border border-slate-200">Form</th>
+                                <th class="p-3 border border-slate-200">Beispiel 1</th>
+                                <th class="p-3 border border-slate-200">Beispiel 2</th>
+                                <th class="p-3 border border-slate-200">Beispiel 3</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 font-mono text-slate-700">
+                            <tr>
+                                <td class="p-3 font-bold font-sans">Positiv</td>
+                                <td class="p-3">Das Handy ist <strong>modern</strong>.📱</td>
+                                <td class="p-3">Die Wohnung ist <strong>teuer</strong>. 🏠</td>
+                                <td class="p-3">Der Raum ist <strong>hell</strong>. 💡</td>
+                            </tr>
+                            <tr class="bg-indigo-50/30">
+                                <td class="p-3 font-bold font-sans text-indigo-700">Komparativ</td>
+                                <td class="p-3">Dieses Handy ist <strong>moderner als</strong> mein Handy.</td>
+                                <td class="p-3">Deine Wohnung ist <strong>teurer als</strong> meine.</td>
+                                <td class="p-3">Das Wohnzimmer ist <strong>heller als</strong> die Küche.</td>
+                            </tr>
+                            <tr class="bg-emerald-50/40">
+                                <td class="p-3 font-bold font-sans text-emerald-700">Superlativ</td>
+                                <td class="p-3 font-bold text-emerald-800">Das neue Samsung ist am modernsten.</td>
+                                <td class="p-3 font-bold text-emerald-800">Die Wohnung in der Stadt ist am teuersten. 🏙️</td>
+                                <td class="p-3 font-bold text-emerald-800">Der Balkon ist am hellsten. ☀️</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 3. KOMPARATIV FORMULA & RULES -->
+            <div class="bg-white/90 backdrop-blur-sm border border-slate-200/90 rounded-2xl p-5 sm:p-6 shadow-sm space-y-4">
+                <div class="flex items-center gap-3 border-b border-slate-100 pb-3">
+                    <span class="text-2xl">⚖️</span>
+                    <h3 class="text-xl font-bold text-slate-900">3. Komparativ: Vergleich von zwei Dingen</h3>
+                </div>
+
+                <div class="p-4 bg-slate-900 text-white rounded-2xl text-center font-extrabold text-base sm:text-lg shadow-inner">
+                    Adjektiv + <span class="text-amber-400">-er</span> + <span class="text-blue-400">als</span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm font-mono text-slate-800">
+                    <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg">lecker ➔ leck<strong>er</strong>er</div>
+                    <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg">schnell ➔ schnell<strong>er</strong></div>
+                    <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg">langsam ➔ langsam<strong>er</strong></div>
+                    <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg">schön ➔ schön<strong>er</strong></div>
+                </div>
+
+                <div class="space-y-1.5 text-xs sm:text-sm text-slate-700 italic border-l-4 border-indigo-500 pl-4">
+                    <p>• Dieser Kuchen ist <strong>leckerer als</strong> der vom Bäcker. 🍰</p>
+                    <p>• Kinder lernen Sprachen <strong>schneller als</strong> Erwachsene. 🧒 > 👩</p>
+                    <p>• Der Bus ist <strong>langsamer als</strong> die U-Bahn. 🚌</p>
+                    <p>• Ich trinke Kaffee <strong>lieber als</strong> Tee. ☕ > 🍵</p>
+                </div>
+            </div>
+
+            <!-- 4. SUPERLATIV BILDUNG -->
+            <div class="bg-white/90 backdrop-blur-sm border border-slate-200/90 rounded-2xl p-5 sm:p-6 shadow-sm space-y-4">
+                <div class="flex items-center gap-3 border-b border-slate-100 pb-3">
+                    <span class="text-2xl">🏆</span>
+                    <h3 class="text-xl font-bold text-slate-900">4. Bildung des Superlativs</h3>
+                </div>
+
+                <div class="p-4 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-2xl text-center font-extrabold text-base sm:text-lg shadow-md">
+                    am + Adjektiv + <span class="text-amber-300">-sten</span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs sm:text-sm font-mono text-slate-800">
+                    <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg">billig ➔ am billig<strong>sten</strong> 🏷️</div>
+                    <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg">schön ➔ am schön<strong>sten</strong> 🌸</div>
+                    <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg">sauber ➔ am sauber<strong>sten</strong> 🧹</div>
+                    <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg">fleißig ➔ am fleißig<strong>sten</strong> 📚</div>
+                    <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg">modern ➔ am modern<strong>sten</strong> 📱</div>
+                    <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg">langsam ➔ am langsam<strong>sten</strong> 🐢</div>
+                    <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg">schnell ➔ am schnell<strong>sten</strong> 🚀</div>
+                    <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg">warm ➔ am wärm<strong>sten</strong> ☀️</div>
+                    <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg">gefährlich ➔ am gefährlich<strong>sten</strong> ⚠️</div>
+                </div>
+
+                <!-- Superlativ Examples -->
+                <div class="bg-emerald-50/60 border border-emerald-200 p-4 rounded-xl space-y-2 text-xs sm:text-sm font-mono text-emerald-950">
+                    <div class="font-bold font-sans text-emerald-900 mb-1">🗣️ Beispiele im Satz:</div>
+                    <p>• Dieses Hotel ist <strong>am billigsten</strong>.</p>
+                    <p>• Cochem ist im Frühling <strong>am schönsten</strong>. 🌸</p>
+                    <p>• Sie rennt <strong>am schnellsten</strong> in der Klasse. 🏃‍♀️</p>
+                    <p>• Der Der Abschied war <strong>am traurigsten</strong> Moment. 😢</p>
+                    <p>• Meine Schwester ist <strong>am lustigsten</strong> in der Familie. 😄</p>
+                    <p>• Lidl ist <strong>am billigsten</strong> von allen Supermärkten. 🛒</p>
+                    <p>• Dieses Medikament ist <strong>am gefährlichsten</strong> ohne Rezept. ⚠️</p>
+                </div>
+            </div>
+
+            <!-- 5. ENDUNG -ESTEN BEI BESTIMMTEN BUCHSTABEN -->
+            <div class="bg-white/90 backdrop-blur-sm border border-slate-200/90 rounded-2xl p-5 sm:p-6 shadow-sm space-y-4">
+                <div class="flex items-center gap-3 border-b border-slate-100 pb-3">
+                    <span class="text-2xl">🎹</span>
+                    <h3 class="text-xl font-bold text-slate-900">5. Endung -esten (для вимови)</h3>
+                </div>
+
+                <div class="p-3.5 bg-amber-50 border border-amber-200 rounded-xl text-xs sm:text-sm text-amber-950">
+                    Якщо прикметник закінчується на <strong>-d, -t, -z, -ß, -sch, -s, -x</strong>, для зручнішої вимови додаємо <strong>-esten</strong> (з літерою "-e-"):
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs sm:text-sm border border-slate-200 rounded-xl">
+                        <thead>
+                            <tr class="bg-slate-100 font-bold text-slate-800">
+                                <th class="p-2.5 border-b">Positiv</th>
+                                <th class="p-2.5 border-b text-indigo-700">Superlativ (-esten)</th>
+                                <th class="p-2.5 border-b">Beispiel im Satz</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 font-mono text-slate-800">
+                            <tr><td class="p-2.5 font-bold">kalt ❄️</td><td class="p-2.5 font-bold text-indigo-600">am kältesten</td><td class="p-2.5">Im Januar ist es in Berlin <strong>am kältesten</strong>.</td></tr>
+                            <tr><td class="p-2.5 font-bold">gesund 🍏</td><td class="p-2.5 font-bold text-indigo-600">am gesündesten</td><td class="p-2.5">Salat ist <strong>am gesündesten</strong> zum Abendessen.</td></tr>
+                            <tr><td class="p-2.5 font-bold">kurz ✂️</td><td class="p-2.5 font-bold text-indigo-600">am kürzesten</td><td class="p-2.5">Der Weg durch den Park ist <strong>am kürzesten</strong>.</td></tr>
+                            <tr><td class="p-2.5 font-bold">süß 🍰</td><td class="p-2.5 font-bold text-indigo-600">am süßesten</td><td class="p-2.5">Diese Torte ist <strong>am süßesten</strong>.</td></tr>
+                            <tr><td class="p-2.5 font-bold">heiß 🍕</td><td class="p-2.5 font-bold text-indigo-600">am heißesten</td><td class="p-2.5">Im Juli ist es <strong>am heißesten</strong>.</td></tr>
+                            <tr><td class="p-2.5 font-bold">laut 🔊</td><td class="p-2.5 font-bold text-indigo-600">am lautesten</td><td class="p-2.5">Die Kinder waren <strong>am lautesten</strong> beim Geburtstag.</td></tr>
+                            <tr><td class="p-2.5 font-bold">spät ⏰</td><td class="p-2.5 font-bold text-indigo-600">am spätesten</td><td class="p-2.5">Ich bin gestern <strong>am spätesten</strong> nach Hause gekommen.</td></tr>
+                            <tr><td class="p-2.5 font-bold">hart 🏋️‍♂️</td><td class="p-2.5 font-bold text-indigo-600">am härtesten</td><td class="p-2.5">Der Test gestern war <strong>am härtesten</strong>.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 6. UNREGELMÄSSIGE FORMEN (KOMPARATIV & SUPERLATIV) -->
+            <div class="bg-white/90 backdrop-blur-sm border border-slate-200/90 rounded-2xl p-5 sm:p-6 shadow-sm space-y-4">
+                <div class="flex items-center gap-3 border-b border-slate-100 pb-3">
+                    <span class="text-2xl">🚨</span>
+                    <h3 class="text-xl font-bold text-slate-900">6. Unregelmäßige Formen (Неправильні форми — вивчити!)</h3>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs sm:text-sm border border-slate-200 rounded-xl">
+                        <thead>
+                            <tr class="bg-slate-100 font-bold text-slate-800">
+                                <th class="p-2.5 border-b">Positiv</th>
+                                <th class="p-2.5 border-b text-indigo-700">Komparativ</th>
+                                <th class="p-2.5 border-b text-emerald-700">Superlativ</th>
+                                <th class="p-2.5 border-b">Beispiel (B1)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 font-mono text-slate-800">
+                            <tr>
+                                <td class="p-2.5 font-bold">groß 🏰</td>
+                                <td class="p-2.5 text-indigo-600 font-bold">größer</td>
+                                <td class="p-2.5 text-emerald-600 font-bold">am größten</td>
+                                <td class="p-2.5">Das Einkaufszentrum ist <strong>am größten</strong> in der Stadt.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 font-bold">alt 👴</td>
+                                <td class="p-2.5 text-indigo-600 font-bold">älter</td>
+                                <td class="p-2.5 text-emerald-600 font-bold">am ältesten</td>
+                                <td class="p-2.5">Mein Großvater ist <strong>am ältesten</strong> in der Familie.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 font-bold">jung 👦</td>
+                                <td class="p-2.5 text-indigo-600 font-bold">jünger</td>
+                                <td class="p-2.5 text-emerald-600 font-bold">am jüngsten</td>
+                                <td class="p-2.5">Mein Sohn ist <strong>am jüngsten</strong> in seiner Klasse.</td>
+                            </tr>
+                            <tr class="bg-amber-50/30">
+                                <td class="p-2.5 font-bold">gut ✅</td>
+                                <td class="p-2.5 text-indigo-600 font-bold">besser</td>
+                                <td class="p-2.5 text-emerald-600 font-bold">am besten</td>
+                                <td class="p-2.5">Der Kuchen von meiner Mutter schmeckt <strong>am besten</strong>. 🎂</td>
+                            </tr>
+                            <tr class="bg-amber-50/30">
+                                <td class="p-2.5 font-bold">viel 📊</td>
+                                <td class="p-2.5 text-indigo-600 font-bold">mehr</td>
+                                <td class="p-2.5 text-emerald-600 font-bold">am meisten</td>
+                                <td class="p-2.5">Sie hat <strong>am meisten</strong> für die Prüfung gelernt. 📚</td>
+                            </tr>
+                            <tr class="bg-amber-50/30">
+                                <td class="p-2.5 font-bold">gern ❤️</td>
+                                <td class="p-2.5 text-indigo-600 font-bold">lieber</td>
+                                <td class="p-2.5 text-emerald-600 font-bold">am liebsten</td>
+                                <td class="p-2.5">Ich trinke <strong>am liebsten</strong> Kaffee. ☕</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 font-bold">hoch ⛰️</td>
+                                <td class="p-2.5 text-indigo-600 font-bold">höher</td>
+                                <td class="p-2.5 text-emerald-600 font-bold">am höchsten</td>
+                                <td class="p-2.5">Der Fernsehturm ist <strong>am höchsten</strong> in Berlin.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 font-bold">nah 📍</td>
+                                <td class="p-2.5 text-indigo-600 font-bold">näher</td>
+                                <td class="p-2.5 text-emerald-600 font-bold">am nächsten</td>
+                                <td class="p-2.5">Die Schule ist <strong>am nächsten</strong> zu unserem Haus. 🏫</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 7. WEITERE BEISPIELE -->
+            <div class="bg-white/90 backdrop-blur-sm border border-slate-200/90 rounded-2xl p-5 sm:p-6 shadow-sm space-y-4">
+                <h4 class="font-bold text-slate-900 text-base sm:text-lg border-b border-slate-100 pb-2">
+                    ✏️ Корисні речення для іспиту B1/B2 (Weitere Beispiele)
+                </h4>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm font-mono text-slate-800">
+                    <div class="p-3 bg-slate-50 border border-slate-200/70 rounded-xl">• Das Bild ist <strong>am schönsten</strong>. 🖼️</div>
+                    <div class="p-3 bg-slate-50 border border-slate-200/70 rounded-xl">• Wasser ist <strong>am gesündesten</strong> zum Trinken. 💧</div>
+                    <div class="p-3 bg-slate-50 border border-slate-200/70 rounded-xl">• Der Supermarkt „Lidl“ ist <strong>am billigsten</strong>. 🛒</div>
+                    <div class="p-3 bg-slate-50 border border-slate-200/70 rounded-xl">• Der Sommerurlaub in Spanien war <strong>am schönsten</strong>. ☀️</div>
+                    <div class="p-3 bg-slate-50 border border-slate-200/70 rounded-xl">• Das Haus am Meer ist <strong>am teuersten</strong>. 🏠🌊</div>
+                    <div class="p-3 bg-slate-50 border border-slate-200/70 rounded-xl">• Ich finde, Berlin ist <strong>am interessantesten</strong>. 🏙️</div>
+                    <div class="p-3 bg-slate-50 border border-slate-200/70 rounded-xl">• Im Sommer ist es <strong>am heißesten</strong>. 🌞</div>
+                    <div class="p-3 bg-slate-50 border border-slate-200/70 rounded-xl">• Im Park kann man <strong>am besten</strong> entspannen. 🌳</div>
+                    <div class="p-3 bg-slate-50 border border-slate-200/70 rounded-xl">• Der Schüler ist <strong>am fleißigsten</strong>. 📖</div>
+                    <div class="p-3 bg-slate-50 border border-slate-200/70 rounded-xl">• Ich arbeite <strong>am liebsten</strong> mit netten Menschen. 😊</div>
+                </div>
+            </div>
+
+            <!-- 8. ZUSAMMENFASSUNG / SUMMARY BANNER -->
+            <div class="p-5 sm:p-6 bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200 rounded-2xl space-y-3 shadow-sm text-emerald-950">
+                <div class="font-bold text-base sm:text-lg text-emerald-900 border-b border-emerald-200 pb-2 flex items-center gap-2">
+                    <span>✅</span> 8. Zusammenfassung (Підсумок тема):
+                </div>
+                <ul class="text-xs sm:text-sm text-emerald-900 space-y-2 leading-relaxed font-semibold">
+                    <li>🔹 <strong>Superlativ Formula:</strong> <code class="font-mono bg-white px-2 py-0.5 rounded border border-emerald-200">am + Adjektiv + -sten / -esten</code></li>
+                    <li>🔹 <strong>Endung -esten:</strong> При закінченнях на <code class="font-mono bg-white px-1.5 py-0.5 rounded border border-emerald-200">-d, -t, -z, -ß, -s, -x, -sch</code> (z. B. <i>am heißesten</i>).</li>
+                    <li>🔹 <strong>Unregelmäßige Formen:</strong> <code class="font-mono bg-white px-1.5 py-0.5 rounded border border-emerald-200">gut ➔ am besten</code>, <code class="font-mono bg-white px-1.5 py-0.5 rounded border border-emerald-200">viel ➔ am meisten</code>, <code class="font-mono bg-white px-1.5 py-0.5 rounded border border-emerald-200">gern ➔ am liebsten</code>.</li>
+                    <li>⛔ <strong>Keine Steigerung:</strong> Абсолютні поняття не мають ступенів порівняння: <code class="font-mono bg-white px-1.5 py-0.5 rounded border border-emerald-200 font-normal">tot, leer, voll, perfekt, einmalig, falsch</code>.</li>
+                </ul>
+            </div>
+
+        </div>
+    `
+},
+{
+        id: "deshalb-guide",
+        title: "Deshalb, darum, deswegen, daher — Повний курс (Nawras Jessri)",
+        type: "guide",
+        content: `
+            <div class="space-y-8 text-slate-800 font-sans max-w-5xl mx-auto p-1 sm:p-2">
+                
+                <!-- HEADER BANNER -->
+                <div class="bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-500 p-6 sm:p-8 rounded-3xl text-white shadow-xl shadow-amber-500/10 space-y-4">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                        <span class="px-3 py-1.5 bg-white/20 rounded-full text-xs font-bold backdrop-blur-md">
+                            🎓 Nawras Jessri — Deutschlehrer und Prüfer B1 & B2
+                        </span>
+                        <span class="px-3 py-1.5 bg-white text-amber-950 rounded-full text-xs font-bold">
+                            📖 Niveau: A2–B1
+                        </span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Deshalb, darum, deswegen, daher...</h2>
+                    <p class="text-sm sm:text-base text-amber-50 leading-relaxed">
+                        Як правильно поєднувати речення та виражати наслідок (Folge / Resultat) у німецькій мові.
+                    </p>
+                </div>
+
+                <!-- 1. BEDEUTUNG -->
+                <div class="bg-white/90 backdrop-blur-sm border border-slate-200/90 rounded-2xl p-5 sm:p-6 shadow-sm space-y-4">
+                    <div class="flex items-center gap-3 border-b border-slate-100 pb-3">
+                        <span class="text-2xl">🔎</span>
+                        <h3 class="text-xl font-bold text-slate-900">1. Wie benutzt man deshalb und ähnliche Wörter richtig?</h3>
+                    </div>
+
+                    <div class="p-4 bg-amber-50/80 border border-amber-200/80 rounded-xl space-y-2 text-sm text-amber-950">
+                        <p>🔹 Die Konjunktionaladverbien <strong>deshalb, darum, deswegen, daher, aus diesem Grund</strong> haben die gleiche Bedeutung: <strong class="text-amber-900">„aus diesem Grund“ (з цієї причини / тому)</strong>.</p>
+                        <p>🔹 Sie verbinden zwei Hauptsätze und zeigen im zweiten Satz eine <strong>Folge (ein Resultat)</strong> an.</p>
+                    </div>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 text-center text-xs font-bold font-mono">
+                        <div class="p-2.5 bg-slate-50 border border-slate-200 rounded-lg text-indigo-700">deshalb</div>
+                        <div class="p-2.5 bg-slate-50 border border-slate-200 rounded-lg text-indigo-700">darum</div>
+                        <div class="p-2.5 bg-slate-50 border border-slate-200 rounded-lg text-indigo-700">deswegen</div>
+                        <div class="p-2.5 bg-slate-50 border border-slate-200 rounded-lg text-indigo-700">daher</div>
+                        <div class="p-2.5 bg-slate-50 border border-slate-200 rounded-lg col-span-2 sm:col-span-1 text-indigo-700">aus diesem Grund</div>
+                    </div>
+                </div>
+
+                <!-- 2. SATZBAU -->
+                <div class="bg-white/90 backdrop-blur-sm border border-slate-200/90 rounded-2xl p-5 sm:p-6 shadow-sm space-y-4">
+                    <div class="flex items-center gap-3 border-b border-slate-100 pb-3">
+                        <span class="text-2xl">🛠️</span>
+                        <h3 class="text-xl font-bold text-slate-900">2. Satzbau mit „deshalb“ (Порядок слів)</h3>
+                    </div>
+
+                    <div class="p-4 bg-slate-900 text-white rounded-2xl text-center font-extrabold text-sm sm:text-base shadow-inner">
+                        Hauptsatz (Grund) , <span class="text-amber-400">deshalb</span> + <span class="text-sky-400">Verb (Position 2)</span> + Subjekt ...
+                    </div>
+
+                    <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2 text-xs sm:text-sm font-mono">
+                        <p><strong class="text-emerald-700">Grund (Причина):</strong> Ich bin krank.</p>
+                        <p><strong class="text-rose-700">Folge (Наслідок):</strong> Ich kann heute nicht zur Schule kommen.</p>
+                        <hr class="border-slate-200 my-1">
+                        <p class="text-slate-900 font-bold text-sm">
+                            ➔ Ich bin krank, <strong class="text-amber-600">deshalb</strong> <strong class="text-sky-600">kann</strong> ich heute nicht zur Schule kommen. 🤒🏫
+                        </p>
+                    </div>
+
+                    <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-xs sm:text-sm font-bold text-emerald-950 flex items-center gap-2">
+                        <span>✅ Merke:</span> Das Verb steht direkt nach „deshalb“ (Position 2 im Satz)!
+                    </div>
+                </div>
+
+                <!-- 3. SATZTRENNUNG -->
+                <div class="bg-white/90 backdrop-blur-sm border border-slate-200/90 rounded-2xl p-5 sm:p-6 shadow-sm space-y-4">
+                    <div class="flex items-center gap-3 border-b border-slate-100 pb-3">
+                        <span class="text-2xl">✨</span>
+                        <h3 class="text-xl font-bold text-slate-900">3. Satztrennung: Punkt, Komma oder Semikolon?</h3>
+                    </div>
+
+                    <p class="text-sm text-slate-600">Du kannst zwei Hauptsätze mit „deshalb“ so trennen:</p>
+
+                    <div class="space-y-2 text-xs sm:text-sm font-mono">
+                        <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-1">
+                            <span class="font-sans font-bold text-slate-500 text-xs">• Mit einem Punkt:</span>
+                            <p class="text-slate-800">Das Wetter ist schlecht. <strong>Deshalb</strong> bleiben wir zu Hause.</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-1">
+                            <span class="font-sans font-bold text-slate-500 text-xs">• Mit einem Komma:</span>
+                            <p class="text-slate-800">Das Wetter ist schlecht, <strong>deshalb</strong> bleiben wir zu Hause.</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-1">
+                            <span class="font-sans font-bold text-slate-500 text-xs">• Mit einem Semikolon:</span>
+                            <p class="text-slate-800">Das Wetter ist schlecht; <strong>deshalb</strong> bleiben wir zu Hause.</p>
+                        </div>
+                    </div>
+
+                    <div class="p-3 bg-indigo-50 border border-indigo-200 rounded-xl text-xs sm:text-sm font-bold text-indigo-950">
+                        ✅ Alle drei Varianten sind grammatikalisch korrekt!
+                    </div>
+                </div>
+
+                <!-- 4. BEISPIELE (COMPREHENSIVE LIST) -->
+                <div class="bg-white/90 backdrop-blur-sm border border-slate-200/90 rounded-2xl p-5 sm:p-6 shadow-sm space-y-4">
+                    <div class="flex items-center gap-3 border-b border-slate-100 pb-3">
+                        <span class="text-2xl">💬</span>
+                        <h3 class="text-xl font-bold text-slate-900">4. Praktische Beispiele (Приклади для іспиту B1)</h3>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs sm:text-sm font-mono">
+                        <div class="p-3 bg-slate-50 border border-slate-200/80 rounded-xl space-y-1">
+                            <span class="font-sans text-[11px] text-emerald-700 font-bold">Grund: Das Wetter ist schön. / Folge: Wir gehen spazieren.</span>
+                            <p class="text-slate-800">• Das Wetter ist schön, <strong>deshalb gehen</strong> wir spazieren. ☀️🚶‍♂️</p>
+                        </div>
+                        
+                        <div class="p-3 bg-slate-50 border border-slate-200/80 rounded-xl space-y-1">
+                            <span class="font-sans text-[11px] text-emerald-700 font-bold">Grund: Ausweis verloren. / Folge: Neuen beantragen.</span>
+                            <p class="text-slate-800">• Ich habe meinen Ausweis verloren, <strong>deshalb muss</strong> ich einen neuen beantragen. 🪪</p>
+                        </div>
+
+                        <div class="p-3 bg-slate-50 border border-slate-200/80 rounded-xl space-y-1">
+                            <span class="font-sans text-[11px] text-emerald-700 font-bold">Grund: Ich bin müde. / Folge: Früh ins Bett.</span>
+                            <p class="text-slate-800">• Ich bin müde, <strong>deshalb gehe</strong> ich früh ins Bett. 😴🛏️</p>
+                        </div>
+
+                        <div class="p-3 bg-slate-50 border border-slate-200/80 rounded-xl space-y-1">
+                            <span class="font-sans text-[11px] text-emerald-700 font-bold">Grund: Viel gearbeitet. / Folge: Früher Feierabend.</span>
+                            <p class="text-slate-800">• Ich habe viel gearbeitet, <strong>deshalb mache</strong> ich heute früher Feierabend. 💼⏰</p>
+                        </div>
+
+                        <div class="p-3 bg-slate-50 border border-slate-200/80 rounded-xl space-y-1">
+                            <span class="font-sans text-[11px] text-emerald-700 font-bold">Grund: Einladung erhalten. / Folge: Geschenk kaufen.</span>
+                            <p class="text-slate-800">• Ich habe eine Einladung zur Hochzeit erhalten, <strong>deshalb kaufe</strong> ich ein Geschenk. 💌🎁</p>
+                        </div>
+
+                        <div class="p-3 bg-slate-50 border border-slate-200/80 rounded-xl space-y-1">
+                            <span class="font-sans text-[11px] text-emerald-700 font-bold">Grund: Auto kaputt. / Folge: Mit dem Bus fahren.</span>
+                            <p class="text-slate-800">• Mein Auto ist kaputt, <strong>deshalb fahre</strong> ich mit dem Bus zur Arbeit. 🚗❌🚌</p>
+                        </div>
+
+                        <div class="p-3 bg-slate-50 border border-slate-200/80 rounded-xl space-y-1">
+                            <span class="font-sans text-[11px] text-emerald-700 font-bold">Grund: Hausaufgaben vergessen. / Folge: Schnell machen.</span>
+                            <p class="text-slate-800">• Ich habe meine Hausaufgaben vergessen, <strong>deshalb muss</strong> ich sie jetzt schnell machen. 📚⏰</p>
+                        </div>
+
+                        <div class="p-3 bg-slate-50 border border-slate-200/80 rounded-xl space-y-1">
+                            <span class="font-sans text-[11px] text-emerald-700 font-bold">Grund: Sehr kalt draußen. / Folge: Dicke Jacke.</span>
+                            <p class="text-slate-800">• Es ist sehr kalt draußen, <strong>deshalb ziehe</strong> ich eine dicke Jacke an. 🧥❄️</p>
+                        </div>
+
+                        <div class="p-3 bg-slate-50 border border-slate-200/80 rounded-xl space-y-1">
+                            <span class="font-sans text-[11px] text-emerald-700 font-bold">Grund: Verschlafen. / Folge: Bus verpasst.</span>
+                            <p class="text-slate-800">• Ich habe verschlafen, <strong>deshalb habe</strong> ich den Bus verpasst. 🛏️🚌</p>
+                        </div>
+
+                        <div class="p-3 bg-slate-50 border border-slate-200/80 rounded-xl space-y-1">
+                            <span class="font-sans text-[11px] text-emerald-700 font-bold">Grund: Kühlschrank leer. / Folge: Einkaufen gehen.</span>
+                            <p class="text-slate-800">• Der Kühlschrank ist leer, <strong>deshalb gehen</strong> wir im Supermarkt einkaufen. 🛒🥦</p>
+                        </div>
+
+                        <div class="p-3 bg-slate-50 border border-slate-200/80 rounded-xl space-y-1">
+                            <span class="font-sans text-[11px] text-emerald-700 font-bold">Grund: Fernseher kaputt. / Folge: Zurückgeben.</span>
+                            <p class="text-slate-800">• Der Fernseher ist kaputt angekommen, <strong>deshalb möchte</strong> ich ihn zurückgeben. 📺📦</p>
+                        </div>
+
+                        <div class="p-3 bg-slate-50 border border-slate-200/80 rounded-xl space-y-1">
+                            <span class="font-sans text-[11px] text-emerald-700 font-bold">Grund: Waschmaschine defekt. / Folge: Umtauschen.</span>
+                            <p class="text-slate-800">• Die Waschmaschine funktioniert nicht mehr, <strong>deshalb möchte</strong> ich sie umtauschen. 🧺</p>
+                        </div>
+
+                        <div class="p-3 bg-slate-50 border border-slate-200/80 rounded-xl space-y-1">
+                            <span class="font-sans text-[11px] text-emerald-700 font-bold">Grund: Nachbar hört laute Musik. / Folge: Nicht schlafen.</span>
+                            <p class="text-slate-800">• Der Nachbar hört nachts laute Musik, <strong>deshalb kann</strong> ich in der Nacht nicht gut schlafen. 🎧😴</p>
+                        </div>
+
+                        <div class="p-3 bg-slate-50 border border-slate-200/80 rounded-xl space-y-1">
+                            <span class="font-sans text-[11px] text-emerald-700 font-bold">Grund: B1-Prüfung bestehen. / Folge: Jeden Tag lernen.</span>
+                            <p class="text-slate-800">• Ich möchte die B1-Prüfung bestehen, <strong>deshalb lerne</strong> ich jeden Tag. 🎓✍️</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        `
+    },
     
 ]
             
