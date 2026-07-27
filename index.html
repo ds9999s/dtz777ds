@@ -5897,195 +5897,295 @@ teil5: {
     ],
 
             Schreiben: [
-                {
-                    type: "guide",
-                    title: "Поради та стратегія написання",
-                    content: `
-                        <div class="space-y-4 text-xs sm:text-sm text-gray-800">
-                            <div class="bg-blue-50 border-l-4 border-blue-600 p-4 rounded-r-xl">
-                                <h3 class="font-bold text-blue-900 text-sm mb-1">⏱️ Загальна регламентація</h3>
-                                <p>Час виконання: <strong>30 хвилин</strong>. Очікуваний обсяг: близько <strong>40–60 слів</strong>. Головне правило — висвітлити <strong>УСІ 4 пунктa (Leitpunkte)</strong> із завдання!</p>
-                            </div>
+    {
+        type: "guide",
+        title: "⚡ Алгоритм та Скелет листа (DTZ B1)",
+        content: `
+            <div class="space-y-4 text-xs sm:text-sm text-gray-800">
+                <!-- Регламент та вибір завдання -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div class="bg-blue-50 border border-blue-200 p-3.5 rounded-xl">
+                        <div class="font-bold text-blue-900 mb-1 flex items-center gap-2">
+                            <span>⏱️</span> <span>Регламент DTZ: 30 хв</span>
+                        </div>
+                        <p class="text-xs text-blue-800 leading-relaxed">
+                            У вас є 2 завдання на вибір (вибирайте те, де зрозуміліші **усі 4 Leitpunkte**). Обсяг: <strong>40–60 слів</strong>.
+                        </p>
+                    </div>
 
-                            <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-2 shadow-sm">
-                                <h4 class="font-bold text-gray-900 border-b border-gray-200 pb-2">🎯 Чек-лист успішного листа на B1:</h4>
-                                <ul class="list-disc pl-5 space-y-1.5 text-gray-700">
-                                    <li><strong>Вітання (Anrede):</strong> Правильний вибір формального/неформального стилю.</li>
-                                    <li><strong>Вступ (Einleitung):</strong> Подяка за лист або причина написання.</li>
-                                    <li><strong>Основна частина (Hauptteil):</strong> 4 окремі речення/абзаци відповідно до 4 Leitpunkte з теми.</li>
-                                    <li><strong>Причини / Пояснення:</strong> Використовуйте сполучники <em>weil / da / deshalb</em>.</li>
-                                    <li><strong>Завершення та Прощання (Schluss & Gruß):</strong> Фраза ввічливості та підпис.</li>
-                                </ul>
-                            </div>
+                    <div class="bg-amber-50 border border-amber-200 p-3.5 rounded-xl">
+                        <div class="font-bold text-amber-900 mb-1 flex items-center gap-2">
+                            <span>🎯</span> <span>Головне правило оцінювання</span>
+                        </div>
+                        <p class="text-xs text-amber-800 leading-relaxed">
+                            За кожен неосвітлений пункт (Leitpunkt) знімають бали за зміст. Потрібно мінімум <strong>1-2 речення на кожен пункт</strong>.
+                        </p>
+                    </div>
+                </div>
 
-                            <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 text-amber-900 space-y-1">
-                                <div class="font-bold">⚠️ Часті помилки:</div>
-                                <div>1. Забули розкрити хоча б один пункт (за це знімають бали за зміст).</div>
-                                <div>2. Помилка у порядку слів після сполучника <strong>weil</strong> (дієслово іде в КІНЕЦЬ).</div>
-                                <div>3. Плутанина між <em>Du / Sie</em> (дотримуйтесь одного стилю в усьому листі).</div>
+                <!-- Візуальний скелет листа -->
+                <div class="bg-white border border-gray-200 rounded-xl p-4 shadow-sm space-y-3">
+                    <h4 class="font-bold text-gray-900 border-b border-gray-100 pb-2 flex items-center justify-between">
+                        <span>📐 Універсальна структура листа</span>
+                        <span class="text-xs font-normal text-gray-400">Схема 1-2-3-4</span>
+                    </h4>
+
+                    <div class="space-y-2 font-mono text-xs">
+                        <div class="bg-gray-50 p-2 rounded border border-dashed border-gray-300 text-gray-600">
+                            <span class="text-blue-600 font-bold">[1. Anrede]</span> Sehr geehrte Frau Müller, / Lieber Paul,
+                        </div>
+                        <div class="bg-gray-50 p-2 rounded border border-dashed border-gray-300 text-gray-600">
+                            <span class="text-blue-600 font-bold">[2. Einleitung]</span> ich schreibe Ihnen / dir, weil... <span class="text-gray-400 italic">(Зверніть увагу: перше слово з маленької літери!)</span>
+                        </div>
+                        <div class="bg-blue-50/60 p-2.5 rounded border border-blue-200 text-gray-800 space-y-1">
+                            <div class="font-bold text-blue-900 font-sans">[3. Hauptteil — 4 Leitpunkte]:</div>
+                            <div>• Leitpunkt 1: <span>[Причина / Ситуація]</span></div>
+                            <div>• Leitpunkt 2: <span>[Деталі / Час / Дата]</span></div>
+                            <div>• Leitpunkt 3: <span>[Вибачення / Прохання]</span></div>
+                            <div>• Leitpunkt 4: <span>[Запитання / Пропозиція]</span></div>
+                        </div>
+                        <div class="bg-gray-50 p-2 rounded border border-dashed border-gray-300 text-gray-600">
+                            <span class="text-blue-600 font-bold">[4. Schluss & Gruß]</span> Ich warte auf Ihre / deine Antwort.<br>Mit freundlichen Grüßen / Viele Grüße,<br><span class="text-gray-400">[Ваше Ім'я та Прізвище]</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `
+    },
+    {
+        type: "guide",
+        title: "💼 Шаблони та Готові фрази (Redemittel)",
+        content: `
+            <div class="space-y-4 text-xs sm:text-sm text-gray-800">
+                
+                <!-- Офіційний лист -->
+                <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-3 shadow-sm">
+                    <div class="flex items-center justify-between border-b border-gray-100 pb-2">
+                        <span class="font-bold text-blue-900 text-sm">🏢 Формальний лист (Amt, Vermieter, Chef, Schule)</span>
+                        <span class="text-[10px] bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full font-semibold">Sie-Form</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                        <div class="space-y-1.5">
+                            <div class="font-semibold text-gray-700">1. Привітання (Зверніть увагу на коми!)</div>
+                            <div class="bg-gray-50 p-2 rounded font-mono text-gray-700 space-y-1 border border-gray-100">
+                                <div>• Sehr geehrte Damen und Herren,</div>
+                                <div>• Sehr geehrte Frau [Прізвище],</div>
+                                <div>• Sehr geehrter Herr [Прізвище],</div>
                             </div>
                         </div>
-                    `
-                },
-                {
-                    type: "guide",
-                    title: "Готові фрази для листів (Redemittel)",
-                    content: `
-                        <div class="space-y-4 text-xs sm:text-sm text-gray-800">
-                            
-                            <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-3 shadow-sm">
-                                <div class="font-bold text-blue-800 text-sm border-b border-gray-200 pb-1">🏢 Формальний лист (до фірми, термінів, орендодавця)</div>
-                                <div>
-                                    <div class="font-semibold text-gray-700">Привітання (Anrede):</div>
-                                    <div class="bg-gray-50 p-2 rounded text-gray-600 font-mono text-xs mt-1">
-                                        • Sehr geehrte Damen und Herren, (якщо ім'я невідоме)<br>
-                                        • Sehr geehrter Herr [Прізвище],<br>
-                                        • Sehr geehrte Frau [Прізвище],
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="font-semibold text-gray-700">Причина звернення (Grund):</div>
-                                    <div class="bg-gray-50 p-2 rounded text-gray-600 font-mono text-xs mt-1">
-                                        • Ich schreibe Ihnen, weil...<br>
-                                        • Ich möchte Sie informieren, dass...<br>
-                                        • Leider muss ich unseren Termin am [Datum] absagen / verschieben.
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="font-semibold text-gray-700">Вибачення та прохання:</div>
-                                    <div class="bg-gray-50 p-2 rounded text-gray-600 font-mono text-xs mt-1">
-                                        • Es tut mir leid, aber ich kann nicht kommen.<br>
-                                        • Könnten Sie mir bitte Informationen senden?<br>
-                                        • Ich bitte Sie um Verständnis.
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="font-semibold text-gray-700">Прощання (Grußformel):</div>
-                                    <div class="bg-gray-50 p-2 rounded text-gray-600 font-mono text-xs mt-1">
-                                        • Mit freundlichen Grüßen<br>
-                                        • [Ваше Ім'я та Прізвище]
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-3 shadow-sm">
-                                <div class="font-bold text-green-800 text-sm border-b border-gray-200 pb-1">✉️ Неформальний лист (друзям, колегам, знайомим)</div>
-                                <div>
-                                    <div class="font-semibold text-gray-700">Привітання (Anrede):</div>
-                                    <div class="bg-gray-50 p-2 rounded text-gray-600 font-mono text-xs mt-1">
-                                        • Lieber [Ім'я чоловіка], / Liebe [Ім'я жінки],<br>
-                                        • Hallo [Ім'я],
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="font-semibold text-gray-700">Вступ та запрошення / допомога:</div>
-                                    <div class="bg-gray-50 p-2 rounded text-gray-600 font-mono text-xs mt-1">
-                                        • Wie geht es dir? Danke für deinen Brief / deine Einladung.<br>
-                                        • Ich lade dich herzlich zu meiner Party / meiner Hochzeit ein.<br>
-                                        • Ich helfe dir sehr gerne bei [dem Umzug / der Vorbereitung].
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="font-semibold text-gray-700">Прощання (Grußformel):</div>
-                                    <div class="bg-gray-50 p-2 rounded text-gray-600 font-mono text-xs mt-1">
-                                        • Viele Grüße / Liebe Grüße<br>
-                                        • Dein [Твоє Ім'я] / Deine [Твоє Ім'я]
-                                    </div>
-                                </div>
+                        <div class="space-y-1.5">
+                            <div class="font-semibold text-gray-700">2. Вступ & Причина</div>
+                            <div class="bg-gray-50 p-2 rounded font-mono text-gray-700 space-y-1 border border-gray-100">
+                                <div>• Ich schreibe Ihnen, weil...</div>
+                                <div>• Ich möchte Sie informieren, dass...</div>
+                                <div>• Leider muss ich den Termin absagen.</div>
                             </div>
-
                         </div>
-                    `
-                },
-                {
-                    type: "guide",
-                    title: "Ключова граматика для B1 (Grammatik)",
-                    content: `
-                        <div class="space-y-4 text-xs sm:text-sm text-gray-800">
-    
-    <!-- 1. weil / da -->
-    <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-2 shadow-sm">
-        <h4 class="font-bold text-blue-900 border-b border-gray-200 pb-1">1. Причина: weil проти da (дієслово в КІНЕЦЬ)</h4>
-        <p class="text-xs text-gray-600">
-            Обидва сполучники означають «тому що / оскільки» і переміщують відмінюване дієслово в <strong>самий кінець</strong> підрядного речення.
-            <br>• <strong>weil</strong> — використовується, коли причина є новою або важливою інформацією.
-            <br>• <strong>da</strong> — частіше вживається на початку речення, коли причина вже відома співрозмовнику.
-        </p>
-        <div class="bg-blue-50 p-2.5 rounded border border-blue-200 text-xs font-mono">
-            • Ich kann nicht kommen, <strong>weil</strong> ich krank <strong>bin</strong>.<br>
-            • <strong>Da</strong> ich arbeiten <strong>muss</strong>, komme ich etwas später.
-        </div>
-    </div>
 
-    <!-- 2. deshalb / deswegen -->
-    <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-2 shadow-sm">
-        <h4 class="font-bold text-blue-900 border-b border-gray-200 pb-1">2. Вказівка наслідку (deshalb / deswegen)</h4>
-        <p class="text-xs text-gray-600">
-            Означають «тому / через це». На відміну від <em>weil</em>, це не сполучники, а сполучникові прислівники. 
-            Вони займають <strong>1-шу позицію</strong> у другій частині речення, тому відмінюване дієслово ставиться одразу після них (на <strong>2-ге місце</strong>).
-        </p>
-        <div class="bg-blue-50 p-2.5 rounded border border-blue-200 text-xs font-mono">
-            • Ich bin krank, <strong>deshalb komme</strong> ich nicht.<br>
-            • Es regnet, <strong>deswegen bleiben</strong> wir zu Hause.
-        </div>
-    </div>
+                        <div class="space-y-1.5">
+                            <div class="font-semibold text-gray-700">3. Прохання / Запитання</div>
+                            <div class="bg-gray-50 p-2 rounded font-mono text-gray-700 space-y-1 border border-gray-100">
+                                <div>• Könnten Sie mir bitte antworten?</div>
+                                <div>• Ich bitte Sie um Verständnis.</div>
+                                <div>• Wann wäre es möglich?</div>
+                            </div>
+                        </div>
 
-    <!-- 3. dass -->
-    <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-2 shadow-sm">
-        <h4 class="font-bold text-blue-900 border-b border-gray-200 pb-1">3. Сполучник що / щоб (dass)</h4>
-        <p class="text-xs text-gray-600">
-            З'єднує головне речення з підрядним з’ясувальним (після дієслів думки, мовлення, почуттів: <em>glauben, hoffen, wissen, leid tun</em>). 
-            Дієслово завжди вирушає в <strong>найкрайніший кінець</strong>. Зверніть увагу: перед <em>dass</em> завжди ставиться кома.
-        </p>
-        <div class="bg-blue-50 p-2.5 rounded border border-blue-200 text-xs font-mono">
-            • Ich hoffe, <strong>dass</strong> wir uns bald <strong>sehen</strong>.<br>
-            • Es tut mir leid, <strong>dass</strong> ich verspätet <strong>antworte</strong>.
-        </div>
-    </div>
+                        <div class="space-y-1.5">
+                            <div class="font-semibold text-gray-700">4. Прощання (БЕЗ коми в кінці!)</div>
+                            <div class="bg-gray-50 p-2 rounded font-mono text-gray-700 space-y-1 border border-gray-100">
+                                <div>• Mit freundlichen Grüßen</div>
+                                <div class="text-gray-400">[Vorname Nachname]</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-    <!-- 4. Präteritum модальних дієслів -->
-    <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-2 shadow-sm">
-        <h4 class="font-bold text-blue-900 border-b border-gray-200 pb-1">4. Модальні дієслова в минулому часі (Präteritum)</h4>
-        <p class="text-xs text-gray-600">
-            У розмовній та писемній мові рівня B1 для модальних дієслів у минулому часі майже <strong>ніколи не використовують Perfekt</strong> (це громіздко). 
-            Завжди вживають <strong>Präteritum</strong>. Усі розумляути (умлаути) при цьому зникають (<em>müssen ➔ musste</em>).
-        </p>
-        <div class="bg-blue-50 p-2.5 rounded border border-blue-200 text-xs font-mono">
-            • ich musste / konnte / wollte / durfte / sollte<br>
-            • Gestern <strong>konnte</strong> ich nicht anrufen, weil ich arbeiten <strong>musste</strong>.
-        </div>
-    </div>
+                <!-- Неформальний лист -->
+                <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-3 shadow-sm">
+                    <div class="flex items-center justify-between border-b border-gray-100 pb-2">
+                        <span class="font-bold text-emerald-900 text-sm">✉️ Неформальний лист (Freunde, Nachbarn)</span>
+                        <span class="text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full font-semibold">du / ihr-Form</span>
+                    </div>
 
-    <!-- 5. Мета: um... zu проти damit -->
-    <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-2 shadow-sm">
-        <h4 class="font-bold text-blue-900 border-b border-gray-200 pb-1">5. Вказівка мети: um... zu vs. damit (щоб)</h4>
-        <p class="text-xs text-gray-600">
-            Для опису мети («для чого?», «з якою метою?») є два шляхи:
-            <br>• <strong>um... zu + Infinitiv</strong>: використовуємо, коли підмет у двох частинах один і той самий.
-            <br>• <strong>damit</strong>: використовуємо, коли підмети різні (дієслово іде в кінець).
-        </p>
-        <div class="bg-blue-50 p-2.5 rounded border border-blue-200 text-xs font-mono">
-            • Ich lerne Deutsch, <strong>um</strong> eine Stelle <strong>zu finden</strong>. <i>(Я вчу, щоб я знайшов)</i><br>
-            • Ich helfe dir, <strong>damit</strong> du fertig <strong>bist</strong>. <i>(Я допомагаю, щоб ти закінчив)</i>
-        </div>
-    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                        <div class="space-y-1.5">
+                            <div class="font-semibold text-gray-700">1. Привітання</div>
+                            <div class="bg-emerald-50/50 p-2 rounded font-mono text-gray-700 space-y-1 border border-emerald-100">
+                                <div>• Lieber [Чоловіче ім'я],</div>
+                                <div>• Liebe [Жіноче ім'я],</div>
+                                <div>• Hallo [Ім'я],</div>
+                            </div>
+                        </div>
 
-    <!-- 6. Ввічливість через Konjunktiv II -->
-    <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-2 shadow-sm">
-        <h4 class="font-bold text-blue-900 border-b border-gray-200 pb-1">6. Ввічливі прохання та побажання (Konjunktiv II)</h4>
-        <p class="text-xs text-gray-600">
-            На B1 критично важливо писати та говорити ввічливо. Замість прямого наказу використовуйте форми <strong>könnten</strong> (могли б) або <strong>würde + Infinitiv</strong> (я б хотів / зробив).
-        </p>
-        <div class="bg-blue-50 p-2.5 rounded border border-blue-200 text-xs font-mono">
-            • <strong>Könnten</strong> Sie mir bitte die Informationen senden?<br>
-            • Ich <strong>würde</strong> gerne einen Termin vereinbaren.
-        </div>
-    </div>
+                        <div class="space-y-1.5">
+                            <div class="font-semibold text-gray-700">2. Запрошення / Подяка</div>
+                            <div class="bg-emerald-50/50 p-2 rounded font-mono text-gray-700 space-y-1 border border-emerald-100">
+                                <div>• Danke für deine Einladung!</div>
+                                <div>• Ich lade dich herzlich zu... ein.</div>
+                                <div>• Wie geht es dir?</div>
+                            </div>
+                        </div>
 
-</div>
-                    `
-                }
-            ]
+                        <div class="space-y-1.5">
+                            <div class="font-semibold text-gray-700">3. Пропозиція / Допомога</div>
+                            <div class="bg-emerald-50/50 p-2 rounded font-mono text-gray-700 space-y-1 border border-emerald-100">
+                                <div>• Ich kann dir gerne helfen.</div>
+                                <div>• Sollen wir uns am Wochenenden treffen?</div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <div class="font-semibold text-gray-700">4. Прощання</div>
+                            <div class="bg-emerald-50/50 p-2 rounded font-mono text-gray-700 space-y-1 border border-emerald-100">
+                                <div>• Viele Grüße / Liebe Grüße,</div>
+                                <div class="text-gray-400">[Dein Vorname]</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        `
+    },
+{
+    type: "guide",
+    title: "🧪 Повний граматичний бустер B1 (Grammatik)",
+    content: `
+        <div class="space-y-3 text-xs sm:text-sm text-gray-800">
+            
+            <!-- 1. Порядок слів у підрядних (Nebensätze) -->
+            <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-2 shadow-sm">
+                <h4 class="font-bold text-gray-900 border-b border-gray-100 pb-1.5 flex items-center justify-between">
+                    <span>1. Підрядні речення (Verb am Ende)</span>
+                    <span class="text-xs text-red-500 font-semibold">Дієслово в КІНЕЦЬ!</span>
+                </h4>
+                <p class="text-xs text-gray-600">Після цих сполучників відмінюване дієслово завжди йде в самий кінець:</p>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono">
+                    <div class="bg-red-50/60 p-2 rounded border border-red-100">
+                        <span class="font-bold text-red-900">weil / da</span> (тому що / оскільки)<br>
+                        <span class="text-gray-600 text-[11px]">...weil ich krank <strong class="text-red-600 underline">bin</strong>.</span>
+                    </div>
+                    <div class="bg-red-50/60 p-2 rounded border border-red-100">
+                        <span class="font-bold text-red-900">dass</span> (що)<br>
+                        <span class="text-gray-600 text-[11px]">...dass ich später <strong class="text-red-600 underline">komme</strong>.</span>
+                    </div>
+                    <div class="bg-red-50/60 p-2 rounded border border-red-100">
+                        <span class="font-bold text-red-900">wenn</span> (якщо / коли)<br>
+                        <span class="text-gray-600 text-[11px]">...wenn Sie Zeit <strong class="text-red-600 underline">haben</strong>.</span>
+                    </div>
+                    <div class="bg-red-50/60 p-2 rounded border border-red-100">
+                        <span class="font-bold text-red-900">obwohl</span> (хоча)<br>
+                        <span class="text-gray-600 text-[11px]">...obwohl es regnet.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Порядок слів з deshalb / deswegen / trotzdem -->
+            <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-2 shadow-sm">
+                <h4 class="font-bold text-gray-900 border-b border-gray-100 pb-1.5 flex items-center justify-between">
+                    <span>2. Інверсія (deshalb / deswegen / trotzdem)</span>
+                    <span class="text-xs text-blue-600 font-semibold">Дієслово на Pos. 2</span>
+                </h4>
+                <p class="text-xs text-gray-600">Це сполучникові прислівники. Вони стоять на 1-й позиції, тому дієслово йде <strong>одразу після них</strong>:</p>
+                <div class="space-y-1.5 text-xs font-mono">
+                    <div class="bg-blue-50 p-2 rounded border border-blue-100 text-blue-900">
+                        • Ich bin krank, <strong>deshalb <span class="underline font-bold">komme</span> ich</strong> nicht. <i>(тому)</i>
+                    </div>
+                    <div class="bg-blue-50 p-2 rounded border border-blue-100 text-blue-900">
+                        • Es regnet, <strong>trotzdem <span class="underline font-bold">gehe</span> ich</strong> spazieren. <i>(незважаючи на це)</i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Passiv (Пасивний стан) -->
+            <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-2 shadow-sm">
+                <h4 class="font-bold text-gray-900 border-b border-gray-100 pb-1.5 flex items-center justify-between">
+                    <span>3. Пасивний стан (Passiv Präsens)</span>
+                    <span class="text-xs text-purple-600 font-semibold">werden + Partizip II</span>
+                </h4>
+                <p class="text-xs text-gray-600">Ідеально для скарг, описів ремонтів чи робочих процесів, коли важлива дія, а не хто її робить:</p>
+                <div class="bg-purple-50 p-2.5 rounded font-mono text-xs border border-purple-100 text-purple-900 space-y-1">
+                    <div>• Die Heizung <strong>wird</strong> morgen <strong>repariert</strong>. <i>(Опалення буде відремонтовано)</i></div>
+                    <div>• Der Termin <strong>wurde</strong> bereits <strong>verschoben</strong>. <i>(Präteritum: Термін вже було перенесено)</i></div>
+                </div>
+            </div>
+
+            <!-- 4. Konjunktiv II (Умови, пропозиції, ввічливість) -->
+            <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-2 shadow-sm">
+                <h4 class="font-bold text-gray-900 border-b border-gray-100 pb-1.5">
+                    4. Konjunktiv II (Нереальна умова / Ввічливість)
+                </h4>
+                <p class="text-xs text-gray-600">Використовуйте для ввічливих прохань (Könnten/Würden) або умовних речень (wenn... wäre/hätte):</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono">
+                    <div class="bg-amber-50 p-2 rounded border border-amber-100">
+                        <span class="font-bold text-amber-900">Ввічливість:</span><br>
+                        • <strong>Könnten</strong> Sie mir helfen?<br>
+                        • Ich <strong>würde</strong> gerne kommen.
+                    </div>
+                    <div class="bg-amber-50 p-2 rounded border border-amber-100">
+                        <span class="font-bold text-amber-900">Умова (Wenn...):</span><br>
+                        • Wenn ich Zeit <strong>hätte</strong>, <strong>würde</strong> ich kommen.<br>
+                        • Wenn es möglich <strong>wäre</strong>...
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. Relativsätze (Відносні речення) -->
+            <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-2 shadow-sm">
+                <h4 class="font-bold text-gray-900 border-b border-gray-100 pb-1.5">
+                    5. Відносні речення (Relativsätze)
+                </h4>
+                <p class="text-xs text-gray-600">Допомагають уникнути коротких примітивних речень. Відносне займенник узгоджується з іменником, дієслово йде <strong>в кінець</strong>:</p>
+                <div class="space-y-1.5 text-xs font-mono">
+                    <div class="bg-gray-50 p-2 rounded border border-gray-200 text-gray-800">
+                        • Das ist der Nachbar, <strong>der</strong> mir geholfen <strong>hat</strong>. <i>(Nominativ m)</i>
+                    </div>
+                    <div class="bg-gray-50 p-2 rounded border border-gray-200 text-gray-800">
+                        • Ich habe einen Brief bekommen, <strong>den</strong> ich nicht verstehe. <i>(Akkusativ m)</i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. Infinitiv mit zu -->
+            <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-2 shadow-sm">
+                <h4 class="font-bold text-gray-900 border-b border-gray-100 pb-1.5">
+                    6. Інфінітив з "zu" (Infinitiv mit zu)
+                </h4>
+                <p class="text-xs text-gray-600">Після дієслів <i>(hoffen, vorhaben, vergessen, bitten)</i> та прикметників <i>(wichtig, schön, möglich)</i>:</p>
+                <div class="bg-gray-50 p-2.5 rounded font-mono text-xs border border-gray-200 text-gray-800 space-y-1">
+                    <div>• Ich hoffe, dich bald <strong>zu sehen</strong>.</div>
+                    <div>• Es ist wichtig, den Termin <strong>zu bestätigen</strong>.</div>
+                    <div class="text-[11px] text-amber-700 italic font-sans">*Не вживається з модальними дієсловами (können, müssen, wollen тощо)!</div>
+                </div>
+            </div>
+
+            <!-- 7. Вказівка мети (um... zu vs. damit) -->
+            <div class="bg-white border border-gray-200 rounded-xl p-4 space-y-2 shadow-sm">
+                <h4 class="font-bold text-gray-900 border-b border-gray-100 pb-1.5">
+                    7. Вказівка мети (um... zu vs. damit)
+                </h4>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono">
+                    <div class="bg-gray-50 p-2 rounded border border-gray-200">
+                        <span class="font-bold text-gray-800">um ... zu + Infinitiv</span><br>
+                        <span class="text-gray-500 text-[11px] font-sans">Один підмет у двох частинах:</span><br>
+                        Ich lerne, <strong>um</strong> die Prüfung <strong>zu bestehen</strong>.
+                    </div>
+                    <div class="bg-gray-50 p-2 rounded border border-gray-200">
+                        <span class="font-bold text-gray-800">damit + підрядне</span><br>
+                        <span class="text-gray-500 text-[11px] font-sans">Різні підмети:</span><br>
+                        Ich helфе dir, <strong>damit</strong> du fertig <strong>bist</strong>.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    `
+}
+]
             
             
         };
